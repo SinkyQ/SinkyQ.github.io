@@ -586,15 +586,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-level3/" target="_self">
-          攻防世界 level3
+        <a href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-dice_game/" target="_self">
+          攻防世界-dice_game
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-level3/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-dice_game/" target="_self">
         <div>
-          这道题对于我来讲好难好难啊，涉及到了很多新的知识。首先checksec  :可以直接栈溢出；基地址不变化；对数据有执行权限。 查看main()函数：  查看函数function()：  无system,无&#x2F;bin&#x2F;sh，给了一个共享文件libc_32.so.6,明显为ret2libc。  ret2libc (return-into-libc)是一种利用缓冲区溢出的代码复用技术，主要通过覆盖栈帧的返
+          0x01 Checkseclinux下checksec查壳，开启了relro nx pie防护：  0x02 分析IDA打开，主函数： 123456789101112131415161718192021222324252627282930313233343536373839__int64 __fastcall main(__int64 a1, char **a2, char **a3){  cha
         </div>
       </a>
 
