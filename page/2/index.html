@@ -226,46 +226,6 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-100/" target="_self">
-          攻防世界pwn-100
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-100/" target="_self">
-        <div>
-          分析查壳：checksec  64位，无stack,无PIE；  运行程序，输入字符，无反馈，无限制。   ida查看main函数，发现存在栈溢出，参数a1大小为0x40.然而函数中获取大于等于a2（a2&#x3D;200）的数值存入了a1. 攻击思路无system函数，无&#x2F;bin&#x2F;sh字符串，有read,puts。参数经过寄存器传递（也可IDA查看），可以泄露libc,写入&#x2F;bin&#x2F;sh。   puts只
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-08-09 11:17" pubdate>
-              2022-08-09
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/SinkyQ/sinkyhexo.github.io.git/tags/pwn/">#pwn</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
         <a href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/WinDbg%E4%BD%BF%E7%94%A8%E6%95%B4%E7%90%86/" target="_self">
           WinDbg使用整理
         </a>
