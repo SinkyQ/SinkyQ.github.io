@@ -16,27 +16,28 @@
   <meta name="author" content="Sinky">
   <meta name="keywords" content="">
   
-    <meta name="description" content="CSRFCSRF 跨站请求伪造，在csrf攻击场景中攻击者会伪造一个请求，欺骗目标用户进行点击，用户一旦点击这个请求，整个攻击就完成了，所以csrf攻击也成为”one click”攻击. csrf攻击满足的条件1、网站没有对个人的信息修改的请求进行防csrf处理，导致请求容易被伪造 2.用户在登录后台的情况下，点击了攻击者发送的链接，如果用户没登陆或没点连接都不会成 csrf与xss的区别csrf">
+    <meta name="description" content="概述序列化 serialize()序列化：把一个对象变成可以传输的字符串。 123456class S{public $test&#x3D;&quot;pikachu&quot;;}$s&#x3D;new S;&#x2F;&#x2F;创建一个对象serialize($s);&#x2F;&#x2F;把这个对象进行序列化?&gt;  结果：O:1:”S”:1:{s:4:”test”;s:7:”pikachu”;} O:代表object 1:代表对象名字长度为一个字符 S:对象的名">
 <meta property="og:type" content="article">
-<meta property="og:title" content="pikachu-CSRF">
-<meta property="og:url" content="https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/pikachu-CSRF/index.html">
+<meta property="og:title" content="PHP反序列化">
+<meta property="og:url" content="https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/pikachu-PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/index.html">
 <meta property="og:site_name" content="Sinky&#39;s Blog">
-<meta property="og:description" content="CSRFCSRF 跨站请求伪造，在csrf攻击场景中攻击者会伪造一个请求，欺骗目标用户进行点击，用户一旦点击这个请求，整个攻击就完成了，所以csrf攻击也成为”one click”攻击. csrf攻击满足的条件1、网站没有对个人的信息修改的请求进行防csrf处理，导致请求容易被伪造 2.用户在登录后台的情况下，点击了攻击者发送的链接，如果用户没登陆或没点连接都不会成 csrf与xss的区别csrf">
+<meta property="og:description" content="概述序列化 serialize()序列化：把一个对象变成可以传输的字符串。 123456class S{public $test&#x3D;&quot;pikachu&quot;;}$s&#x3D;new S;&#x2F;&#x2F;创建一个对象serialize($s);&#x2F;&#x2F;把这个对象进行序列化?&gt;  结果：O:1:”S”:1:{s:4:”test”;s:7:”pikachu”;} O:代表object 1:代表对象名字长度为一个字符 S:对象的名">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://s2.loli.net/2022/08/09/S596iH2b7vKtPh3.png">
-<meta property="og:image" content="https://s2.loli.net/2022/08/09/noayh3NpcmPvMXq.png">
-<meta property="og:image" content="https://s2.loli.net/2022/08/09/usMpORoFZEmjqng.png">
-<meta property="og:image" content="https://s2.loli.net/2022/08/09/quSRzMEXBvVwPnK.png">
-<meta property="article:published_time" content="2022-08-09T08:30:06.517Z">
-<meta property="article:modified_time" content="2022-08-09T08:51:43.331Z">
+<meta property="og:image" content="https://s2.loli.net/2022/08/09/LkvmjC2rTAON7Pi.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/09/obFRtxqgIyXBO9k.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/09/cl6J2puye5PkzTL.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/09/F58nRZDKNG4VSXi.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/09/TVb9AHiwgLo812t.png">
+<meta property="article:published_time" content="2022-08-09T09:01:18.129Z">
+<meta property="article:modified_time" content="2022-08-09T09:12:09.121Z">
 <meta property="article:author" content="Sinky">
 <meta property="article:tag" content="pikachu">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://s2.loli.net/2022/08/09/S596iH2b7vKtPh3.png">
+<meta name="twitter:image" content="https://s2.loli.net/2022/08/09/LkvmjC2rTAON7Pi.png">
   
   
   
-  <title>pikachu-CSRF - Sinky&#39;s Blog</title>
+  <title>PHP反序列化 - Sinky&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -204,7 +205,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="pikachu-CSRF"></span>
+            <span id="subtitle" data-typed-text="PHP反序列化"></span>
           
         </div>
 
@@ -215,7 +216,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-08-09 16:30" pubdate>
+        <time datetime="2022-08-09 17:01" pubdate>
           August 9, 2022 pm
         </time>
       </span>
@@ -227,7 +228,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.1k words
+          1.4k words
         
       </span>
     
@@ -238,7 +239,7 @@
         
         
         
-          10 mins
+          12 mins
         
       </span>
     
@@ -276,52 +277,54 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">pikachu-CSRF</h1>
+            <h1 style="display: none">PHP反序列化</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="CSRF"><a href="#CSRF" class="headerlink" title="CSRF"></a>CSRF</h1><p>CSRF 跨站请求伪造，在csrf攻击场景中攻击者会伪造一个请求，欺骗目标用户进行点击，用户一旦点击这个请求，整个攻击就完成了，所以csrf攻击也成为”one click”攻击.</p>
-<h2 id="csrf攻击满足的条件"><a href="#csrf攻击满足的条件" class="headerlink" title="csrf攻击满足的条件"></a>csrf攻击满足的条件</h2><p>1、网站没有对个人的信息修改的请求进行防csrf处理，导致请求容易被伪造</p>
-<p>2.用户在登录后台的情况下，点击了攻击者发送的链接，如果用户没登陆或没点连接都不会成</p>
-<h2 id="csrf与xss的区别"><a href="#csrf与xss的区别" class="headerlink" title="csrf与xss的区别"></a>csrf与xss的区别</h2><p>csrf是借用户的权限完成攻击，攻击者并没有拿到用户的权限，而xss是直接盗取到了用户的权限，然后实施破坏。</p>
-<h2 id="如何确认一个web系统存在csrf漏洞"><a href="#如何确认一个web系统存在csrf漏洞" class="headerlink" title="如何确认一个web系统存在csrf漏洞"></a>如何确认一个web系统存在csrf漏洞</h2><p>1.对目标网站增删改的地方进行标记，并观察其逻辑，判断请求是否可以被伪造</p>
+                <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><h2 id="序列化-serialize"><a href="#序列化-serialize" class="headerlink" title="序列化 serialize()"></a>序列化 serialize()</h2><p>序列化：把一个对象变成可以传输的字符串。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs <?php">class S{<br>public $test="pikachu";<br>}<br>$s=new S;//创建一个对象<br>serialize($s);//把这个对象进行序列化<br>?&gt;<br></code></pre></td></tr></tbody></table></figure>
+
+<p>结果：O:1:”S”:1:{s:4:”test”;s:7:”pikachu”;}</p>
+<p>O:代表object</p>
+<p>1:代表对象名字长度为一个字符</p>
+<p>S:对象的名称</p>
+<p>1:代表对象里面有一个变量</p>
+<p>s:数据类型</p>
+<p>4:变量名称的长度</p>
+<p>test:变量名称</p>
+<p>s:数据类型</p>
+<p>7:变量值的长度</p>
+<p>pikachu:变量值</p>
+<p>（什么鬼，没懂）</p>
+<h2 id="反序列化-unserialize"><a href="#反序列化-unserialize" class="headerlink" title="反序列化 unserialize()"></a>反序列化 unserialize()</h2><p>就是把序列化的字符串还原为对象，然后在接下来的代码中继续使用。</p>
+<pre><code class="hljs">$u=unserialize("0:1:"S":1{s:4:"test":s:7:"pikachu";}");
+echo $u ‐&gt; test;//得到结果为pikachu
+</code></pre>
+<p>序列化和反序列化本身没有问题，但如果反序列化的内容是用户可以控制的，且后台不正当的使用了PHP中的魔法函数，就会导致安全问题。</p>
+<p><img src="https://s2.loli.net/2022/08/09/LkvmjC2rTAON7Pi.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="image.png"></p>
 <ul>
-<li>修改管理员账号时，并不需要验证旧密码，导致请求容易被伪造；</li>
-<li>对于敏感信息的修改并没有使用安全的token验证，导致请求容易被伪造；</li>
-</ul>
-<p>2.确认凭证的有效期</p>
-<ul>
-<li>虽然退出或关闭了浏览器，但cookie仍然有效，或者session并没有及时国企，导致csrf攻击变得简单。</li>
-</ul>
-<h1 id="CSRF-get"><a href="#CSRF-get" class="headerlink" title="CSRF(get)"></a>CSRF(get)</h1><p>登录账号，抓取修改个人信息流量包。</p>
-<p><img src="https://s2.loli.net/2022/08/09/S596iH2b7vKtPh3.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="image.png"></p>
-<p>发现参数可以直接被修改，未做任何确认机制，可以直接将url伪装成各种html让受害者点击。</p>
-<p>可以构造出CSRF攻击URL,诱使登录状态的用户点击url就可以完成CSRF攻击。</p>
-<p>如果修改信息的请求方式是POST型的，攻击者则不能通过构造恶意url来攻击。类似于xss的post型攻击，攻击者会构造一个自己的攻击站点（服务器），站点上有一个poat.html，诱使用户点击该地址。当用户点击时，就会自动向存在CSRF的服务器提交POST请求修改个人信息，从而完成攻击。</p>
-<p>步骤同get。</p>
-<p>正常登录状态：</p>
-<p><img src="https://s2.loli.net/2022/08/09/noayh3NpcmPvMXq.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="image.png"></p>
-<p>点击恶意url后，用户信息直接被修改</p>
-<p><img src="https://s2.loli.net/2022/08/09/usMpORoFZEmjqng.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="image.png"></p>
-<h1 id="CSRF-Token"><a href="#CSRF-Token" class="headerlink" title="CSRF(Token)"></a>CSRF(Token)</h1><p>token: 每次请求都增加一个随机码（需要够随机，不容易被伪造），后台每次对这个随机码进行验证，这个随机码就是token。</p>
-<p>如图获取修改信息流量包后发现增加了token，无法利用。</p>
-<p><img src="https://s2.loli.net/2022/08/09/quSRzMEXBvVwPnK.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="image.png"></p>
-<h1 id="防范CSRF措施"><a href="#防范CSRF措施" class="headerlink" title="防范CSRF措施"></a>防范CSRF措施</h1><ul>
-<li>增加token验证：对关键操作增加token参数，token值必须随机，每次都不一样</li>
-<li>安全的会话管理（避免会话被利用）<ul>
-<li>不要再客户端保存敏感信息（身份认证信息）</li>
-<li>测试直接关闭，退出时的会话过期机制（一般是15-20分钟），无操作则自动登入超时。</li>
+<li>常见的魔法函数：<ul>
+<li><em>__construct()</em> 当一个对象创建时被调用</li>
+<li><em>__destruct()</em> 当一个对象销毁时被调用</li>
+<li><em>__toString()</em> 当一个对象被当作一个字符串使用</li>
+<li><em>__sleep()</em> 在对象在被序列化之前运行</li>
+<li><em>__wakeuop</em> 将在序列化之后立即被调用</li>
 </ul>
 </li>
-<li>访问控制安全管理<ul>
-<li>敏感信息修改时需要对身份进行二次认证（如修改账号时需要判断旧密码）</li>
-<li>敏感信息的修改尽量使用post（post安全性高于get）</li>
-<li>通过http头部中的referer来限制页面（修改个人信息的referer必须来自本域，不可来自其他域或无referer）</li>
 </ul>
-</li>
-<li>增加验证码：一般用在登录（防暴力破解），也可用于其他重要信息操作的表单中。</li>
-</ul>
+<h1 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h1><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs <?php">//定义类<br>class test<br>{<br>//在对象被销毁时候自动调用destruct函数<br>function __destruct()<br>{<br>echo "&lt;br&gt;__destruct()&lt;br&gt;";<br>//在此函数中添加eval()以达到命令执行的目的<br>eval($_GET['cmd']);<br>}<br>}<br>//echo serialize($test);方便将序列化后的test写进u参数中传参<br>$test = new test;<br>echo serialize($test);<br>//执行完这个echo后会被垃圾回收器回收，也就是销毁<br>unserialize($_GET['u']);<br>//反序列化执行完后又会被回收<br>// 所以会出现两次destruct<br>?&gt;<br></code></pre></td></tr></tbody></table></figure>
+
+<p><img src="https://s2.loli.net/2022/08/09/obFRtxqgIyXBO9k.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="image.png"></p>
+<p>传参: <code>http://localhost/phptest.php?O:4:"test":0:{}&amp;cmd=system("woami");</code></p>
+<p>利用成功。</p>
+<h1 id="php反序列化漏洞"><a href="#php反序列化漏洞" class="headerlink" title="php反序列化漏洞"></a>php反序列化漏洞</h1><p><img src="https://s2.loli.net/2022/08/09/cl6J2puye5PkzTL.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="image.png"></p>
+<p>随便提交点啥字符串，提示“大兄弟，来点劲爆点儿的”</p>
+<p>提交了一串序列化字符串，回显是反序列化后的。没啥思路，看一下后台代码。</p>
+<p><img src="https://s2.loli.net/2022/08/09/F58nRZDKNG4VSXi.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="image.png"></p>
+<p>将XSS字符串 <code>&lt;script&gt;alert('xss')&lt;/script&gt; </code>序列化一下： <code>O:1:"S":1:{s:4:"test";s:29:"&lt;script&gt;alert('xss')&lt;/script&gt;";}</code></p>
+<p>提交，成功</p>
+<p><img src="https://s2.loli.net/2022/08/09/TVb9AHiwgLo812t.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="image.png"></p>
 
                 
               </div>
@@ -346,8 +349,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>pikachu-CSRF</div>
-      <div>https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/pikachu-CSRF/</div>
+      <div>PHP反序列化</div>
+      <div>https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/pikachu-PHP反序列化/</div>
     </div>
     <div class="license-meta">
       
@@ -389,18 +392,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/pikachu-PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" title="PHP反序列化">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">PHP反序列化</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/CVE-2019-5786/" title="CVE-2019-5786">
-                        <span class="hidden-mobile">CVE-2019-5786</span>
+                      <a href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/pikachu-CSRF/" title="pikachu-CSRF">
+                        <span class="hidden-mobile">pikachu-CSRF</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
