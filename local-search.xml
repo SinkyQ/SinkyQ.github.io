@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>有关XSS跨站脚本</title>
+    <link href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%9C%89%E5%85%B3XSS%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC/"/>
+    <url>/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%9C%89%E5%85%B3XSS%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC/</url>
+    
+    <content type="html"><![CDATA[<h1 id="XSS-跨站脚本-原理与分类"><a href="#XSS-跨站脚本-原理与分类" class="headerlink" title="XSS(跨站脚本)原理与分类"></a>XSS(跨站脚本)原理与分类</h1><p>跨站脚本攻击XSS,为了不和层叠样式表的缩写混淆，故将跨站脚本攻击缩写为XSS,恶意攻击者往web页面里插入恶意script代码，当用户浏览页面时嵌入其中的script代码被执行，从而恶意攻击用户。</p><p>XSS攻击针对的是用户层面的攻击.</p><ul><li>反射型：交互的数据一般不会被存在数据库里，一次性，一般出现在查询页面等。</li><li>存储型：交互的数据会被存在数据库里面，永久性存储，一般出现在留言板，注册等页面。</li><li>DOM型：不与后台服务器产生数据交互，是一种通过DOM操作前端代码输出的时候产生的问题，一次性，也属于反射型。</li></ul><h1 id="XSS漏洞测试流程"><a href="#XSS漏洞测试流程" class="headerlink" title="XSS漏洞测试流程"></a>XSS漏洞测试流程</h1><p>1.在目标上找输入点，比如查询接口、留言板</p><p>2.输入一组“特殊字符（&gt;,’,”等）+唯一识别字符”，点击提交后，查看返回源码，看后端返回数据是否有处理。</p><p>3.通过搜索定位到唯一字符，结合唯一字符前后语法确定是否可以构造执行js的调教（构造闭合）</p><p>4.提交构造的脚本代码（以及各种绕过姿势），看是否可以成功执行，成功执行证明存在xss漏洞。</p><h1 id="XSS的攻击载荷"><a href="#XSS的攻击载荷" class="headerlink" title="XSS的攻击载荷"></a>XSS的攻击载荷</h1><ul><li><code>&lt;script&gt;</code>：最直接的xss有效载荷，脚本标记可以引用外部的javascript代码，也可以将代码插入脚本标记中。</li></ul><figure class="highlight plaintext"><figcaption><span>src</span></figcaption><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs <script">&lt;script&gt;alert("hack")&lt;/script&gt; #弹出hack<br>&lt;script&gt;alert(document.cookie)&lt;/script&gt; #弹出cookie<br></code></pre></td></tr></tbody></table></figure><ul><li><code>&lt;img&gt;</code>：<figure class="highlight routeros"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs routeros">&lt;img  <span class="hljs-attribute">src</span>=1  <span class="hljs-attribute">onerror</span>=alert("hack")&gt;<br>&lt;img  <span class="hljs-attribute">src</span>=1  <span class="hljs-attribute">onerror</span>=alert(/hack/)&gt;<br>&lt;img  <span class="hljs-attribute">src</span>=1  <span class="hljs-attribute">onerror</span>=alert(document.cookie)&gt;  #弹出cookie<br>&lt;img  <span class="hljs-attribute">src</span>=1  <span class="hljs-attribute">onerror</span>=alert(123)&gt;      注：对于数字，可以不用引号<br>&lt;img  <span class="hljs-attribute">src</span>=<span class="hljs-string">"javascript:alert("</span>XSS");"&gt;<br>&lt;img  <span class="hljs-attribute">dynsrc</span>=<span class="hljs-string">"javascript:alert('XSS')"</span>&gt;<br>&lt;img  <span class="hljs-attribute">lowsrc</span>=<span class="hljs-string">"javascript:alert('XSS')"</span>&gt;<br></code></pre></td></tr></tbody></table></figure></li></ul>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>XSS</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>漏洞战争学习笔记2：CVE-2010-3333</title>
     <link href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%BC%8F%E6%B4%9E%E6%88%98%E4%BA%89%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9ACVE-2010-3333/"/>
     <url>/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%BC%8F%E6%B4%9E%E6%88%98%E4%BA%89%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9ACVE-2010-3333/</url>
