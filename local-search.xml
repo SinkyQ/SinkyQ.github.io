@@ -4,6 +4,44 @@
   
   
   <entry>
+    <title>burp四种密码爆破模式学习</title>
+    <link href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/bp%E5%9B%9B%E7%A7%8D%E5%AF%86%E7%A0%81%E7%88%86%E7%A0%B4%E6%A8%A1%E5%BC%8F%E5%AD%A6%E4%B9%A0/"/>
+    <url>/SinkyQ/sinkyhexo.github.io.git/2022/08/09/bp%E5%9B%9B%E7%A7%8D%E5%AF%86%E7%A0%81%E7%88%86%E7%A0%B4%E6%A8%A1%E5%BC%8F%E5%AD%A6%E4%B9%A0/</url>
+    
+    <content type="html"><![CDATA[<ul><li>Sniper:单参数爆破，多参数时同一个字典按顺序替换各参数，初始值有一个参数不变</li><li>Battering ram:多参数同时爆破，但用的是同一个字典</li><li>Pitchfork:多参数同时爆破，但用的是不同的字典</li><li>Cluster bamb:多参数做笛卡尔乘积模式爆破</li></ul><h1 id="Sniper-狙击手"><a href="#Sniper-狙击手" class="headerlink" title="Sniper(狙击手)"></a>Sniper(狙击手)</h1><p>（一对一）</p><p>一个参数a，若payload有x个，则执行x次。</p><p>两个参数a、b,先执行爆破a的x次，再执行b的y次，共x+y次爆破。</p><ul><li>此模式主要适用于：竞争条件测试(选择NULL payloads)，密码、验证码暴力破解，重放攻击等场景</li></ul><h1 id="Battering-ram-破城槌"><a href="#Battering-ram-破城槌" class="headerlink" title="Battering ram(破城槌)"></a>Battering ram(破城槌)</h1><p>（payload一对多）</p><p>一个参数a，若payload有x个，则执行x次。</p><p>两个参数a、b,payload被同事放到a、b变量中。适合需要在请求中把相同的输入放到多个位置的情况。</p><ul><li>此模式主要适用于：撞库</li></ul><h1 id="Pitchfork-音叉"><a href="#Pitchfork-音叉" class="headerlink" title="Pitchfork(音叉)"></a>Pitchfork(音叉)</h1><p>可以多组密码本payload</p><p>a:1,2</p><p>b:3,4</p><p>第一次爆破为 1，3</p><p>第二次爆破为 2，4</p><ul><li>此模式主要适用于：恶意注册</li></ul><h1 id="Cluster-bomb-集束炸弹"><a href="#Cluster-bomb-集束炸弹" class="headerlink" title="Cluster bomb(集束炸弹)"></a>Cluster bomb(集束炸弹)</h1><p>（多对多）</p><p>对payload组进行笛卡尔积，交叉组合，即a的一个payload值与b的每一个值进行组合爆破。</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>bp</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>《物联网渗透测试》学习笔记1</title>
+    <link href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E3%80%8A%E7%89%A9%E8%81%94%E7%BD%91%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/"/>
+    <url>/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E3%80%8A%E7%89%A9%E8%81%94%E7%BD%91%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/</url>
+    
+    <content type="html"><![CDATA[<h1 id="0x01-IOT渗透测试"><a href="#0x01-IOT渗透测试" class="headerlink" title="0x01 IOT渗透测试"></a>0x01 IOT渗透测试</h1><p>定义IoT生态系统与渗透测试生命周期</p><ul><li>渗透测试方法：<ul><li>黑盒测试</li><li>白盒测试</li><li>灰盒测试</li></ul></li></ul><h2 id="固件入门"><a href="#固件入门" class="headerlink" title="固件入门"></a>固件入门</h2><p>固件是一种写入硬件设备的软件，作用是对应用和各项系统功能实施控制，运行固件的设备称为嵌入式系统。</p><p>固件通常由bootloader、内核、文件系统以及其他资源组成，</p><p>固件组成：闪存、bootloader、内核、根文件系统。</p><ul><li>bootloader:主要作用包括RAM初始化（目的是存储易失性数据）、串口初始化、机器类型检测、内核参数链表设置、initramfs(基于RAM的初始文件系统)加载以及内核镜像调用等。ARM、MIPS架构中部分常见的bootloader包括：Redboot、u-boot以及barebox等。当bootloader启动内核之后，文件系统就完成了加载。</li><li>固件可以采用的文件系统类型：SquashFS、cramFS、JFFS2、YAFFS2以及ext2等。</li></ul><h2 id="IoT中的Web应用"><a href="#IoT中的Web应用" class="headerlink" title="IoT中的Web应用"></a>IoT中的Web应用</h2><p>通常嵌入书web应用被设计为在自包含的环境中运行</p><ul><li>目前iot领域主要有两种不同的web应用模型<ul><li>混合云模型：包含厂商或供应商提供的基于软件即服务的web应用，作用是同运行在嵌入式设备固件中的web应用程序建立连接，将数据从厂商的云服务器中同步到本地网络的嵌入式设备中。</li><li>独立嵌入式服务器模型</li></ul></li></ul><p>web通信：浏览器、、嵌入式服务器和web应用服务器之间的通信通常要么借助简单对象访问协议（SOAP）/XML等web服务，要么借助基于http/htps复合REST规范的API来实现。</p><h2 id="硬件设备基础"><a href="#硬件设备基础" class="headerlink" title="硬件设备基础"></a>硬件设备基础</h2><p>硬件输入：</p><ul><li>EEPROM，是非易失性存储器。以单个字节为单位进行读写，可通过电荷或紫外线照射擦除数据。读写次数有限。</li><li>NAND闪存以区块为单位读写。存储设备的boootloader。</li><li>UART接口是访问设备最为常见的方式。连接改接口后即可获得root权限。PCB上UART接口的引脚定义中包括Tx、Rx、Vcc和GND 4个引脚。连接UART接口前需要使用万用表识别出引脚。</li><li>JTAG接口是遵循IEEE 1149.1标准的另一种国际标准测试协议。用于芯片级和系统级的测试。，包含5个引脚：TDI、TDO、TMS、TCK、TRST.可以接到芯片的tap（测试访问口）</li></ul><h2 id="IoT无线通信简介"><a href="#IoT无线通信简介" class="headerlink" title="IoT无线通信简介"></a>IoT无线通信简介</h2><p>最常用协议：Wi-Fi(802.11)、ZigBee(802.15.4)、Z-Ware、蓝牙(802.15.1)、低功耗蓝牙。</p><h1 id="IoT威胁建模"><a href="#IoT威胁建模" class="headerlink" title="IoT威胁建模"></a>IoT威胁建模</h1>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>IOT 《物联网渗透测试》</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>《ARM嵌入式Linux系统开发详解》学习笔记1</title>
     <link href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E3%80%8AARM%E5%B5%8C%E5%85%A5%E5%BC%8FLinux%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/"/>
     <url>/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E3%80%8AARM%E5%B5%8C%E5%85%A5%E5%BC%8FLinux%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/</url>
