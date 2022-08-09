@@ -426,6 +426,46 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-guess_num/" target="_self">
+          攻防世界 guess_num
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-guess_num/" target="_self">
+        <div>
+          查看关键main()函数，发现gets(&amp;v11)存在栈溢出  进入sub_C3E()函数，确定满足条件即可cat flag。  题目要求，先输入name,然后连续十次猜对数字得到flag, 进入V11,在栈中占0x20，可以覆盖到seed，使seed[0]已知，后使输入的v8等于随机数v10,拿到flag。  注：（1）在调用rang()时，先利用srand()设好随机数种子，若未设置，
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-08-09 11:17" pubdate>
+              2022-08-09
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/SinkyQ/sinkyhexo.github.io.git/tags/pwn/">#pwn</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-cgpwn2/" target="_self">
           攻防世界 cgpwn2
         </a>
@@ -573,46 +613,6 @@
             <i class="iconfont icon-tags"></i>
             
               <a href="/SinkyQ/sinkyhexo.github.io.git/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">#学习笔记</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/V8%E6%BC%8F%E6%B4%9E%E5%88%9D%E5%AD%A6%E4%B9%A0/" target="_self">
-          V8漏洞初学习
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/V8%E6%BC%8F%E6%B4%9E%E5%88%9D%E5%AD%A6%E4%B9%A0/" target="_self">
-        <div>
-          V8基础v8是chrome浏览器的js解析引擎，大多数针对chrome的漏洞利用几乎都是v8引擎引起的  v8编译后二进制名称叫d8.  allow-natives-syntax选项定义了一些v8运行时支持函数，以便于本地调试： 123456789browser&#x2F;x64.release$ .&#x2F;d8 --allow-natives-syntaxV8 version 7.5.0 (candidate)
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-08-09 11:17" pubdate>
-              2022-08-09
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/SinkyQ/sinkyhexo.github.io.git/tags/chrome-bug/">#chrome_bug</a>
             
           </div>
         

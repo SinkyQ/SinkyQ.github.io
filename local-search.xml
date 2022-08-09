@@ -99,6 +99,25 @@
   
   
   <entry>
+    <title>攻防世界 guess_num</title>
+    <link href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-guess_num/"/>
+    <url>/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-guess_num/</url>
+    
+    <content type="html"><![CDATA[<p>查看关键main()函数，发现gets(&amp;v11)存在栈溢出</p><p><img src="https://i.loli.net/2020/05/08/9dWjqTSBtmRkHgG.png" alt="17627983-c6ff7c8db83a9ec7.png"></p><p>进入sub_C3E()函数，确定满足条件即可cat flag。</p><p><img src="https://i.loli.net/2020/05/08/QgLDtJBZlhXYyFa.png" alt="17627983-1e961fbba4dff1bc.png"></p><p>题目要求，先输入name,然后连续十次猜对数字得到flag, 进入V11,在栈中占0x20，可以覆盖到seed，使seed[0]已知，后使输入的v8等于随机数v10,拿到flag。</p><blockquote><p>注：<br>（1）在调用rang()时，先利用srand()设好随机数种子，若未设置，rand()在调用的时候会自动设为1.<br>（2）libc共享库：可以使用命令 ldd guess_num 查找<br>（3）如何在脚本中调用动态库中的程序：python库ctypes模块，使用cdll.LoadLibrary(‘’)<br>(4)什么情况程序在编译前加载了动态库：比如我们在使用print家族、puts等未在程序里声明的函数，需要通过引用动态库里面就有程序不用声明就能进行调用的函数。</p></blockquote><p>exp:</p><p><img src="https://i.loli.net/2020/05/08/hltLr1UKMu6qmcG.png" alt="17627983-82da413e439821bd.png"></p><blockquote><p>解释：<br>引入pwn、ctypes模块；<br>remote连接其他主机服务；<br>elf=ELF(bin路径)本地运行pwn文件；<br>libc调用动态库;构造payload,随机数a覆盖到seed[0],设定随机数种子为1；<br>recvuntil()接收字符串；<br>sendline(payload)发送payload；<br>srand(1)设定随机数种子为1；<br>循环十次；<br>interactive()直接进行交互；</p></blockquote><p><img src="https://i.loli.net/2020/05/08/UXbv96WNxFriu3k.png" alt="17627983-caa9a4e5b8ce9f1a.png"></p><p>另一种方式：利用C程序，直接覆盖seed,爆出随机数，得到flag.</p><p><img src="https://i.loli.net/2020/05/08/LoDke3q2xhGSPHU.png" alt="17627983-93fb0ad7c552854b.png"></p><p><img src="https://s1.ax1x.com/2020/05/08/YnNVrd.png" alt="YnNVrd.png"></p><p><img src="https://s1.ax1x.com/2020/05/08/YnNMPf.png" alt="YnNMPf.png"></p><p>cyberpeace{c89cf2a54c56f16458a1164851a361b4}</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>pwn</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>攻防世界 cgpwn2</title>
     <link href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-cgpwn2/"/>
     <url>/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-cgpwn2/</url>
