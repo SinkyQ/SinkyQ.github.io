@@ -226,6 +226,86 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%BC%8F%E6%B4%9E%E6%88%98%E4%BA%89%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9ACVE-2010-3333/" target="_self">
+          漏洞战争学习笔记2：CVE-2010-3333
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%BC%8F%E6%B4%9E%E6%88%98%E4%BA%89%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9ACVE-2010-3333/" target="_self">
+        <div>
+          0x01 分析环境os:由于笔者实在没有找到大佬们使用的目标文件office word 2003 11.5604.5606,只有11.8169.8172，但是应该只要是2003 sp3的应该就问题不大。 操作系统：windows XP SP3虚拟机：VM调试器：WinDbg、OD、IDAoffice:office word 2003 11.8169.8172 0x02 漏洞描述oddice xp
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-08-09 12:08" pubdate>
+              2022-08-09
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/SinkyQ/sinkyhexo.github.io.git/tags/%E6%BC%8F%E6%B4%9E%E6%88%98%E4%BA%89/">#漏洞战争</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E7%B1%BB%E5%9E%8B%E6%BC%8F%E6%B4%9E%E5%90%88%E9%9B%86/" target="_self">
+          各类型软件漏洞合集
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E7%B1%BB%E5%9E%8B%E6%BC%8F%E6%B4%9E%E5%90%88%E9%9B%86/" target="_self">
+        <div>
+          0x01 格式化串漏洞介绍格式化串漏洞产生于数据输出函数中对输出格式解析的缺陷。当输入输出函数的格式控制符能够被外界影响时，攻击者可以利用读写内存的方法修改函数返回地址，劫持进程，使shellcoed得到执行。 此类漏洞发生条件苛刻，实际案例很少。 能够引起此漏洞的函数1234567891011int printf(const char* format [,argument]...);int wp
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-08-09 12:08" pubdate>
+              2022-08-09
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/SinkyQ/sinkyhexo.github.io.git/tags/%E6%BC%8F%E6%B4%9E/">#漏洞</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E5%88%9D%E8%AF%86Meterpreter/" target="_self">
           初识Meterpreter
         </a>
@@ -533,86 +613,6 @@
             <i class="iconfont icon-tags"></i>
             
               <a href="/SinkyQ/sinkyhexo.github.io.git/tags/pwn/">#pwn</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-100/" target="_self">
-          攻防世界pwn-100
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-100/" target="_self">
-        <div>
-          分析查壳：checksec  64位，无stack,无PIE；  运行程序，输入字符，无反馈，无限制。   ida查看main函数，发现存在栈溢出，参数a1大小为0x40.然而函数中获取大于等于a2（a2&#x3D;200）的数值存入了a1. 攻击思路无system函数，无&#x2F;bin&#x2F;sh字符串，有read,puts。参数经过寄存器传递（也可IDA查看），可以泄露libc,写入&#x2F;bin&#x2F;sh。   puts只
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-08-09 11:17" pubdate>
-              2022-08-09
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/SinkyQ/sinkyhexo.github.io.git/tags/pwn/">#pwn</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/WinDbg%E4%BD%BF%E7%94%A8%E6%95%B4%E7%90%86/" target="_self">
-          WinDbg使用整理
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/WinDbg%E4%BD%BF%E7%94%A8%E6%95%B4%E7%90%86/" target="_self">
-        <div>
-          0x00 基础命令 .sympath　　&#x2F;&#x2F;显示设置的符号表路径 .reload　　　　&#x2F;&#x2F;此命令主要用于加载符号表。 .reload &#x2F;f　　&#x2F;&#x2F;重新装载模块 .reload &#x2F;i　　&#x2F;&#x2F;强制加载mismatched symbol U　　&#x2F;&#x2F;这个命令主要用于反汇编某个地址，其后面可以跟函数名和地址。U命令后面可以加L表示延长反汇编长度 db　　&#x2F;&#x2F;显示一字节的长度。 dw　　&#x2F;&#x2F;显示两字节的长度
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-08-09 11:17" pubdate>
-              2022-08-09
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/SinkyQ/sinkyhexo.github.io.git/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">#学习笔记</a>
             
           </div>
         
