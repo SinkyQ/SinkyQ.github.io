@@ -226,6 +226,46 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/CVE-2019-0708/" target="_self">
+          CVE-2019-0708
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/CVE-2019-0708/" target="_self">
+        <div>
+          2019年5月14日爆出CVE-2019-0708漏洞，高危漏洞，影响范围较广，通过远程桌面端口3389，RDP协议进行攻击。 影响系统：windows 2003、windows 2008、windows 2008 R2、windows xp、win7 蓝屏环境攻击机：kali IP：192.168.119.128 靶机：win7 IP:192.168.119.139 (开放3389端口) 工具：
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-08-09 12:25" pubdate>
+              2022-08-09
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/SinkyQ/sinkyhexo.github.io.git/tags/windows%E6%BC%8F%E6%B4%9E/">#windows漏洞</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E5%88%9D%E8%AF%86Meterpreter/" target="_self">
           初识Meterpreter
         </a>
@@ -555,46 +595,6 @@
       <a class="index-excerpt index-excerpt__noimg" href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-guess_num/" target="_self">
         <div>
           查看关键main()函数，发现gets(&amp;v11)存在栈溢出  进入sub_C3E()函数，确定满足条件即可cat flag。  题目要求，先输入name,然后连续十次猜对数字得到flag, 进入V11,在栈中占0x20，可以覆盖到seed，使seed[0]已知，后使输入的v8等于随机数v10,拿到flag。  注：（1）在调用rang()时，先利用srand()设好随机数种子，若未设置，
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-08-09 11:17" pubdate>
-              2022-08-09
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/SinkyQ/sinkyhexo.github.io.git/tags/pwn/">#pwn</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-cgpwn2/" target="_self">
-          攻防世界 cgpwn2
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-cgpwn2/" target="_self">
-        <div>
-          算是简单题，进入hello()函数中发现gets(&amp;s) 栈溢出漏洞。 name是全局变量，在bss区段，适合写入。 pwn()函数中调用了__system，但并没有‘&#x2F;bin&#x2F;sh’    攻击思路在name中写入’&#x2F;bin&#x2F;sh’。利用栈溢出覆盖返回地址，使函数返回到system上，拿到shell。 payload&#x3D;填充栈+覆盖保存的exp的值4字节+假的返回地址call __syst
         </div>
       </a>
 

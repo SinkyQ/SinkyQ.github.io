@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>CVE-2019-0708</title>
+    <link href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/CVE-2019-0708/"/>
+    <url>/SinkyQ/sinkyhexo.github.io.git/2022/08/09/CVE-2019-0708/</url>
+    
+    <content type="html"><![CDATA[<p>2019年5月14日爆出CVE-2019-0708漏洞，高危漏洞，影响范围较广，通过远程桌面端口3389，RDP协议进行攻击。</p><p>影响系统：windows 2003、windows 2008、windows 2008 R2、windows xp、win7</p><h1 id="蓝屏"><a href="#蓝屏" class="headerlink" title="蓝屏"></a>蓝屏</h1><h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>攻击机：kali IP：192.168.119.128</p><p>靶机：win7 IP:192.168.119.139 (开放3389端口)</p><p>工具：RDP漏洞扫描工具、MSF</p><p>POC：<a href="https://github.com/n1xbyte/CVE-2019-0708">https://github.com/n1xbyte/CVE-2019-0708</a></p><h2 id="复现"><a href="#复现" class="headerlink" title="复现"></a>复现</h2><p>nmap对win7端口扫描:</p><p><img src="https://i.loli.net/2020/07/13/Agj1dU2GY5JKZnW.png" alt="nmap扫描3389.PNG"></p><p>RDP工具在win7上扫描靶机:<code>0708detector.exe -t 192.168.119.139 -p 3389</code></p><p><img src="https://i.loli.net/2020/07/13/CwHJ1PRnel7cyu5.png" alt="漏扫工具扫描3389（win7自身）.PNG"></p><p>启动MSF<br>查找漏洞： <code>search 0708</code></p><p>利用漏洞扫描模块： <code>use auxiliary/scanner/rdp/cve_2019_0708_bluekeep</code></p><p>查看参数： <code>show options</code></p><p>设置靶机IP： <code>set rhosts 192.168.119.139</code></p><p>运行：<code>run</code></p><h3 id="漏洞攻击"><a href="#漏洞攻击" class="headerlink" title="漏洞攻击"></a>漏洞攻击</h3><p>在kali中安装pip3,安装impacket库。下载poc。<br>切进目录CVE-2019-0708</p><p>开始攻击： <code>python3 crashpoc.py 192.168.119.139 64(系统类型)</code></p><p>攻击成功，win7变为蓝屏。</p><p><img src="https://i.loli.net/2020/07/13/UN9urvOaMQxEDoC.png" alt="win7蓝屏.PNG"></p><h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><h4 id="RDP协议"><a href="#RDP协议" class="headerlink" title="RDP协议"></a>RDP协议</h4><p>RDP,远程显示协议。传输方式：tcp/ip。提供了客户和服务器之间的连接。映像会话。<br>基本层次结构：</p><ul><li>网络连接层：RDP协议建立在tcp/ip协议之上，由于传输的数据量比较大，因此在协议的底层首先定义一层网络连接层，它定义了一个完整的RDP数据逻辑包，以避免由于网络包长度过长而被分割使数据丢失。</li><li>ISO数据层：在网络连接层之上是ISO数据层，标识RDP数据的正常连接通信。</li><li>虚拟通道层：在ISO数据层之上，RDP协议定义一个虚拟通道层，用以拆分标示不同虚拟通道的数据，加快客户端处理速度，节省占用网络接口的时间。</li><li>加密解密层：在虚拟通道层之上，RDP定义一个数据加密解密层，此层用于对所有的功能数据进行加密解密处理。</li><li>功能数据层：在加密解密层之上是功能数据，画面信息，本地资源转换，声音数据，打印数据等所有的功能数据信息都在此层进行处理。另外，根据数据类型的不同，这些数据都有各自不同层次的分割，</li></ul><p>连接过程说明：</p><ul><li>客户端连接服务器</li><li>ISO数据层建立连接</li><li>发送初始协议相关信息，接收加密、解密秘钥</li><li>虚拟通道申请</li><li>加密形式发送客户端系统信息，同时验证加密协议</li><li>平台软件证书验证</li><li>各功能建立连接，各功能数据传输，功能实现。</li></ul>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>windows漏洞</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>初识Meterpreter</title>
     <link href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E5%88%9D%E8%AF%86Meterpreter/"/>
     <url>/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E5%88%9D%E8%AF%86Meterpreter/</url>
