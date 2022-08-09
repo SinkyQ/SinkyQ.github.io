@@ -16,27 +16,24 @@
   <meta name="author" content="Sinky">
   <meta name="keywords" content="">
   
-    <meta name="description" content="环境：ubuntu16.04 0x00 vmtools解决坑点有点无语，笔者踩坑无数，没想到有一天在重装vmtool的时候还能…… 正常安装vmtool后仍旧无法与主机进行复制粘贴，关掉虚拟机查看虚拟机设置。   建立的共享文件夹要设置属性为共享式。 搞完之后……就可以了。 此处贴一个跟我一样的暴躁博主教程：https:&#x2F;&#x2F;blog.csdn.net&#x2F;zerolity&#x2F;article&#x2F;detail">
+    <meta name="description" content="V8基础v8是chrome浏览器的js解析引擎，大多数针对chrome的漏洞利用几乎都是v8引擎引起的  v8编译后二进制名称叫d8.  allow-natives-syntax选项定义了一些v8运行时支持函数，以便于本地调试： 123456789browser&#x2F;x64.release$ .&#x2F;d8 --allow-natives-syntaxV8 version 7.5.0 (candidate)">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ubuntu16.04重装之各种环境搭建">
-<meta property="og:url" content="https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/ubuntu%E9%87%8D%E8%A3%85%E4%B9%8B%E5%90%84%E7%A7%8D%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/index.html">
+<meta property="og:title" content="V8漏洞初学习">
+<meta property="og:url" content="https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/V8%E6%BC%8F%E6%B4%9E%E5%88%9D%E5%AD%A6%E4%B9%A0/index.html">
 <meta property="og:site_name" content="Sinky&#39;s Blog">
-<meta property="og:description" content="环境：ubuntu16.04 0x00 vmtools解决坑点有点无语，笔者踩坑无数，没想到有一天在重装vmtool的时候还能…… 正常安装vmtool后仍旧无法与主机进行复制粘贴，关掉虚拟机查看虚拟机设置。   建立的共享文件夹要设置属性为共享式。 搞完之后……就可以了。 此处贴一个跟我一样的暴躁博主教程：https:&#x2F;&#x2F;blog.csdn.net&#x2F;zerolity&#x2F;article&#x2F;detail">
+<meta property="og:description" content="V8基础v8是chrome浏览器的js解析引擎，大多数针对chrome的漏洞利用几乎都是v8引擎引起的  v8编译后二进制名称叫d8.  allow-natives-syntax选项定义了一些v8运行时支持函数，以便于本地调试： 123456789browser&#x2F;x64.release$ .&#x2F;d8 --allow-natives-syntaxV8 version 7.5.0 (candidate)">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://i.loli.net/2020/10/10/zOQ1jZT5SYip47N.png">
-<meta property="og:image" content="https://i.loli.net/2020/10/10/9pYJxdtsKFEUy4M.png">
-<meta property="og:image" content="https://i.loli.net/2020/10/10/zGq57OjUeWcxXnM.png">
-<meta property="og:image" content="https://i.loli.net/2020/10/13/kofhug8n2VNj1bx.png">
-<meta property="article:published_time" content="2022-08-09T03:49:00.287Z">
-<meta property="article:modified_time" content="2022-08-09T03:49:10.368Z">
+<meta property="og:image" content="https://i.loli.net/2020/07/17/JCK5EwuRAc8SQTn.png">
+<meta property="article:published_time" content="2022-08-09T03:17:04.132Z">
+<meta property="article:modified_time" content="2020-11-13T04:04:19.619Z">
 <meta property="article:author" content="Sinky">
-<meta property="article:tag" content="环境搭建">
+<meta property="article:tag" content="chrome_bug">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://i.loli.net/2020/10/10/zOQ1jZT5SYip47N.png">
+<meta name="twitter:image" content="https://i.loli.net/2020/07/17/JCK5EwuRAc8SQTn.png">
   
   
   
-  <title>ubuntu16.04重装之各种环境搭建 - Sinky&#39;s Blog</title>
+  <title>V8漏洞初学习 - Sinky&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -204,7 +201,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="ubuntu16.04重装之各种环境搭建"></span>
+            <span id="subtitle" data-typed-text="V8漏洞初学习"></span>
           
         </div>
 
@@ -215,7 +212,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-08-09 11:49" pubdate>
+        <time datetime="2022-08-09 11:17" pubdate>
           August 9, 2022 am
         </time>
       </span>
@@ -227,7 +224,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.4k words
+          2.4k words
         
       </span>
     
@@ -238,7 +235,7 @@
         
         
         
-          29 mins
+          20 mins
         
       </span>
     
@@ -276,51 +273,55 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">ubuntu16.04重装之各种环境搭建</h1>
+            <h1 style="display: none">V8漏洞初学习</h1>
             
             
               <div class="markdown-body">
                 
-                <p>环境：ubuntu16.04</p>
-<h1 id="0x00-vmtools解决坑点"><a href="#0x00-vmtools解决坑点" class="headerlink" title="0x00 vmtools解决坑点"></a>0x00 vmtools解决坑点</h1><p>有点无语，笔者踩坑无数，没想到有一天在重装vmtool的时候还能……</p>
-<p>正常安装vmtool后仍旧无法与主机进行复制粘贴，关掉虚拟机查看虚拟机设置。</p>
-<p><img src="https://i.loli.net/2020/10/10/zOQ1jZT5SYip47N.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="捕获.PNG"></p>
-<p><img src="https://i.loli.net/2020/10/10/9pYJxdtsKFEUy4M.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="捕获.PNG"></p>
-<p>建立的共享文件夹要设置属性为共享式。</p>
-<p>搞完之后……就可以了。</p>
-<p>此处贴一个跟我一样的暴躁博主教程：<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/zerolity/article/details/81206476">https://blog.csdn.net/zerolity/article/details/81206476</a></p>
-<h1 id="0x01-pwntools安装"><a href="#0x01-pwntools安装" class="headerlink" title="0x01 pwntools安装"></a>0x01 pwntools安装</h1><p>1.安装python2.7和pip</p>
-<p><code>sudo apt-get install python2.7 python-pip python-dev git libssl-dev libffi-dev build-essential </code></p>
-<p>2.升级pip：<code>sudo pip install --upgrade pip</code></p>
-<p>更改pip的配置文件/usr/bin/pip</p>
-<p>更改为：</p>
-<p><img src="https://i.loli.net/2020/10/10/zGq57OjUeWcxXnM.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="捕获.PNG"></p>
-<p>3.安装pwntools：<code>sudo pip install pwntools</code></p>
-<p>报错超时，换个阿里源就好了。</p>
-<p>3.1 更换阿里源</p>
-<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo su<br><span class="hljs-built_in">cd</span> /etc/apt <span class="hljs-comment">#切换到apt源文件</span><br><span class="hljs-built_in">mv</span> source.list sources.list_bak <span class="hljs-comment">#备份源文件</span><br>vim sources.list <span class="hljs-comment">#新建一个，直接把下面的内容copy进去</span><br></code></pre></td></tr></tbody></table></figure>
+                <h1 id="V8基础"><a href="#V8基础" class="headerlink" title="V8基础"></a>V8基础</h1><p>v8是chrome浏览器的js解析引擎，大多数针对chrome的漏洞利用几乎都是v8引擎引起的</p>
+<blockquote>
+<p>v8编译后二进制名称叫d8.</p>
+</blockquote>
+<h2 id="allow-natives-syntax选项"><a href="#allow-natives-syntax选项" class="headerlink" title="allow-natives-syntax选项"></a>allow-natives-syntax选项</h2><p>定义了一些v8运行时支持函数，以便于本地调试：</p>
+<figure class="highlight prolog"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs prolog">browser/x64.release$ ./d8 --allow-natives-syntax<br><span class="hljs-symbol">V8</span> version <span class="hljs-number">7.5</span><span class="hljs-number">.0</span> (candidate)<br>d8&gt; var a = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];<br>undefined<br>d8&gt; <span class="hljs-comment">%DebugPrint(a);</span><br><span class="hljs-number">0x2ebcfb54dd41</span> &lt;<span class="hljs-symbol">JSArray</span>[<span class="hljs-number">3</span>]&gt;<br>[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]<br>d8&gt; <span class="hljs-comment">%SystemBreak();</span><br><span class="hljs-symbol">Trace</span>/breakpoint trap (core dumped)<br></code></pre></td></tr></tbody></table></figure>
 
-<p>copy的内容：</p>
-<figure class="highlight plaintext"><figcaption><span>deb cdrom:[Ubuntu 16.04 LTS _Xenial Xerus_ - Release amd64 (20160420.1)]/ xenial main restricted</span></figcaption><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><code class="hljs #">deb-src http://archive.ubuntu.com/ubuntu xenial main restricted #Added by software-properties<br>deb http://mirrors.aliyun.com/ubuntu/ xenial main restricted<br>deb-src http://mirrors.aliyun.com/ubuntu/ xenial main restricted multiverse universe #Added by software-properties<br>deb http://mirrors.aliyun.com/ubuntu/ xenial-updates main restricted<br>deb-src http://mirrors.aliyun.com/ubuntu/ xenial-updates main restricted multiverse universe #Added by software-properties<br>deb http://mirrors.aliyun.com/ubuntu/ xenial universe<br>deb http://mirrors.aliyun.com/ubuntu/ xenial-updates universe<br>deb http://mirrors.aliyun.com/ubuntu/ xenial multiverse<br>deb http://mirrors.aliyun.com/ubuntu/ xenial-updates multiverse<br>deb http://mirrors.aliyun.com/ubuntu/ xenial-backports main restricted universe multiverse<br>deb-src http://mirrors.aliyun.com/ubuntu/ xenial-backports main restricted universe multiverse #Added by software-properties<br>deb http://archive.canonical.com/ubuntu xenial partner<br>deb-src http://archive.canonical.com/ubuntu xenial partner<br>deb http://mirrors.aliyun.com/ubuntu/ xenial-security main restricted<br>deb-src http://mirrors.aliyun.com/ubuntu/ xenial-security main restricted multiverse universe #Added by software-properties<br>deb http://mirrors.aliyun.com/ubuntu/ xenial-security universe<br>deb http://mirrors.aliyun.com/ubuntu/ xenial-security multiverse```<br><br>3.2 保存配置后，更新配置：`sudo apt-get update`<br><br>之后再重新步骤三的安装命令即可。<br><br>4.测试<br><br><br>![捕获.PNG](https://i.loli.net/2020/10/10/7wzfu32HFRiCXap.png)<br><br>无报错，返回了'1\xc0'，成功！<br><br>所以为啥第一次自己去安装pwntools的时候费了很多力气呢，感觉那时候踩坑无数到崩溃……<br><br># 0x02 GDB及三个插件的安装<br>在终端输入gdb，发现ubuntu16自带gdb，那我就直接安装插件得了。<br>* peda:做逆向破解<br>* gef：用于debug最好<br>* gdbinit：简单版<br><br>用git下载插件：<br>`git clone https://github.com/gatieme/GdbPlugins.git ~/GdbPlugins`<br><br>没有git的下载：`apt-get install git`<br><br>在目录GdbPlugin下可以看见三个插件，想用哪个插件就可以在该目录下输入对应命令：<br><br>```echo "source ~/GdbPlugins/peda/peda.py" &gt; ~/.gdbinit <br>echo "source ~/GdbPlugins/gef/gef.py" &gt; ~/.gdbinit <br>echo "source ~/GdbPlugins/gdbinit/gdbinit" &gt; ~/.gdbinit  <br></code></pre></td></tr></tbody></table></figure>
+<p>在加载d8时加入此选项可以在js中调试本地运行时函数：</p>
+<p><code>%DebugPrint(obj) 输出对象地址</code><br><code>%SystemBreak() 触发调试中断主要结合gdb等调试器使用</code></p>
+<p>gdb的gdbinit脚本可以使gdb中就能可视化显示v8的对象结构，将该脚本下载重命名为gdbinit_v8并添加至/.gdbinit脚本：</p>
+<p><code>source /path/to/gdbinit_v8</code></p>
+<p>下面将allow-natives-syntax选项和gdbinit结合使用，编写test.js：</p>
+<figure class="highlight haml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs haml">var a = [1,2,3];<br>var b = [1.1, 2.2, 3.3];<br>var c = [a, b];<br><span class="hljs-tag">%<span class="hljs-selector-tag">DebugPrint</span>(a)</span>;<br><span class="hljs-tag">%<span class="hljs-selector-tag">SystemBreak</span>()</span>;  //触发第一次调试<br><span class="hljs-tag">%<span class="hljs-selector-tag">DebugPrint</span>(b)</span>;<br><span class="hljs-tag">%<span class="hljs-selector-tag">SystemBreak</span>()</span>;  //触发第二次调试<br><span class="hljs-tag">%<span class="hljs-selector-tag">DebugPrint</span>(c)</span>;<br><span class="hljs-tag">%<span class="hljs-selector-tag">SystemBreak</span>()</span>;  //触发第三次调试<br></code></pre></td></tr></tbody></table></figure>
 
-<h1 id="0x03-安装checksec"><a href="#0x03-安装checksec" class="headerlink" title="0x03 安装checksec"></a>0x03 安装checksec</h1><figure class="highlight plaintext"><figcaption><span>clone</span><a href="https://github.com/slimm609/checksec.sh.git">link</a></figcaption><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs git">cd checksec.sh<br></code></pre></td></tr></tbody></table></figure>
+<p>gdb运行d8:</p>
+<figure class="highlight elixir"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs elixir">root<span class="hljs-variable">@kali</span><span class="hljs-symbol">:~/ctf/browser/x64</span>.release<span class="hljs-variable">$ </span>gdb ./d8<br>pwndbg&gt; set args --allow-natives-syntax ./test.js<br>pwndbg&gt; r<br><span class="hljs-title class_">Starting</span> <span class="hljs-symbol">program:</span> x64.release/d8 --allow-natives-syntax ./test.js<br>[<span class="hljs-title class_">Thread</span> debugging using libthread_db enabled]<br>[<span class="hljs-title class_">New</span> <span class="hljs-title class_">Thread</span> <span class="hljs-number">0x7ff87fde9700</span> (<span class="hljs-title class_">LWP</span> <span class="hljs-number">18393</span>)]<br>[<span class="hljs-title class_">New</span> <span class="hljs-title class_">Thread</span> <span class="hljs-number">0x7ff87f5e8700</span> (<span class="hljs-title class_">LWP</span> <span class="hljs-number">18394</span>)]<br>[<span class="hljs-title class_">New</span> <span class="hljs-title class_">Thread</span> <span class="hljs-number">0x7ff87ede7700</span> (<span class="hljs-title class_">LWP</span> <span class="hljs-number">18395</span>)]<br><span class="hljs-number">0x12e891f8df11</span> &lt;<span class="hljs-title class_">JSArray</span>[<span class="hljs-number">3</span>]&gt;            <br></code></pre></td></tr></tbody></table></figure>
 
-<p>目录下的checksec本来想建立一个软链接过去/usr/local/bin里，但是一直打不开，于是直接用cp命令把checksec拷贝过去了。在/usr/local/bin能够打开checksec，才算成功。</p>
-<h1 id="0x04-安装docker-pikachu靶场"><a href="#0x04-安装docker-pikachu靶场" class="headerlink" title="0x04 安装docker+pikachu靶场"></a>0x04 安装docker+pikachu靶场</h1><h4 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h4><ul>
-<li>先卸载可能存在的旧版本： <code>$ sudo apt-get remove docker docker-engine docker-ce docker.io</code></li>
-<li>更新apt包索引: <code>$ sudo apt-get update</code></li>
-<li>安装以下包以使apt可以通过HTTPS使用存储库（repository）: <code>$ sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common</code></li>
-<li>添加Docker官方的GPG密钥： <code>$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -</code></li>
-<li>使用下面的命令来设置stable存储库： <code>$ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"</code></li>
-<li>再更新一下apt包索引: <code>$ sudo apt-get update</code></li>
-<li>安装最新版本的Docker CE：<code>$ sudo apt-get install -y docker-ce</code></li>
-<li>查看docker服务是否启动： <code>$ systemctl status docker</code></li>
-<li>若未启动，则启动docker服务: <code>$ sudo systemctl start docker</code></li>
-<li>经典的hello world： <code>$ sudo docker run hello-world</code></li>
+<p>可以发现，程序打印了数组对象a的内存地址，并且SystemBreak触发了gdb的中断。</p>
+<p>此时就可以利用上面已经加入的gdbinit脚本中包含的命令调试对象结构，主要使用job命令，可以可视化显示js对象的内存结构。</p>
+<p>v8在内存中只有数字和对象梁忠表示，为了区分两者，v8在所有对象的内存地址末尾都加了1，以便表示它是个对象。对象a世内存地址为0x12e891f8df10。</p>
+<p>telescope命令查看内存数据。</p>
+<p>在gdb中使用c命令继续运行，发现停在了第二次SystemBreak的地方，然后用job命令查看第二个对象b的地址，根据上面的套路，可知对象b的实际内存地址为0x244de278df58.</p>
+<h2 id="v8的对象结构"><a href="#v8的对象结构" class="headerlink" title="v8的对象结构"></a>v8的对象结构</h2><p>和vb等语言的解析类似，JS是一种解释之行语言，v8本质上是一个JS的解释执行程序。</p>
+<p>首先，需要了解v8解析执行javaScript语句的基本流程：v8在读取js语句后，首先将这条语句解析为语法树，然后通过解释器将语法树变为中间语言的Bytecode字节码，最后利用内部虚拟机将字节码转换为机器码来执行。</p>
+<p>为了加快解析过程，v8会记录下某条语法树的执行次数，当v8发现某条语法树执行次数超过一定阈值后，就会将这段语法树直接转换为机器码，后续再调用这条js语句时，v8会直接调用这条语法树对应的机器码，而不用再转换为byte code字节码，大大加快了执行速度，这就是著名的JIT优化。</p>
+<p>但是这样的性能优化虽然加快了程序的执行，但也带来了很多的安全问题，如果v8本来通过JIT引擎为某段语法树比如a+b假发计算生成了一段机器码<code>add eax,ebx</code>，而在后续某个时刻，攻击者在js引擎中突然改变了a和b的对象类型，而JIT引擎并没有识别出这个改变，就会造成a和b对象在假发运算时的类型混淆。</p>
+<p>一个对象在内存中布局大致如下：</p>
+<ul>
+<li>map:表明了一个对象的类型对象b为PACKED_DOUBLE_ELEMENTS类型</li>
+<li>prototype：prototype</li>
+<li>elements:对象元素</li>
+<li>length:元素个数</li>
+<li>properties:属性</li>
 </ul>
-<p><img src="https://i.loli.net/2020/10/13/kofhug8n2VNj1bx.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="捕获.PNG"></p>
-<p>如图输出则表示docker安装成功。</p>
-<h4 id="pikachu靶场"><a href="#pikachu靶场" class="headerlink" title="pikachu靶场"></a>pikachu靶场</h4>
+<p>数组对象的elements其实也是个对象，这些元素在内存中的分布正好位于数组对象的上方，即低地址处，也就是说，在内存申请上，v8先申请了一块内存存储元素内容，然后申请了一块内存存储这个数组的对象结构，对象中的elements指向了存储元素内容的内存地址，如图：</p>
+<p><img src="https://i.loli.net/2020/07/17/JCK5EwuRAc8SQTn.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="1.PNG"></p>
+<p>由于浏览器的漏洞利用几乎都要基于对象结构来实现，因此熟悉上述v8对象的内存布局，对后续会很有帮助。</p>
+<blockquote>
+<p>上述内存布局是FloatArray的内存布局，其他类型的Array与其类似，但不完全相同。</p>
+</blockquote>
+<h2 id="浏览器V8的解题步骤"><a href="#浏览器V8的解题步骤" class="headerlink" title="浏览器V8的解题步骤"></a>浏览器V8的解题步骤</h2><p>一般浏览器的出题有两种，以中山市diff修改v8引擎源代码，人为制造出一个漏洞，另一种是直接采用某个cve漏洞。出题者通常会提供一个idf文件，或直接给出一个编译后diff补丁后的浏览器程序，如果只给了一个diff文件，则需要我们自己去下载相关commit源码，然后本地打上diff补丁，编译出浏览器程序在进行本地调试。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://www.codercto.com/a/81538.html">https://www.codercto.com/a/81538.html</a></p>
+<p>后续需要实践做一下这个ctf题目。</p>
+
                 
               </div>
             
@@ -332,7 +333,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/SinkyQ/sinkyhexo.github.io.git/tags/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">#环境搭建</a>
+        <a href="/SinkyQ/sinkyhexo.github.io.git/tags/chrome-bug/">#chrome_bug</a>
       
     </div>
   
@@ -344,8 +345,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>ubuntu16.04重装之各种环境搭建</div>
-      <div>https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/ubuntu重装之各种环境搭建/</div>
+      <div>V8漏洞初学习</div>
+      <div>https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/V8漏洞初学习/</div>
     </div>
     <div class="license-meta">
       
@@ -387,12 +388,18 @@
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E3%80%8AARM%E5%B5%8C%E5%85%A5%E5%BC%8FLinux%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/" title="《ARM嵌入式Linux系统开发详解》学习笔记1">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">《ARM嵌入式Linux系统开发详解》学习笔记1</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/bp%E5%9B%9B%E7%A7%8D%E5%AF%86%E7%A0%81%E7%88%86%E7%A0%B4%E6%A8%A1%E5%BC%8F%E5%AD%A6%E4%B9%A0/" title="burp四种密码爆破模式学习">
-                        <span class="hidden-mobile">burp四种密码爆破模式学习</span>
+                      <a href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/Ubuntu%E4%B8%8Bbuildroot%E4%BB%A5%E5%8F%8Aqemu%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" title="Ubuntu下buildroot以及qemu环境搭建">
+                        <span class="hidden-mobile">Ubuntu下buildroot以及qemu环境搭建</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
