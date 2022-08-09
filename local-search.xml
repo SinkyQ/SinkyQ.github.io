@@ -80,6 +80,25 @@
   
   
   <entry>
+    <title>DDCTF RE windows_re2</title>
+    <link href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/DDCTF2019re/"/>
+    <url>/SinkyQ/sinkyhexo.github.io.git/2022/08/09/DDCTF2019re/</url>
+    
+    <content type="html"><![CDATA[<p>esp定律脱壳Aspack，然后ida分析一波。</p><figure class="highlight reasonml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs reasonml"><span class="hljs-built_in">int</span> sub<span class="hljs-constructor">_401320()</span><br>{<br>  <span class="hljs-built_in">char</span> v1; <span class="hljs-comment">// [esp+8h] [ebp-C04h]</span><br>  <span class="hljs-built_in">char</span> v2; <span class="hljs-comment">// [esp+9h] [ebp-C03h]</span><br>  <span class="hljs-built_in">char</span> v3; <span class="hljs-comment">// [esp+408h] [ebp-804h]</span><br>  <span class="hljs-built_in">char</span> v4; <span class="hljs-comment">// [esp+409h] [ebp-803h]</span><br>  <span class="hljs-built_in">char</span> v5; <span class="hljs-comment">// [esp+808h] [ebp-404h]</span><br>  <span class="hljs-built_in">char</span> v6; <span class="hljs-comment">// [esp+809h] [ebp-403h]</span><br>  v3 = <span class="hljs-number">0</span>;<br>  sub<span class="hljs-constructor">_401C6A(&amp;<span class="hljs-params">v4</span>, 0, 0x3FF)</span>;<br>  v5 = <span class="hljs-number">0</span>;<br>  sub<span class="hljs-constructor">_401C6A(&amp;<span class="hljs-params">v6</span>, 0, 0x3FF)</span>;<br>  MEMORY<span class="hljs-literal">[<span class="hljs-number">0x785520C1</span>]</span>(<span class="hljs-string">"input code:"</span>);<br>  MEMORY<span class="hljs-literal">[<span class="hljs-number">0x785526D4</span>]</span>(<span class="hljs-string">"%s"</span>, &amp;v3);<br>  <span class="hljs-keyword">if</span> ( !(unsigned __int8)sub<span class="hljs-constructor">_4011F0()</span> )<br>  {<br>    MEMORY<span class="hljs-literal">[<span class="hljs-number">0x785520C1</span>]</span>(<span class="hljs-string">"invalid input\n"</span>);<br>    MEMORY<span class="hljs-literal">[<span class="hljs-number">0x78542455</span>]</span>(<span class="hljs-number">0</span>);<br>  }<br>  sub<span class="hljs-constructor">_401240(&amp;<span class="hljs-params">v5</span>)</span>;<br>  v1 = <span class="hljs-number">0</span>;<br>  sub<span class="hljs-constructor">_401C6A(&amp;<span class="hljs-params">v2</span>, 0, 0x3FF)</span>;<br>  MEMORY<span class="hljs-literal">[<span class="hljs-number">0x78552E73</span>]</span>(&amp;v1, <span class="hljs-string">"DDCTF{%s}"</span>, &amp;v5);<br>  <span class="hljs-keyword">if</span> ( !strcmp(&amp;v1, <span class="hljs-string">"DDCTF{reverse+}"</span>) )<br>    MEMORY<span class="hljs-literal">[<span class="hljs-number">0x785520C1</span>]</span>(<span class="hljs-string">"You've got it !!! %s\n"</span>, &amp;v1);<br>  <span class="hljs-keyword">else</span><br>    MEMORY<span class="hljs-literal">[<span class="hljs-number">0x785520C1</span>]</span>(<span class="hljs-string">"Something wrong. Try again...\n"</span>);<br>  return <span class="hljs-number">0</span>;<br>}<br></code></pre></td></tr></tbody></table></figure><ul><li>限制输入0-9,A-F,可想到十六进制</li><li>输入字符经过变换与“DDCTF{reverse+}”对比，相同则成功。</li></ul><p>先尝试输入字符串<code>1234567AAA</code>,得到加密后字符 <code>EjRWeqo=</code>,看着像base664,直接base64转成十六进制尝试，发现得到了我输入字符串。<br>将<code>reverse+</code>转换得到flag</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>RE</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>CVE-2020-6418</title>
     <link href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/CVE-2020-6418/"/>
     <url>/SinkyQ/sinkyhexo.github.io.git/2022/08/09/CVE-2020-6418/</url>
