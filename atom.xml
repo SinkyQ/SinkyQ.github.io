@@ -6,7 +6,7 @@
   <link href="https://sinky.top/atom.xml" rel="self"/>
   
   <link href="https://sinky.top/"/>
-  <updated>2022-08-10T02:15:05.412Z</updated>
+  <updated>2022-08-10T13:04:01.615Z</updated>
   <id>https://sinky.top/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python学习1</title>
+    <link href="https://sinky.top/2022/08/10/python%E5%AD%A6%E4%B9%A01/"/>
+    <id>https://sinky.top/2022/08/10/python%E5%AD%A6%E4%B9%A01/</id>
+    <published>2022-08-10T11:57:31.721Z</published>
+    <updated>2022-08-10T13:04:01.615Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="输出函数print"><a href="#输出函数print" class="headerlink" title="输出函数print()"></a>输出函数print()</h2><p>1.可输出数字、字符串、表达式</p><figure class="highlight plaintext"><figcaption><span>#520</span></figcaption><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs print(520)">print('HelloWorld') #HelloWorld<br>print(3+1) #4<br></code></pre></td></tr></tbody></table></figure><p>2.将数据输出文件中 <code>file=fp</code></p><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs fp">print('Hello',file=fp)<br>fp.close()<br></code></pre></td></tr></tbody></table></figure><blockquote><p><code>a+</code> 若文件不存在则创建，存在则在文件内容后追加，读写。</p></blockquote><p>3.不进行换行输出</p><p><code>print('Hello','world','python') #Hello world python</code></p><h2 id="转义字符"><a href="#转义字符" class="headerlink" title="转义字符"></a>转义字符</h2><ol><li></li></ol><p><code>\n</code> - 换行；<code>\r</code> - 回车；<code>\t</code> - 水平制表符；<code>\b</code> - 退格；</p><figure class="highlight plaintext"><figcaption><span>#world #world将hello覆盖</span></figcaption><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs print('hello\rworld')">print('hello\bworld') #hellworld #\b退格，将o退没了<br></code></pre></td></tr></tbody></table></figure><p>2.原字符，在字符串前加r或R，可使字符串内转义字符失效。</p><pre><code class="hljs">print(r'hello\nworld') #hello\nworld</code></pre><p>注意：字符串最后一个字符不可为斜杠。</p><h2 id="进制，字符编码，标识符，保留字"><a href="#进制，字符编码，标识符，保留字" class="headerlink" title="进制，字符编码，标识符，保留字"></a>进制，字符编码，标识符，保留字</h2><p>1Byte(字节)=8bit(位)</p><p>1KB(千字节)=1024Byte</p><p>1MB(兆字节)=1024KB</p><p>1GB(吉字节)=1024MB</p><p>1TB(太字节)=1024GB</p><p>标识符：字母、数字、下划线（不可以数字开头，严格区分大小写）</p><h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p>内存中一个带标签的空间</p><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs name">print('标识',id(name))<br>print('类型',type(name))<br>print('值',name)<br></code></pre></td></tr></tbody></table></figure><figure class="highlight plaintext"><figcaption><span>1694477549296</span></figcaption><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs 标识">类型 &lt;class 'str'&gt;<br>值 Lihua<br></code></pre></td></tr></tbody></table></figure><p>多次赋值后，变量名会指向新的使用。</p><h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><h3 id="int-整型"><a href="#int-整型" class="headerlink" title="int 整型"></a>int 整型</h3><ul><li>十进制 默认的进制0~9</li><li>二进制 以0b开头0,1</li><li>八进制 以0o开头0~7</li><li>十六禁止 以0x开头0<del>9，A</del>F</li></ul><h3 id="float-浮点型"><a href="#float-浮点型" class="headerlink" title="float 浮点型"></a>float 浮点型</h3><p>存储具有不精确性，可导入模块Decimal</p><figure class="highlight plaintext"><figcaption><span>decimal import Decimal</span></figcaption><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs from">print(Decimal('1.1')+Decimal('2.2')) #3.3<br></code></pre></td></tr></tbody></table></figure><h3 id="str-字符串类型；bool-布尔类型"><a href="#str-字符串类型；bool-布尔类型" class="headerlink" title="str 字符串类型；bool 布尔类型"></a>str 字符串类型；bool 布尔类型</h3><p>字符串可用单引号、双引号、三引号或””” “””定义。</p><p>单引号双引号定义的字符串需要在一行；三引号可多行；</p><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs str">我用python'''<br>print(str)<br></code></pre></td></tr></tbody></table></figure><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs 人生苦短，">我用python<br></code></pre></td></tr></tbody></table></figure><h3 id="数据类型转换"><a href="#数据类型转换" class="headerlink" title="数据类型转换"></a>数据类型转换</h3><ul><li>str() 其他转字符串，也可以引号转</li><li>int() 其他转整形，文字和小数不能转，浮点数抹零取整</li><li>float() 其他转浮点，文字类不可转，整数转浮点末尾加.0</li></ul><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs name">age=20<br>print('我叫'+name+'，今年'+str(age)+'岁')<br></code></pre></td></tr></tbody></table></figure><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs a">b=98.9<br>c=False<br>print(type(a),type(b),type(c))<br>print(str(a),str(b),str(c),type(str(a)),type(str(b)),type(str(c)))<br></code></pre></td></tr></tbody></table></figure><figure class="highlight plaintext"><figcaption><span>'int'&gt; <class 'float'=""> <class 'bool'=""></class></class></span></figcaption><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs <class">10 98.9 False &lt;class 'str'&gt; &lt;class 'str'&gt; &lt;class 'str'&gt;<br></code></pre></td></tr></tbody></table></figure><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs s1">f1=98.7<br>s2='76.77'<br>ff=True<br>s3='hello'<br>print(int(s1),type(int(s1))) #128<br>print(int(f1),type(int(f1))) #98<br> #print(int(s2),type(int(s2))) #Error<br>print(int(ff),type(int(ff))) #1<br> #print(int(s3),type(int(s3))) #Error<br></code></pre></td></tr></tbody></table></figure><figure class="highlight plaintext"><figcaption><span><class 'int'=""></class></span></figcaption><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs 128">98 &lt;class 'int'&gt;<br>1 &lt;class 'int'&gt;<br></code></pre></td></tr></tbody></table></figure><h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><p>单行：#</p><p>多行：三引号</p><p>中文编码声明： <code>#coding:utf-8</code></p><h2 id="输入函数input"><a href="#输入函数input" class="headerlink" title="输入函数input()"></a>输入函数input()</h2><p>接收用户输入，返回类型str，存储’=’</p><h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><p>1.算术运算符</p><p>加+  减-  乘*  除/  整除//  取余%  幂**</p><p>整除（一正一负向下取整）</p><p>取余（余数=被除数-除数*商）</p><p>2、赋值运算符 ‘=’</p><p>执行：从右至左；</p><p>+=、-=、*=、/=、//=、%=</p><pre><code class="hljs">a,b,c=10,20,30</code></pre><p><code>a+=30 # a=a+30</code></p><p>3.比较运算符 结果为bool</p><ul><li><blockquote><p>、&lt;、==、!=(不等于)、is、is not</p></blockquote></li><li>布尔：and,or,not,in,not in</li></ul><p>5.位运算符</p><p>与&amp; 11为1，否则为0</p><p>或| 00为0，否则为1</p><p>左移位&lt;&lt; 高位溢出舍弃，低位补0 （相当于乘2）</p><p>右移位&gt;&gt; 低位溢出舍弃，高位补0  （相当于除以2）</p><figure class="highlight plaintext"><figcaption><span># 0</span></figcaption><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs print(4&amp;8)">print(4|8) # 12<br>print(4&lt;&lt;1) #8<br>print(4&gt;&gt;1) #2<br>print(4&lt;&lt;2) #16<br>print(4&gt;&gt;2) #1<br></code></pre></td></tr></tbody></table></figure><p>6.优先级</p><p>算术&gt;位&gt;比较&gt;布尔&gt;赋值</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;输出函数print&quot;&gt;&lt;a href=&quot;#输出函数print&quot; class=&quot;headerlink&quot; title=&quot;输出函数print()&quot;&gt;&lt;/a&gt;输出函数print()&lt;/h2&gt;&lt;p&gt;1.可输出数字、字符串、表达式&lt;/p&gt;
+&lt;figure class=&quot;hig</summary>
+      
+    
+    
+    
+    
+    <category term="python" scheme="https://sinky.top/tags/python/"/>
+    
+  </entry>
   
   <entry>
     <title>SimpleRev</title>
@@ -452,30 +475,6 @@
     
     
     <category term="bp" scheme="https://sinky.top/tags/bp/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>《物联网渗透测试》学习笔记1</title>
-    <link href="https://sinky.top/2022/08/09/%E3%80%8A%E7%89%A9%E8%81%94%E7%BD%91%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/"/>
-    <id>https://sinky.top/2022/08/09/%E3%80%8A%E7%89%A9%E8%81%94%E7%BD%91%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/</id>
-    <published>2022-08-09T03:24:06.948Z</published>
-    <updated>2020-10-09T08:13:24.145Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="0x01-IOT渗透测试"><a href="#0x01-IOT渗透测试" class="headerlink" title="0x01 IOT渗透测试"></a>0x01 IOT渗透测试</h1><p>定义IoT生态系统与渗透测试生命周期</p><ul><li>渗透测试方法：<ul><li>黑盒测试</li><li>白盒测试</li><li>灰盒测试</li></ul></li></ul><h2 id="固件入门"><a href="#固件入门" class="headerlink" title="固件入门"></a>固件入门</h2><p>固件是一种写入硬件设备的软件，作用是对应用和各项系统功能实施控制，运行固件的设备称为嵌入式系统。</p><p>固件通常由bootloader、内核、文件系统以及其他资源组成，</p><p>固件组成：闪存、bootloader、内核、根文件系统。</p><ul><li>bootloader:主要作用包括RAM初始化（目的是存储易失性数据）、串口初始化、机器类型检测、内核参数链表设置、initramfs(基于RAM的初始文件系统)加载以及内核镜像调用等。ARM、MIPS架构中部分常见的bootloader包括：Redboot、u-boot以及barebox等。当bootloader启动内核之后，文件系统就完成了加载。</li><li>固件可以采用的文件系统类型：SquashFS、cramFS、JFFS2、YAFFS2以及ext2等。</li></ul><h2 id="IoT中的Web应用"><a href="#IoT中的Web应用" class="headerlink" title="IoT中的Web应用"></a>IoT中的Web应用</h2><p>通常嵌入书web应用被设计为在自包含的环境中运行</p><ul><li>目前iot领域主要有两种不同的web应用模型<ul><li>混合云模型：包含厂商或供应商提供的基于软件即服务的web应用，作用是同运行在嵌入式设备固件中的web应用程序建立连接，将数据从厂商的云服务器中同步到本地网络的嵌入式设备中。</li><li>独立嵌入式服务器模型</li></ul></li></ul><p>web通信：浏览器、、嵌入式服务器和web应用服务器之间的通信通常要么借助简单对象访问协议（SOAP）/XML等web服务，要么借助基于http/htps复合REST规范的API来实现。</p><h2 id="硬件设备基础"><a href="#硬件设备基础" class="headerlink" title="硬件设备基础"></a>硬件设备基础</h2><p>硬件输入：</p><ul><li>EEPROM，是非易失性存储器。以单个字节为单位进行读写，可通过电荷或紫外线照射擦除数据。读写次数有限。</li><li>NAND闪存以区块为单位读写。存储设备的boootloader。</li><li>UART接口是访问设备最为常见的方式。连接改接口后即可获得root权限。PCB上UART接口的引脚定义中包括Tx、Rx、Vcc和GND 4个引脚。连接UART接口前需要使用万用表识别出引脚。</li><li>JTAG接口是遵循IEEE 1149.1标准的另一种国际标准测试协议。用于芯片级和系统级的测试。，包含5个引脚：TDI、TDO、TMS、TCK、TRST.可以接到芯片的tap（测试访问口）</li></ul><h2 id="IoT无线通信简介"><a href="#IoT无线通信简介" class="headerlink" title="IoT无线通信简介"></a>IoT无线通信简介</h2><p>最常用协议：Wi-Fi(802.11)、ZigBee(802.15.4)、Z-Ware、蓝牙(802.15.1)、低功耗蓝牙。</p><h1 id="IoT威胁建模"><a href="#IoT威胁建模" class="headerlink" title="IoT威胁建模"></a>IoT威胁建模</h1>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;0x01-IOT渗透测试&quot;&gt;&lt;a href=&quot;#0x01-IOT渗透测试&quot; class=&quot;headerlink&quot; title=&quot;0x01 IOT渗透测试&quot;&gt;&lt;/a&gt;0x01 IOT渗透测试&lt;/h1&gt;&lt;p&gt;定义IoT生态系统与渗透测试生命周期&lt;/p&gt;
-&lt;ul&gt;
-&lt;l</summary>
-      
-    
-    
-    
-    
-    <category term="IOT 《物联网渗透测试》" scheme="https://sinky.top/tags/IOT-%E3%80%8A%E7%89%A9%E8%81%94%E7%BD%91%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E3%80%8B/"/>
     
   </entry>
   
