@@ -16,28 +16,24 @@
   <meta name="author" content="Sinky">
   <meta name="keywords" content="">
   
-    <meta name="description" content="概述序列化 serialize()序列化：把一个对象变成可以传输的字符串。 123456class S{public $test&#x3D;&quot;pikachu&quot;;}$s&#x3D;new S;&#x2F;&#x2F;创建一个对象serialize($s);&#x2F;&#x2F;把这个对象进行序列化?&gt;  结果：O:1:”S”:1:{s:4:”test”;s:7:”pikachu”;} O:代表object 1:代表对象名字长度为一个字符 S:对象的名">
+    <meta name="description" content="IDA打开查看字符串，直接点进Congratulation找到关键函数Decry() 浅分析一下 Decry()12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970{  char *v0;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="PHP反序列化">
-<meta property="og:url" content="https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/pikachu-PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/index.html">
+<meta property="og:title" content="SimpleRev">
+<meta property="og:url" content="https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/10/SimpleRev-buu-Re/index.html">
 <meta property="og:site_name" content="Sinky&#39;s Blog">
-<meta property="og:description" content="概述序列化 serialize()序列化：把一个对象变成可以传输的字符串。 123456class S{public $test&#x3D;&quot;pikachu&quot;;}$s&#x3D;new S;&#x2F;&#x2F;创建一个对象serialize($s);&#x2F;&#x2F;把这个对象进行序列化?&gt;  结果：O:1:”S”:1:{s:4:”test”;s:7:”pikachu”;} O:代表object 1:代表对象名字长度为一个字符 S:对象的名">
+<meta property="og:description" content="IDA打开查看字符串，直接点进Congratulation找到关键函数Decry() 浅分析一下 Decry()12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970{  char *v0;">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://s2.loli.net/2022/08/09/LkvmjC2rTAON7Pi.png">
-<meta property="og:image" content="https://s2.loli.net/2022/08/09/obFRtxqgIyXBO9k.png">
-<meta property="og:image" content="https://s2.loli.net/2022/08/09/cl6J2puye5PkzTL.png">
-<meta property="og:image" content="https://s2.loli.net/2022/08/09/F58nRZDKNG4VSXi.png">
-<meta property="og:image" content="https://s2.loli.net/2022/08/09/TVb9AHiwgLo812t.png">
-<meta property="article:published_time" content="2022-08-09T09:01:18.129Z">
-<meta property="article:modified_time" content="2022-08-09T09:13:29.458Z">
+<meta property="article:published_time" content="2022-08-10T00:17:17.441Z">
+<meta property="article:modified_time" content="2022-08-10T00:25:36.614Z">
 <meta property="article:author" content="Sinky">
-<meta property="article:tag" content="pikachu">
+<meta property="article:tag" content="RE">
+<meta property="article:tag" content="Buu">
+<meta property="article:tag" content="CTF">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://s2.loli.net/2022/08/09/LkvmjC2rTAON7Pi.png">
   
   
   
-  <title>PHP反序列化 - Sinky&#39;s Blog</title>
+  <title>SimpleRev - Sinky&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -205,7 +201,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="PHP反序列化"></span>
+            <span id="subtitle" data-typed-text="SimpleRev"></span>
           
         </div>
 
@@ -216,8 +212,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-08-09 17:01" pubdate>
-          August 9, 2022 pm
+        <time datetime="2022-08-10 08:17" pubdate>
+          August 10, 2022 am
         </time>
       </span>
     
@@ -228,7 +224,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.4k words
+          2.1k words
         
       </span>
     
@@ -239,7 +235,7 @@
         
         
         
-          12 mins
+          18 mins
         
       </span>
     
@@ -277,54 +273,22 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">PHP反序列化</h1>
+            <h1 style="display: none">SimpleRev</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><h2 id="序列化-serialize"><a href="#序列化-serialize" class="headerlink" title="序列化 serialize()"></a>序列化 serialize()</h2><p>序列化：把一个对象变成可以传输的字符串。</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs <?php">class S{<br>public $test="pikachu";<br>}<br>$s=new S;//创建一个对象<br>serialize($s);//把这个对象进行序列化<br>?&gt;<br></code></pre></td></tr></tbody></table></figure>
+                <p>IDA打开查看字符串，直接点进<code>Congratulation</code>找到关键函数<code>Decry()</code></p>
+<p>浅分析一下</p>
+<figure class="highlight plaintext"><figcaption><span>Decry()</span></figcaption><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><code class="hljs __int64">{<br>  char *v0; <br>  char v2; <br>  int v3; <br>  signed int v4; <br>  signed int i; <br>  signed int v6; <br>  char src[8]; <br>  __int64 v8; <br>  int v9; <br>  __int64 v10; <br>  __int64 v11; <br>  int v12; <br>  __int64 v13; <br>  v13 = *MK_FP(__FS__, 40LL);<br>  *(_QWORD *)src = 'SLCDN';<br>  v8 = 0LL;<br>  v9 = 0;<br>  v10 = 'wodah';<br>  v11 = 0LL;<br>  v12 = 0;<br>  LODWORD(v0) = join(key3, &amp;v10); <br>// 小端序存储，v10要倒过来看：text=killshadow<br>  text = v0;<br>  strcpy(key, key1);  <br>  strcat(key, src);  // key=ADSFKNDCLS<br>  v3 = 0;<br>  v4 = 0;<br>  getchar();<br>  v6 = strlen(key);<br>// for循环是为了大写变小写<br>  for ( i = 0; i &lt; v6; ++i )<br>  {<br>    if ( key[v4 % v6] &gt; 64 &amp;&amp; key[v4 % v6] &lt;= 90 )<br>      key[i] = key[v4 % v6] + 32;<br>    ++v4;<br>  }<br>  printf("Please input your flag:", src);<br>  while ( 1 )<br>  {<br>    v2 = getchar();<br>    if ( v2 == 10 )<br>      break;<br>    if ( v2 == 32 )<br>    {<br>      ++v3;<br>    }<br>    else<br>    {<br>      if ( v2 &lt;= 96 || v2 &gt; 122 )<br>      {<br>        if ( v2 &gt; 64 &amp;&amp; v2 &lt;= 90 )<br>          str2[v3] = (v2 - 39 - key[v4++ % v6] + 97) % 26 + 97;<br>      }<br>      else<br>      {<br>        str2[v3] = (v2 - 39 - key[v4++ % v6] + 97) % 26 + 97; //核心代码<br>      }<br>      if ( !(v4 % v6) )<br>        putchar(32);<br>      ++v3;<br>    }<br>  }<br>//经过加密后str2与text一致得到Congratulation，则加密前的str2就是flag<br>  if ( !strcmp(text, str2) )<br>    puts("Congratulation!\n");<br>  else<br>    puts("Try again!\n");<br>  return *MK_FP(__FS__, 40LL) ^ v13;<br>}<br></code></pre></td></tr></tbody></table></figure>
 
-<p>结果：O:1:”S”:1:{s:4:”test”;s:7:”pikachu”;}</p>
-<p>O:代表object</p>
-<p>1:代表对象名字长度为一个字符</p>
-<p>S:对象的名称</p>
-<p>1:代表对象里面有一个变量</p>
-<p>s:数据类型</p>
-<p>4:变量名称的长度</p>
-<p>test:变量名称</p>
-<p>s:数据类型</p>
-<p>7:变量值的长度</p>
-<p>pikachu:变量值</p>
-<p>（什么鬼，没懂）</p>
-<h2 id="反序列化-unserialize"><a href="#反序列化-unserialize" class="headerlink" title="反序列化 unserialize()"></a>反序列化 unserialize()</h2><p>就是把序列化的字符串还原为对象，然后在接下来的代码中继续使用。</p>
-<pre><code class="hljs">$u=unserialize("0:1:"S":1{s:4:"test":s:7:"pikachu";}");
-echo $u ‐&gt; test;//得到结果为pikachu
+<p>有取余，没法逆推，用爆破：</p>
+<figure class="highlight processing"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs processing">py脚本：<br><span class="hljs-built_in">key</span>=<span class="hljs-string">"ADSFKNDCLS"</span><br><span class="hljs-built_in">text</span>=<span class="hljs-string">"killshadow"</span><br>s=<span class="hljs-string">""</span><br>flag=<span class="hljs-string">""</span><br><span class="hljs-built_in">loop</span>=<span class="hljs-string">"ABCDEFGHIJKLMNOPQRSTUVWXYZ"</span><br>v2 = <span class="hljs-number">0</span><br>v3 = <span class="hljs-number">0</span><br>v5 = <span class="hljs-title function_">len</span>(<span class="hljs-built_in">key</span>)<br><span class="hljs-keyword">for</span> i in <span class="hljs-title function_">range</span>(<span class="hljs-number">0</span>,v5):<br>    <span class="hljs-keyword">if</span> ( <span class="hljs-title function_">ord</span>(<span class="hljs-built_in">key</span>[i]) &gt; <span class="hljs-number">64</span> and <span class="hljs-title function_">ord</span>(<span class="hljs-built_in">key</span>[i]) &lt;= <span class="hljs-number">90</span> ):<br>        s += <span class="hljs-title function_">chr</span>(<span class="hljs-title function_">ord</span>(<span class="hljs-built_in">key</span>[i]) + <span class="hljs-number">32</span>)<br>    <span class="hljs-keyword">else</span>:<br>        s +=<span class="hljs-built_in">key</span>[i]<br><span class="hljs-built_in">print</span>(s)<br><span class="hljs-keyword">for</span> i in <span class="hljs-title function_">range</span>(<span class="hljs-number">0</span>,<span class="hljs-title function_">len</span>(<span class="hljs-built_in">text</span>)):<br>    <span class="hljs-keyword">for</span> j in <span class="hljs-built_in">loop</span>:<br>        <span class="hljs-keyword">if</span> <span class="hljs-title function_">ord</span>(<span class="hljs-built_in">text</span>[i])==(<span class="hljs-title function_">ord</span>(j)<span class="hljs-number">-39</span>-<span class="hljs-title function_">ord</span>(s[i])+<span class="hljs-number">97</span>)%<span class="hljs-number">26</span>+<span class="hljs-number">97</span>:<br>            flag+=j<br><span class="hljs-built_in">print</span>(flag)<br></code></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs C语言脚本"> #include&lt;stdio.h&gt; <br>int main()<br>{<br>	char key[] = "adsfkndcls";<br>	char text[] = "killshadow";<br>	int i;<br>	int v3=10;//长度 <br>	for (int i = 0; i &lt; 10; i++)<br>	{<br>		for (int j = 0; j &lt; 128; j++)<br>		{<br>			if (j &lt; 'A' || j &gt; 'z' || j &gt; 'Z' &amp;&amp; j &lt; 'a')<br>			{<br>				continue;<br>			}<br>			if ((j - 39 - key[v3 % 10] + 97) % 26 + 97 == text[i])<br>			{<br>				printf("%c",j);<br>				v3++;<br>				break;<br>			}<br>		}<br>	}<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<pre><code class="hljs">flag{KLDQCUDFZO}
 </code></pre>
-<p>序列化和反序列化本身没有问题，但如果反序列化的内容是用户可以控制的，且后台不正当的使用了PHP中的魔法函数，就会导致安全问题。</p>
-<p><img src="https://s2.loli.net/2022/08/09/LkvmjC2rTAON7Pi.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="image.png"></p>
-<ul>
-<li>常见的魔法函数：<ul>
-<li><em>__construct()</em> 当一个对象创建时被调用</li>
-<li><em>__destruct()</em> 当一个对象销毁时被调用</li>
-<li><em>__toString()</em> 当一个对象被当作一个字符串使用</li>
-<li><em>__sleep()</em> 在对象在被序列化之前运行</li>
-<li><em>__wakeuop</em> 将在序列化之后立即被调用</li>
-</ul>
-</li>
-</ul>
-<h1 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h1><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs <?php">//定义类<br>class test<br>{<br>//在对象被销毁时候自动调用destruct函数<br>function __destruct()<br>{<br>echo "&lt;br&gt;__destruct()&lt;br&gt;";<br>//在此函数中添加eval()以达到命令执行的目的<br>eval($_GET['cmd']);<br>}<br>}<br>//echo serialize($test);方便将序列化后的test写进u参数中传参<br>$test = new test;<br>echo serialize($test);<br>//执行完这个echo后会被垃圾回收器回收，也就是销毁<br>unserialize($_GET['u']);<br>//反序列化执行完后又会被回收<br>// 所以会出现两次destruct<br>?&gt;<br></code></pre></td></tr></tbody></table></figure>
-
-<p><img src="https://s2.loli.net/2022/08/09/obFRtxqgIyXBO9k.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="image.png"></p>
-<p>传参: <code>http://localhost/phptest.php?O:4:"test":0:{}&amp;cmd=system("woami");</code></p>
-<p>利用成功。</p>
-<h1 id="php反序列化漏洞"><a href="#php反序列化漏洞" class="headerlink" title="php反序列化漏洞"></a>php反序列化漏洞</h1><p><img src="https://s2.loli.net/2022/08/09/cl6J2puye5PkzTL.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="image.png"></p>
-<p>随便提交点啥字符串，提示“大兄弟，来点劲爆点儿的”</p>
-<p>提交了一串序列化字符串，回显是反序列化后的。没啥思路，看一下后台代码。</p>
-<p><img src="https://s2.loli.net/2022/08/09/F58nRZDKNG4VSXi.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="image.png"></p>
-<p>将XSS字符串 <code>&lt;script&gt;alert('xss')&lt;/script&gt; </code>序列化一下： <code>O:1:"S":1:{s:4:"test";s:29:"&lt;script&gt;alert('xss')&lt;/script&gt;";}</code></p>
-<p>提交，成功</p>
-<p><img src="https://s2.loli.net/2022/08/09/TVb9AHiwgLo812t.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="image.png"></p>
 
                 
               </div>
@@ -337,7 +301,11 @@ echo $u ‐&gt; test;//得到结果为pikachu
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/SinkyQ/sinkyhexo.github.io.git/tags/pikachu/">#pikachu</a>
+        <a href="/SinkyQ/sinkyhexo.github.io.git/tags/RE/">#RE</a>
+      
+        <a href="/SinkyQ/sinkyhexo.github.io.git/tags/Buu/">#Buu</a>
+      
+        <a href="/SinkyQ/sinkyhexo.github.io.git/tags/CTF/">#CTF</a>
       
     </div>
   
@@ -349,8 +317,8 @@ echo $u ‐&gt; test;//得到结果为pikachu
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>PHP反序列化</div>
-      <div>https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/pikachu-PHP反序列化/</div>
+      <div>SimpleRev</div>
+      <div>https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/10/SimpleRev-buu-Re/</div>
     </div>
     <div class="license-meta">
       
@@ -362,7 +330,7 @@ echo $u ‐&gt; test;//得到结果为pikachu
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>August 9, 2022</div>
+          <div>August 10, 2022</div>
         </div>
       
       
@@ -392,18 +360,12 @@ echo $u ‐&gt; test;//得到结果为pikachu
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/SinkyQ/sinkyhexo.github.io.git/2022/08/10/SimpleRev-buu-Re/" title="SimpleRev">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">SimpleRev</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/pikachu-CSRF/" title="pikachu-CSRF">
-                        <span class="hidden-mobile">pikachu-CSRF</span>
+                      <a href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/pikachu-PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" title="PHP反序列化">
+                        <span class="hidden-mobile">PHP反序列化</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
