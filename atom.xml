@@ -3,11 +3,11 @@
   <title>Sinky&#39;s Blog</title>
   
   
-  <link href="https://github.com/SinkyQ/sinkyhexo.github.io.git/atom.xml" rel="self"/>
+  <link href="https://github.com/SinkyQ/SinkyQ.github.io.git/atom.xml" rel="self"/>
   
-  <link href="https://github.com/SinkyQ/sinkyhexo.github.io.git/"/>
+  <link href="https://github.com/SinkyQ/SinkyQ.github.io.git/"/>
   <updated>2022-08-10T02:15:05.412Z</updated>
-  <id>https://github.com/SinkyQ/sinkyhexo.github.io.git/</id>
+  <id>https://github.com/SinkyQ/SinkyQ.github.io.git/</id>
   
   <author>
     <name>Sinky</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>SimpleRev</title>
-    <link href="https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/10/SimpleRev-buu-Re/"/>
-    <id>https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/10/SimpleRev-buu-Re/</id>
+    <link href="https://github.com/SinkyQ/SinkyQ.github.io.git/2022/08/10/SimpleRev-buu-Re/"/>
+    <id>https://github.com/SinkyQ/SinkyQ.github.io.git/2022/08/10/SimpleRev-buu-Re/</id>
     <published>2022-08-10T02:14:24.700Z</published>
     <updated>2022-08-10T02:15:05.412Z</updated>
     
@@ -36,18 +36,18 @@
     
     
     
-    <category term="Re" scheme="https://github.com/SinkyQ/sinkyhexo.github.io.git/tags/Re/"/>
+    <category term="Re" scheme="https://github.com/SinkyQ/SinkyQ.github.io.git/tags/Re/"/>
     
-    <category term="Buu" scheme="https://github.com/SinkyQ/sinkyhexo.github.io.git/tags/Buu/"/>
+    <category term="Buu" scheme="https://github.com/SinkyQ/SinkyQ.github.io.git/tags/Buu/"/>
     
-    <category term="CTF" scheme="https://github.com/SinkyQ/sinkyhexo.github.io.git/tags/CTF/"/>
+    <category term="CTF" scheme="https://github.com/SinkyQ/SinkyQ.github.io.git/tags/CTF/"/>
     
   </entry>
   
   <entry>
     <title>PHP反序列化</title>
-    <link href="https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/pikachu-PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/"/>
-    <id>https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/pikachu-PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/</id>
+    <link href="https://github.com/SinkyQ/SinkyQ.github.io.git/2022/08/09/pikachu-PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/"/>
+    <id>https://github.com/SinkyQ/SinkyQ.github.io.git/2022/08/09/pikachu-PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/</id>
     <published>2022-08-09T09:01:18.129Z</published>
     <updated>2022-08-09T09:13:29.458Z</updated>
     
@@ -62,14 +62,14 @@
     
     
     
-    <category term="pikachu" scheme="https://github.com/SinkyQ/sinkyhexo.github.io.git/tags/pikachu/"/>
+    <category term="pikachu" scheme="https://github.com/SinkyQ/SinkyQ.github.io.git/tags/pikachu/"/>
     
   </entry>
   
   <entry>
     <title>pikachu-CSRF</title>
-    <link href="https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/pikachu-CSRF/"/>
-    <id>https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/pikachu-CSRF/</id>
+    <link href="https://github.com/SinkyQ/SinkyQ.github.io.git/2022/08/09/pikachu-CSRF/"/>
+    <id>https://github.com/SinkyQ/SinkyQ.github.io.git/2022/08/09/pikachu-CSRF/</id>
     <published>2022-08-09T08:30:06.517Z</published>
     <updated>2022-08-09T08:51:43.331Z</updated>
     
@@ -84,14 +84,14 @@
     
     
     
-    <category term="pikachu" scheme="https://github.com/SinkyQ/sinkyhexo.github.io.git/tags/pikachu/"/>
+    <category term="pikachu" scheme="https://github.com/SinkyQ/SinkyQ.github.io.git/tags/pikachu/"/>
     
   </entry>
   
   <entry>
     <title>CVE-2019-5786</title>
-    <link href="https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/CVE-2019-5786/"/>
-    <id>https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/CVE-2019-5786/</id>
+    <link href="https://github.com/SinkyQ/SinkyQ.github.io.git/2022/08/09/CVE-2019-5786/"/>
+    <id>https://github.com/SinkyQ/SinkyQ.github.io.git/2022/08/09/CVE-2019-5786/</id>
     <published>2022-08-09T08:02:35.739Z</published>
     <updated>2022-08-09T08:03:08.820Z</updated>
     
@@ -108,14 +108,14 @@
     
     
     
-    <category term="chrome_bug" scheme="https://github.com/SinkyQ/sinkyhexo.github.io.git/tags/chrome-bug/"/>
+    <category term="chrome_bug" scheme="https://github.com/SinkyQ/SinkyQ.github.io.git/tags/chrome-bug/"/>
     
   </entry>
   
   <entry>
     <title>CVE-2019-0708</title>
-    <link href="https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/CVE-2019-0708/"/>
-    <id>https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/CVE-2019-0708/</id>
+    <link href="https://github.com/SinkyQ/SinkyQ.github.io.git/2022/08/09/CVE-2019-0708/"/>
+    <id>https://github.com/SinkyQ/SinkyQ.github.io.git/2022/08/09/CVE-2019-0708/</id>
     <published>2022-08-09T04:25:01.135Z</published>
     <updated>2022-08-09T04:22:13.980Z</updated>
     
@@ -131,14 +131,14 @@
     
     
     
-    <category term="windows漏洞" scheme="https://github.com/SinkyQ/sinkyhexo.github.io.git/tags/windows%E6%BC%8F%E6%B4%9E/"/>
+    <category term="windows漏洞" scheme="https://github.com/SinkyQ/SinkyQ.github.io.git/tags/windows%E6%BC%8F%E6%B4%9E/"/>
     
   </entry>
   
   <entry>
     <title>攻防世界-pwn-反应釜开关控制</title>
-    <link href="https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-%E5%8F%8D%E5%BA%94%E9%87%9C%E5%BC%80%E5%85%B3%E6%8E%A7%E5%88%B6/"/>
-    <id>https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-%E5%8F%8D%E5%BA%94%E9%87%9C%E5%BC%80%E5%85%B3%E6%8E%A7%E5%88%B6/</id>
+    <link href="https://github.com/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-%E5%8F%8D%E5%BA%94%E9%87%9C%E5%BC%80%E5%85%B3%E6%8E%A7%E5%88%B6/"/>
+    <id>https://github.com/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-%E5%8F%8D%E5%BA%94%E9%87%9C%E5%BC%80%E5%85%B3%E6%8E%A7%E5%88%B6/</id>
     <published>2022-08-09T04:18:04.404Z</published>
     <updated>2022-08-09T04:16:57.525Z</updated>
     
@@ -153,14 +153,14 @@
     
     
     
-    <category term="pwn" scheme="https://github.com/SinkyQ/sinkyhexo.github.io.git/tags/pwn/"/>
+    <category term="pwn" scheme="https://github.com/SinkyQ/SinkyQ.github.io.git/tags/pwn/"/>
     
   </entry>
   
   <entry>
     <title>有关XSS跨站脚本</title>
-    <link href="https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%9C%89%E5%85%B3XSS%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC/"/>
-    <id>https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%9C%89%E5%85%B3XSS%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC/</id>
+    <link href="https://github.com/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E6%9C%89%E5%85%B3XSS%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC/"/>
+    <id>https://github.com/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E6%9C%89%E5%85%B3XSS%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC/</id>
     <published>2022-08-09T04:10:35.381Z</published>
     <updated>2022-08-09T04:10:16.791Z</updated>
     
@@ -175,14 +175,14 @@
     
     
     
-    <category term="XSS" scheme="https://github.com/SinkyQ/sinkyhexo.github.io.git/tags/XSS/"/>
+    <category term="XSS" scheme="https://github.com/SinkyQ/SinkyQ.github.io.git/tags/XSS/"/>
     
   </entry>
   
   <entry>
     <title>攻防世界-dice_game</title>
-    <link href="https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-dice_game/"/>
-    <id>https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-dice_game/</id>
+    <link href="https://github.com/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-dice_game/"/>
+    <id>https://github.com/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-dice_game/</id>
     <published>2022-08-09T04:08:11.395Z</published>
     <updated>2020-09-10T07:29:13.960Z</updated>
     
@@ -197,14 +197,14 @@
     
     
     
-    <category term="pwn" scheme="https://github.com/SinkyQ/sinkyhexo.github.io.git/tags/pwn/"/>
+    <category term="pwn" scheme="https://github.com/SinkyQ/SinkyQ.github.io.git/tags/pwn/"/>
     
   </entry>
   
   <entry>
     <title>攻防世界 string</title>
-    <link href="https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-string/"/>
-    <id>https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-string/</id>
+    <link href="https://github.com/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-string/"/>
+    <id>https://github.com/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-string/</id>
     <published>2022-08-09T04:06:35.328Z</published>
     <updated>2020-09-10T07:29:14.011Z</updated>
     
@@ -221,14 +221,14 @@
     
     
     
-    <category term="pwn" scheme="https://github.com/SinkyQ/sinkyhexo.github.io.git/tags/pwn/"/>
+    <category term="pwn" scheme="https://github.com/SinkyQ/SinkyQ.github.io.git/tags/pwn/"/>
     
   </entry>
   
   <entry>
     <title>攻防世界-pwn-stack2</title>
-    <link href="https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-stack2/"/>
-    <id>https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-stack2/</id>
+    <link href="https://github.com/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-stack2/"/>
+    <id>https://github.com/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-stack2/</id>
     <published>2022-08-09T04:04:51.567Z</published>
     <updated>2020-09-10T07:29:13.976Z</updated>
     
@@ -244,14 +244,14 @@
     
     
     
-    <category term="pwn" scheme="https://github.com/SinkyQ/sinkyhexo.github.io.git/tags/pwn/"/>
+    <category term="pwn" scheme="https://github.com/SinkyQ/SinkyQ.github.io.git/tags/pwn/"/>
     
   </entry>
   
   <entry>
     <title>攻防世界 level3</title>
-    <link href="https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-level3/"/>
-    <id>https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-level3/</id>
+    <link href="https://github.com/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-level3/"/>
+    <id>https://github.com/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-level3/</id>
     <published>2022-08-09T04:01:34.298Z</published>
     <updated>2020-09-10T07:29:13.974Z</updated>
     
@@ -267,14 +267,14 @@
     
     
     
-    <category term="pwn" scheme="https://github.com/SinkyQ/sinkyhexo.github.io.git/tags/pwn/"/>
+    <category term="pwn" scheme="https://github.com/SinkyQ/SinkyQ.github.io.git/tags/pwn/"/>
     
   </entry>
   
   <entry>
     <title>初识Meterpreter</title>
-    <link href="https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E5%88%9D%E8%AF%86Meterpreter/"/>
-    <id>https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E5%88%9D%E8%AF%86Meterpreter/</id>
+    <link href="https://github.com/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E5%88%9D%E8%AF%86Meterpreter/"/>
+    <id>https://github.com/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E5%88%9D%E8%AF%86Meterpreter/</id>
     <published>2022-08-09T03:50:57.231Z</published>
     <updated>2022-08-09T03:51:12.837Z</updated>
     
@@ -289,14 +289,14 @@
     
     
     
-    <category term="chrome" scheme="https://github.com/SinkyQ/sinkyhexo.github.io.git/tags/chrome/"/>
+    <category term="chrome" scheme="https://github.com/SinkyQ/SinkyQ.github.io.git/tags/chrome/"/>
     
   </entry>
   
   <entry>
     <title>ubuntu16.04重装之各种环境搭建</title>
-    <link href="https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/ubuntu%E9%87%8D%E8%A3%85%E4%B9%8B%E5%90%84%E7%A7%8D%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
-    <id>https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/ubuntu%E9%87%8D%E8%A3%85%E4%B9%8B%E5%90%84%E7%A7%8D%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</id>
+    <link href="https://github.com/SinkyQ/SinkyQ.github.io.git/2022/08/09/ubuntu%E9%87%8D%E8%A3%85%E4%B9%8B%E5%90%84%E7%A7%8D%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
+    <id>https://github.com/SinkyQ/SinkyQ.github.io.git/2022/08/09/ubuntu%E9%87%8D%E8%A3%85%E4%B9%8B%E5%90%84%E7%A7%8D%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</id>
     <published>2022-08-09T03:49:00.287Z</published>
     <updated>2022-08-09T03:49:10.368Z</updated>
     
@@ -312,14 +312,14 @@
     
     
     
-    <category term="环境搭建" scheme="https://github.com/SinkyQ/sinkyhexo.github.io.git/tags/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
+    <category term="环境搭建" scheme="https://github.com/SinkyQ/SinkyQ.github.io.git/tags/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
     
   </entry>
   
   <entry>
     <title>UAF漏洞简单学习</title>
-    <link href="https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/UAF%E6%BC%8F%E6%B4%9E%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0/"/>
-    <id>https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/UAF%E6%BC%8F%E6%B4%9E%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0/</id>
+    <link href="https://github.com/SinkyQ/SinkyQ.github.io.git/2022/08/09/UAF%E6%BC%8F%E6%B4%9E%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0/"/>
+    <id>https://github.com/SinkyQ/SinkyQ.github.io.git/2022/08/09/UAF%E6%BC%8F%E6%B4%9E%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0/</id>
     <published>2022-08-09T03:48:28.169Z</published>
     <updated>2022-08-09T03:47:46.734Z</updated>
     
@@ -335,14 +335,14 @@
     
     
     
-    <category term="chrome" scheme="https://github.com/SinkyQ/sinkyhexo.github.io.git/tags/chrome/"/>
+    <category term="chrome" scheme="https://github.com/SinkyQ/SinkyQ.github.io.git/tags/chrome/"/>
     
   </entry>
   
   <entry>
     <title>SQL学习与整理</title>
-    <link href="https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/SQL%E5%AD%A6%E4%B9%A0%E4%B8%8E%E6%95%B4%E7%90%86/"/>
-    <id>https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/SQL%E5%AD%A6%E4%B9%A0%E4%B8%8E%E6%95%B4%E7%90%86/</id>
+    <link href="https://github.com/SinkyQ/SinkyQ.github.io.git/2022/08/09/SQL%E5%AD%A6%E4%B9%A0%E4%B8%8E%E6%95%B4%E7%90%86/"/>
+    <id>https://github.com/SinkyQ/SinkyQ.github.io.git/2022/08/09/SQL%E5%AD%A6%E4%B9%A0%E4%B8%8E%E6%95%B4%E7%90%86/</id>
     <published>2022-08-09T03:47:09.145Z</published>
     <updated>2022-08-09T03:45:51.854Z</updated>
     
@@ -357,14 +357,14 @@
     
     
     
-    <category term="学习记录" scheme="https://github.com/SinkyQ/sinkyhexo.github.io.git/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    <category term="学习记录" scheme="https://github.com/SinkyQ/SinkyQ.github.io.git/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
   </entry>
   
   <entry>
     <title>MIPS架构学习笔记</title>
-    <link href="https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/MIPS%E6%9E%B6%E6%9E%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    <id>https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/MIPS%E6%9E%B6%E6%9E%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</id>
+    <link href="https://github.com/SinkyQ/SinkyQ.github.io.git/2022/08/09/MIPS%E6%9E%B6%E6%9E%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>https://github.com/SinkyQ/SinkyQ.github.io.git/2022/08/09/MIPS%E6%9E%B6%E6%9E%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</id>
     <published>2022-08-09T03:42:43.325Z</published>
     <updated>2022-08-09T03:42:07.688Z</updated>
     
@@ -379,14 +379,14 @@
     
     
     
-    <category term="IOT" scheme="https://github.com/SinkyQ/sinkyhexo.github.io.git/tags/IOT/"/>
+    <category term="IOT" scheme="https://github.com/SinkyQ/SinkyQ.github.io.git/tags/IOT/"/>
     
   </entry>
   
   <entry>
     <title>DDCTF RE windows_re2</title>
-    <link href="https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/DDCTF2019re/"/>
-    <id>https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/DDCTF2019re/</id>
+    <link href="https://github.com/SinkyQ/SinkyQ.github.io.git/2022/08/09/DDCTF2019re/"/>
+    <id>https://github.com/SinkyQ/SinkyQ.github.io.git/2022/08/09/DDCTF2019re/</id>
     <published>2022-08-09T03:33:43.559Z</published>
     <updated>2022-08-09T03:29:41.243Z</updated>
     
@@ -402,14 +402,14 @@
     
     
     
-    <category term="RE" scheme="https://github.com/SinkyQ/sinkyhexo.github.io.git/tags/RE/"/>
+    <category term="RE" scheme="https://github.com/SinkyQ/SinkyQ.github.io.git/tags/RE/"/>
     
   </entry>
   
   <entry>
     <title>CVE-2020-6418</title>
-    <link href="https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/CVE-2020-6418/"/>
-    <id>https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/CVE-2020-6418/</id>
+    <link href="https://github.com/SinkyQ/SinkyQ.github.io.git/2022/08/09/CVE-2020-6418/"/>
+    <id>https://github.com/SinkyQ/SinkyQ.github.io.git/2022/08/09/CVE-2020-6418/</id>
     <published>2022-08-09T03:33:40.197Z</published>
     <updated>2022-08-09T03:29:41.243Z</updated>
     
@@ -425,14 +425,14 @@
     
     
     
-    <category term="chrome调试" scheme="https://github.com/SinkyQ/sinkyhexo.github.io.git/tags/chrome%E8%B0%83%E8%AF%95/"/>
+    <category term="chrome调试" scheme="https://github.com/SinkyQ/SinkyQ.github.io.git/tags/chrome%E8%B0%83%E8%AF%95/"/>
     
   </entry>
   
   <entry>
     <title>burp四种密码爆破模式学习</title>
-    <link href="https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/bp%E5%9B%9B%E7%A7%8D%E5%AF%86%E7%A0%81%E7%88%86%E7%A0%B4%E6%A8%A1%E5%BC%8F%E5%AD%A6%E4%B9%A0/"/>
-    <id>https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/bp%E5%9B%9B%E7%A7%8D%E5%AF%86%E7%A0%81%E7%88%86%E7%A0%B4%E6%A8%A1%E5%BC%8F%E5%AD%A6%E4%B9%A0/</id>
+    <link href="https://github.com/SinkyQ/SinkyQ.github.io.git/2022/08/09/bp%E5%9B%9B%E7%A7%8D%E5%AF%86%E7%A0%81%E7%88%86%E7%A0%B4%E6%A8%A1%E5%BC%8F%E5%AD%A6%E4%B9%A0/"/>
+    <id>https://github.com/SinkyQ/SinkyQ.github.io.git/2022/08/09/bp%E5%9B%9B%E7%A7%8D%E5%AF%86%E7%A0%81%E7%88%86%E7%A0%B4%E6%A8%A1%E5%BC%8F%E5%AD%A6%E4%B9%A0/</id>
     <published>2022-08-09T03:24:09.328Z</published>
     <updated>2022-08-09T03:25:20.887Z</updated>
     
@@ -451,14 +451,14 @@
     
     
     
-    <category term="bp" scheme="https://github.com/SinkyQ/sinkyhexo.github.io.git/tags/bp/"/>
+    <category term="bp" scheme="https://github.com/SinkyQ/SinkyQ.github.io.git/tags/bp/"/>
     
   </entry>
   
   <entry>
     <title>《物联网渗透测试》学习笔记1</title>
-    <link href="https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E3%80%8A%E7%89%A9%E8%81%94%E7%BD%91%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/"/>
-    <id>https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/%E3%80%8A%E7%89%A9%E8%81%94%E7%BD%91%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/</id>
+    <link href="https://github.com/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E3%80%8A%E7%89%A9%E8%81%94%E7%BD%91%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/"/>
+    <id>https://github.com/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E3%80%8A%E7%89%A9%E8%81%94%E7%BD%91%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/</id>
     <published>2022-08-09T03:24:06.948Z</published>
     <updated>2020-10-09T08:13:24.145Z</updated>
     
@@ -475,7 +475,7 @@
     
     
     
-    <category term="IOT 《物联网渗透测试》" scheme="https://github.com/SinkyQ/sinkyhexo.github.io.git/tags/IOT-%E3%80%8A%E7%89%A9%E8%81%94%E7%BD%91%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E3%80%8B/"/>
+    <category term="IOT 《物联网渗透测试》" scheme="https://github.com/SinkyQ/SinkyQ.github.io.git/tags/IOT-%E3%80%8A%E7%89%A9%E8%81%94%E7%BD%91%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E3%80%8B/"/>
     
   </entry>
   

