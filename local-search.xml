@@ -4,6 +4,29 @@
   
   
   <entry>
+    <title>pikachu-RCE</title>
+    <link href="/2022/08/11/pikachu-RCE/"/>
+    <url>/2022/08/11/pikachu-RCE/</url>
+    
+    <content type="html"><![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>RCE (remote command/code execute),可以让攻击者直接向后台服务器远程注入操作系统命令或代码，从而控制后台系统。</p><h2 id="远程系统命令执行"><a href="#远程系统命令执行" class="headerlink" title="远程系统命令执行"></a>远程系统命令执行</h2><p>一般出现这种漏洞是因为应用系统从设计上需要给用户提供指定的远程命令操作接口。一般会给用户一个ping操作的web界面，用户从web界面输入目标ip,提交后会对该IP地址进行一次ping测试，并返回测试结果。没有安全控制的话会导致攻击者通过该接口提交恶意命令，后台执行会控制整个后台服务器。</p><h2 id="远程代码执行"><a href="#远程代码执行" class="headerlink" title="远程代码执行"></a>远程代码执行</h2><p>后台有时候也会把用户的输入作为代码的一部分进行执行,也就造成了远程代码执行漏洞，如果需要给前端用户提供操作类的API接口，一定需要对接口输入的内容进行严格的判断，比如实施严格的白名单策略</p><pre><code class="hljs">exec "ping"</code></pre><p><img src="https://s2.loli.net/2022/08/11/bzJDf953yhviwBW.png" alt="图片.png"></p><p>ping一下本地返回正常。</p><p>输入命令： <code>www.baidu.com &amp; ipconfig</code> 发现可以获取到用户的ip地址。</p><p>“&amp;”的作用是先执行 <code>www.baidu.com</code></p><p>或者： &amp;、&amp;&amp;、|、||、； 等拼接执行命令。</p><pre><code class="hljs">exec "eval"</code></pre><p><img src="https://s2.loli.net/2022/08/11/3mcQnH1T2xrGCIb.png" alt="图片.png"></p><p>不知道为啥输入什么都报错</p><p><img src="https://s2.loli.net/2022/08/11/2I6MyJS4YBCxTpW.png" alt="图片.png"></p><p>看了一下网页代码，啥也没有，查看了后台源代码：</p><p><img src="https://s2.loli.net/2022/08/11/2I6MyJS4YBCxTpW.png" alt="图片.png"><br><img src="https://s2.loli.net/2022/08/11/OKkmEnHDoWRN94B.png" alt="图片.png"></p><p>用户输入值直接被带入到<code>eval()</code>函数中进行执行，没有任何安全处理。</p><p>输入 <code>phpinfo(); </code>返回显示了php系统信息。</p><p>eval函数的作用是将字符串当作php代码执行，它允许执行任意 PHP 代码</p><p>它允许执行任意 PHP 代码。</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>WEB</tag>
+      
+      <tag>pikachu</tag>
+      
+      <tag>RCE</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Python学习1</title>
     <link href="/2022/08/10/python%E5%AD%A6%E4%B9%A01/"/>
     <url>/2022/08/10/python%E5%AD%A6%E4%B9%A01/</url>
@@ -55,6 +78,8 @@
     
     
     <tags>
+      
+      <tag>WEB</tag>
       
       <tag>pikachu</tag>
       
@@ -132,6 +157,8 @@
     
     <tags>
       
+      <tag>ctf</tag>
+      
       <tag>pwn</tag>
       
     </tags>
@@ -170,6 +197,8 @@
     
     <tags>
       
+      <tag>ctf</tag>
+      
       <tag>pwn</tag>
       
     </tags>
@@ -188,6 +217,8 @@
     
     
     <tags>
+      
+      <tag>ctf</tag>
       
       <tag>pwn</tag>
       
@@ -208,6 +239,8 @@
     
     <tags>
       
+      <tag>ctf</tag>
+      
       <tag>pwn</tag>
       
     </tags>
@@ -226,6 +259,8 @@
     
     
     <tags>
+      
+      <tag>ctf</tag>
       
       <tag>pwn</tag>
       
@@ -247,6 +282,8 @@
     <tags>
       
       <tag>chrome</tag>
+      
+      <tag>WEB</tag>
       
     </tags>
     
@@ -343,6 +380,8 @@
       
       <tag>RE</tag>
       
+      <tag>ctf</tag>
+      
     </tags>
     
   </entry>
@@ -381,6 +420,8 @@
       
       <tag>bp</tag>
       
+      <tag>WEB</tag>
+      
     </tags>
     
   </entry>
@@ -398,7 +439,9 @@
     
     <tags>
       
-      <tag>IOT 《物联网渗透测试》</tag>
+      <tag>IOT</tag>
+      
+      <tag>学习笔记</tag>
       
     </tags>
     
@@ -474,6 +517,8 @@
     
     <tags>
       
+      <tag>ctf</tag>
+      
       <tag>pwn</tag>
       
     </tags>
@@ -492,6 +537,8 @@
     
     
     <tags>
+      
+      <tag>ctf</tag>
       
       <tag>pwn</tag>
       
@@ -512,6 +559,8 @@
     
     <tags>
       
+      <tag>ctf</tag>
+      
       <tag>pwn</tag>
       
     </tags>
@@ -530,6 +579,8 @@
     
     
     <tags>
+      
+      <tag>ctf</tag>
       
       <tag>pwn</tag>
       
@@ -551,6 +602,10 @@
     <tags>
       
       <tag>学习笔记</tag>
+      
+      <tag>工具学习</tag>
+      
+      <tag>二进制</tag>
       
     </tags>
     
@@ -590,6 +645,8 @@
       
       <tag>IOT</tag>
       
+      <tag>环境搭建</tag>
+      
     </tags>
     
   </entry>
@@ -607,7 +664,9 @@
     
     <tags>
       
-      <tag>web</tag>
+      <tag>WEB</tag>
+      
+      <tag>pikachu</tag>
       
     </tags>
     
@@ -647,6 +706,8 @@
       
       <tag>IOT</tag>
       
+      <tag>漏洞，路由器漏洞</tag>
+      
     </tags>
     
   </entry>
@@ -661,6 +722,12 @@
     <content type="html"><![CDATA[<h2 id="下载安装git、nodejs"><a href="#下载安装git、nodejs" class="headerlink" title="下载安装git、nodejs"></a>下载安装git、nodejs</h2><p>下载地址: </p><p>git: <a href="https://git-scm.com/">https://git-scm.com/</a> </p><p>nodejs: <a href="http://nodejs.cn/download/">http://nodejs.cn/download/</a></p><p>将nodejs加入path环境变量中。打开cmd测试：</p><p><img src="https://s2.loli.net/2022/08/07/NduraiRMcEQythF.png" alt="图片.png"></p><blockquote><p>报错1：输入 <code>npm-v</code> 出现报错:</p></blockquote><pre><code class="hljs">npm WARN config global --global, --local are deprecated. Use `–location</code></pre><p>解决方法：打开<code>nodejs</code>安装位置文件夹，打开<code>npm.cmd</code>和<code>npm</code>，将文件中的<code>prefix -g</code>替换为<code>prefix --location=global</code>,保存后重新打开cmd测试即可。</p><h2 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h2><h3 id="换源（淘宝源）"><a href="#换源（淘宝源）" class="headerlink" title="换源（淘宝源）"></a>换源（淘宝源）</h3><pre><code class="hljs">npm install -g cnpm --registry=https://registry.npm.taobao.orgcnpm -v </code></pre><p><img src="https://s2.loli.net/2022/08/07/9zM1KhnkOqAFsU6.png" alt="图片.png"></p><p>查看版本以及是否安装成功。</p><h3 id="安装hexo-1"><a href="#安装hexo-1" class="headerlink" title="安装hexo"></a>安装hexo</h3><pre><code class="hljs">cnpm install -g hexo-clihexo -v</code></pre><p>新建文件夹放置博客内容，在cmd中进入所建立的目录：</p><pre><code class="hljs">hexo init #初始化hexohexo s #启动hexo</code></pre><p>访问 <code> http://localhost:4000/</code>如下即成功：</p><p><img src="https://s2.loli.net/2022/08/07/dvIiunG5yhOEUX8.png" alt="图片.png"></p><h2 id="新建文章"><a href="#新建文章" class="headerlink" title="新建文章"></a>新建文章</h2><pre><code class="hljs">hexo new "文章标题"</code></pre><p>在目录/source/_posts/下生成文件.md<br>更新文章：<br>    hexo clean<br>    hexo g<br>    hexo s</p><h2 id="部署github"><a href="#部署github" class="headerlink" title="部署github"></a>部署github</h2><p>1、建立一个新的库，命名需要符合规则：<code>username.gitgub.io</code><br>2、命令行输入：</p><pre><code class="hljs">cnpm install --save hexo-deployer-git  </code></pre><p>3、更改设置</p><p>找到_config.yml文件，翻到最底部</p><p>将<code>type</code>改为<code>git</code></p><p>添加<code>repo: "此处为仓库地址"</code></p><p>添加<code>branch: master</code></p><p>repo为仓库地址 branch为master即可</p><p><img src="https://s2.loli.net/2022/08/07/akWVI3mUinyP2sJ.png" alt="图片.png"></p><p>4、部署到远端</p><pre><code class="hljs">git config --global user.email "xxx(此处为邮箱)"  git config --global user.name "xxx(此处为用户名)"  #github用户名hexo d  </code></pre><p>弹出网页提示是否关联git和github 授权即可</p>]]></content>
     
     
+    
+    <tags>
+      
+      <tag>环境搭建</tag>
+      
+    </tags>
     
   </entry>
   
