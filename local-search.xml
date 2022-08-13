@@ -62,9 +62,9 @@
       
       <tag>pikachu</tag>
       
-      <tag>RCE</tag>
-      
       <tag>WEB</tag>
+      
+      <tag>RCE</tag>
       
     </tags>
     
@@ -464,9 +464,9 @@
     
     <tags>
       
-      <tag>WEB</tag>
-      
       <tag>bp</tag>
+      
+      <tag>WEB</tag>
       
     </tags>
     
