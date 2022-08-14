@@ -16,22 +16,35 @@
   <meta name="author" content="Sinky">
   <meta name="keywords" content="">
   
-    <meta name="description" content="UAF漏洞是一种内存破坏漏洞，通常存在于浏览器中。 产生原因uaf漏洞成因：一块堆内存被释放之后又被使用。再一次被使用是指：指针存在（悬垂指针被引用）引用结果不可预测。 由于大多数堆内存都是C++对象，所以利用的核心思路即：分配堆去占坑，占的坑中又自己构造的虚表。 分析方式分析uaf漏洞的要点在于弄清楚对象是在哪里被分配，被释放，被重用。 uaf异常触发点：对已释放的对象进行操作导致的异常，所以异">
+    <meta name="description" content="文件上传漏洞文件上传功能实现代码没有严格限制用户上传的文件后缀以及文件类型，导致允许攻击者向某个可以通过web访问的目录上传任意PHP文件，并能够将这些文件传递给PHP解释器，就可以在远程服务器上执行任意PHP脚本。 当系统存在文件上传漏洞时，攻击者可以将病毒、木马、WebShell以及其他恶意脚本或者是包含了脚本的图片上传到服务器，这些文件将对攻击者后续攻击提供便利，根据具体漏洞差异，上传的脚本">
 <meta property="og:type" content="article">
-<meta property="og:title" content="UAF漏洞简单学习">
-<meta property="og:url" content="https://sinky.top/2022/08/09/UAF%E6%BC%8F%E6%B4%9E%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0/index.html">
+<meta property="og:title" content="靶场：内部文件上传系统漏洞分析溯源">
+<meta property="og:url" content="https://sinky.top/2022/08/14/%E9%9D%B6%E5%9C%BA%EF%BC%9A%E5%86%85%E9%83%A8%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E7%B3%BB%E7%BB%9F%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90%E6%BA%AF%E6%BA%90/index.html">
 <meta property="og:site_name" content="Sinky&#39;s Blog">
-<meta property="og:description" content="UAF漏洞是一种内存破坏漏洞，通常存在于浏览器中。 产生原因uaf漏洞成因：一块堆内存被释放之后又被使用。再一次被使用是指：指针存在（悬垂指针被引用）引用结果不可预测。 由于大多数堆内存都是C++对象，所以利用的核心思路即：分配堆去占坑，占的坑中又自己构造的虚表。 分析方式分析uaf漏洞的要点在于弄清楚对象是在哪里被分配，被释放，被重用。 uaf异常触发点：对已释放的对象进行操作导致的异常，所以异">
+<meta property="og:description" content="文件上传漏洞文件上传功能实现代码没有严格限制用户上传的文件后缀以及文件类型，导致允许攻击者向某个可以通过web访问的目录上传任意PHP文件，并能够将这些文件传递给PHP解释器，就可以在远程服务器上执行任意PHP脚本。 当系统存在文件上传漏洞时，攻击者可以将病毒、木马、WebShell以及其他恶意脚本或者是包含了脚本的图片上传到服务器，这些文件将对攻击者后续攻击提供便利，根据具体漏洞差异，上传的脚本">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-08-09T03:48:28.169Z">
-<meta property="article:modified_time" content="2022-08-09T03:47:46.734Z">
+<meta property="og:image" content="https://s2.loli.net/2022/08/14/WX6tx1Kej5ZpqhL.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/14/HZT3dXicvLjsDVY.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/14/BWPjHVbX1dt4EZk.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/14/SlGY1gDMq3zHyvN.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/14/x8AgbWo5nOzI4iT.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/14/u1CvZxBTWojQlUR.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/14/5lFZPXVgAWcmYus.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/14/XszVYDNge8LFrT2.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/14/wDFysAPbvq5tGr9.png">
+<meta property="article:published_time" content="2022-08-14T03:21:54.947Z">
+<meta property="article:modified_time" content="2022-08-14T08:28:43.421Z">
 <meta property="article:author" content="Sinky">
-<meta property="article:tag" content="chrome">
+<meta property="article:tag" content="WEB">
+<meta property="article:tag" content="墨者学院">
+<meta property="article:tag" content="文件上传">
+<meta property="article:tag" content="WebShell">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://s2.loli.net/2022/08/14/WX6tx1Kej5ZpqhL.png">
   
   
   
-  <title>UAF漏洞简单学习 - Sinky&#39;s Blog</title>
+  <title>靶场：内部文件上传系统漏洞分析溯源 - Sinky&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,7 +212,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="UAF漏洞简单学习"></span>
+            <span id="subtitle" data-typed-text="靶场：内部文件上传系统漏洞分析溯源"></span>
           
         </div>
 
@@ -210,8 +223,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-08-09 11:48" pubdate>
-          August 9, 2022 am
+        <time datetime="2022-08-14 11:21" pubdate>
+          August 14, 2022 am
         </time>
       </span>
     
@@ -222,7 +235,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          806 words
+          810 words
         
       </span>
     
@@ -271,28 +284,45 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">UAF漏洞简单学习</h1>
+            <h1 style="display: none">靶场：内部文件上传系统漏洞分析溯源</h1>
             
             
               <div class="markdown-body">
                 
-                <p>UAF漏洞是一种内存破坏漏洞，通常存在于浏览器中。</p>
-<h2 id="产生原因"><a href="#产生原因" class="headerlink" title="产生原因"></a>产生原因</h2><p>uaf漏洞成因：一块堆内存被释放之后又被使用。<br>再一次被使用是指：指针存在（悬垂指针被引用）引用结果不可预测。</p>
-<p>由于大多数堆内存都是C++对象，所以利用的核心思路即：分配堆去占坑，占的坑中又自己构造的虚表。</p>
-<h2 id="分析方式"><a href="#分析方式" class="headerlink" title="分析方式"></a>分析方式</h2><p>分析uaf漏洞的要点在于弄清楚对象是在哪里被分配，被释放，被重用。</p>
-<p>uaf异常触发点：对已释放的对象进行操作导致的异常，所以异常点即重用点。</p>
-<p>而由于是对对象的操作，可以列出这个对象的所有方法，找出分配和释放的方法，对其下断来分析uaf过程。</p>
-<blockquote>
-<p>1.悬垂指针：指一类不指向任何合法的或者有效的（即与指针的含义不符）的对象的指针，比如一个对象的指针，如果这个对象已经被释放或者回收，但是指针没有进行任何的修改，仍然执行已被释放的内存，这个指针就叫做悬垂指针。</p>
-<p>2.UAF漏洞：Use-AFTER-Free是一种内存破坏漏洞，简单来说，漏洞的原因是使用了悬垂指针。</p>
-</blockquote>
-<p>常见与UAF漏洞配合使用的是堆喷射，分配大量内存，增大靶子的面积，使eip跳进分配的内存中，而分配的内存中又充满了滑板指令，只要命中了滑板指令就可以命中shellcode</p>
-<h2 id="调试方式"><a href="#调试方式" class="headerlink" title="调试方式"></a>调试方式</h2><p>对于uaf漏洞，调试器捕获到的异常并不是漏洞发生的第一现场，所以一般要使用gflags开启PageHeap和UST（windbg自带gflags工具）</p>
-<p><code>gflags.exe /i 程序名.exe +hpa +ust</code></p>
-<p>这样调试器会定位到最先出错的位置。</p>
-<blockquote>
-<p>技巧：<br>1.在ida中查找函数后，在windbg下断<br>2.打开poc文件后出现crash就是对象被重用，根据crash地址来找到重用的对象起始地址<br>3.对对象起始使用 <code>!heap -p -a 地址</code> 可获得这个对象的分配信息，由回溯还可以知道是什么函数分配的。<br>4.对分配函数下断到达分配现场<br>5.在回溯中，分配函数一般为RtlAllocateHeap的上层，而释放函数一般就是FreeHeap的上层。</p>
-</blockquote>
+                <h1 id="文件上传漏洞"><a href="#文件上传漏洞" class="headerlink" title="文件上传漏洞"></a>文件上传漏洞</h1><p>文件上传功能实现代码没有严格限制用户上传的文件后缀以及文件类型，导致允许攻击者向某个可以通过web访问的目录上传任意PHP文件，并能够将这些文件传递给PHP解释器，就可以在远程服务器上执行任意PHP脚本。</p>
+<p>当系统存在文件上传漏洞时，攻击者可以将病毒、木马、WebShell以及其他恶意脚本或者是包含了脚本的图片上传到服务器，这些文件将对攻击者后续攻击提供便利，根据具体漏洞差异，上传的脚本可以是正常后缀的PHP、ASP以及JSP脚本，也可以是串改后缀后的这几类脚本。</p>
+<h1 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h1><p><img src="https://s2.loli.net/2022/08/14/WX6tx1Kej5ZpqhL.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p><img src="https://s2.loli.net/2022/08/14/HZT3dXicvLjsDVY.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ul>
+<li>验证上传点是否可直接上传一句话木马</li>
+<li>验证是否存在前端验证</li>
+<li>验证是否开启mime绕过</li>
+<li>验证是否开启文件否检测</li>
+<li>验证是否存在文件解析漏洞验证</li>
+</ul>
+<p>一句话木马</p>
+<p><img src="https://s2.loli.net/2022/08/14/BWPjHVbX1dt4EZk.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p>上传失败</p>
+<p>php或asp文件无法上传，但txt、jpg等可以上传</p>
+<p><img src="https://s2.loli.net/2022/08/14/SlGY1gDMq3zHyvN.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p>通过F12查看服务，为IIS/6.0</p>
+<p><img src="https://s2.loli.net/2022/08/14/x8AgbWo5nOzI4iT.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<h2 id="IIS6-0漏洞"><a href="#IIS6-0漏洞" class="headerlink" title="IIS6.0漏洞"></a>IIS6.0漏洞</h2><p>该版本默认将<code>.asp;.jpg</code>此种格式的文件名，当成asp解析，服务器默认不解析;号极其后面的内容，相当于截断。</p>
+<p>例如：上传一个图片文件，名字为“xiao.asp;.jpg”的木马文件，该文件可以被当作asp文件解析并执行。</p>
+<p>IIS除了会将asp解析成脚本执行文件之外，还会将cer sdx asa 扩展名解析成asp。</p>
+<h2 id="构造一句话木马"><a href="#构造一句话木马" class="headerlink" title="构造一句话木马"></a>构造一句话木马</h2><p>当我们上传xxx.asp文件时，该文件以后的子文件都以asp文件来执行。</p>
+<pre><code class="hljs">&lt;% eval request("a") %&gt;
+</code></pre>
+<p>上传一句话木马的hack.txt文件，并用bp抓包：</p>
+<p><img src="https://s2.loli.net/2022/08/14/u1CvZxBTWojQlUR.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p>改成hack.asp，这样服务器读到hack.asp目录时后面都以asp文件执行。</p>
+<p><img src="https://s2.loli.net/2022/08/14/5lFZPXVgAWcmYus.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p>最后打开蚁剑，连接其返回地址，找到key即可。</p>
+<p><img src="https://s2.loli.net/2022/08/14/XszVYDNge8LFrT2.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p><img src="https://s2.loli.net/2022/08/14/wDFysAPbvq5tGr9.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<pre><code class="hljs">KEY:mozhe7f5448dfef4b57464d1c37c75bf 
+</code></pre>
+<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>（2022.8.14）<br>做题时看大佬的writeup解的，完全不会，一知半解，做完了感觉会了一点，最起码了解了IIS6.0漏洞和文件上传漏洞的测验方式。</p>
 
                 
               </div>
@@ -305,7 +335,13 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/chrome/">#chrome</a>
+        <a href="/tags/WEB/">#WEB</a>
+      
+        <a href="/tags/%E5%A2%A8%E8%80%85%E5%AD%A6%E9%99%A2/">#墨者学院</a>
+      
+        <a href="/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/">#文件上传</a>
+      
+        <a href="/tags/WebShell/">#WebShell</a>
       
     </div>
   
@@ -317,8 +353,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>UAF漏洞简单学习</div>
-      <div>https://sinky.top/2022/08/09/UAF漏洞简单学习/</div>
+      <div>靶场：内部文件上传系统漏洞分析溯源</div>
+      <div>https://sinky.top/2022/08/14/靶场：内部文件上传系统漏洞分析溯源/</div>
     </div>
     <div class="license-meta">
       
@@ -330,7 +366,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>August 9, 2022</div>
+          <div>August 14, 2022</div>
         </div>
       
       
@@ -360,18 +396,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/08/09/ubuntu%E9%87%8D%E8%A3%85%E4%B9%8B%E5%90%84%E7%A7%8D%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" title="ubuntu16.04重装之各种环境搭建">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">ubuntu16.04重装之各种环境搭建</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/08/09/SQL%E5%AD%A6%E4%B9%A0%E4%B8%8E%E6%95%B4%E7%90%86/" title="SQL学习与整理">
-                        <span class="hidden-mobile">SQL学习与整理</span>
+                      <a href="/2022/08/14/pikachu-SQL%E6%B3%A8%E5%85%A5/" title="pikachu-SQL注入">
+                        <span class="hidden-mobile">pikachu-SQL注入</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
