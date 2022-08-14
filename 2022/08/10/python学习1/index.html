@@ -24,7 +24,7 @@
 <meta property="og:description" content="输出函数print()1.可输出数字、字符串、表达式 #52012print(&#39;HelloWorld&#39;) #HelloWorldprint(3+1) #4 2.将数据输出文件中 file&#x3D;fp 12print(&#39;Hello&#39;,file&#x3D;fp)fp.close()   a+ 若文件不存在则创建，存在则在文件内容后追加，读写。  3.不进行换行输出 print(&#39;Hello&#39;,&#39;world&#39;,&#39;pyt">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-08-10T11:57:31.721Z">
-<meta property="article:modified_time" content="2022-08-10T13:04:29.264Z">
+<meta property="article:modified_time" content="2022-08-14T01:33:30.439Z">
 <meta property="article:author" content="Sinky">
 <meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary_large_image">
@@ -308,10 +308,10 @@
 <figure class="highlight plaintext"><figcaption><span>1694477549296</span></figcaption><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs 标识">类型 &lt;class 'str'&gt;<br>值 Lihua<br></code></pre></td></tr></tbody></table></figure>
 <p>多次赋值后，变量名会指向新的使用。</p>
 <h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><h3 id="int-整型"><a href="#int-整型" class="headerlink" title="int 整型"></a>int 整型</h3><ul>
-<li>十进制 默认的进制	0~9</li>
+<li>十进制 默认的进制	0-9</li>
 <li>二进制 以0b开头	0,1</li>
-<li>八进制 以0o开头	0~7</li>
-<li>十六禁止 以0x开头	0<del>9，A</del>F</li>
+<li>八进制 以0o开头	0-7</li>
+<li>十六禁止 以0x开头	0-9，A-F</li>
 </ul>
 <h3 id="float-浮点型"><a href="#float-浮点型" class="headerlink" title="float 浮点型"></a>float 浮点型</h3><p>存储具有不精确性，可导入模块Decimal</p>
 <figure class="highlight plaintext"><figcaption><span>decimal import Decimal</span></figcaption><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs from">print(Decimal('1.1')+Decimal('2.2')) #3.3<br></code></pre></td></tr></tbody></table></figure>
