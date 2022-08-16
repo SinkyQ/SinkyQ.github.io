@@ -6,7 +6,7 @@
   <link href="https://sinky.top/atom.xml" rel="self"/>
   
   <link href="https://sinky.top/"/>
-  <updated>2022-08-16T03:58:12.828Z</updated>
+  <updated>2022-08-16T08:26:27.222Z</updated>
   <id>https://sinky.top/</id>
   
   <author>
@@ -15,6 +15,59 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>php伪协议</title>
+    <link href="https://sinky.top/2022/08/16/php%E4%BC%AA%E5%8D%8F%E8%AE%AE/"/>
+    <id>https://sinky.top/2022/08/16/php%E4%BC%AA%E5%8D%8F%E8%AE%AE/</id>
+    <published>2022-08-16T08:10:38.035Z</published>
+    <updated>2022-08-16T08:26:27.222Z</updated>
+    
+    <content type="html"><![CDATA[<p>os: 整合了一下各路大佬的笔记，省得搜来搜去……</p><p>在CTF中可能遇到的文件包含函数：</p><p>include、require、include_once、require_once、highlight_file、show_source、readfile、file_get_contents、fopen、file</p><h1 id="php支持的伪协议"><a href="#php支持的伪协议" class="headerlink" title="php支持的伪协议"></a>php支持的伪协议</h1><p>php伪协议事实上就是支持的协议与封装协议（12种）</p><ul><li>file:// — 访问本地文件系统</li><li>http:// — 访问 HTTP(s) 网址</li><li>ftp:// — 访问 FTP(s) URLs</li><li>php:// — 访问各个输入/输出流（I/O streams）</li><li>zlib:// — 压缩流</li><li>data:// — 数据（RFC 2397）</li><li>glob:// — 查找匹配的文件路径模式</li><li>phar:// — PHP 归档</li><li>ssh2:// — Secure Shell 2</li><li>rar:// — RAR</li><li>ogg:// — 音频流</li><li>expect:// — 处理交互式的流</li></ul><h2 id="file-x2F-x2F"><a href="#file-x2F-x2F" class="headerlink" title="file://"></a>file://</h2><h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><p>用于访问本地文件系统，在CTF中通常用来读取本地文件的且不受allow_url_fopen与allow_url_include的影响。</p><p>include()/require()/include_once()/require_once()参数可控的情况下，如导入为非.php文件，则仍按照php语法进行解析，这是include()函数所决定的。</p><h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p>file:// 文件系统是 PHP 使用的默认封装协议，展现了本地文件系统。当指定了一个相对路径（不以/、、\或 Windows 盘符开头的路径）提供的路径将基于当前的工作目录。在很多情况下是脚本所在的目录，除非被修改了。使用 CLI 的时候，目录默认是脚本被调用时所在的目录。在某些函数里，例如 fopen() 和 file_get_contents()，include_path 会可选地搜索，也作为相对的路径。</p><h2 id="php-x2F-x2F"><a href="#php-x2F-x2F" class="headerlink" title="php://"></a>php://</h2><h3 id="作用-1"><a href="#作用-1" class="headerlink" title="作用"></a>作用</h3><p>php:// 访问各个输入/输出流（I/O streams），在CTF中经常使用的是php://filter和php://input，php://filter用于读取源码，php://input用于执行php代码。</p><h3 id="说明-1"><a href="#说明-1" class="headerlink" title="说明"></a>说明</h3><p>PHP 提供了一些杂项输入/输出（IO）流，允许访问 PHP 的输入输出流、标准输入输出和错误描述符，内存中、磁盘备份的临时文件流以及可以操作其他读取写入文件资源的过滤器。</p><ul><li>php://input  ——可以访问请求的原始数据的只读流，在POST请求中访问POST的data部分，在enctype=”multipart/form-data” 的时候php://input 是无效的。</li><li>php://output  ——只写的数据流，允许以 print 和 echo 一样的方式写入到输出缓冲区。</li><li>php://fd  ——(&gt;=5.3.6)允许直接访问指定的文件描述符。例如 php://fd/3 引用了文件描述符 3。</li><li>php://memory 与 php://temp  ——(&gt;=5.1.0)一个类似文件包装器的数据流，允许读写临时数据。两者的唯一区别是 php://memory 总是把数据储存在内存中，而 php://temp 会在内存量达到预定义的限制后（默认是 2MB）存入临时文件中。临时文件位置的决定和 sys_get_temp_dir() 的方式一致。</li><li>php://filter  ——(&gt;=5.0.0)一种元封装器，设计用于数据流打开时的筛选过滤应用。对于一体式（all-in-one）的文件函数非常有用，类似 readfile()、file() 和 file_get_contents()，在数据流内容读取之前没有机会应用其他过滤器。</li></ul><p>太多了懒得敲了</p><p>贴 </p><p><a href="https://segmentfault.com/a/1190000018991087">https://segmentfault.com/a/1190000018991087</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;os: 整合了一下各路大佬的笔记，省得搜来搜去……&lt;/p&gt;
+&lt;p&gt;在CTF中可能遇到的文件包含函数：&lt;/p&gt;
+&lt;p&gt;include、require、include_once、require_once、highlight_file、show_source、readfile、f</summary>
+      
+    
+    
+    
+    
+    <category term="php" scheme="https://sinky.top/tags/php/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CTF-fileclude</title>
+    <link href="https://sinky.top/2022/08/16/CTF-fileclude/"/>
+    <id>https://sinky.top/2022/08/16/CTF-fileclude/</id>
+    <published>2022-08-16T07:41:34.049Z</published>
+    <updated>2022-08-16T08:45:42.204Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>fileclude</p><p>描述：好多file呀！</p><p>还没学php，简单分析一下代码：</p><figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs php">WRONG WAY! <span class="hljs-meta">&lt;?php</span><br><span class="hljs-keyword">include</span>(<span class="hljs-string">"flag.php"</span>);  <span class="hljs-comment"># 引入flag.php文件</span><br><span class="hljs-title function_ invoke__">highlight_file</span>(<span class="hljs-keyword">__FILE__</span>); <span class="hljs-comment"># 对文件进行语法高亮显示</span><br><span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$_GET</span>[<span class="hljs-string">"file1"</span>]) &amp;&amp; <span class="hljs-keyword">isset</span>(<span class="hljs-variable">$_GET</span>[<span class="hljs-string">"file2"</span>])) <span class="hljs-comment"># isset()函数：检测变量是否设置；$_GET[]通过get方法传过来的值</span><br>{<br>    <span class="hljs-variable">$file1</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">"file1"</span>]; <br>    <span class="hljs-variable">$file2</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">"file2"</span>];<br>    <span class="hljs-keyword">if</span>(!<span class="hljs-keyword">empty</span>(<span class="hljs-variable">$file1</span>) &amp;&amp; !<span class="hljs-keyword">empty</span>(<span class="hljs-variable">$file2</span>)) <span class="hljs-comment"># empty()用于检查一个变量是否为空，此处即file1与file2不为空</span><br>    {<br>        <span class="hljs-keyword">if</span>(<span class="hljs-title function_ invoke__">file_get_contents</span>(<span class="hljs-variable">$file2</span>) === <span class="hljs-string">"hello ctf"</span>) <span class="hljs-comment"># file_get_contents()把整个文件读入一个字符串中，此处即将hello ctf读取到fikle2中</span><br>        {<br>            <span class="hljs-keyword">include</span>(<span class="hljs-variable">$file1</span>); <span class="hljs-comment"># 包含$file1</span><br>        }<br>    }<br>    <span class="hljs-keyword">else</span><br>        <span class="hljs-keyword">die</span>(<span class="hljs-string">"NONONO"</span>);<br>} <br></code></pre></td></tr></tbody></table></figure><p>（看来想学渗透的话，php学习要提上日程了[汗颜]）</p><p>$file2内容为hello ctf就可以包含$file1，从题目中可看出flag在flag.php中，此题考察<code>file_get_contents</code>和php伪协议的应用</p><p>（有关php伪协议单独写了一篇文，标签为php）</p><p>f12打开 Max HackBar插件</p><p>使用伪协议来构造，得到payload为<code>php://filter/read=convert.base64-encode/resource=flag.php&amp;file2=php://input</code>，post data为<code>hello ctf</code></p><p>（不会，搜的大佬wp）</p><p><img src="https://s2.loli.net/2022/08/16/usWiTyB1tdeAqX6.png" alt="图片.png"></p><p>base64解码就得到flag:</p><pre><code class="hljs">cyberpeace{a0dfa411a1fd4d2c2153ad62391732cf}</code></pre><p>关于payload如何构造的，我又去查了一下php伪协议，搜到了一个例子：</p><p>例如在 allow_url_include = on 时服务器上有个文件叫 index.php，且存在文件包含漏洞，这个时候就能用 php 伪协议直接把文件显示出来。</p><pre><code class="hljs">?file=php://filter/read=convert.base64-encode/resource=index.php</code></pre><p>解释：php://filter/ 是一种访问本地文件的协议，/read=convert.base64-encode/ 表示读取的方式是 base64 编码后，resource=index.php 表示目标文件为index.php。如果不进行 base64 编码传入，index.php 就会直接执行，就看不到文件中的内容了。（博文已贴）</p><p><a href="https://www.cnblogs.com/pursue-security/p/15374168.html" title="php伪协议">https://www.cnblogs.com/pursue-security/p/15374168.html</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;fileclude&lt;/p&gt;
+&lt;p&gt;描述：好多file呀！&lt;/p&gt;
+&lt;p&gt;还没学php，简单分析一下代码：&lt;/p&gt;
+&lt;figure class</summary>
+      
+    
+    
+    
+    
+    <category term="CTF" scheme="https://sinky.top/tags/CTF/"/>
+    
+    <category term="WEB" scheme="https://sinky.top/tags/WEB/"/>
+    
+    <category term="攻防世界" scheme="https://sinky.top/tags/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C/"/>
+    
+  </entry>
   
   <entry>
     <title>Ruby On Rails漏洞复现第二题（CVE-2019-5418）</title>
@@ -190,11 +243,11 @@
     
     
     
+    <category term="CTF" scheme="https://sinky.top/tags/CTF/"/>
+    
     <category term="Re" scheme="https://sinky.top/tags/Re/"/>
     
     <category term="Buu" scheme="https://sinky.top/tags/Buu/"/>
-    
-    <category term="CTF" scheme="https://sinky.top/tags/CTF/"/>
     
   </entry>
   
@@ -455,53 +508,7 @@
     
     
     
-    <category term="chrome" scheme="https://sinky.top/tags/chrome/"/>
-    
     <category term="WEB" scheme="https://sinky.top/tags/WEB/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ubuntu16.04重装之各种环境搭建</title>
-    <link href="https://sinky.top/2022/08/09/ubuntu%E9%87%8D%E8%A3%85%E4%B9%8B%E5%90%84%E7%A7%8D%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
-    <id>https://sinky.top/2022/08/09/ubuntu%E9%87%8D%E8%A3%85%E4%B9%8B%E5%90%84%E7%A7%8D%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</id>
-    <published>2022-08-09T03:49:00.287Z</published>
-    <updated>2022-08-09T03:49:10.368Z</updated>
-    
-    <content type="html"><![CDATA[<p>环境：ubuntu16.04</p><h1 id="0x00-vmtools解决坑点"><a href="#0x00-vmtools解决坑点" class="headerlink" title="0x00 vmtools解决坑点"></a>0x00 vmtools解决坑点</h1><p>有点无语，笔者踩坑无数，没想到有一天在重装vmtool的时候还能……</p><p>正常安装vmtool后仍旧无法与主机进行复制粘贴，关掉虚拟机查看虚拟机设置。</p><p><img src="https://i.loli.net/2020/10/10/zOQ1jZT5SYip47N.png" alt="捕获.PNG"></p><p><img src="https://i.loli.net/2020/10/10/9pYJxdtsKFEUy4M.png" alt="捕获.PNG"></p><p>建立的共享文件夹要设置属性为共享式。</p><p>搞完之后……就可以了。</p><p>此处贴一个跟我一样的暴躁博主教程：<br><a href="https://blog.csdn.net/zerolity/article/details/81206476">https://blog.csdn.net/zerolity/article/details/81206476</a></p><h1 id="0x01-pwntools安装"><a href="#0x01-pwntools安装" class="headerlink" title="0x01 pwntools安装"></a>0x01 pwntools安装</h1><p>1.安装python2.7和pip</p><p><code>sudo apt-get install python2.7 python-pip python-dev git libssl-dev libffi-dev build-essential </code></p><p>2.升级pip：<code>sudo pip install --upgrade pip</code></p><p>更改pip的配置文件/usr/bin/pip</p><p>更改为：</p><p><img src="https://i.loli.net/2020/10/10/zGq57OjUeWcxXnM.png" alt="捕获.PNG"></p><p>3.安装pwntools：<code>sudo pip install pwntools</code></p><p>报错超时，换个阿里源就好了。</p><p>3.1 更换阿里源</p><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo su<br><span class="hljs-built_in">cd</span> /etc/apt <span class="hljs-comment">#切换到apt源文件</span><br><span class="hljs-built_in">mv</span> source.list sources.list_bak <span class="hljs-comment">#备份源文件</span><br>vim sources.list <span class="hljs-comment">#新建一个，直接把下面的内容copy进去</span><br></code></pre></td></tr></tbody></table></figure><p>copy的内容：</p><figure class="highlight plaintext"><figcaption><span>deb cdrom:[Ubuntu 16.04 LTS _Xenial Xerus_ - Release amd64 (20160420.1)]/ xenial main restricted</span></figcaption><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><code class="hljs #">deb-src http://archive.ubuntu.com/ubuntu xenial main restricted #Added by software-properties<br>deb http://mirrors.aliyun.com/ubuntu/ xenial main restricted<br>deb-src http://mirrors.aliyun.com/ubuntu/ xenial main restricted multiverse universe #Added by software-properties<br>deb http://mirrors.aliyun.com/ubuntu/ xenial-updates main restricted<br>deb-src http://mirrors.aliyun.com/ubuntu/ xenial-updates main restricted multiverse universe #Added by software-properties<br>deb http://mirrors.aliyun.com/ubuntu/ xenial universe<br>deb http://mirrors.aliyun.com/ubuntu/ xenial-updates universe<br>deb http://mirrors.aliyun.com/ubuntu/ xenial multiverse<br>deb http://mirrors.aliyun.com/ubuntu/ xenial-updates multiverse<br>deb http://mirrors.aliyun.com/ubuntu/ xenial-backports main restricted universe multiverse<br>deb-src http://mirrors.aliyun.com/ubuntu/ xenial-backports main restricted universe multiverse #Added by software-properties<br>deb http://archive.canonical.com/ubuntu xenial partner<br>deb-src http://archive.canonical.com/ubuntu xenial partner<br>deb http://mirrors.aliyun.com/ubuntu/ xenial-security main restricted<br>deb-src http://mirrors.aliyun.com/ubuntu/ xenial-security main restricted multiverse universe #Added by software-properties<br>deb http://mirrors.aliyun.com/ubuntu/ xenial-security universe<br>deb http://mirrors.aliyun.com/ubuntu/ xenial-security multiverse```<br><br>3.2 保存配置后，更新配置：`sudo apt-get update`<br><br>之后再重新步骤三的安装命令即可。<br><br>4.测试<br><br><br>![捕获.PNG](https://i.loli.net/2020/10/10/7wzfu32HFRiCXap.png)<br><br>无报错，返回了'1\xc0'，成功！<br><br>所以为啥第一次自己去安装pwntools的时候费了很多力气呢，感觉那时候踩坑无数到崩溃……<br><br># 0x02 GDB及三个插件的安装<br>在终端输入gdb，发现ubuntu16自带gdb，那我就直接安装插件得了。<br>* peda:做逆向破解<br>* gef：用于debug最好<br>* gdbinit：简单版<br><br>用git下载插件：<br>`git clone https://github.com/gatieme/GdbPlugins.git ~/GdbPlugins`<br><br>没有git的下载：`apt-get install git`<br><br>在目录GdbPlugin下可以看见三个插件，想用哪个插件就可以在该目录下输入对应命令：<br><br>```echo "source ~/GdbPlugins/peda/peda.py" &gt; ~/.gdbinit <br>echo "source ~/GdbPlugins/gef/gef.py" &gt; ~/.gdbinit <br>echo "source ~/GdbPlugins/gdbinit/gdbinit" &gt; ~/.gdbinit  <br></code></pre></td></tr></tbody></table></figure><h1 id="0x03-安装checksec"><a href="#0x03-安装checksec" class="headerlink" title="0x03 安装checksec"></a>0x03 安装checksec</h1><figure class="highlight plaintext"><figcaption><span>clone</span><a href="https://github.com/slimm609/checksec.sh.git">link</a></figcaption><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs git">cd checksec.sh<br></code></pre></td></tr></tbody></table></figure><p>目录下的checksec本来想建立一个软链接过去/usr/local/bin里，但是一直打不开，于是直接用cp命令把checksec拷贝过去了。在/usr/local/bin能够打开checksec，才算成功。</p><h1 id="0x04-安装docker-pikachu靶场"><a href="#0x04-安装docker-pikachu靶场" class="headerlink" title="0x04 安装docker+pikachu靶场"></a>0x04 安装docker+pikachu靶场</h1><h4 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h4><ul><li>先卸载可能存在的旧版本： <code>$ sudo apt-get remove docker docker-engine docker-ce docker.io</code></li><li>更新apt包索引: <code>$ sudo apt-get update</code></li><li>安装以下包以使apt可以通过HTTPS使用存储库（repository）: <code>$ sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common</code></li><li>添加Docker官方的GPG密钥： <code>$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -</code></li><li>使用下面的命令来设置stable存储库： <code>$ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"</code></li><li>再更新一下apt包索引: <code>$ sudo apt-get update</code></li><li>安装最新版本的Docker CE：<code>$ sudo apt-get install -y docker-ce</code></li><li>查看docker服务是否启动： <code>$ systemctl status docker</code></li><li>若未启动，则启动docker服务: <code>$ sudo systemctl start docker</code></li><li>经典的hello world： <code>$ sudo docker run hello-world</code></li></ul><p><img src="https://i.loli.net/2020/10/13/kofhug8n2VNj1bx.png" alt="捕获.PNG"></p><p>如图输出则表示docker安装成功。</p><h4 id="pikachu靶场"><a href="#pikachu靶场" class="headerlink" title="pikachu靶场"></a>pikachu靶场</h4>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;环境：ubuntu16.04&lt;/p&gt;
-&lt;h1 id=&quot;0x00-vmtools解决坑点&quot;&gt;&lt;a href=&quot;#0x00-vmtools解决坑点&quot; class=&quot;headerlink&quot; title=&quot;0x00 vmtools解决坑点&quot;&gt;&lt;/a&gt;0x00 vmtools解决坑点</summary>
-      
-    
-    
-    
-    
-    <category term="环境搭建" scheme="https://sinky.top/tags/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>UAF漏洞简单学习</title>
-    <link href="https://sinky.top/2022/08/09/UAF%E6%BC%8F%E6%B4%9E%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0/"/>
-    <id>https://sinky.top/2022/08/09/UAF%E6%BC%8F%E6%B4%9E%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0/</id>
-    <published>2022-08-09T03:48:28.169Z</published>
-    <updated>2022-08-09T03:47:46.734Z</updated>
-    
-    <content type="html"><![CDATA[<p>UAF漏洞是一种内存破坏漏洞，通常存在于浏览器中。</p><h2 id="产生原因"><a href="#产生原因" class="headerlink" title="产生原因"></a>产生原因</h2><p>uaf漏洞成因：一块堆内存被释放之后又被使用。<br>再一次被使用是指：指针存在（悬垂指针被引用）引用结果不可预测。</p><p>由于大多数堆内存都是C++对象，所以利用的核心思路即：分配堆去占坑，占的坑中又自己构造的虚表。</p><h2 id="分析方式"><a href="#分析方式" class="headerlink" title="分析方式"></a>分析方式</h2><p>分析uaf漏洞的要点在于弄清楚对象是在哪里被分配，被释放，被重用。</p><p>uaf异常触发点：对已释放的对象进行操作导致的异常，所以异常点即重用点。</p><p>而由于是对对象的操作，可以列出这个对象的所有方法，找出分配和释放的方法，对其下断来分析uaf过程。</p><blockquote><p>1.悬垂指针：指一类不指向任何合法的或者有效的（即与指针的含义不符）的对象的指针，比如一个对象的指针，如果这个对象已经被释放或者回收，但是指针没有进行任何的修改，仍然执行已被释放的内存，这个指针就叫做悬垂指针。</p><p>2.UAF漏洞：Use-AFTER-Free是一种内存破坏漏洞，简单来说，漏洞的原因是使用了悬垂指针。</p></blockquote><p>常见与UAF漏洞配合使用的是堆喷射，分配大量内存，增大靶子的面积，使eip跳进分配的内存中，而分配的内存中又充满了滑板指令，只要命中了滑板指令就可以命中shellcode</p><h2 id="调试方式"><a href="#调试方式" class="headerlink" title="调试方式"></a>调试方式</h2><p>对于uaf漏洞，调试器捕获到的异常并不是漏洞发生的第一现场，所以一般要使用gflags开启PageHeap和UST（windbg自带gflags工具）</p><p><code>gflags.exe /i 程序名.exe +hpa +ust</code></p><p>这样调试器会定位到最先出错的位置。</p><blockquote><p>技巧：<br>1.在ida中查找函数后，在windbg下断<br>2.打开poc文件后出现crash就是对象被重用，根据crash地址来找到重用的对象起始地址<br>3.对对象起始使用 <code>!heap -p -a 地址</code> 可获得这个对象的分配信息，由回溯还可以知道是什么函数分配的。<br>4.对分配函数下断到达分配现场<br>5.在回溯中，分配函数一般为RtlAllocateHeap的上层，而释放函数一般就是FreeHeap的上层。</p></blockquote>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;UAF漏洞是一种内存破坏漏洞，通常存在于浏览器中。&lt;/p&gt;
-&lt;h2 id=&quot;产生原因&quot;&gt;&lt;a href=&quot;#产生原因&quot; class=&quot;headerlink&quot; title=&quot;产生原因&quot;&gt;&lt;/a&gt;产生原因&lt;/h2&gt;&lt;p&gt;uaf漏洞成因：一块堆内存被释放之后又被使用。&lt;br&gt;再一</summary>
-      
-    
-    
-    
     
     <category term="chrome" scheme="https://sinky.top/tags/chrome/"/>
     
