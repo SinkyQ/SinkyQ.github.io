@@ -6,7 +6,7 @@
   <link href="https://sinky.top/atom.xml" rel="self"/>
   
   <link href="https://sinky.top/"/>
-  <updated>2022-08-14T08:28:43.421Z</updated>
+  <updated>2022-08-16T03:35:28.918Z</updated>
   <id>https://sinky.top/</id>
   
   <author>
@@ -17,11 +17,37 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Ruby On Rails漏洞复现第二题（CVE-2019-5418）</title>
+    <link href="https://sinky.top/2022/08/16/%E9%9D%B6%E5%9C%BA%EF%BC%9ARuby%20On%20Rails%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0%E7%AC%AC%E4%BA%8C%E9%A2%98%EF%BC%88CVE-2019-5418%EF%BC%89/"/>
+    <id>https://sinky.top/2022/08/16/%E9%9D%B6%E5%9C%BA%EF%BC%9ARuby%20On%20Rails%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0%E7%AC%AC%E4%BA%8C%E9%A2%98%EF%BC%88CVE-2019-5418%EF%BC%89/</id>
+    <published>2022-08-16T03:07:09.028Z</published>
+    <updated>2022-08-16T03:35:28.918Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h1><p>Ruby On Rails是一个著名的Ruby Web开发框架，它在开发环境中使用Sprockets作为静态文件服务器。Sprockets是一个Ruby库，用于编译和分发静态资源文件。</p><h1 id="实训目标"><a href="#实训目标" class="headerlink" title="实训目标"></a>实训目标</h1><p>1、学会根据漏洞编号查找漏洞详情；</p><p>2、了解Ruby On Rails（CVE-2019-5418）形成原理；</p><p>3、学习Ruby On Rails（CVE-2019-5418）利用方法；</p><h1 id="解题方向"><a href="#解题方向" class="headerlink" title="解题方向"></a>解题方向</h1><p>利用已知漏洞读取文件passwd;</p><h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><img src="https://s2.loli.net/2022/08/16/JMXnoHVlb8zF4xy.png" alt="image.png"></p><p>先百度查一下CVE-2019-5418漏洞详情：</p><blockquote><p>漏洞描述：由于Rubt on Rails使用了指定参数的render file来渲染应用之外的视图，可以通过修改访问某控制器的请求包，通过“../../../../”来达到路径穿越的目的，然后再通过“</p></blockquote>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;背景介绍&quot;&gt;&lt;a href=&quot;#背景介绍&quot; class=&quot;headerlink&quot; title=&quot;背景介绍&quot;&gt;&lt;/a&gt;背景介绍&lt;/h1&gt;&lt;p&gt;Ruby On Rails是一个著名的Ruby Web开发框架，它在开发环境中使用Sprockets作为静态文件服务器。Sp</summary>
+      
+    
+    
+    
+    
+    <category term="WEB" scheme="https://sinky.top/tags/WEB/"/>
+    
+    <category term="墨者学院" scheme="https://sinky.top/tags/%E5%A2%A8%E8%80%85%E5%AD%A6%E9%99%A2/"/>
+    
+    <category term="任意文件读取" scheme="https://sinky.top/tags/%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96/"/>
+    
+  </entry>
+  
+  <entry>
     <title>靶场：内部文件上传系统漏洞分析溯源</title>
     <link href="https://sinky.top/2022/08/14/%E9%9D%B6%E5%9C%BA%EF%BC%9A%E5%86%85%E9%83%A8%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E7%B3%BB%E7%BB%9F%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90%E6%BA%AF%E6%BA%90/"/>
     <id>https://sinky.top/2022/08/14/%E9%9D%B6%E5%9C%BA%EF%BC%9A%E5%86%85%E9%83%A8%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E7%B3%BB%E7%BB%9F%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90%E6%BA%AF%E6%BA%90/</id>
     <published>2022-08-14T03:21:54.947Z</published>
-    <updated>2022-08-14T08:28:43.421Z</updated>
+    <updated>2022-08-14T08:31:03.086Z</updated>
     
     <content type="html"><![CDATA[<h1 id="文件上传漏洞"><a href="#文件上传漏洞" class="headerlink" title="文件上传漏洞"></a>文件上传漏洞</h1><p>文件上传功能实现代码没有严格限制用户上传的文件后缀以及文件类型，导致允许攻击者向某个可以通过web访问的目录上传任意PHP文件，并能够将这些文件传递给PHP解释器，就可以在远程服务器上执行任意PHP脚本。</p><p>当系统存在文件上传漏洞时，攻击者可以将病毒、木马、WebShell以及其他恶意脚本或者是包含了脚本的图片上传到服务器，这些文件将对攻击者后续攻击提供便利，根据具体漏洞差异，上传的脚本可以是正常后缀的PHP、ASP以及JSP脚本，也可以是串改后缀后的这几类脚本。</p><h1 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h1><p><img src="https://s2.loli.net/2022/08/14/WX6tx1Kej5ZpqhL.png" alt="image.png"></p><p><img src="https://s2.loli.net/2022/08/14/HZT3dXicvLjsDVY.png" alt="image.png"></p><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ul><li>验证上传点是否可直接上传一句话木马</li><li>验证是否存在前端验证</li><li>验证是否开启mime绕过</li><li>验证是否开启文件否检测</li><li>验证是否存在文件解析漏洞验证</li></ul><p>一句话木马</p><p><img src="https://s2.loli.net/2022/08/14/BWPjHVbX1dt4EZk.png" alt="image.png"></p><p>上传失败</p><p>php或asp文件无法上传，但txt、jpg等可以上传</p><p><img src="https://s2.loli.net/2022/08/14/SlGY1gDMq3zHyvN.png" alt="image.png"></p><p>通过F12查看服务，为IIS/6.0</p><p><img src="https://s2.loli.net/2022/08/14/x8AgbWo5nOzI4iT.png" alt="image.png"></p><h2 id="IIS6-0漏洞"><a href="#IIS6-0漏洞" class="headerlink" title="IIS6.0漏洞"></a>IIS6.0漏洞</h2><p>该版本默认将<code>.asp;.jpg</code>此种格式的文件名，当成asp解析，服务器默认不解析;号极其后面的内容，相当于截断。</p><p>例如：上传一个图片文件，名字为“xiao.asp;.jpg”的木马文件，该文件可以被当作asp文件解析并执行。</p><p>IIS除了会将asp解析成脚本执行文件之外，还会将cer sdx asa 扩展名解析成asp。</p><h2 id="构造一句话木马"><a href="#构造一句话木马" class="headerlink" title="构造一句话木马"></a>构造一句话木马</h2><p>当我们上传xxx.asp文件时，该文件以后的子文件都以asp文件来执行。</p><pre><code class="hljs">&lt;% eval request("a") %&gt;</code></pre><p>上传一句话木马的hack.txt文件，并用bp抓包：</p><p><img src="https://s2.loli.net/2022/08/14/u1CvZxBTWojQlUR.png" alt="image.png"></p><p>改成hack.asp，这样服务器读到hack.asp目录时后面都以asp文件执行。</p><p><img src="https://s2.loli.net/2022/08/14/5lFZPXVgAWcmYus.png" alt="image.png"></p><p>最后打开蚁剑，连接其返回地址，找到key即可。</p><p><img src="https://s2.loli.net/2022/08/14/XszVYDNge8LFrT2.png" alt="image.png"></p><p><img src="https://s2.loli.net/2022/08/14/wDFysAPbvq5tGr9.png" alt="image.png"></p><pre><code class="hljs">KEY:mozhe7f5448dfef4b57464d1c37c75bf </code></pre><h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>（2022.8.14）<br>做题时看大佬的writeup解的，完全不会，一知半解，做完了感觉会了一点，最起码了解了IIS6.0漏洞和文件上传漏洞的测验方式。</p>]]></content>
     
@@ -63,9 +89,9 @@
     
     
     
-    <category term="WEB" scheme="https://sinky.top/tags/WEB/"/>
-    
     <category term="pikachu" scheme="https://sinky.top/tags/pikachu/"/>
+    
+    <category term="WEB" scheme="https://sinky.top/tags/WEB/"/>
     
     <category term="SQL注入" scheme="https://sinky.top/tags/SQL%E6%B3%A8%E5%85%A5/"/>
     
@@ -113,9 +139,9 @@
     
     
     
-    <category term="WEB" scheme="https://sinky.top/tags/WEB/"/>
-    
     <category term="pikachu" scheme="https://sinky.top/tags/pikachu/"/>
+    
+    <category term="WEB" scheme="https://sinky.top/tags/WEB/"/>
     
     <category term="RCE" scheme="https://sinky.top/tags/RCE/"/>
     
@@ -190,9 +216,9 @@
     
     
     
-    <category term="WEB" scheme="https://sinky.top/tags/WEB/"/>
-    
     <category term="pikachu" scheme="https://sinky.top/tags/pikachu/"/>
+    
+    <category term="WEB" scheme="https://sinky.top/tags/WEB/"/>
     
   </entry>
   
@@ -478,28 +504,6 @@
     
     
     <category term="chrome" scheme="https://sinky.top/tags/chrome/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>SQL学习与整理</title>
-    <link href="https://sinky.top/2022/08/09/SQL%E5%AD%A6%E4%B9%A0%E4%B8%8E%E6%95%B4%E7%90%86/"/>
-    <id>https://sinky.top/2022/08/09/SQL%E5%AD%A6%E4%B9%A0%E4%B8%8E%E6%95%B4%E7%90%86/</id>
-    <published>2022-08-09T03:47:09.145Z</published>
-    <updated>2022-08-09T03:45:51.854Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="0x01-SQL简介"><a href="#0x01-SQL简介" class="headerlink" title="0x01 SQL简介"></a>0x01 SQL简介</h2><p>SQL（结构化查询语言）用于访问和操作数据库中的数据的标准数据库编程语言。</p><p>SQL是关系数据库系统的标准语言，是一种ANSI标准的计算机语言。</p><p>要创建一个显示数据库中的数据的网站，需要：</p><ul><li>一个RDBMS数据库程序（MS Access SQL Server MySQL）</li><li>使用服务器端脚本语言（PHP ASP）</li><li>使用SQL来获取所需的数据</li><li>使用HTML/CSS来设置页面的样式</li></ul><h2 id="0x02-SQL-RDBMS概念"><a href="#0x02-SQL-RDBMS概念" class="headerlink" title="0x02 SQL RDBMS概念"></a>0x02 SQL RDBMS概念</h2><p>RDBMS是关系数据库管理系统的缩写，是SQL的基础。</p><h3 id="什么是表"><a href="#什么是表" class="headerlink" title="什么是表"></a>什么是表</h3><p>RDBMS中的数据存储在成为表的数据库对象中，这个表基本上是一个相关数据条目的集合，由许多列和行组成，表是关系数据库中最常见和最简单的数据存储形式。</p><h3 id="什么是字段"><a href="#什么是字段" class="headerlink" title="什么是字段"></a>什么是字段</h3><p>每个表都被分解成更小的实体，成为字段，Customers表中的字段由ID、姓名、年龄、地址和薪资组成。</p><p>字段是表中的列，用于维护有关表中每条记录的特定信息。</p><h3 id="什么是记录或者行数据"><a href="#什么是记录或者行数据" class="headerlink" title="什么是记录或者行数据"></a>什么是记录或者行数据</h3><p>记录也成为数据行，即表中存在的每个单独的条目。</p><p>记录是表中的水平实体。</p><h3 id="什么是列？"><a href="#什么是列？" class="headerlink" title="什么是列？"></a>什么是列？</h3><p>列是表彰的垂直实体，其中包含与表中特定字段关联的所有信息。</p><h3 id="什么是空值"><a href="#什么是空值" class="headerlink" title="什么是空值"></a>什么是空值</h3><p>表中的空值是显示为空的字段中的值，这意味中具有空值的字段是没有值的字段。</p><h3 id="SQL约束"><a href="#SQL约束" class="headerlink" title="SQL约束"></a>SQL约束</h3><p>约束是在表上的数据列上强制执行的规则，用于限制可以进入表中的数据类型，这确保了数据库中数据的准确性和可靠性。<br>约束可以是列级别，也可以是表级别，列级约束仅应用于一列，而表级约束则应用于整个表。</p><ul><li>NOT NULL约束：保列中数据不能有NULL值。</li><li>DEFAULT约束：提供该列数据未指定时所采用的默认值。</li><li>UNIQUE约束：保证列中的所有数据各不相同。</li><li>主键约束：唯一标识数据表中的行/记录</li><li>外键约束：唯一标识其他表中的一条行/记录</li><li>CHECK约束：此约束保证列中的所有值满足某一条件</li><li>索引：用于在数据库中快速创建或检索数据</li></ul><p>约束可以在创建表时规定（通过CREATE TABLE语句）或者在表创建减值后规定（通过ALTER TABLE语句）。</p><h3 id="数据完整性"><a href="#数据完整性" class="headerlink" title="数据完整性"></a>数据完整性</h3><p>每个关系数据库管理系统都存在以下类型的数据完整性：</p><ul><li>实体完整性-表中无重复行</li><li>域完整性-通过限制值的类型，格式或范围来强制执行给定列的有效条目</li><li>引用完整性-不能删除其他记录使用的行。</li><li>用户定义的完整性-强制执行一些不属于实体、域或引用完整性的特定业务规则。</li></ul><h3 id="数据库规范化"><a href="#数据库规范化" class="headerlink" title="数据库规范化"></a>数据库规范化</h3><p>数据库规范化是在数据库中有效的组织数据的过程，这个规范化过程有两个原因：</p><ul><li>消除多余数据</li><li>确保数据依赖关系是有意义的</li></ul><p>规范化指导原则称为范式，范式的目的是组织数据库结构，使其符合第一范式、第二范式和第三范式的规则。</p><h2 id="0x03-SQL语法"><a href="#0x03-SQL语法" class="headerlink" title="0x03 SQL语法"></a>0x03 SQL语法</h2><h3 id="SQL语法规则"><a href="#SQL语法规则" class="headerlink" title="SQL语法规则"></a>SQL语法规则</h3><ul><li>SQL语句总是以关键字开始，如SELECT、INSERT、UPDATE、DELETE、DROP、CREATE.</li><li>SQL语句以分号结尾</li><li>SQL不区分大小写。</li></ul><h3 id="数据库表"><a href="#数据库表" class="headerlink" title="数据库表"></a>数据库表</h3><p>数据库通常包含一个或多个表，每个表都用一个名称标识，该表包含带有数据的记录。</p><h3 id="SQL语句"><a href="#SQL语句" class="headerlink" title="SQL语句"></a>SQL语句</h3><p><code>SELECT * FROM Customers;</code></p><h3 id="一些重要的SQL命令"><a href="#一些重要的SQL命令" class="headerlink" title="一些重要的SQL命令"></a>一些重要的SQL命令</h3><ul><li><p>SELECT：从数据库中提取数据</p></li><li><p>UPDATE：更新数据库中的数据</p></li><li><p>DALETE：从数据库中删除数据</p></li><li><p>INSERT INTO：向数据库中插入新数据</p></li><li><p>CREATE DATABASE：创建新数据库</p></li><li><p>ALTER DATABASE:修改数据库</p></li><li><p>CREATE TABLE：创建数据库</p></li><li><p>ALTER TABLE:变更数据库表</p></li><li><p>DROP TABLE:删除表</p></li><li><p>CREATE INDEX：创建索引</p></li><li><p>DROP INDEX：删除索引</p></li><li><p>SELECT:<code>SELECT column_name(s) FROM table_name</code></p></li><li><p>SELECT语句和WHERE子句：<code>SELECT [*] FROM [TableName] WHERE [condition]</code></p></li><li><p>SELECT语句和WHERE和/或子句：<code>SELECT [*] FROM [TableName] WHERE [condition1] [AND [or]] [condition2]...</code></p></li><li><p>SELECT语句与ORDER BY:</p><ul><li><code>SELECT column_name()</code></li><li><code>FROM table_name</code></li><li><code>ORDER BY column_name() ASC or DESC</code></li></ul></li><li><p>SELECT DISTINCT（区分）子句：</p><ul><li><code>SELECT DISTINCT column1,...columnN</code></li><li><code>FROM table_name;</code></li></ul></li><li><p>SELECT IN子句：</p><ul><li><code>SELECT column1,column2...columnN</code></li><li><code>FROM table_name</code></li><li><code>WHERE column_name IN (val-1,val-2,...val-N);</code></li></ul></li><li><p>SELECT LIKE(类)子句：</p><ul><li><code>SELECT column1,column2...columnN</code></li><li><code>FROM table_name</code></li><li><code>WHERE column_name LIKE {PATTERN};</code></li></ul></li><li><p>SELECT COUNT（计数）子句：</p><ul><li><code>SELECT COUNT(column_name)</code></li><li><code>FROM table_name</code></li><li><code>WHERE CONDITION;</code></li></ul></li><li><p>SELECT与HAVING子句：</p><ul><li><code>SELECT SUM(column_name)</code></li><li><code>FROM table_name</code></li><li><code>WHERE CONDITION</code></li><li><code>GROUP BY column_name</code></li><li><code>HAVING (arithematic function condition);</code></li></ul></li><li><p>INSERT INTO语句：</p><ul><li><code>INSERT INTO table_name(column1,column2,column3,...)</code></li><li><code>VALUES (value,value1,value2,value3...)</code></li></ul></li><li><p>UPDATE语句：</p><ul><li><code>UPDATE table_name</code></li><li><code>SET column=value,column1=value1</code></li><li><code>WHERE someColumn=someValue</code></li></ul></li><li><p>DELETE语句：</p><ul><li><code>DELETE FROM tableName</code></li><li><code>WHERE someColumn=someValue</code></li></ul></li><li><p>CREATE语句：</p><ul><li><code>CREATE TABLE table_name(column1  datatype,column2 datatype,column3 datatype,...columnN datatype,PRIMARY KEY(one or moe columns ));</code></li></ul></li><li><p>DROP语句：</p><ul><li><code>DROP TABLE table_name;</code></li></ul></li><li><p>DROP INDEX语句：</p><ul><li><code>AL TER TABLE table_name</code></li><li><code>DROP INDEX index_name;</code></li></ul></li><li><p>DESC语句：</p><ul><li><code>DESC table_name;</code></li></ul></li><li><p>TRUNCATE截断表语句：</p><ul><li><code>TRUNCATE TABLE table_name;</code></li></ul></li><li><p>ALTER TABLE语句：</p><ul><li><code>ALTER TABLE table_name{ADD|DROP|MODIFY} column_name {data_type};</code></li></ul></li><li><p>ALTER TABLE(对表名重命名)</p><ul><li><code>ALTER TABLE table_name RENAME TO new_table_name;</code></li></ul></li><li><p>USE语句：</p><ul><li><code>USE database_name;</code></li></ul></li><li><p>COMMIT语句：</p><ul><li><code>COMMIT;</code></li></ul></li><li><p>ROLLBACK语句：</p><ul><li><code>ROLLBACK;</code></li></ul></li></ul><h2 id="0x04-SQL选择"><a href="#0x04-SQL选择" class="headerlink" title="0x04 SQL选择"></a>0x04 SQL选择</h2>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;0x01-SQL简介&quot;&gt;&lt;a href=&quot;#0x01-SQL简介&quot; class=&quot;headerlink&quot; title=&quot;0x01 SQL简介&quot;&gt;&lt;/a&gt;0x01 SQL简介&lt;/h2&gt;&lt;p&gt;SQL（结构化查询语言）用于访问和操作数据库中的数据的标准数据库编程语言。&lt;</summary>
-      
-    
-    
-    
-    
-    <category term="学习记录" scheme="https://sinky.top/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
   </entry>
   

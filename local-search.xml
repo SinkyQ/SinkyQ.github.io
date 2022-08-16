@@ -4,6 +4,29 @@
   
   
   <entry>
+    <title>Ruby On Rails漏洞复现第二题（CVE-2019-5418）</title>
+    <link href="/2022/08/16/%E9%9D%B6%E5%9C%BA%EF%BC%9ARuby%20On%20Rails%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0%E7%AC%AC%E4%BA%8C%E9%A2%98%EF%BC%88CVE-2019-5418%EF%BC%89/"/>
+    <url>/2022/08/16/%E9%9D%B6%E5%9C%BA%EF%BC%9ARuby%20On%20Rails%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0%E7%AC%AC%E4%BA%8C%E9%A2%98%EF%BC%88CVE-2019-5418%EF%BC%89/</url>
+    
+    <content type="html"><![CDATA[<h1 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h1><p>Ruby On Rails是一个著名的Ruby Web开发框架，它在开发环境中使用Sprockets作为静态文件服务器。Sprockets是一个Ruby库，用于编译和分发静态资源文件。</p><h1 id="实训目标"><a href="#实训目标" class="headerlink" title="实训目标"></a>实训目标</h1><p>1、学会根据漏洞编号查找漏洞详情；</p><p>2、了解Ruby On Rails（CVE-2019-5418）形成原理；</p><p>3、学习Ruby On Rails（CVE-2019-5418）利用方法；</p><h1 id="解题方向"><a href="#解题方向" class="headerlink" title="解题方向"></a>解题方向</h1><p>利用已知漏洞读取文件passwd;</p><h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><img src="https://s2.loli.net/2022/08/16/JMXnoHVlb8zF4xy.png" alt="image.png"></p><p>先百度查一下CVE-2019-5418漏洞详情：</p><blockquote><p>漏洞描述：由于Rubt on Rails使用了指定参数的render file来渲染应用之外的视图，可以通过修改访问某控制器的请求包，通过“../../../../”来达到路径穿越的目的，然后再通过“</p></blockquote>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>WEB</tag>
+      
+      <tag>墨者学院</tag>
+      
+      <tag>任意文件读取</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>靶场：内部文件上传系统漏洞分析溯源</title>
     <link href="/2022/08/14/%E9%9D%B6%E5%9C%BA%EF%BC%9A%E5%86%85%E9%83%A8%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E7%B3%BB%E7%BB%9F%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90%E6%BA%AF%E6%BA%90/"/>
     <url>/2022/08/14/%E9%9D%B6%E5%9C%BA%EF%BC%9A%E5%86%85%E9%83%A8%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E7%B3%BB%E7%BB%9F%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90%E6%BA%AF%E6%BA%90/</url>
@@ -39,9 +62,9 @@
     
     <tags>
       
-      <tag>WEB</tag>
-      
       <tag>pikachu</tag>
+      
+      <tag>WEB</tag>
       
       <tag>SQL注入</tag>
       
@@ -81,9 +104,9 @@
     
     <tags>
       
-      <tag>WEB</tag>
-      
       <tag>pikachu</tag>
+      
+      <tag>WEB</tag>
       
       <tag>RCE</tag>
       
@@ -146,9 +169,9 @@
     
     <tags>
       
-      <tag>WEB</tag>
-      
       <tag>pikachu</tag>
+      
+      <tag>WEB</tag>
       
     </tags>
     
@@ -731,9 +754,9 @@
     
     <tags>
       
-      <tag>WEB</tag>
-      
       <tag>pikachu</tag>
+      
+      <tag>WEB</tag>
       
     </tags>
     
