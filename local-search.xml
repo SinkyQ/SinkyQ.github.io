@@ -4,6 +4,56 @@
   
   
   <entry>
+    <title>攻防世界web-fileinclude</title>
+    <link href="/2022/08/17/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweb-fileinclude/"/>
+    <url>/2022/08/17/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweb-fileinclude/</url>
+    
+    <content type="html"><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><img src="https://s2.loli.net/2022/08/17/dhX79DGxo4rptkT.png" alt="图片.png"></p><p>题目告知flag在flag.php里，分析源代码：</p><figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-keyword">if</span>( !<span class="hljs-title function_ invoke__">ini_get</span>(<span class="hljs-string">'display_errors'</span>) ) {<br>  <span class="hljs-title function_ invoke__">ini_set</span>(<span class="hljs-string">'display_errors'</span>, <span class="hljs-string">'On'</span>); <span class="hljs-comment"># 打开报错提示</span><br>  }<br><span class="hljs-title function_ invoke__">error_reporting</span>(E_ALL); <span class="hljs-comment">#设置php的报错级别为所有的错误和警告，并返回当前级别</span><br><span class="hljs-variable">$lan</span> = <span class="hljs-variable">$_COOKIE</span>[<span class="hljs-string">'language'</span>]; <span class="hljs-comment">#语言切换</span><br><span class="hljs-keyword">if</span>(!<span class="hljs-variable">$lan</span>)<br>{<br>@<span class="hljs-title function_ invoke__">setcookie</span>(<span class="hljs-string">"language"</span>,<span class="hljs-string">"english"</span>); <span class="hljs-comment"># setcookie向客户端发送跟一个Http cookie(由服务器发送到浏览器的变量)</span><br>@<span class="hljs-keyword">include</span>(<span class="hljs-string">"english.php"</span>); <span class="hljs-comment"># 导入语言包</span><br>}<br><span class="hljs-keyword">else</span><br>{<br>@<span class="hljs-keyword">include</span>(<span class="hljs-variable">$lan</span>.<span class="hljs-string">".php"</span>);<span class="hljs-comment"># 后缀.php</span><br>}<br><span class="hljs-variable">$x</span>=<span class="hljs-title function_ invoke__">file_get_contents</span>(<span class="hljs-string">'index.php'</span>); <span class="hljs-comment"># index.php 读取到$x中</span><br><span class="hljs-keyword">echo</span> <span class="hljs-variable">$x</span>; <span class="hljs-comment">#输入x</span><br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></tbody></table></figure><p>设置cookie-language，就可以执行<code>include($lan.".php")</code></p><p>用伪协议<code>php://filter</code>读取文件，格式为：<code>php://filter / [read|write =] 过滤器 / resource= 目标文件 </code></p><h2 id="过滤器的分类（及常见过滤器）"><a href="#过滤器的分类（及常见过滤器）" class="headerlink" title="过滤器的分类（及常见过滤器）"></a>过滤器的分类（及常见过滤器）</h2><p><code>php://filter</code>是一种元封装器，设计用于数据流打开时的筛选过滤应用，</p><ul><li>string filter(字符过滤器)<ul><li>string.rot13  (对字符串执行 ROT13 转换)<ul><li>例：<code>php://filter/string.rot13/resource=flag.php</code></li></ul></li><li>string.toupper (转大写)<ul><li>例：<code>php://filter/string.toupper/resource=flag.php</code></li></ul></li><li>string.tolower (转小写)</li><li>string.strip_tags (去除 HTML 和 PHP 标记，尝试返回给定的字符串 str 去除空字符、HTML 和 PHP 标记后的结果)<ul><li>例：<code>php://filter/string.strip_tags/resource=flag.php</code></li></ul></li></ul></li><li>conversion filter (转换过滤器)<ul><li>convert.base64-encode &amp; convert.base64-decode (base64加密 base64解密)<ul><li>例：<code>php://filter/convert.base64-encode/resource=flag.php</code></li></ul></li><li>convert.quoted-printable-encode &amp; convert.quoted-printable-decode(在字符串后加=0A,及恢复)</li></ul></li><li>compression filter(压缩过滤)<ul><li>zlib.deflate &amp; zlib.inflate(压缩 解压)<ul><li>例：<code>php://filter/zlib.deflate/resource=flag.php</code></li><li>例：<code>php://filter/zlib.inflate/resource=flag.php</code></li></ul></li><li>bzip2.compress &amp; bzip2.decompress(zip 压缩 解压)</li></ul></li><li>encryption filter(加密过滤器)</li></ul><blockquote><p>resource=&lt;要过滤的数据流&gt; ： 必须参数，指定了要筛选过滤的数据流</p><p>read=&lt;独链的筛选列表&gt; ： 可选参数，设定一个或多个过滤器名称，以管道符(/)分隔</p><p>write=&lt;写链的筛选列表&gt; ： 可选参数，设定一个或多个过滤器名称，以管道符(/)分隔</p><p>&lt;;两个链的筛选列表&gt; ： 任何没有以read=或write=做前缀的筛选器列表会视情况应用于读或写链</p></blockquote><p>payload：</p><pre><code class="hljs">`cookie：language=php://filter/convert.base64-encode/resource=flag</code></pre><p>bp抓包，把cookie改成payload,即可得到密文，base64解密即可，或者直接在网页端把cookie改了也行</p><p><img src="https://s2.loli.net/2022/08/17/91ciqRSd3XZpT52.png" alt="图片.png"></p><p>flag: </p><pre><code class="hljs">cyberpeace{771e511122aa7492d439ae469279c22e}</code></pre>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>CTF</tag>
+      
+      <tag>WEB</tag>
+      
+      <tag>攻防世界</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>攻防世界web-very_easy_sql</title>
+    <link href="/2022/08/17/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweb-very_easy_sql%E6%9C%AA%E5%AE%8C%E6%88%90/"/>
+    <url>/2022/08/17/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweb-very_easy_sql%E6%9C%AA%E5%AE%8C%E6%88%90/</url>
+    
+    <content type="html"><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述:"></a>题目描述:</h1><p>太简单了不描述了，给sql签个到吧</p><p><img src="https://s2.loli.net/2022/08/17/7eIHtGJviqkMPbW.png" alt="图片.png"></p><p>题目上说：非内部用户无法访问。</p><p>查看源代码，发现有个use.php文件：</p><p><img src="https://s2.loli.net/2022/08/17/86yfplcZIVDboBu.png" alt="图片.png"></p><p>不行，看大佬写的wp好难，看不懂，先放一放。</p><p><a href="https://blog.csdn.net/m0_48780534/article/details/126309908" title="大佬的博文wp">https://blog.csdn.net/m0_48780534/article/details/126309908</a></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>ctf</tag>
+      
+      <tag>WEB</tag>
+      
+      <tag>攻防世界</tag>
+      
+      <tag>sql</tag>
+      
+      <tag>SSRF</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>php伪协议</title>
     <link href="/2022/08/16/php%E4%BC%AA%E5%8D%8F%E8%AE%AE/"/>
     <url>/2022/08/16/php%E4%BC%AA%E5%8D%8F%E8%AE%AE/</url>
@@ -24,8 +74,8 @@
   
   <entry>
     <title>CTF-fileclude</title>
-    <link href="/2022/08/16/CTF-fileclude/"/>
-    <url>/2022/08/16/CTF-fileclude/</url>
+    <link href="/2022/08/16/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweb-fileclude/"/>
+    <url>/2022/08/16/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweb-fileclude/</url>
     
     <content type="html"><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>fileclude</p><p>描述：好多file呀！</p><p>还没学php，简单分析一下代码：</p><figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs php">WRONG WAY! <span class="hljs-meta">&lt;?php</span><br><span class="hljs-keyword">include</span>(<span class="hljs-string">"flag.php"</span>);  <span class="hljs-comment"># 引入flag.php文件</span><br><span class="hljs-title function_ invoke__">highlight_file</span>(<span class="hljs-keyword">__FILE__</span>); <span class="hljs-comment"># 对文件进行语法高亮显示</span><br><span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$_GET</span>[<span class="hljs-string">"file1"</span>]) &amp;&amp; <span class="hljs-keyword">isset</span>(<span class="hljs-variable">$_GET</span>[<span class="hljs-string">"file2"</span>])) <span class="hljs-comment"># isset()函数：检测变量是否设置；$_GET[]通过get方法传过来的值</span><br>{<br>    <span class="hljs-variable">$file1</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">"file1"</span>]; <br>    <span class="hljs-variable">$file2</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">"file2"</span>];<br>    <span class="hljs-keyword">if</span>(!<span class="hljs-keyword">empty</span>(<span class="hljs-variable">$file1</span>) &amp;&amp; !<span class="hljs-keyword">empty</span>(<span class="hljs-variable">$file2</span>)) <span class="hljs-comment"># empty()用于检查一个变量是否为空，此处即file1与file2不为空</span><br>    {<br>        <span class="hljs-keyword">if</span>(<span class="hljs-title function_ invoke__">file_get_contents</span>(<span class="hljs-variable">$file2</span>) === <span class="hljs-string">"hello ctf"</span>) <span class="hljs-comment"># file_get_contents()把整个文件读入一个字符串中，此处即将hello ctf读取到fikle2中</span><br>        {<br>            <span class="hljs-keyword">include</span>(<span class="hljs-variable">$file1</span>); <span class="hljs-comment"># 包含$file1</span><br>        }<br>    }<br>    <span class="hljs-keyword">else</span><br>        <span class="hljs-keyword">die</span>(<span class="hljs-string">"NONONO"</span>);<br>} <br></code></pre></td></tr></tbody></table></figure><p>（看来想学渗透的话，php学习要提上日程了[汗颜]）</p><p>$file2内容为hello ctf就可以包含$file1，从题目中可看出flag在flag.php中，此题考察<code>file_get_contents</code>和php伪协议的应用</p><p>（有关php伪协议单独写了一篇文，标签为php）</p><p>f12打开 Max HackBar插件</p><p>使用伪协议来构造，得到payload为<code>php://filter/read=convert.base64-encode/resource=flag.php&amp;file2=php://input</code>，post data为<code>hello ctf</code></p><p>（不会，搜的大佬wp）</p><p><img src="https://s2.loli.net/2022/08/16/usWiTyB1tdeAqX6.png" alt="图片.png"></p><p>base64解码就得到flag:</p><pre><code class="hljs">cyberpeace{a0dfa411a1fd4d2c2153ad62391732cf}</code></pre><p>关于payload如何构造的，我又去查了一下php伪协议，搜到了一个例子：</p><p>例如在 allow_url_include = on 时服务器上有个文件叫 index.php，且存在文件包含漏洞，这个时候就能用 php 伪协议直接把文件显示出来。</p><pre><code class="hljs">?file=php://filter/read=convert.base64-encode/resource=index.php</code></pre><p>解释：php://filter/ 是一种访问本地文件的协议，/read=convert.base64-encode/ 表示读取的方式是 base64 编码后，resource=index.php 表示目标文件为index.php。如果不进行 base64 编码传入，index.php 就会直接执行，就看不到文件中的内容了。（博文已贴）</p><p><a href="https://www.cnblogs.com/pursue-security/p/15374168.html" title="php伪协议">https://www.cnblogs.com/pursue-security/p/15374168.html</a></p>]]></content>
     
@@ -188,11 +238,11 @@
     
     <tags>
       
-      <tag>CTF</tag>
-      
       <tag>Re</tag>
       
       <tag>Buu</tag>
+      
+      <tag>CTF</tag>
       
     </tags>
     
@@ -413,9 +463,9 @@
     
     <tags>
       
-      <tag>WEB</tag>
-      
       <tag>chrome</tag>
+      
+      <tag>WEB</tag>
       
     </tags>
     
@@ -550,9 +600,9 @@
     
     <tags>
       
-      <tag>WEB</tag>
-      
       <tag>bp</tag>
+      
+      <tag>WEB</tag>
       
     </tags>
     
