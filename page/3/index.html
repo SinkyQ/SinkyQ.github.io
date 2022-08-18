@@ -226,6 +226,48 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-string/" target="_self">
+          攻防世界 string
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-string/" target="_self">
+        <div>
+          checksec 查看保护机制  注：开启Full RELRO，无法修改got表；开启Canary found，不能直接用溢出方法覆盖栈中返回地址，要通过改写指针与局部变量、leak canary、overwrite canary的方法来绕过；开启NX,意味着栈中数据没有执行权限；PIE未开启，基地址不会变化，为0x400000. 思路分析IDA64查看，在sub_400CA6()中发现：v1被强
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-08-09 12:06" pubdate>
+              2022-08-09
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/ctf/">#ctf</a>
+            
+              <a href="/tags/pwn/">#pwn</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-stack2/" target="_self">
           攻防世界-pwn-stack2
         </a>
@@ -581,48 +623,6 @@
             <i class="iconfont icon-tags"></i>
             
               <a href="/tags/chrome%E8%B0%83%E8%AF%95/">#chrome调试</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/08/09/bp%E5%9B%9B%E7%A7%8D%E5%AF%86%E7%A0%81%E7%88%86%E7%A0%B4%E6%A8%A1%E5%BC%8F%E5%AD%A6%E4%B9%A0/" target="_self">
-          burp四种密码爆破模式学习
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/08/09/bp%E5%9B%9B%E7%A7%8D%E5%AF%86%E7%A0%81%E7%88%86%E7%A0%B4%E6%A8%A1%E5%BC%8F%E5%AD%A6%E4%B9%A0/" target="_self">
-        <div>
-          Sniper:单参数爆破，多参数时同一个字典按顺序替换各参数，初始值有一个参数不变 Battering ram:多参数同时爆破，但用的是同一个字典 Pitchfork:多参数同时爆破，但用的是不同的字典 Cluster bamb:多参数做笛卡尔乘积模式爆破  Sniper(狙击手)（一对一） 一个参数a，若payload有x个，则执行x次。 两个参数a、b,先执行爆破a的x次，再执行b的y次，共
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-08-09 11:24" pubdate>
-              2022-08-09
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/bp/">#bp</a>
-            
-              <a href="/tags/WEB/">#WEB</a>
             
           </div>
         
