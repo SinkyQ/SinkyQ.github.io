@@ -1,0 +1,714 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Sinky">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="基本linux命令 file: 通过探测文件内容判断文件类型，使用权限是所有用户。 -v 在标准输出后显示版本信息并退出 -z 探测压缩过的文件类型 -L 允许符合连接   mkdir: 建立文件夹，使用权限是所有用户 -m 设定权限 -p 创建上层目录 -v 创建新目录时显示信息，版本信息   grep: 指定文件中搜索特定的内容，并将含有这些内容的行标准输出。格式：grep 参数 -c 只输出">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软测面试准备">
+<meta property="og:url" content="https://sinky.top/2022/09/02/%E8%BD%AF%E6%B5%8B%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/index.html">
+<meta property="og:site_name" content="Sinky&#39;s Blog">
+<meta property="og:description" content="基本linux命令 file: 通过探测文件内容判断文件类型，使用权限是所有用户。 -v 在标准输出后显示版本信息并退出 -z 探测压缩过的文件类型 -L 允许符合连接   mkdir: 建立文件夹，使用权限是所有用户 -m 设定权限 -p 创建上层目录 -v 创建新目录时显示信息，版本信息   grep: 指定文件中搜索特定的内容，并将含有这些内容的行标准输出。格式：grep 参数 -c 只输出">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-09-02T01:34:40.342Z">
+<meta property="article:modified_time" content="2022-09-02T08:01:18.269Z">
+<meta property="article:author" content="Sinky">
+<meta property="article:tag" content="软件测试，面试准备">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>软测面试准备 - Sinky&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"sinky.top","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.2.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Sinky's Blog" type="application/atom+xml">
+</head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Sinky</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="软测面试准备"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-09-02 09:34" pubdate>
+          September 2, 2022 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.2k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          44 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">软测面试准备</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="基本linux命令"><a href="#基本linux命令" class="headerlink" title="基本linux命令"></a>基本linux命令</h1><ul>
+<li>file: 通过探测文件内容判断文件类型，使用权限是所有用户。<ul>
+<li>-v 在标准输出后显示版本信息并退出</li>
+<li>-z 探测压缩过的文件类型</li>
+<li>-L 允许符合连接</li>
+</ul>
+</li>
+<li>mkdir: 建立文件夹，使用权限是所有用户<ul>
+<li>-m 设定权限</li>
+<li>-p 创建上层目录</li>
+<li>-v 创建新目录时显示信息，版本信息</li>
+</ul>
+</li>
+<li>grep: 指定文件中搜索特定的内容，并将含有这些内容的行标准输出。格式：grep 参数<ul>
+<li>-c 只输出匹配行的计数</li>
+<li>-i 不区分大小写（只适用单字符）</li>
+<li>-h 查询多文件时不显示文件名</li>
+<li>-l 查询多文件时只输出包含匹配字符的文件名</li>
+<li>-n 显示匹配及行号</li>
+<li>-s 不显示不存在或无匹配文本的错误信息</li>
+<li>-v 显示不包含匹配文本的所有行</li>
+</ul>
+</li>
+<li>find: 在目录种搜索文件，权限为所有用户，格式：find [path] path指定目录路径，路径列表，互相用空格分离。</li>
+<li>depth: 使用深度级别的查找过程方式，在某层指定目录种优先查找文件内容</li>
+</ul>
+<h1 id="数组和链表的区别及优缺点，如何结合两者优点"><a href="#数组和链表的区别及优缺点，如何结合两者优点" class="headerlink" title="数组和链表的区别及优缺点，如何结合两者优点"></a>数组和链表的区别及优缺点，如何结合两者优点</h1><p>1、数组</p>
+<p>数组是将元素在内存中连续存放，由于每个元素占用内存相同，可以通过下标迅速访问数组中任何元素，但若在数组中增加一个元素，需要移动大量元素，在内存中空出一个元素的空间，然后将要将要增加的元素放入</p>
+<p>2、链表</p>
+<p>链表中的元素在内存中不是顺序存储，而是通过存在元素中的指针联系到一起，每个结点包括两个部分，存储数据元素的数据域，和存储下一个结点地址的指针。</p>
+<p>若要访问链表中的一个元素，需要从第一个元素开始，一直找到需要的元素位置，但增删元素，只需修改元素中的指针即可。</p>
+<p>3、区别</p>
+<ul>
+<li>存储位置：数组逻辑上相邻的元素在物理存储位置上也相邻，但链表不一定</li>
+<li>存储空间：链表存放的内存空间可以连续也可以不连续，但数组是连续的一段内存空间。数组存放相同多的数据数组占用内存较小，但链表还需存放前驱和后继的空间。</li>
+<li>长度可变性：链表长度按实际可伸缩，数组长度是定义固定的。</li>
+<li>按序号查找：数组可随机访问，时间复杂度为O(1)，链表不支持随机访问，平均需要O(n)</li>
+</ul>
+<p>4、哈希表可以结合数组和链表的优点</p>
+<h1 id="测试的相关流程"><a href="#测试的相关流程" class="headerlink" title="测试的相关流程"></a>测试的相关流程</h1><p>需求测试-概要设计测试-详细涉及测试-单元测试-集成测试-系统测试-验收测试</p>
+<h1 id="如何写测试用例"><a href="#如何写测试用例" class="headerlink" title="如何写测试用例"></a>如何写测试用例</h1><p>1、测试员尽早介入，彻底理解清楚需求作为写测试用例的基础</p>
+<p>2、若以前有类似的需求，可以参考类似需求的测试用例，还需要看类似需求的bug情况</p>
+<p>3、清楚输入、输出的各种可能性，以及各种输入的之间的关联关系，理解清楚需求的执行逻辑，通过等价类、边界值、判定表等方法找出大部分用例。</p>
+<p>4、找到需求相关的一些特性，补充测试用例</p>
+<p>5、根据自己的经验分析遗漏的测试场景</p>
+<p>6、多总结类似功能点的测试点</p>
+<p>7、书写格式清晰</p>
+<p>需求分析-需求评审-测试计划与评审-编写测试用例</p>
+<h1 id="测试的常用方法"><a href="#测试的常用方法" class="headerlink" title="测试的常用方法"></a>测试的常用方法</h1><p>(1)	黑盒测试方法：</p>
+<p> 黑盒测试也称功能测试或数据驱动测试，它是在已知产品所应具有的功能，通过测试来检测每个功能是否都能正常使用，在测试时，把程序看作一个不能打开的黑盆子，在完全不考虑程序内部结构和内部特性的情况下，测试者在程序接口进行测试，它只检查程序功能是否按照需求规格说明书的规定正常使用，程序是否能适当地接收输入数锯而产生正确的输出信息，并且保持外部信息（如数据库或文件）的完整性。 “黑盒”法着眼于程序外部结构、不考虑内部逻辑结构、针对软件界面和软件功能进行测试。“黑盒”法是穷举输入测试，只有把所有可能的输入都作为测试情况使用，才能以这种方法查出程序中所有的错误。实际上测试情况有无穷多个，因此不仅要测试所有合法的输入，而且还要对那些不合法但是可能的输入进行测试</p>
+<pre><code class="hljs">a)	等价类划分法：将程序中所有可能的输入数据划分为若干个等价类，然后从每个部分中选取具有代表性的数据当作测试用例。测试用例由有效等价类和无效等价类的代表数据组成，从而保证测试用例具有完整性和代表性。
+b)	边界值分析法：对程序输入或输出的边界值进行测试（恰好处于边界、或超过边界、或在边界以下的状态）
+c)	因果图法：一种简化逻辑图，能够直观表明输入条件和输出动作之间的因果关系，适合于描述对于多种输入条件组合的测试方法，根据输入条件的组、约束关系和输出条件的因果关系，分析输入条件的各种组合情况，从而设计测试用例的方法，适合于检查程序输入条件的各种组合情况
+d)	错误推测法：基于以往的经验和直觉，参照以往的软件系统出现的错误，推测当前被测程序中可能存在的缺陷和错误，有针对性地设计测试用例，列举出程序中可能犯的错误或容易发生错误的特殊情况的清单，根据清单和已经设计好的测试用例来编写特定的测试用例，站在用户的角度来考虑输入信息，而不必去管这些信息对于被测程序是否是合理的输入。
+</code></pre>
+<p>(2)	白盒测试方法：</p>
+<p>白盒测试也称为结构测试或逻辑驱动测试，是针对被测单元内部是如何进行工作的测试。它根据程序的控制结构设计测试用例，主要用于软件或程序验证。白盒测试法检查程序内部逻辑结构，对所有的逻辑路径进行测试，是一种穷举路径的测试方法，但即使每条路径都测试过了，但仍然有可能存在错误。因为：穷举路径测试无法检查出程序本身是否违反了设计规范，即程序是否是一个错误的程序；穷举路径测试不可能检查出程序因为遗漏路径而出错；穷举路径测试发现不了一些与数据相关的错误。 白盒测试需要遵循的原则有：1. 保证一个模块中的所有独立路径至少被测试一次；2. 所有逻辑值均需要测试真（true）和假（false）；两种情况；3. 检查程序的内部数据结构，保证其结构的有效性；4. 在上下边界及可操作范围内运行所有循环。</p>
+<pre><code class="hljs">a)	静态分析：不通过执行程序而进行测试的技术，关键功能是检查软件的表示和描述是否一致，没有冲突或者没有歧义。
+b)	动态分析：其主要特点是当软件系统在模拟的或真实的环境中执行之前、之中和之后，对软件系统行为的分析。动态分析包含了程序在受控的环境下使用特定的期望结果进行正式的运行。它显示了一个系统在检查状态下是正确还是不正确。
+    i.语句覆盖：顾名思义就是针对代码语句，设计出来的用例要保证程序中的每一个语句至少被执行一次。
+    ii.	分支覆盖：使得程序中每个判断的取真和取假至少经历一次，即判断的真假均曾被满足。
+    iii.条件覆盖：要求设计用例时针对判断语句里面每个条件表达式true 和 false各取值一次，不考判断语句的计算结果（不考虑组合情况）。
+    iv.判定条件覆盖：设计测试用例时，使得判断语句中每个条件表达式的所有可能结果至少出现一次，每个判断语句本身所有可能结果也至少出现一次。
+    v.组合覆盖：设计测试用例时，使得每个判断语句中条件结果的所有可能组合至少出现一次。
+    vi.	路径覆盖：设计测试用例时，覆盖程序中所有可能的执行路径
+</code></pre>
+<h1 id="说出几种基本的数据结构"><a href="#说出几种基本的数据结构" class="headerlink" title="说出几种基本的数据结构"></a>说出几种基本的数据结构</h1><p>1、链表</p>
+<p>是一种物理存储单元上非连续、非顺序的存储结构，数据元素的逻辑顺序是通过链表中的指针链接次序实现的。由一系列节点组成，节点不必在内存中相连，每个节点由数据部分Data和链部分Next，Next指向下一个节点，这样当添加或者删除时，只需要改变相关节点的Next的指向，效率很高。</p>
+<p>2、栈和队列</p>
+<p>是比较特殊的线性表，栈是限制插入和删除只能在一个位置上进行的表，后进先出。</p>
+<p>队列只允许在front端进行删除操作，在rear端进行插入操作。</p>
+<p>3、树</p>
+<p>树形结构是一类非常重要的非线性数据结构，考察主要以二叉树为主</p>
+<h1 id="了解什么测试方法"><a href="#了解什么测试方法" class="headerlink" title="了解什么测试方法"></a>了解什么测试方法</h1><p>等价类划分，边界值分析，错误推测，因果图法，逻辑覆盖法，程序插桩技术，基本路径法，符号测试，错误驱动测试</p>
+<h1 id="设计一个微信朋友圈点赞的测试用例"><a href="#设计一个微信朋友圈点赞的测试用例" class="headerlink" title="设计一个微信朋友圈点赞的测试用例"></a>设计一个微信朋友圈点赞的测试用例</h1><p>功能测试：点赞某条朋友圈，验证是否成功</p>
+<p>接口测试：点赞朋友圈，验证朋友能否收到提示信息</p>
+<p>性能测试：点赞朋友圈，是否在规定时间显示结果，是否在规定时间在朋友手机上进行提示</p>
+<p>兼容性测试：在不同的终端手机上点赞朋友圈验证是否成功</p>
+<h1 id="HTTP报文段是什么样的"><a href="#HTTP报文段是什么样的" class="headerlink" title="HTTP报文段是什么样的"></a>HTTP报文段是什么样的</h1><p>http报文是面向文本，每一个字段都是ASCII码串，每个字段长度不确定，</p>
+<p>1、请求报文：</p>
+<p>请求行：request line,由请求方法字段、url字段和http协议版本字段三个字段组成，空格分隔。</p>
+<p>请求方法：</p>
+<ul>
+<li>GET: 要求服务器将url定位的资源放在响应报文的数据部分，回送给客户端，传参长度受限制，请求数据以地址形式表现在请求行。</li>
+<li>POST: 允许客户端向服务器提供较多信息，将请求参数封装在http请求数据中，以名称/值的形式出现，可传输大量数据，也不会显示在url中。</li>
+<li>HEAD: 服务端接受head请求后只返回响应头而不会发送相应内容。</li>
+</ul>
+<p>2、URL</p>
+<p>url: 同意资源定位符，是一种资源位置的抽象唯一识别方法，由子集URL和URN组成，<code>&lt;协议&gt;://&lt;主机&gt;:&lt;端口&gt;/&lt;路径&gt;</code></p>
+<p>3、协议版本</p>
+<p>格式为HTTP/主版本号.次版本号，常用为：HTTP/1.1 HTTP/1.0</p>
+<p>4、请求头部</p>
+<ul>
+<li>Host: 接受请求的服务器地址，IP或者域名</li>
+<li>User-Agent：发送请求的应用名称</li>
+<li>Connection: 指定与连接相关的属性</li>
+<li>Accept-Charset: 通知服务器端可以发送的编码格式</li>
+<li>Accept-Encoding: 通知服务器端可以发送的数据压缩格式</li>
+<li>Accept-Language: 通知服务器端可以发送的语言</li>
+</ul>
+<p>请求行：包含请求方式（get、post、put等）、URL，Http协议版本；</p>
+<p>请求头：包含主机host，请求时间，客户端类型、指定客户端接收的数据格式，客户端支持的语言等</p>
+<p>请求体：包含post方法提交的数据，也可以为空； </p>
+<p>响应行：包含状态码、响应信息、Http协议版本； </p>
+<p>响应头：包含响应时间，响应数据的长度、类型、字符编码等</p>
+<p>响应体：包含页面源码；</p>
+<h1 id="压力测试"><a href="#压力测试" class="headerlink" title="压力测试"></a>压力测试</h1><p>对系统不断施加册立，通过确定一个系统的瓶颈或者不能接收的性能点，来获得系统能提供的最大服务级别的测试。</p>
+<h1 id="tcp-udp-区别"><a href="#tcp-udp-区别" class="headerlink" title="tcp udp 区别"></a>tcp udp 区别</h1><p>1、tcp面向连接（先建立连接再发送数据）</p>
+<p>udp无连接，发送数据钱不需要建立连接</p>
+<p>2、tcp安全可靠，传送的数据无差错不丢失不重复且按序到达；</p>
+<p>udp尽最大努力交付，但是不保证可靠交付</p>
+<p>3、tcp面向字节流,把数据看成一连串无结构的字节流;</p>
+<p>UDP是面向报文的，应用层交给UDP多长的报文，UDP就照样发送，即一次发送一个报文</p>
+<p>4、每一条TCP连接只能是点到点的;UDP支持一对一，一对多，多对一和多对多的交互通信 </p>
+<p>5、TCP的逻辑通信信道是全双工的可靠信道，UDP则是不可靠信道</p>
+<h1 id="介绍一下单元测试、集成测试、系统测试、验收测试、回归测试"><a href="#介绍一下单元测试、集成测试、系统测试、验收测试、回归测试" class="headerlink" title="介绍一下单元测试、集成测试、系统测试、验收测试、回归测试"></a>介绍一下单元测试、集成测试、系统测试、验收测试、回归测试</h1><p>1、单元测试：</p>
+<p>完成最小的软件设计单元（模块）的验证工作，目标是确保模块被正确的编码，使用过程设计描述作为指南，对重要的控制路径进行测试以发现模块内的错误，通常情况下是白盒的，对代码风格和规则、程序设计和结构、业务逻辑等进行静态测试，及早的发现和解决不易显现的错误。 </p>
+<p>2、集成测试：</p>
+<p>通过测试发现与模块接口有关的问题。目标是把通过了单元测试的模块拿来，构造一个在设计中所描述的程序结构，应当避免一次性的集成（除非软件规模很小），而采用增量集成。 自顶向下集成：模块集成的顺序是首先集成主模块，然后按照控制层次结构向下进行集成，隶属于主模块的模块按照深度优先或广度优先的方式集成到整个结构中去。 自底向上集成：从原子模块开始来进行构造和测试，因为模块是自底向上集成的，进行时要求所有隶属于某个给顶层次的模块总是存在的，也不再有使用稳定测试桩的必要。 </p>
+<p>3、系统测试：</p>
+<p>是基于系统整体需求说明书的黑盒类测试，应覆盖系统所有联合的部件。系统测试是针对整个产品系统进行的测试，目的是验证系统是否满足了需求规格的定义，找出与需求规格不相符合或与之矛盾的地方。系统测试的对象不仅仅包括需要测试的产品系统的软件，还要包含软件所依赖的硬件、外设甚至包括某些数据、某些支持软件及其接口等。因此，必须将系统中的软件与各种依赖的资源结合起来，在系统实际运行环境下来进行测试。 </p>
+<p>4、回归测试：</p>
+<p>回归测试是指在发生修改之后重新测试先前的测试用例以保证修改的正确性。理论上，软件产生新版本，都需要进行回归测试，验证以前发现和修复的错误是否在新软件版本上再次出现。根据修复好了的缺陷再重新进行测试。回归测试的目的在于验证以前出现过但已经修复好的缺陷不再重新出现。一般指对某已知修正的缺陷再次围绕它原来出现时的步骤重新测试。 </p>
+<p>5、验收测试：</p>
+<p>验收测试是指系统开发生命周期方法论的一个阶段，这时相关的用户或独立测试人员根据测试计划和结果对系统进行测试和接收。它让系统用户决定是否接收系统。它是一项确定产品是否能够满足合同或用户所规定需求的测试。验收测试包括Alpha测试和Beta测试。 Alpha测试：是由用户在开发者的场所来进行的，在一个受控的环境中进行。 Beta测试：由软件的最终用户在一个或多个用户场所来进行的，开发者通常不在现场，用户记录测试中遇到的问题并报告给开发者，开发者对系统进行最后的修改，并开始准备发布最终的软件。</p>
+<h1 id="tcp的三次握手"><a href="#tcp的三次握手" class="headerlink" title="tcp的三次握手"></a>tcp的三次握手</h1>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%EF%BC%8C%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/">#软件测试，面试准备</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>软测面试准备</div>
+      <div>https://sinky.top/2022/09/02/软测面试准备/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Sinky</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>September 2, 2022</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>Licensed under</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/08/19/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CRE-xxxorrr/" title="攻防世界RE-xxxorrr">
+                        <span class="hidden-mobile">攻防世界RE-xxxorrr</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
