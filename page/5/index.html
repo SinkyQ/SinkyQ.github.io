@@ -226,6 +226,48 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-cgpwn2/" target="_self">
+          攻防世界 cgpwn2
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-cgpwn2/" target="_self">
+        <div>
+          算是简单题，进入hello()函数中发现gets(&amp;s) 栈溢出漏洞。 name是全局变量，在bss区段，适合写入。 pwn()函数中调用了__system，但并没有‘&#x2F;bin&#x2F;sh’    攻击思路在name中写入’&#x2F;bin&#x2F;sh’。利用栈溢出覆盖返回地址，使函数返回到system上，拿到shell。 payload&#x3D;填充栈+覆盖保存的exp的值4字节+假的返回地址call __syst
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-08-09 11:17" pubdate>
+              2022-08-09
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/ctf/">#ctf</a>
+            
+              <a href="/tags/pwn/">#pwn</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-100/" target="_self">
           攻防世界pwn-100
         </a>
