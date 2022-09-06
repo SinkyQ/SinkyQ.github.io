@@ -1,0 +1,636 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Sinky">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="集合python内置数据结构，可变序列，无value的字典。 创建： {} s&#x3D;{&#39;Python&#39;,&#39;world&#39;,90} set() : s&#x3D;set(range(6))  12s&#x3D;{2,3,4,4,5,6,7,7}print(s) #{2, 3, 4, 5, 6, 7}  eg:  1234567891011121314s1&#x3D;set(range(6))print(s,type(s)) #{2,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python学习5">
+<meta property="og:url" content="https://sinky.top/2022/09/06/python%E5%AD%A6%E4%B9%A05/index.html">
+<meta property="og:site_name" content="Sinky&#39;s Blog">
+<meta property="og:description" content="集合python内置数据结构，可变序列，无value的字典。 创建： {} s&#x3D;{&#39;Python&#39;,&#39;world&#39;,90} set() : s&#x3D;set(range(6))  12s&#x3D;{2,3,4,4,5,6,7,7}print(s) #{2, 3, 4, 5, 6, 7}  eg:  1234567891011121314s1&#x3D;set(range(6))print(s,type(s)) #{2,">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-09-06T08:43:42.900Z">
+<meta property="article:modified_time" content="2022-09-06T10:04:13.449Z">
+<meta property="article:author" content="Sinky">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>Python学习5 - Sinky&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"sinky.top","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.2.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Sinky's Blog" type="application/atom+xml">
+</head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Sinky</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Python学习5"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-09-06 16:43" pubdate>
+          September 6, 2022 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.5k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          22 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Python学习5</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h1><p>python内置数据结构，可变序列，无value的字典。</p>
+<h2 id="创建："><a href="#创建：" class="headerlink" title="创建： {}"></a>创建： {}</h2><ul>
+<li><code>s={'Python','world',90}</code></li>
+<li>set() : <code>s=set(range(6))</code></li>
+</ul>
+<figure class="highlight apache"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">s</span>={<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span class="hljs-number">7</span>}<br><span class="hljs-attribute">print</span>(s) #{<span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>}<br></code></pre></td></tr></tbody></table></figure>
+
+<p>eg: </p>
+<figure class="highlight angelscript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs angelscript">s1=<span class="hljs-keyword">set</span>(range(<span class="hljs-number">6</span>))<br>print(s,type(s)) #{<span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>} &lt;<span class="hljs-keyword">class</span> '<span class="hljs-symbol">set</span>'&gt;<br><span class="hljs-symbol">s3</span>=<span class="hljs-symbol">set</span>((<span class="hljs-symbol">1,<span class="hljs-symbol">2</span>,<span class="hljs-symbol">4</span>,<span class="hljs-symbol">4</span>,<span class="hljs-symbol">5</span>,<span class="hljs-symbol">65</span></span>))<br><span class="hljs-symbol">print</span>(<span class="hljs-symbol">s3,<span class="hljs-symbol">type</span></span>(<span class="hljs-symbol">s3</span>)) #{<span class="hljs-number">65</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>} &lt;<span class="hljs-keyword">class</span> '<span class="hljs-symbol">set</span>'&gt;<br> #集合中元素无序<br><span class="hljs-symbol">s4</span>=<span class="hljs-symbol">set</span>('<span class="hljs-symbol">python</span>')<br><span class="hljs-symbol">print</span>(<span class="hljs-symbol">s4,<span class="hljs-symbol">type</span></span>(<span class="hljs-symbol">s4</span>)) #{<span class="hljs-string">'o'</span>, <span class="hljs-string">'n'</span>, <span class="hljs-string">'y'</span>, <span class="hljs-string">'t'</span>, <span class="hljs-string">'h'</span>, <span class="hljs-string">'p'</span>} &lt;<span class="hljs-keyword">class</span> '<span class="hljs-symbol">set</span>'&gt;<br><span class="hljs-symbol">s5</span>=<span class="hljs-symbol">set</span>({<span class="hljs-number">12</span>,<span class="hljs-number">4</span>,<span class="hljs-number">33</span>,<span class="hljs-number">25</span>,<span class="hljs-number">24</span>,<span class="hljs-number">23</span>})<br>print(s5,type(s5)) #{<span class="hljs-number">33</span>, <span class="hljs-number">4</span>, <span class="hljs-number">23</span>, <span class="hljs-number">24</span>, <span class="hljs-number">25</span>, <span class="hljs-number">12</span>} &lt;<span class="hljs-keyword">class</span> '<span class="hljs-symbol">set</span>'&gt;<br> #空集合<br><span class="hljs-symbol">s6</span>={} #字典类型<br>print(type(s6)) #&lt;<span class="hljs-keyword">class</span> '<span class="hljs-symbol">dict</span>'&gt;<br><span class="hljs-symbol">s7</span>=<span class="hljs-symbol">set</span>()<br><span class="hljs-symbol">print</span>(<span class="hljs-symbol">s7,<span class="hljs-symbol">type</span></span>(<span class="hljs-symbol">s7</span>)) #<span class="hljs-symbol">set</span>() &lt;<span class="hljs-symbol">class</span> '<span class="hljs-symbol">set</span>'&gt;<br></code></pre></td></tr></tbody></table></figure>
+
+<h2 id="相关操作"><a href="#相关操作" class="headerlink" title="相关操作"></a>相关操作</h2><p>（1）判断： in 或 not in</p>
+<p>（2）新增：</p>
+<ul>
+<li>add() : 一次添加一个元素</li>
+<li>update() : 至少添加一个元素</li>
+</ul>
+<p>（3）删除：</p>
+<ul>
+<li>remove() : 一次删除一个指定元素，指定元素不存在抛出keyerror</li>
+<li>discard(): 一次删除一个注定元素，指定元素不存在不抛出异常</li>
+<li>pop(): 一次随机删除一个任意元素</li>
+<li>clear(): 清空</li>
+</ul>
+<figure class="highlight apache"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">s</span>={<span class="hljs-number">1</span>,<span class="hljs-number">3</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">4</span>} <br><span class="hljs-attribute">print</span>(<span class="hljs-number">1</span> in s) #True<br><span class="hljs-attribute">print</span>(<span class="hljs-number">1</span> not in s) #False<br><span class="hljs-attribute">s</span>.add(<span class="hljs-number">80</span>)<br><span class="hljs-attribute">print</span>(s) #{<span class="hljs-number">80</span>, <span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>}<br><span class="hljs-attribute">s</span>.update({<span class="hljs-number">100</span>,<span class="hljs-number">200</span>,<span class="hljs-number">300</span>})<br><span class="hljs-attribute">print</span>(s) #{<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">100</span>, <span class="hljs-number">200</span>, <span class="hljs-number">300</span>, <span class="hljs-number">80</span>}<br><span class="hljs-attribute">s</span>.update([<span class="hljs-number">100</span>,<span class="hljs-number">98</span>,<span class="hljs-number">89</span>])<br><span class="hljs-attribute">print</span>(s) #{<span class="hljs-number">1</span>, <span class="hljs-number">98</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">100</span>, <span class="hljs-number">200</span>, <span class="hljs-number">300</span>, <span class="hljs-number">80</span>, <span class="hljs-number">89</span>}<br><span class="hljs-attribute">s</span>.update([<span class="hljs-number">78</span>,<span class="hljs-number">64</span>,<span class="hljs-number">56</span>])<br><span class="hljs-attribute">print</span>(s)  #{<span class="hljs-number">64</span>, <span class="hljs-number">1</span>, <span class="hljs-number">98</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">100</span>, <span class="hljs-number">200</span>, <span class="hljs-number">300</span>, <span class="hljs-number">78</span>, <span class="hljs-number">80</span>, <span class="hljs-number">56</span>, <span class="hljs-number">89</span>} <br><span class="hljs-attribute">s</span>.remove(<span class="hljs-number">100</span>)<br><span class="hljs-attribute">print</span>(s) #{<span class="hljs-number">64</span>, <span class="hljs-number">1</span>, <span class="hljs-number">98</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">200</span>, <span class="hljs-number">300</span>, <span class="hljs-number">78</span>, <span class="hljs-number">80</span>, <span class="hljs-number">56</span>, <span class="hljs-number">89</span>}<br><span class="hljs-attribute">s</span>.discard(<span class="hljs-number">500</span>)<br><span class="hljs-attribute">print</span>(s) #{<span class="hljs-number">64</span>, <span class="hljs-number">1</span>, <span class="hljs-number">98</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">200</span>, <span class="hljs-number">300</span>, <span class="hljs-number">78</span>, <span class="hljs-number">80</span>, <span class="hljs-number">56</span>, <span class="hljs-number">89</span>}<br><span class="hljs-attribute">s</span>.discard(<span class="hljs-number">300</span>)<br><span class="hljs-attribute">print</span>(s) #{<span class="hljs-number">64</span>, <span class="hljs-number">1</span>, <span class="hljs-number">98</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">200</span>, <span class="hljs-number">78</span>, <span class="hljs-number">80</span>, <span class="hljs-number">56</span>, <span class="hljs-number">89</span>}<br><span class="hljs-attribute">s</span>.pop()<br><span class="hljs-attribute">print</span>(s) #{<span class="hljs-number">1</span>, <span class="hljs-number">98</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">200</span>, <span class="hljs-number">78</span>, <span class="hljs-number">80</span>, <span class="hljs-number">56</span>, <span class="hljs-number">89</span>}<br><span class="hljs-attribute">s</span>.clear()<br><span class="hljs-attribute">print</span>(s) #set()<br></code></pre></td></tr></tbody></table></figure>
+
+<h2 id="集合间的关系"><a href="#集合间的关系" class="headerlink" title="集合间的关系"></a>集合间的关系</h2><ul>
+<li>是否相等： == 或 !=</li>
+<li>一个集合是否为另一集合的子集： issubset<ul>
+<li>b是a的子集</li>
+</ul>
+</li>
+<li>一个集合是否为另一集合的超集： issuperset<ul>
+<li>a是b的超集</li>
+</ul>
+</li>
+<li>两集合是否无交集： isdisjoint</li>
+</ul>
+<figure class="highlight apache"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">s</span>={<span class="hljs-number">10</span>,<span class="hljs-number">20</span>,<span class="hljs-number">30</span>,<span class="hljs-number">40</span>}<br><span class="hljs-attribute">s2</span>={<span class="hljs-number">30</span>,<span class="hljs-number">40</span>,<span class="hljs-number">20</span>,<span class="hljs-number">10</span>}<br><span class="hljs-attribute">print</span>(s==s2) #True<br><span class="hljs-attribute">print</span>(s!=s2) #False<br></code></pre></td></tr></tbody></table></figure>
+<p>eg:</p>
+<figure class="highlight stylus"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs stylus">s1={<span class="hljs-number">10</span>,<span class="hljs-number">20</span>,<span class="hljs-number">30</span>,<span class="hljs-number">40</span>,<span class="hljs-number">50</span>,<span class="hljs-number">60</span>}<br>s2={<span class="hljs-number">10</span>,<span class="hljs-number">20</span>,<span class="hljs-number">30</span>,<span class="hljs-number">40</span>}<br>s3={<span class="hljs-number">10</span>,<span class="hljs-number">20</span>,<span class="hljs-number">90</span>}<br><span class="hljs-function"><span class="hljs-title">print</span><span class="hljs-params">(s2.issubset(s1)</span></span>)<br><span class="hljs-function"><span class="hljs-title">print</span><span class="hljs-params">(s3.issubset(s2)</span></span>)<br><span class="hljs-function"><span class="hljs-title">print</span><span class="hljs-params">(s1.issuperset(s2)</span></span>)<br><span class="hljs-function"><span class="hljs-title">print</span><span class="hljs-params">(s1.issuperset(s3)</span></span>)<br><span class="hljs-function"><span class="hljs-title">print</span><span class="hljs-params">(s2.isdisjoint(s3)</span></span>)<br>s4={<span class="hljs-number">100</span>,<span class="hljs-number">200</span>,<span class="hljs-number">300</span>}<br><span class="hljs-function"><span class="hljs-title">print</span><span class="hljs-params">(s2.isdisjoint(s4)</span></span>)<br> <span class="hljs-selector-id">#True</span><br> <span class="hljs-selector-id">#False</span><br> <span class="hljs-selector-id">#True</span><br> <span class="hljs-selector-id">#False</span><br> <span class="hljs-selector-id">#False</span><br> #True<br></code></pre></td></tr></tbody></table></figure>
+
+<h2 id="集合的数学操作"><a href="#集合的数学操作" class="headerlink" title="集合的数学操作"></a>集合的数学操作</h2><figure class="highlight stylus"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs stylus">s1={<span class="hljs-number">10</span>,<span class="hljs-number">20</span>,<span class="hljs-number">30</span>,<span class="hljs-number">40</span>}<br>s2={<span class="hljs-number">20</span>,<span class="hljs-number">30</span>,<span class="hljs-number">40</span>,<span class="hljs-number">50</span>,<span class="hljs-number">60</span>}<br><span class="hljs-function"><span class="hljs-title">print</span><span class="hljs-params">(s1.intersection(s2)</span></span>)<br><span class="hljs-function"><span class="hljs-title">print</span><span class="hljs-params">(s1 &amp; s2)</span></span> #{<span class="hljs-number">40</span>, <span class="hljs-number">20</span>, <span class="hljs-number">30</span>}<br><span class="hljs-function"><span class="hljs-title">print</span><span class="hljs-params">(s1.union(s2)</span></span>)<br><span class="hljs-function"><span class="hljs-title">print</span><span class="hljs-params">(s1 | s2)</span></span> #{<span class="hljs-number">40</span>, <span class="hljs-number">10</span>, <span class="hljs-number">50</span>, <span class="hljs-number">20</span>, <span class="hljs-number">60</span>, <span class="hljs-number">30</span>}<br><span class="hljs-function"><span class="hljs-title">print</span><span class="hljs-params">(s1.difference(s2)</span></span>)<br><span class="hljs-function"><span class="hljs-title">print</span><span class="hljs-params">(s1-s2)</span></span> #{<span class="hljs-number">10</span>}<br><span class="hljs-function"><span class="hljs-title">print</span><span class="hljs-params">(s1.symmetric_difference(s2)</span></span>)<br><span class="hljs-function"><span class="hljs-title">print</span><span class="hljs-params">(s1^s2)</span></span> #{<span class="hljs-number">50</span>, <span class="hljs-number">10</span>, <span class="hljs-number">60</span>}<br></code></pre></td></tr></tbody></table></figure>
+
+<h2 id="集合生成式"><a href="#集合生成式" class="headerlink" title="集合生成式"></a>集合生成式</h2><figure class="highlight apache"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">lst</span>=[i*i for i in range(<span class="hljs-number">6</span>)]<br><span class="hljs-attribute">print</span>(lst) #[<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">4</span>, <span class="hljs-number">9</span>, <span class="hljs-number">16</span>, <span class="hljs-number">25</span>]<br><span class="hljs-attribute">s</span>={i*i for i in range(<span class="hljs-number">6</span>)}<br><span class="hljs-attribute">print</span>(s) #{<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">4</span>, <span class="hljs-number">9</span>, <span class="hljs-number">16</span>, <span class="hljs-number">25</span>}<br></code></pre></td></tr></tbody></table></figure>
+
+
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/python/">#python</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Python学习5</div>
+      <div>https://sinky.top/2022/09/06/python学习5/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Sinky</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>September 6, 2022</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>Licensed under</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/09/05/python%E5%AD%A6%E4%B9%A04/" title="Python学习4">
+                        <span class="hidden-mobile">Python学习4</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
