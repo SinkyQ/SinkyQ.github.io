@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>python学习随笔记录</title>
+    <link href="/2022/09/11/python%E9%9A%8F%E7%AC%94%E8%AE%B0%E5%BD%95/"/>
+    <url>/2022/09/11/python%E9%9A%8F%E7%AC%94%E8%AE%B0%E5%BD%95/</url>
+    
+    <content type="html"><![CDATA[<ul><li>strip() 删除两边空格</li><li>lstrip() 删除左边空格</li><li>rstrip() 删除右边空格</li><li>replace(“ “,””) 删除所有空格</li><li>split() 先切分</li><li>join() 再拼接</li></ul><h1 id="1"><a href="#1" class="headerlink" title="1"></a>1</h1><p>描述</p><p>一串连续的数据用什么记录最合适，牛牛认为在Python中非列表（list）莫属了。现输入牛牛朋友们的名字，请使用list函数与split函数将它们封装成列表，再整个输出列表。</p><p>输入描述：</p><p>输入一串字符串，它们之间通过空格间隔开。</p><p>输出描述：</p><p>输出封装后的列表。</p><p>示例1</p><p>输入：<code>NiuNiu NiuMei NiuNeng</code></p><p>输出：<code>['NiuNiu', 'NiuMei', 'NiuNeng']</code></p><p>解：</p><figure class="highlight stylus"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs stylus">name=<span class="hljs-selector-tag">input</span>()<span class="hljs-selector-class">.split</span>(<span class="hljs-string">" "</span>)<br>name_list=<span class="hljs-built_in">list</span>()<br><span class="hljs-keyword">for</span> <span class="hljs-selector-tag">i</span> <span class="hljs-keyword">in</span> name:<br>    name_list<span class="hljs-selector-class">.append</span>(i)<br><span class="hljs-function"><span class="hljs-title">print</span><span class="hljs-params">(name_list)</span></span><br></code></pre></td></tr></tbody></table></figure>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>python</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Python学习5</title>
     <link href="/2022/09/06/python%E5%AD%A6%E4%B9%A05/"/>
     <url>/2022/09/06/python%E5%AD%A6%E4%B9%A05/</url>
@@ -278,9 +297,9 @@
     
     <tags>
       
-      <tag>pikachu</tag>
-      
       <tag>WEB</tag>
+      
+      <tag>pikachu</tag>
       
       <tag>SQL注入</tag>
       
@@ -320,9 +339,9 @@
     
     <tags>
       
-      <tag>pikachu</tag>
-      
       <tag>WEB</tag>
+      
+      <tag>pikachu</tag>
       
       <tag>RCE</tag>
       
@@ -385,9 +404,9 @@
     
     <tags>
       
-      <tag>pikachu</tag>
-      
       <tag>WEB</tag>
+      
+      <tag>pikachu</tag>
       
     </tags>
     
@@ -970,9 +989,9 @@
     
     <tags>
       
-      <tag>pikachu</tag>
-      
       <tag>WEB</tag>
+      
+      <tag>pikachu</tag>
       
     </tags>
     
