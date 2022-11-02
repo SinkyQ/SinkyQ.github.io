@@ -23,14 +23,12 @@
 <meta property="og:site_name" content="Sinky&#39;s Blog">
 <meta property="og:description" content="背景介绍某部门为了方便内部人员上传聚餐的活动图片，在某服务器上新增的图片上传功能在被安全工程师”墨者”检测发现漏洞后，程序员做了修复，【上一次漏洞地址】。”墨者”负责对修复后的系统做复测，然而发现还是存在高危漏洞。 实训目标  掌握常见图片类型的文件头内容； 掌握表单数据通过POST提交数据时，对数据的修改方法； 了解WebShell是什么及其作用； 了解PHP程序的WebShell脚本的执行原理">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://s2.loli.net/2022/11/02/M7xc82TtYQgX4PZ.jpg">
 <meta property="article:published_time" content="2022-11-02T03:29:18.354Z">
-<meta property="article:modified_time" content="2022-11-02T07:10:52.204Z">
+<meta property="article:modified_time" content="2022-11-02T07:18:33.796Z">
 <meta property="article:author" content="Sinky">
 <meta property="article:tag" content="墨者学院">
 <meta property="article:tag" content="文件上传">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://s2.loli.net/2022/11/02/M7xc82TtYQgX4PZ.jpg">
   
   
   
@@ -225,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.5k words
+          2.6k words
         
       </span>
     
@@ -236,7 +234,7 @@
         
         
         
-          21 mins
+          22 mins
         
       </span>
     
@@ -298,8 +296,9 @@
 </code></pre>
 <p>生成一句话图片木马，上传，bp拦截，修改<code>muma.jpg</code>后缀为php。</p>
 <p>上传成功，得到路径，使用蚁剑连接。</p>
-<p>蚁剑连接成功：</p>
-<p><img src="https://s2.loli.net/2022/11/02/M7xc82TtYQgX4PZ.jpg" srcset="/img/loading.gif" lazyload alt="0cd99a6948570995187c765d75f55a0.jpg"></p>
+<p>蚁剑连接成功：<br>（图床又有毛病了，直接手打吧）</p>
+<figure class="highlight awk"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs awk">url地址： ip:端口<span class="hljs-regexp">/uploads/mum</span>a.php<br>连接密码： woshimuma1<br>编码设置： UTF8<br>连接类型： PHP<br></code></pre></td></tr></tbody></table></figure>
+
 <p>找到key: <code>mozheece9dc52403a1a5249a9075e4de</code></p>
 <h1 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h1><h2 id="常见图片的头文件格式"><a href="#常见图片的头文件格式" class="headerlink" title="常见图片的头文件格式"></a>常见图片的头文件格式</h2><ol>
 <li><code>.jpeg</code><ol>
