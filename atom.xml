@@ -6,7 +6,7 @@
   <link href="https://sinky.top/atom.xml" rel="self"/>
   
   <link href="https://sinky.top/"/>
-  <updated>2022-11-08T05:37:23.775Z</updated>
+  <updated>2022-11-08T05:39:08.181Z</updated>
   <id>https://sinky.top/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://sinky.top/2022/11/08/Linux%E4%B8%8B%E6%90%AD%E5%BB%BAVulhub%E9%9D%B6%E5%9C%BA/"/>
     <id>https://sinky.top/2022/11/08/Linux%E4%B8%8B%E6%90%AD%E5%BB%BAVulhub%E9%9D%B6%E5%9C%BA/</id>
     <published>2022-11-08T05:28:58.536Z</published>
-    <updated>2022-11-08T05:37:23.775Z</updated>
+    <updated>2022-11-08T05:39:08.181Z</updated>
     
     <content type="html"><![CDATA[<pre><code class="hljs">apt-get update # 更新软件apt-get install -y apt-transport-https ca-certificates # 安装https协议、CA证书apt install docker.io # 安装dockerdocker -v # 查看是否安装成功，出现版本号说明安装成功systemctl start docker # 启动dockerdocker ps -a # 查看docker信息</code></pre><p><img src="https://s2.loli.net/2022/11/08/x1hjOgoqVbyk38l.png" alt="image.png"></p>]]></content>
     
