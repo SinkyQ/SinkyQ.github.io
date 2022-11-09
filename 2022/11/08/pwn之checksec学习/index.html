@@ -16,26 +16,23 @@
   <meta name="author" content="Sinky">
   <meta name="keywords" content="">
   
-    <meta name="description" content="环境：ubuntu16.04 0x00 vmtools解决坑点有点无语，笔者踩坑无数，没想到有一天在重装vmtool的时候还能…… 正常安装vmtool后仍旧无法与主机进行复制粘贴，关掉虚拟机查看虚拟机设置。   建立的共享文件夹要设置属性为共享式。 搞完之后……就可以了。 此处贴一个跟我一样的暴躁博主教程：https:&#x2F;&#x2F;blog.csdn.net&#x2F;zerolity&#x2F;article&#x2F;detail">
+    <meta name="description" content="我忘记了之前有没有写关于这个的笔记，反正我都不记得了，所以再学一遍！ checksec主要用于查看题目开启了哪些保护机制。 Arch程序架构信息，判断是64位还是32位 RELRO主要针对GOT改写的攻击方式，分为Partial RELRO和Full RELRO。 Partial RELRO：表示got表可写，容易受到攻击 Full RELRO：表示got表不可写，只读，无法被覆盖，会增加程序启动">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ubuntu16.04重装之各种环境搭建">
-<meta property="og:url" content="https://sinky.top/2022/08/09/ubuntu%E9%87%8D%E8%A3%85%E4%B9%8B%E5%90%84%E7%A7%8D%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/index.html">
+<meta property="og:title" content="pwn之checksec学习">
+<meta property="og:url" content="https://sinky.top/2022/11/08/pwn%E4%B9%8Bchecksec%E5%AD%A6%E4%B9%A0/index.html">
 <meta property="og:site_name" content="Sinky&#39;s Blog">
-<meta property="og:description" content="环境：ubuntu16.04 0x00 vmtools解决坑点有点无语，笔者踩坑无数，没想到有一天在重装vmtool的时候还能…… 正常安装vmtool后仍旧无法与主机进行复制粘贴，关掉虚拟机查看虚拟机设置。   建立的共享文件夹要设置属性为共享式。 搞完之后……就可以了。 此处贴一个跟我一样的暴躁博主教程：https:&#x2F;&#x2F;blog.csdn.net&#x2F;zerolity&#x2F;article&#x2F;detail">
+<meta property="og:description" content="我忘记了之前有没有写关于这个的笔记，反正我都不记得了，所以再学一遍！ checksec主要用于查看题目开启了哪些保护机制。 Arch程序架构信息，判断是64位还是32位 RELRO主要针对GOT改写的攻击方式，分为Partial RELRO和Full RELRO。 Partial RELRO：表示got表可写，容易受到攻击 Full RELRO：表示got表不可写，只读，无法被覆盖，会增加程序启动">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://i.loli.net/2020/10/10/zOQ1jZT5SYip47N.png">
-<meta property="og:image" content="https://i.loli.net/2020/10/10/9pYJxdtsKFEUy4M.png">
-<meta property="og:image" content="https://i.loli.net/2020/10/10/zGq57OjUeWcxXnM.png">
-<meta property="article:published_time" content="2022-08-09T03:49:00.287Z">
-<meta property="article:modified_time" content="2022-11-08T08:35:45.635Z">
+<meta property="article:published_time" content="2022-11-08T08:37:25.377Z">
+<meta property="article:modified_time" content="2022-11-09T01:19:01.891Z">
 <meta property="article:author" content="Sinky">
-<meta property="article:tag" content="环境搭建">
+<meta property="article:tag" content="pwn">
+<meta property="article:tag" content="checksec">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://i.loli.net/2020/10/10/zOQ1jZT5SYip47N.png">
   
   
   
-  <title>ubuntu16.04重装之各种环境搭建 - Sinky&#39;s Blog</title>
+  <title>pwn之checksec学习 - Sinky&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -203,7 +200,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="ubuntu16.04重装之各种环境搭建"></span>
+            <span id="subtitle" data-typed-text="pwn之checksec学习"></span>
           
         </div>
 
@@ -214,8 +211,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-08-09 11:49" pubdate>
-          August 9, 2022 am
+        <time datetime="2022-11-08 16:37" pubdate>
+          November 8, 2022 pm
         </time>
       </span>
     
@@ -226,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.4k words
+          979 words
         
       </span>
     
@@ -237,7 +234,7 @@
         
         
         
-          29 mins
+          9 mins
         
       </span>
     
@@ -275,109 +272,33 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">ubuntu16.04重装之各种环境搭建</h1>
+            <h1 style="display: none">pwn之checksec学习</h1>
             
             
               <div class="markdown-body">
                 
-                <p>环境：ubuntu16.04</p>
-<h1 id="0x00-vmtools解决坑点"><a href="#0x00-vmtools解决坑点" class="headerlink" title="0x00 vmtools解决坑点"></a>0x00 vmtools解决坑点</h1><p>有点无语，笔者踩坑无数，没想到有一天在重装vmtool的时候还能……</p>
-<p>正常安装vmtool后仍旧无法与主机进行复制粘贴，关掉虚拟机查看虚拟机设置。</p>
-<p><img src="https://i.loli.net/2020/10/10/zOQ1jZT5SYip47N.png" srcset="/img/loading.gif" lazyload alt="捕获.PNG"></p>
-<p><img src="https://i.loli.net/2020/10/10/9pYJxdtsKFEUy4M.png" srcset="/img/loading.gif" lazyload alt="捕获.PNG"></p>
-<p>建立的共享文件夹要设置属性为共享式。</p>
-<p>搞完之后……就可以了。</p>
-<p>此处贴一个跟我一样的暴躁博主教程：<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/zerolity/article/details/81206476">https://blog.csdn.net/zerolity/article/details/81206476</a></p>
-<h1 id="0x01-pwntools安装"><a href="#0x01-pwntools安装" class="headerlink" title="0x01 pwntools安装"></a>0x01 pwntools安装</h1><p>1.安装python2.7和pip</p>
-<p><code>sudo apt-get install python2.7 python-pip python-dev git libssl-dev libffi-dev build-essential </code></p>
-<p>2.升级pip：<code>sudo pip install --upgrade pip</code></p>
-<p>更改pip的配置文件/usr/bin/pip</p>
-<p>更改为：</p>
-<p><img src="https://i.loli.net/2020/10/10/zGq57OjUeWcxXnM.png" srcset="/img/loading.gif" lazyload alt="捕获.PNG"></p>
-<p>3.安装pwntools：<code>sudo pip install pwntools</code></p>
-<p>报错超时，换个阿里源就好了。</p>
-<p>3.1 更换阿里源</p>
-<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo su<br><span class="hljs-built_in">cd</span> /etc/apt <span class="hljs-comment">#切换到apt源文件</span><br><span class="hljs-built_in">mv</span> source.list sources.list_bak <span class="hljs-comment">#备份源文件</span><br>vim sources.list <span class="hljs-comment">#新建一个，直接把下面的内容copy进去</span><br></code></pre></td></tr></tbody></table></figure>
-
-<p>copy的内容：</p>
-<pre><code class="#">deb-src http://archive.ubuntu.com/ubuntu xenial main restricted #Added by software-properties
-deb http://mirrors.aliyun.com/ubuntu/ xenial main restricted
-deb-src http://mirrors.aliyun.com/ubuntu/ xenial main restricted multiverse universe #Added by software-properties
-deb http://mirrors.aliyun.com/ubuntu/ xenial-updates main restricted
-deb-src http://mirrors.aliyun.com/ubuntu/ xenial-updates main restricted multiverse universe #Added by software-properties
-deb http://mirrors.aliyun.com/ubuntu/ xenial universe
-deb http://mirrors.aliyun.com/ubuntu/ xenial-updates universe
-deb http://mirrors.aliyun.com/ubuntu/ xenial multiverse
-deb http://mirrors.aliyun.com/ubuntu/ xenial-updates multiverse
-deb http://mirrors.aliyun.com/ubuntu/ xenial-backports main restricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ xenial-backports main restricted universe multiverse #Added by software-properties
-deb http://archive.canonical.com/ubuntu xenial partner
-deb-src http://archive.canonical.com/ubuntu xenial partner
-deb http://mirrors.aliyun.com/ubuntu/ xenial-security main restricted
-deb-src http://mirrors.aliyun.com/ubuntu/ xenial-security main restricted multiverse universe #Added by software-properties
-deb http://mirrors.aliyun.com/ubuntu/ xenial-security universe
-deb http://mirrors.aliyun.com/ubuntu/ xenial-security multiverse```
-
-3.2 保存配置后，更新配置：`sudo apt-get update`
-
-之后再重新步骤三的安装命令即可。
-
-4.测试
-
-
-![捕获.PNG](https://i.loli.net/2020/10/10/7wzfu32HFRiCXap.png)
-
-无报错，返回了'1\xc0'，成功！
-
-所以为啥第一次自己去安装pwntools的时候费了很多力气呢，感觉那时候踩坑无数到崩溃……
-
-# 0x02 GDB及三个插件的安装
-在终端输入gdb，发现ubuntu16自带gdb，那我就直接安装插件得了。
-* peda:做逆向破解
-* gef：用于debug最好
-* gdbinit：简单版
-
-用git下载插件：
-`git clone https://github.com/gatieme/GdbPlugins.git ~/GdbPlugins`
-
-没有git的下载：`apt-get install git`
-
-在目录GdbPlugin下可以看见三个插件，想用哪个插件就可以在该目录下输入对应命令：
-
-    echo "source ~/GdbPlugins/peda/peda.py" &gt; ~/.gdbinit 
-    echo "source ~/GdbPlugins/gef/gef.py" &gt; ~/.gdbinit 
-    echo "source ~/GdbPlugins/gdbinit/gdbinit" &gt; ~/.gdbinit  
-
-
-# 0x03 安装checksec
-
-    git clone https://github.com/slimm609/checksec.sh.git
-    cd checksec.sh
-
-
-目录下的checksec本来想建立一个软链接过去/usr/local/bin里，但是一直打不开，于是直接用cp命令把checksec拷贝过去了。在/usr/local/bin能够打开checksec，才算成功。
-
-(again次装：在cd checksec.sh之后就能用了，不用建软链接，我真的很异或)
-
-# 0x04 安装docker+pikachu靶场
-#### 安装docker
-* 先卸载可能存在的旧版本： `$ sudo apt-get remove docker docker-engine docker-ce docker.io`
-* 更新apt包索引: `$ sudo apt-get update`
-* 安装以下包以使apt可以通过HTTPS使用存储库（repository）: `$ sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common`
-* 添加Docker官方的GPG密钥： `$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -`
-* 使用下面的命令来设置stable存储库： `$ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"`
-* 再更新一下apt包索引: `$ sudo apt-get update`
-* 安装最新版本的Docker CE：`$ sudo apt-get install -y docker-ce`
-* 查看docker服务是否启动： `$ systemctl status docker`
-* 若未启动，则启动docker服务: `$ sudo systemctl start docker`
-* 经典的hello world： `$ sudo docker run hello-world`
-
-
-![捕获.PNG](https://i.loli.net/2020/10/13/kofhug8n2VNj1bx.png)
-
-如图输出则表示docker安装成功。
-#### pikachu靶场
+                <p>我忘记了之前有没有写关于这个的笔记，反正我都不记得了，所以再学一遍！</p>
+<p>checksec主要用于查看题目开启了哪些保护机制。</p>
+<h1 id="Arch"><a href="#Arch" class="headerlink" title="Arch"></a>Arch</h1><p>程序架构信息，判断是64位还是32位</p>
+<h1 id="RELRO"><a href="#RELRO" class="headerlink" title="RELRO"></a>RELRO</h1><p>主要针对GOT改写的攻击方式，分为Partial RELRO和Full RELRO。</p>
+<p>Partial RELRO：表示got表可写，容易受到攻击</p>
+<p>Full RELRO：表示got表不可写，只读，无法被覆盖，会增加程序启动时间</p>
+<h1 id="Stack-canary"><a href="#Stack-canary" class="headerlink" title="Stack-canary"></a>Stack-canary</h1><p>Canary翻译为金丝雀，应用于在栈保护上是在初始化一个栈帧时在栈底设置一个随机的canary值，当函数返回时监测canary是否改变，以此判断stack/buffer overflow是否发生，改变则说明栈溢出发生，程序走另一个流程结束一面漏洞利用成功，因此我们需要获取canary值或防止出发stack_chk_fall函数。</p>
+<pre><code class="hljs">gcc -fno-stack-protector -o hello test.c   //禁用栈保护
+gcc -fstack-protector -o hello test.c    //启用堆栈保护，不过只为局部变量中含有 char 数组的函数插入保护代码
+gcc -fstack-protector-all -o hello test.c  //启用堆栈保护，为所有函数插入保护代码
 </code></pre>
+<h1 id="NX"><a href="#NX" class="headerlink" title="NX"></a>NX</h1><p>NX enable 可不执行内存</p>
+<p>最常见方法为ROP,利用栈溢出在栈上布置地址，每个内存地址对应一个gadget，利用ret等指令进行衔接来执行某项功能，最终达到pwn掉程序的目的。</p>
+<p>gcc默认开启NX选项。</p>
+<p>这个保护开启就是意味着栈中数据没有执行权限，如此一来, 当攻击者在堆栈上部署自己的 shellcode 并触发时, 只会直接造成程序的崩溃，但是可以利用rop这种方法绕过</p>
+<h1 id="PIE"><a href="#PIE" class="headerlink" title="PIE"></a>PIE</h1><p>位置无关可执行文件，地址空间分布随机化</p>
+<p>与ASLR类似，将程序运行时的对堆栈以及共享库的加载地址随机化，而PIE技术则在编译时将程序编译为位置无关，即程序运行时各个段加载的虚拟地址也是在装载时才确定，在PIE和ASLR同时开启时攻击者将对程序的内存布局一无所知，got表方法也难以进行，无法获取程序.got表的虚地址。</p>
+<pre><code class="hljs">0 - 表示关闭进程地址空间随机化。
+1 - 表示将mmap的基址，stack和vdso页面随机化。
+2 - 表示在1的基础上增加栈（heap）的随机化。
+</code></pre>
+<p>（据说除了新版checksec，但是我没安装呢）</p>
 
                 
               </div>
@@ -390,7 +311,9 @@ deb http://mirrors.aliyun.com/ubuntu/ xenial-security multiverse```
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">#环境搭建</a>
+        <a href="/tags/pwn/">#pwn</a>
+      
+        <a href="/tags/checksec/">#checksec</a>
       
     </div>
   
@@ -402,8 +325,8 @@ deb http://mirrors.aliyun.com/ubuntu/ xenial-security multiverse```
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>ubuntu16.04重装之各种环境搭建</div>
-      <div>https://sinky.top/2022/08/09/ubuntu重装之各种环境搭建/</div>
+      <div>pwn之checksec学习</div>
+      <div>https://sinky.top/2022/11/08/pwn之checksec学习/</div>
     </div>
     <div class="license-meta">
       
@@ -415,7 +338,7 @@ deb http://mirrors.aliyun.com/ubuntu/ xenial-security multiverse```
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>August 9, 2022</div>
+          <div>November 8, 2022</div>
         </div>
       
       
@@ -445,18 +368,12 @@ deb http://mirrors.aliyun.com/ubuntu/ xenial-security multiverse```
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/08/09/%E5%88%9D%E8%AF%86Meterpreter/" title="初识Meterpreter">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">初识Meterpreter</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/08/09/UAF%E6%BC%8F%E6%B4%9E%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0/" title="UAF漏洞简单学习">
-                        <span class="hidden-mobile">UAF漏洞简单学习</span>
+                      <a href="/2022/11/08/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-Mary_Morton/" title="攻防世界-Mary_Morton">
+                        <span class="hidden-mobile">攻防世界-Mary_Morton</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
