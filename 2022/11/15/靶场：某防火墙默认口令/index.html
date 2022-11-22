@@ -1,0 +1,633 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Sinky">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="背景介绍安全工程师”墨者”对某公司进行授权测试时，扫描公网IP时发现当前公司在网络边界部署了某型号防火墙，并且公网可以访问防火墙的WEB页面。 实训目标  掌握查看当前设备类型的方法； 了解网络（安全）设备的登录控制方式； 了解网络（安全）设备的默认口令获取方式； 了解当前型号防火墙的不同账户的区别； 了解在网络信息安全中的权限最小化、权限分离作用；  解题方向 找到防火墙的默认口令进行登录。 解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="靶场：某防火墙默认口令">
+<meta property="og:url" content="https://sinky.top/2022/11/15/%E9%9D%B6%E5%9C%BA%EF%BC%9A%E6%9F%90%E9%98%B2%E7%81%AB%E5%A2%99%E9%BB%98%E8%AE%A4%E5%8F%A3%E4%BB%A4/index.html">
+<meta property="og:site_name" content="Sinky&#39;s Blog">
+<meta property="og:description" content="背景介绍安全工程师”墨者”对某公司进行授权测试时，扫描公网IP时发现当前公司在网络边界部署了某型号防火墙，并且公网可以访问防火墙的WEB页面。 实训目标  掌握查看当前设备类型的方法； 了解网络（安全）设备的登录控制方式； 了解网络（安全）设备的默认口令获取方式； 了解当前型号防火墙的不同账户的区别； 了解在网络信息安全中的权限最小化、权限分离作用；  解题方向 找到防火墙的默认口令进行登录。 解">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-11-15T05:53:43.820Z">
+<meta property="article:modified_time" content="2022-11-15T06:38:12.331Z">
+<meta property="article:author" content="Sinky">
+<meta property="article:tag" content="墨者学院，靶场，防火墙">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>靶场：某防火墙默认口令 - Sinky&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"sinky.top","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.2.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Sinky's Blog" type="application/atom+xml">
+</head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Sinky</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="靶场：某防火墙默认口令"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-11-15 13:53" pubdate>
+          November 15, 2022 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.6k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          14 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">靶场：某防火墙默认口令</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h1><p>安全工程师”墨者”对某公司进行授权测试时，扫描公网IP时发现当前公司在网络边界部署了某型号防火墙，并且公网可以访问防火墙的WEB页面。</p>
+<p>实训目标</p>
+<ol>
+<li>掌握查看当前设备类型的方法；</li>
+<li>了解网络（安全）设备的登录控制方式；</li>
+<li>了解网络（安全）设备的默认口令获取方式；</li>
+<li>了解当前型号防火墙的不同账户的区别；</li>
+<li>了解在网络信息安全中的权限最小化、权限分离作用；</li>
+</ol>
+<p>解题方向</p>
+<p>找到防火墙的默认口令进行登录。</p>
+<h1 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h1><p>题目给了一个登录界面，我注意到题目标题：天清汉马，那就百度搜了一下天清汉马防火墙的默认账号密码</p>
+<p>账号：useradmin</p>
+<p>密码：venus.user</p>
+<p>然后……就拿到key了！</p>
+<pre><code class="hljs">KEY: mozhedf5bfbb87e52d81d6c658bda251
+</code></pre>
+<p>说实话这不值得我花三个币！！！</p>
+<h1 id="拓展-防火墙"><a href="#拓展-防火墙" class="headerlink" title="拓展 防火墙"></a>拓展 防火墙</h1><p>防火墙是指设置在不同网络或网络安全域之间的一系列部件的组合，它可以通过监测、限制、更改跨越防火墙的数据流，尽可能地对外部屏蔽网络内部的信息、结构和运行状况，以此来实现网络的安全保护，在逻辑上，防火墙是一个分离器，一个限制器，也是一个分析器，有效的监控了内部网和Internet之间的任何活动，保证了内部网络的安全。</p>
+<p>防火墙，一个硬件设备或软件系统，主要架设在内部网络和外部网络间，为了防止外界恶意程序对内部系统的破坏，或者组织内部重要信息向外流出，有双向监督的功能。</p>
+<h2 id="防火墙的分类及原理"><a href="#防火墙的分类及原理" class="headerlink" title="防火墙的分类及原理"></a>防火墙的分类及原理</h2><h3 id="包过滤技术"><a href="#包过滤技术" class="headerlink" title="包过滤技术"></a>包过滤技术</h3><p>包过滤技术是一种简单、有效的安全控制技术，它工作在网络层，通过在为网络间相互连接的设备上加载允许、禁止来自某些特定的源地址、目的地址、TCP端口号等规则，对通过设备的数据包进行检查，限制数据包进出内部网络</p>
+<p>包过滤技术的优点是对用户透明，传输性能高，但由于安全控制层次在网络层、传输层，安全控制力度也只限于源地址、目的地址和端口号，因而只能进行较为初步的安全控制。</p>
+<h3 id="应用代理技术"><a href="#应用代理技术" class="headerlink" title="应用代理技术"></a>应用代理技术</h3><p>应用代理防火墙工作在OSI的第七层，它通过检查所有应用层的信息包，并将检查的内容信息放入决策过程，从而提高网络的安全性。</p>
+<p>应用网关防火墙是通过打破客户机/服务器模式实现的。每个客户机/服务器通信需要两个二连接：从客户端到防火墙，从防火墙到服务器。</p>
+<p>另外，每个代理需要一个不同的应用进程，或一个后台运行的服务程序，对每个新的应用必须添加针对此应用的服务程序，否则不能使用该服务</p>
+<p>所以，应用网关防火墙具有可伸缩性差的缺点。</p>
+<h3 id="状态检测技术"><a href="#状态检测技术" class="headerlink" title="状态检测技术"></a>状态检测技术</h3><p>状态检测防火墙工作在OSI的第二至四层，采用状态检测包过滤的技术，是传统包过滤功能扩展而来。状态检测防火墙在网络层有一个检查引擎截获数据包并抽取出与应用层状态有关的信息，并以此为依据决定对该连接是接受还是拒绝，这种技术提供了高度安全的解决方案，同事具有较好的适应性和扩展性。</p>
+<p>状态检测防火墙基本保持了简单包过滤防火墙的优点，性能较好，同时在防火墙的核心部分建立状态连接表，维护了连接，将进出昂罗的数据当成一个个的时间来处理，主要特点是由于缺乏对应用层协议的深度检测功能，无法彻底识别数据包中大量的垃圾邮件、广告以及木马程序等。</p>
+<h3 id="完全内容检测技术"><a href="#完全内容检测技术" class="headerlink" title="完全内容检测技术"></a>完全内容检测技术</h3><p>完全内容检测技术防火墙综合状态检测与应用代理技术，并基于多层检测架构，把防病毒、内容过滤，应用识别等功能整合到防火墙中，还包括IPS功能，在网络边界实施OSI第七层的内容扫描，实现了实时在网络边缘部署病毒防护、内容过滤等应用层服务措施。</p>
+<p>完全内容检测技术防火墙可以检测整个数据包内容，根据需要建立连接状态表，网络层保护强，应用层控制细等有点，但由于功能集成度高，对产品硬件要求较高</p>
+<h2 id="防火墙作用"><a href="#防火墙作用" class="headerlink" title="防火墙作用"></a>防火墙作用</h2><ul>
+<li>保护脆弱的服务：过滤不安全服务，提高网络安全减少主机风险</li>
+<li>控制对系统的访问</li>
+<li>集中的安全管理：在防火墙定义的安全规则可以运行于整个内部网络系统，而无需在内部网每台机器上分别设立安全策略</li>
+<li>增强的保密性：可以阻止攻击者获取攻击网络系统的有用信息</li>
+<li>记录和统计网络利用数据以及非法使用数据</li>
+<li>策略执行：提供了指定和执行网络安全策略的手段。</li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%A2%A8%E8%80%85%E5%AD%A6%E9%99%A2%EF%BC%8C%E9%9D%B6%E5%9C%BA%EF%BC%8C%E9%98%B2%E7%81%AB%E5%A2%99/">#墨者学院，靶场，防火墙</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>靶场：某防火墙默认口令</div>
+      <div>https://sinky.top/2022/11/15/靶场：某防火墙默认口令/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Sinky</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>November 15, 2022</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>Licensed under</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/11/21/Kali%E5%AE%89%E8%A3%85vulhub/" title="Kali安装vulhub">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Kali安装vulhub</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/11/10/%E6%A0%88%E6%BA%A2%E5%87%BA%E5%8E%9F%E7%90%86%E5%8F%8A%E5%88%A9%E7%94%A8%E5%AD%A6%E4%B9%A0(%E5%BE%85%E8%A1%A5%E5%85%85)/" title="栈溢出原理及利用学习">
+                        <span class="hidden-mobile">栈溢出原理及利用学习</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

