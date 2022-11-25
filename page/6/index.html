@@ -226,6 +226,86 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2022/08/09/UAF%E6%BC%8F%E6%B4%9E%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0/" target="_self">
+          UAF漏洞简单学习
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/08/09/UAF%E6%BC%8F%E6%B4%9E%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0/" target="_self">
+        <div>
+          UAF漏洞是一种内存破坏漏洞，通常存在于浏览器中。 产生原因uaf漏洞成因：一块堆内存被释放之后又被使用。再一次被使用是指：指针存在（悬垂指针被引用）引用结果不可预测。 由于大多数堆内存都是C++对象，所以利用的核心思路即：分配堆去占坑，占的坑中又自己构造的虚表。 分析方式分析uaf漏洞的要点在于弄清楚对象是在哪里被分配，被释放，被重用。 uaf异常触发点：对已释放的对象进行操作导致的异常，所以异
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-08-09 11:48" pubdate>
+              2022-08-09
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/chrome/">#chrome</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/08/09/SQL%E5%AD%A6%E4%B9%A0%E4%B8%8E%E6%95%B4%E7%90%86/" target="_self">
+          SQL学习与整理
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/08/09/SQL%E5%AD%A6%E4%B9%A0%E4%B8%8E%E6%95%B4%E7%90%86/" target="_self">
+        <div>
+          0x01 SQL简介SQL（结构化查询语言）用于访问和操作数据库中的数据的标准数据库编程语言。 SQL是关系数据库系统的标准语言，是一种ANSI标准的计算机语言。 要创建一个显示数据库中的数据的网站，需要：  一个RDBMS数据库程序（MS Access SQL Server MySQL） 使用服务器端脚本语言（PHP ASP） 使用SQL来获取所需的数据 使用HTML&#x2F;CSS来设置页面的样式
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-08-09 11:47" pubdate>
+              2022-08-09
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">#学习记录</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2022/08/09/MIPS%E6%9E%B6%E6%9E%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" target="_self">
           MIPS架构学习笔记
         </a>
@@ -546,95 +626,11 @@
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-int_overflow/" target="_self">
-          攻防世界 int_overflow
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-int_overflow/" target="_self">
-        <div>
-          checksec 查看保护机制 可直接使用栈溢出；基地址不变化；栈中数据有执行权限； 分析思路32位文件，按流程查看程序，main()无突破点。 进入login(),限制username长度最大0x19;限制passwd长度最大0x199； 进入check_passwd()，v3存储passwd长度，满足if语句3&lt;v3&lt;&#x3D;8可跳到else语句。  此处有突破点：v3类型为unsign
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-08-09 11:17" pubdate>
-              2022-08-09
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/ctf/">#ctf</a>
-            
-              <a href="/tags/pwn/">#pwn</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-guess_num/" target="_self">
-          攻防世界 guess_num
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/08/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-guess_num/" target="_self">
-        <div>
-          查看关键main()函数，发现gets(&amp;v11)存在栈溢出  进入sub_C3E()函数，确定满足条件即可cat flag。  题目要求，先输入name,然后连续十次猜对数字得到flag, 进入V11,在栈中占0x20，可以覆盖到seed，使seed[0]已知，后使输入的v8等于随机数v10,拿到flag。  注：（1）在调用rang()时，先利用srand()设好随机数种子，若未设置，
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-08-09 11:17" pubdate>
-              2022-08-09
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/ctf/">#ctf</a>
-            
-              <a href="/tags/pwn/">#pwn</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/5/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/#board">4</a><a class="page-number" href="/page/5/#board">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/#board">7</a><a class="extend next" rel="next" href="/page/7/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/5/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/#board">4</a><a class="page-number" href="/page/5/#board">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/#board">7</a><a class="page-number" href="/page/8/#board">8</a><a class="extend next" rel="next" href="/page/7/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 

