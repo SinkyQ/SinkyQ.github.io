@@ -30,8 +30,10 @@
 <meta property="og:image" content="https://s2.loli.net/2022/11/30/waJG7Eqj5Wdo2KV.png">
 <meta property="og:image" content="https://s2.loli.net/2022/11/30/ZxpkOcD2PjitIzH.png">
 <meta property="og:image" content="https://s2.loli.net/2022/11/30/WAOCXHulKFnpz1R.png">
+<meta property="og:image" content="https://s2.loli.net/2022/12/01/GzgH6NE41opeYxk.png">
+<meta property="og:image" content="https://s2.loli.net/2022/12/01/H9yl7vRUsnrSXiB.png">
 <meta property="article:published_time" content="2022-11-30T06:46:31.756Z">
-<meta property="article:modified_time" content="2022-11-30T09:10:50.762Z">
+<meta property="article:modified_time" content="2022-12-01T06:03:43.156Z">
 <meta property="article:author" content="Sinky">
 <meta property="article:tag" content="CTF">
 <meta property="article:tag" content="攻防世界">
@@ -92,9 +94,9 @@
 
 
   
-<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Sinky's Blog" type="application/atom+xml">
-
+<meta name="generator" content="Hexo 6.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Sinky's Blog" type="application/atom+xml">
 </head>
 
 
@@ -232,7 +234,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1k words
+          1.5k words
         
       </span>
     
@@ -243,7 +245,7 @@
         
         
         
-          9 mins
+          13 mins
         
       </span>
     
@@ -335,6 +337,16 @@ print(result)
 </code></pre>
 <p><img src="https://s2.loli.net/2022/11/30/WAOCXHulKFnpz1R.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
 <p>这他妈谁能想到，请暴打出题人！！！！</p>
+<h1 id="Miscellaneous-200"><a href="#Miscellaneous-200" class="headerlink" title="Miscellaneous-200"></a>Miscellaneous-200</h1><p><img src="https://s2.loli.net/2022/12/01/GzgH6NE41opeYxk.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p>题目打开就是这，百度了一下有没有类似的加密方式，没找到</p>
+<p>说实话，看到这个255，255，255.本人下意识就想到了那个RGB颜色数值，但是还是不得其解，遂看wp。</p>
+<p>还原图片：</p>
+<figure class="highlight stylus"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs stylus">from ast import literal_eval<br>from PIL import Image<br>f = <span class="hljs-built_in">open</span>(<span class="hljs-string">'C:\\flag.txt'</span>, <span class="hljs-string">'r'</span>)<br>corl = <span class="hljs-selector-attr">[literal_eval(line) for line in f.readlines()]</span><br>f<span class="hljs-selector-class">.close</span>()<br><span class="hljs-selector-tag">img</span> = Image<span class="hljs-selector-class">.new</span>(<span class="hljs-string">'RGB'</span>, (<span class="hljs-number">270</span>, <span class="hljs-number">270</span>), <span class="hljs-string">'#ffffff'</span>)<br>k=<span class="hljs-number">0</span><br><span class="hljs-keyword">for</span> <span class="hljs-selector-tag">i</span> <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">246</span>):<br>   <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">246</span>):<br>      <span class="hljs-selector-tag">img</span><span class="hljs-selector-class">.putpixel</span> (<span class="hljs-selector-attr">[i , j]</span>, corl<span class="hljs-selector-attr">[k]</span>)<br>      k=k+<span class="hljs-number">1</span><br><span class="hljs-selector-tag">img</span><span class="hljs-selector-class">.save</span>(<span class="hljs-string">"flag.png"</span>)<br></code></pre></td></tr></tbody></table></figure>
+
+<p><img src="https://s2.loli.net/2022/12/01/H9yl7vRUsnrSXiB.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p>这是什么扭曲的文字，嗯？</p>
+<pre><code class="hljs">flag{ youc@n'tseeme }
+</code></pre>
 
                 
               </div>

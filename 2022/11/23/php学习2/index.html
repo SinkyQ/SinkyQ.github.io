@@ -24,7 +24,7 @@
 <meta property="og:description" content="phpphp是一种运行在服务器端的脚本语言，可以嵌入到html中 php代码标记ASP标记： &lt;%php代码 %&gt; # 已弃用 短标记： &lt;?php代码?&gt; # 已弃用  脚本标记： &lt;script language&#x3D;&quot;php&quot;&gt;php代码&lt;&#x2F;script&gt; ---------------------- 例子： &lt;html&gt;     &amp;l">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-11-23T01:56:57.868Z">
-<meta property="article:modified_time" content="2022-11-30T06:18:14.244Z">
+<meta property="article:modified_time" content="2022-12-01T08:40:08.970Z">
 <meta property="article:author" content="Sinky">
 <meta property="article:tag" content="php">
 <meta name="twitter:card" content="summary_large_image">
@@ -82,9 +82,9 @@
 
 
   
-<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Sinky's Blog" type="application/atom+xml">
-
+<meta name="generator" content="Hexo 6.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Sinky's Blog" type="application/atom+xml">
 </head>
 
 
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.6k words
+          4.4k words
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          31 mins
+          37 mins
         
       </span>
     
@@ -467,6 +467,39 @@ lsset() # 判断数据存储的变量本身是否存在,存储
 <p>乘 <code>*</code></p>
 <p>除 <code>/</code></p>
 <p>取余 <code>%</code></p>
+<figure class="highlight awk"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-variable">$a</span>=<span class="hljs-variable">$b</span>=<span class="hljs-number">10</span>; <span class="hljs-regexp">//</span>连贯赋值运算：俩变量不同<br><span class="hljs-variable">$c</span>=<span class="hljs-number">0</span>;<br>var_dump(<span class="hljs-variable">$a</span>/<span class="hljs-number">2</span>);<br></code></pre></td></tr></tbody></table></figure>
+<h2 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h2><p>比较两个数据大小<br><code>&gt;、&gt;=、&lt;、&lt;=、==、!=、===、!==</code></p>
+<p><code>===</code> 全等于，左右大小和类型都相同。</p>
+<p><code>!==</code> 不全等于，只有大小或者类型不同。</p>
+<pre><code class="hljs">$a='123';
+$b=123;
+var_dump($a==$b); // True
+var_dump($a===$b);// False
+</code></pre>
+<h2 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h2><ul>
+<li>逻辑与：<code>&amp;&amp;</code> 全真为真</li>
+<li>逻辑或：<code>||</code> 一真为真</li>
+<li>逻辑非：<code>!</code> 取反</li>
+</ul>
+<figure class="highlight awk"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-variable">$a</span>=<span class="hljs-string">'weekend'</span>;<br><span class="hljs-variable">$b</span>=<span class="hljs-string">'goods'</span>;<br>var_dump(<span class="hljs-variable">$a</span> &amp;&amp; <span class="hljs-variable">$b</span>);<span class="hljs-regexp">//</span> True<br>var_dump(<span class="hljs-variable">$a</span> || <span class="hljs-variable">$b</span>);<span class="hljs-regexp">//</span> True<br>var_dump(!(<span class="hljs-variable">$b</span>==<span class="hljs-string">'good'</span>));<span class="hljs-regexp">//</span> True<br></code></pre></td></tr></tbody></table></figure>
+
+<p>逻辑与和逻辑或又称为短路运算，若第一个表达式结果已经满足条件，那么就不会运行逻辑运算符后面的表达式。</p>
+<h2 id="连接运算符"><a href="#连接运算符" class="headerlink" title="连接运算符"></a>连接运算符</h2><p>将字符串拼接：<code>.</code><br>    .= 复合运算，将左右连接，然后重新赋值给左边。</p>
+<figure class="highlight awk"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-variable">$a</span>=<span class="hljs-string">'hello '</span>;<br><span class="hljs-variable">$b</span>=<span class="hljs-number">123</span>;<br>echo <span class="hljs-variable">$a</span> . <span class="hljs-variable">$b</span>,<span class="hljs-string">'&lt;hr/&gt;'</span>; <span class="hljs-regexp">//</span>将a和b连接起来<br><span class="hljs-variable">$a</span> .= <span class="hljs-variable">$b</span>; <span class="hljs-regexp">//</span><span class="hljs-variable">$a</span>=<span class="hljs-variable">$a</span> . <span class="hljs-variable">$b</span><br>echo <span class="hljs-variable">$a</span>;<br></code></pre></td></tr></tbody></table></figure>
+
+<h2 id="错误抑制符"><a href="#错误抑制符" class="headerlink" title="错误抑制符"></a>错误抑制符</h2><p>在php中一些错误可以提前预知，但错误无法避免，又不希望报错给用户，可以使用错误抑制扶处理。</p>
+<pre><code class="hljs">@ 在可能出错的表达式前面使用即可
+</code></pre>
+<figure class="highlight gams"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs gams"><span class="hljs-meta"><span class="hljs-keyword">$a</span>=10;</span><br><span class="hljs-meta"><span class="hljs-keyword">$b</span>=0;</span><br>@(<span class="hljs-symbol">$</span>a/<span class="hljs-symbol">$</span>b);<br></code></pre></td></tr></tbody></table></figure>
+
+<p>错误抑制符通常在生产环境用到；</p>
+<h2 id="三目运算符"><a href="#三目运算符" class="headerlink" title="三目运算符"></a>三目运算符</h2><p>有三个表达式参与的运算（简单的分支结构缩写）</p>
+<p>语法格式： 表达式1 ? 表达式2 : 表达式3;</p>
+<p>运算：若1成立，那么执行2，否则执行3；</p>
+<pre><code class="hljs">$a=10;
+$b=$a&gt;10?100:0;
+echo $b;
+</code></pre>
 
                 
               </div>
