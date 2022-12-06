@@ -27,7 +27,7 @@
 <meta property="og:image" content="https://i.loli.net/2020/10/10/9pYJxdtsKFEUy4M.png">
 <meta property="og:image" content="https://i.loli.net/2020/10/10/zGq57OjUeWcxXnM.png">
 <meta property="article:published_time" content="2022-08-09T03:49:00.287Z">
-<meta property="article:modified_time" content="2022-11-08T08:35:45.635Z">
+<meta property="article:modified_time" content="2022-12-05T08:42:38.511Z">
 <meta property="article:author" content="Sinky">
 <meta property="article:tag" content="环境搭建">
 <meta name="twitter:card" content="summary_large_image">
@@ -226,7 +226,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.4k words
+          3.9k words
         
       </span>
     
@@ -237,7 +237,7 @@
         
         
         
-          29 mins
+          33 mins
         
       </span>
     
@@ -348,6 +348,29 @@ deb http://mirrors.aliyun.com/ubuntu/ xenial-security multiverse```
     echo "source ~/GdbPlugins/gef/gef.py" &gt; ~/.gdbinit 
     echo "source ~/GdbPlugins/gdbinit/gdbinit" &gt; ~/.gdbinit  
 
+将切换脚本的指令写进bashrc,建立快捷指令来代替切换
+    
+    vim ~/.bashrc
+
+进入之后找到alias开头的字符：
+
+
+![image.png](https://s2.loli.net/2022/12/05/N59ICXurVaGdyqw.png)
+
+
+写入快捷指令：
+    
+    alias peda='echo "source ~/GdbPlugins/peda/peda.py" &gt; ~/.gdbinit '
+    alias gef='echo "source ~/GdbPlugins/gef/gef.py" &gt; ~/.gdbinit '
+    alias gdbinit='echo "source ~/GdbPlugins/gdbinit/gdbinit" &gt; ~/.gdbinit  '
+
+保存并退出，更新bashrc文件：
+    source ~/.bashrc
+
+
+![image.png](https://s2.loli.net/2022/12/05/MZSyIkJnjqTo3c9.png)
+
+成功切换
 
 # 0x03 安装checksec
 

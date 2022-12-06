@@ -226,6 +226,50 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2022/12/05/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-PWN-200(%E5%BE%85%E8%A1%A5%E5%85%85)/" target="_self">
+          攻防世界 PWN-200
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/12/05/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-PWN-200(%E5%BE%85%E8%A1%A5%E5%85%85)/" target="_self">
+        <div>
+          分析拿到题目先查一下保护：  32位，没开栈保护和PIE；开了NX,可不执行内存可以用rop； Partial RELRO - got表可写 扔进IDA看一下： 主函数： 12345678910int __cdecl main(){  char buf[108]; &#x2F;&#x2F; [esp+2Ch] [ebp-6Ch] BYREF  strcpy(buf, &quot;Welcome to XDCTF2015~!\n
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-12-05 13:35" pubdate>
+              2022-12-05
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/PWN/">#PWN</a>
+            
+              <a href="/tags/CTF/">#CTF</a>
+            
+              <a href="/tags/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C/">#攻防世界</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2022/12/05/Windows%E4%B8%8B%E6%90%AD%E5%BB%BA%E8%9A%82%E8%9A%81%E7%AC%94%E8%AE%B0/" target="_self">
           Windows下搭建蚂蚁笔记(待补充)
         </a>
@@ -440,15 +484,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2022/11/23/php%E5%AD%A6%E4%B9%A02/" target="_self">
-          php学习2
+        <a href="/2022/11/23/php%E5%AD%A6%E4%B9%A0/" target="_self">
+          php学习
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/11/23/php%E5%AD%A6%E4%B9%A02/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/11/23/php%E5%AD%A6%E4%B9%A0/" target="_self">
         <div>
-          phpphp是一种运行在服务器端的脚本语言，可以嵌入到html中 php代码标记ASP标记： &lt;%php代码 %&gt; # 已弃用 短标记： &lt;?php代码?&gt; # 已弃用  脚本标记： &lt;script language&#x3D;&quot;php&quot;&gt;php代码&lt;&#x2F;script&gt; ---------------------- 例子： &lt;html&gt;     &amp;l
+          网站基本概念 服务器：提供计算机服务的机器，取决于机器上所安装的软件（服务软件） web服务器：提供web服务（网站访问），需要安装web服务软件，Apache,tomcat,iis等   IP：网络互连协议，为计算机网络相互连接进行通信而设计的协议，IP地址具有唯一性（每台电脑都有一个唯一的IP地址） 域名：由遗传用点分割的名字组成（www.baidu.ccom）的Internet上某一台计算机
         </div>
       </a>
 
@@ -572,7 +616,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2022/11/10/%E6%A0%88%E6%BA%A2%E5%87%BA%E5%8E%9F%E7%90%86%E5%8F%8A%E5%88%A9%E7%94%A8%E5%AD%A6%E4%B9%A0(%E5%BE%85%E8%A1%A5%E5%85%85)/" target="_self">
         <div>
-          栈数据结构，先进后出，先进的数据压入栈底，最后的数据在栈顶  Push 将数据压入栈顶 Pop 将栈顶数据弹出    代码段：存放可执行程序的代码，可读不可写 数据段：存放程序中已经初始化的静态（全局）变量，可读写 bss段：存放程序中未初始化的静态（全局）变量，可读写 堆(heap)：存放动态分配的内容，需要程序员手动分配和释放 栈(stack)：存放局部变量，如函数的参数、返回地址、局部变量等
+          参考文章： https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;113504765?utm_source&#x3D;qq https:&#x2F;&#x2F;www.secpulse.com&#x2F;archives&#x2F;192491.html 栈数据结构，先进后出，先进的数据压入栈底，最后的数据在栈顶  Push 将数据压入栈顶 Pop 将栈顶数据弹出  栈帧：每个未完成运行的函数占用一个独立的连续区域，称作栈帧   代码段：存放
         </div>
       </a>
 
@@ -595,48 +639,6 @@
               <a href="/tags/%E6%A0%88%E6%BA%A2%E5%87%BA/">#栈溢出</a>
             
               <a href="/tags/%E6%BC%8F%E6%B4%9E/">#漏洞</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/11/10/PWN%E7%9A%84exp%E7%BC%96%E5%86%99%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" target="_self">
-          PWN的exp编写学习记录
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/11/10/PWN%E7%9A%84exp%E7%BC%96%E5%86%99%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" target="_self">
-        <div>
-          整理以下exp的编写，根据网上文章结合个人去整理的。 exp的基本框架from pwn import* DEBUG # 自己设定值，在本地调试还是远程利用，不写也行 if DEBUG:     p&#x3D;process(bin路径) # 在本地调试 else:     p&#x3D;remote(ip,port) # 连接其他主机的服务，需要输入对应ip和端口号 payload&#x3D;…… # 输入payload进行操
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-11-10 13:32" pubdate>
-              2022-11-10
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/PWN/">#PWN</a>
-            
-              <a href="/tags/exp/">#exp</a>
             
           </div>
         

