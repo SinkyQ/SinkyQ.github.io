@@ -26,7 +26,7 @@
 <meta property="og:image" content="https://s2.loli.net/2022/11/15/9Zne3TXqFwEQaxY.png">
 <meta property="og:image" content="https://s2.loli.net/2022/11/15/raP1p2C7BzXuUWI.png">
 <meta property="article:published_time" content="2022-11-23T01:56:57.868Z">
-<meta property="article:modified_time" content="2022-12-06T08:11:04.500Z">
+<meta property="article:modified_time" content="2023-01-06T01:26:24.409Z">
 <meta property="article:author" content="Sinky">
 <meta property="article:tag" content="php">
 <meta name="twitter:card" content="summary_large_image">
@@ -225,7 +225,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          8.2k words
+          11k words
         
       </span>
     
@@ -236,7 +236,7 @@
         
         
         
-          69 mins
+          91 mins
         
       </span>
     
@@ -750,7 +750,152 @@ while(条件表达式){
 <pre><code class="hljs">if(): endif;
 switch: endswitch;
 </code></pre>
-<h1 id="常用系统函数"><a href="#常用系统函数" class="headerlink" title="常用系统函数"></a>常用系统函数</h1>
+<h1 id="常用系统函数"><a href="#常用系统函数" class="headerlink" title="常用系统函数"></a>常用系统函数</h1><h3 id="输出函数"><a href="#输出函数" class="headerlink" title="输出函数"></a>输出函数</h3><pre><code class="hljs">print() # 类似echo输出，本质时一种结构，返回1，可以不用括号
+print_r() # 类似var_dump，但比var_dump简单，不会输出数据类型，指挥输出值 
+
+&lt;?php
+    echo print('hello&lt;br/&gt;');
+    print 'hello1&lt;br/&gt;';
+    $a='hello1&lt;br/&gt;';
+    print_r($a);
+?&gt;
+</code></pre>
+<h3 id="时间函数"><a href="#时间函数" class="headerlink" title="时间函数"></a>时间函数</h3><pre><code class="hljs">date() # 按照指定格式对对应的时间戳（从1970年格林统治时间开始计算的秒数）
+time() # 获取当前时间对应的时间戳(返回1970年1月1日00：00：00到当前时间的秒数）
+microtimw() # 获取微秒级别的时间
+strtotime() # 按照规定格式的字符串转换成时间戳
+
+echo date('Y 年 m 月 d 日 H:i:s&lt;br/&gt;',12345678);
+echo time(),'&lt;br/&gt;';
+echo microtime();
+echo strtotime('tomorrow 10 hours');
+结果:
+1970 年 05 月 24 日 05:21:18
+1671415876
+/0.29940200 1671415876
+1671501600 
+</code></pre>
+<h3 id="数学函数"><a href="#数学函数" class="headerlink" title="数学函数"></a>数学函数</h3><pre><code class="hljs">max() # 返回参数最大值
+min() # 返回参数最小值
+rand() # 返回一个随机值
+mt_rand() # 与rand一样,但底层结构不同,效率高于rand
+round() # 四舍五入
+ceil() # 向上取整
+floor() # 向下取整
+pow() # 求指定数字的指定指数次结果
+abs() # 求绝对值
+sqrt() # 求平方根
+</code></pre>
+<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><pre><code class="hljs">function_exists() # 判断指定函数名字是否在内存中存在
+func_get_arg() # 在自定义函数种获取指定数值对应的参数
+func_get_args() # 在自定义函数中获取所有的参数(数组)
+func_num_args() # 获取当前自定义函数的参数数量
+</code></pre>
+<h1 id="文件包含"><a href="#文件包含" class="headerlink" title="文件包含"></a>文件包含</h1><p>文件包含：在php脚本中，去将另一个文件(php)包含进来，去合作完成一件事情</p>
+<p>文件包含作用：</p>
+<ol>
+<li>要么使用被包含文件中的内容，实现代码共享(重用)：向上包含(索要)<ol>
+<li>向上包含：在当前脚本要用某个代码之前包含别的文件</li>
+</ol>
+</li>
+<li>要么自己有东西可以给别的文件使用，实现代码的共享（重用）：向下包含(给予)<ol>
+<li>向下包含：在自己有某个东西的时候，需要别的脚本来显示（自己代码写完之后包含其他文件）</li>
+</ol>
+</li>
+</ol>
+<p>最大作用：分工协作，每个脚本做的事情不一样，因此可以使用协作方式，让多个脚本共同完成一件事情</p>
+<h2 id="文件包含四种形式"><a href="#文件包含四种形式" class="headerlink" title="文件包含四种形式"></a>文件包含四种形式</h2><pre><code class="hljs">include # 包含文件
+include_once # 系统自动判断文件包含过程中，是否已经包含过（一个文件最多被包含一次）
+requrie # 与include相同
+require_once # 与include_once相同
+</code></pre>
+<p>包含基本语法：</p>
+<pre><code class="hljs">include '文件名字';
+include('文件名字');
+</code></pre>
+<p>例：(向上包含：先包含文件，后使用文件中内容，运行demo2.php)</p>
+<p>demo1.php</p>
+<pre><code class="hljs">&lt;?php
+//被包含数据
+$a=1;
+define('PI',3.14);
+?&gt;
+</code></pre>
+<p>demo2.php</p>
+<pre><code class="hljs">&lt;?php
+//包含文件
+include 'demo1.php'; //包含当前文件demo2.php所在文件夹下的demo1.php
+echo $a,'&lt;br/&gt;',PI;
+?&gt;
+</code></pre>
+<p>例：（向下包含：先准备内容，然后包含另外的文件，在另外的文件中使用当前内容,运行demo1.php）</p>
+<p>demo1.php</p>
+<pre><code class="hljs">&lt;?php
+//被包含数据
+$a=10;
+const PI=3.14;
+include_once 'demo2.php';
+?&gt;
+</code></pre>
+<p>demo2.php</p>
+<pre><code class="hljs">&lt;table&gt;
+    &lt;tr&gt;
+        &lt;td&gt;&lt;?php echo $a;?&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;?php echo PI;?&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre>
+<h2 id="文件加载原理"><a href="#文件加载原理" class="headerlink" title="文件加载原理"></a>文件加载原理</h2><p>php代码执行流程：</p>
+<ol>
+<li>读取代码文件（php程序）</li>
+<li>编译：将php代码转换成字节码(生成opcode)</li>
+<li>zendengine解析opcode，按照字节码去进行逻辑运算</li>
+<li>转换成对应的html代码</li>
+</ol>
+<p>文件加载原理：</p>
+<ol>
+<li>在文件加载时，系统会自动的将被包含文件中的代码相当于嵌入到当前文件中</li>
+<li>加载位置，在哪加载，对应的文件中的代码嵌入位置就是对应的include位置</li>
+<li>在php中被包含的文件是单独进行编译的</li>
+</ol>
+<p>php文件在编译过程中如果出现语法错误，那么会失败(不会执行)；但如果被包含文件有错误的时候，系统会在执行到包含include这条语句的时候才会报错。</p>
+<h2 id="include-和-require区别"><a href="#include-和-require区别" class="headerlink" title="include 和 require区别"></a>include 和 require区别</h2><p>include 和 include_once的区别：</p>
+<p>include：系统会碰到一次执行一次，若对统一个文件进行多次加载，那么系统会执行多次；</p>
+<p>include_once：系统碰到多次，也只会执行一次。</p>
+<p>require 和include的区别，本质都是包含文件，唯一的区别在于包含不到文件时候，报错形式不一样</p>
+<p>include错误级别比较轻，不会阻止代码运行</p>
+<pre><code class="hljs">include 'a.php';
+require 'a.php';
+</code></pre>
+<h2 id="文件包加载路径"><a href="#文件包加载路径" class="headerlink" title="文件包加载路径"></a>文件包加载路径</h2><p>文件在加载时候需要指定文件路径才能保证php正确的找到对应的文件。</p>
+<ul>
+<li>绝对路径：<ul>
+<li>从磁盘的根目录开始（本地绝对路径）</li>
+<li>windows C:/路径/PHP文件</li>
+<li>Linux /路径/PHP文件</li>
+<li>从网站根目录开始（网络绝对路径）</li>
+<li><code>/</code>相对于网站主机名字对应的路径</li>
+<li><code>localhost/index.php -&gt; E:/server/apache/htdocs/index.php</code></li>
+</ul>
+</li>
+<li>相对路径：从当前文件所在目录开始的路径<ul>
+<li><code>.|./</code> 表示当前文件夹</li>
+<li><code>../</code> 上级目录（当前文件夹的上一层文件夹）</li>
+</ul>
+</li>
+</ul>
+<p>绝对路径和相对路径的加载区别</p>
+<ol>
+<li>绝对路径相对效率偏低，但是相对安全（路径不会出问题）</li>
+<li>相对路径相对效率高，但是容易出错（相对路径会发生改变）</li>
+</ol>
+<p>例：</p>
+<pre><code class="hljs">//相对路径加载
+include_once 'demo2.php';//默认当前文件本身
+echo $a;
+include_once './demo2.php';//当前目录文件夹
+</code></pre>
+
                 
               </div>
             
