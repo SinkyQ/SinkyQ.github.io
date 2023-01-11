@@ -226,6 +226,174 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2022/11/10/%E6%A0%88%E6%BA%A2%E5%87%BA%E5%8E%9F%E7%90%86%E5%8F%8A%E5%88%A9%E7%94%A8%E5%AD%A6%E4%B9%A0/" target="_self">
+          栈溢出原理及利用学习
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/11/10/%E6%A0%88%E6%BA%A2%E5%87%BA%E5%8E%9F%E7%90%86%E5%8F%8A%E5%88%A9%E7%94%A8%E5%AD%A6%E4%B9%A0/" target="_self">
+        <div>
+          参考文章： https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;113504765?utm_source&#x3D;qq https:&#x2F;&#x2F;www.secpulse.com&#x2F;archives&#x2F;192491.html 栈数据结构，先进后出，先进的数据压入栈底，最后的数据在栈顶  Push 将数据压入栈顶 Pop 将栈顶数据弹出  栈帧：每个未完成运行的函数占用一个独立的连续区域，称作栈帧   代码段：存放
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-11-10 14:02" pubdate>
+              2022-11-10
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">#学习笔记</a>
+            
+              <a href="/tags/%E6%A0%88%E6%BA%A2%E5%87%BA/">#栈溢出</a>
+            
+              <a href="/tags/%E6%BC%8F%E6%B4%9E/">#漏洞</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/11/10/PWN%E7%9A%84exp%E7%BC%96%E5%86%99%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" target="_self">
+          PWN的exp编写学习记录
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/11/10/PWN%E7%9A%84exp%E7%BC%96%E5%86%99%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" target="_self">
+        <div>
+          整理以下exp的编写，根据网上文章结合个人去整理的。 exp的基本框架from pwn import* DEBUG # 自己设定值，在本地调试还是远程利用，不写也行 if DEBUG:     p&#x3D;process(bin路径) # 在本地调试 else:     p&#x3D;remote(ip,port) # 连接其他主机的服务，需要输入对应ip和端口号 payload&#x3D;…… # 输入payload进行操
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-11-10 13:32" pubdate>
+              2022-11-10
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/PWN/">#PWN</a>
+            
+              <a href="/tags/exp/">#exp</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/11/10/PWN%E5%B8%B8%E7%94%A8%E8%84%9A%E6%9C%AC%E8%AF%AD%E5%8F%A5%E8%A7%A3%E9%87%8A/" target="_self">
+          PWN常用脚本语句解释
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/11/10/PWN%E5%B8%B8%E7%94%A8%E8%84%9A%E6%9C%AC%E8%AF%AD%E5%8F%A5%E8%A7%A3%E9%87%8A/" target="_self">
+        <div>
+          接收远端传回的数据interactive(): 在取得shell之后使用，直接进行交互，相当于回到shell的模式 recv(numb&#x3D;字节大小,timeout&#x3D;default): 接收指定字节数 recvall(): 一直接收直到达到文件EOF recvline(keepends&#x3D;True): 接收一行，keepends为是否保留行尾的\n recvuntil(delims,drop&#x3D;False
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-11-10 09:15" pubdate>
+              2022-11-10
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/PWN/">#PWN</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/11/08/pwn%E4%B9%8Bchecksec%E5%AD%A6%E4%B9%A0/" target="_self">
+          pwn之checksec学习
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/11/08/pwn%E4%B9%8Bchecksec%E5%AD%A6%E4%B9%A0/" target="_self">
+        <div>
+          我忘记了之前有没有写关于这个的笔记，反正我都不记得了，所以再学一遍！ checksec主要用于查看题目开启了哪些保护机制。 Arch程序架构信息，判断是64位还是32位 RELRO主要针对GOT改写的攻击方式，分为Partial RELRO和Full RELRO。 Partial RELRO：表示got表可写，容易受到攻击 Full RELRO：表示got表不可写，只读，无法被覆盖，会增加程序启动
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-11-08 16:37" pubdate>
+              2022-11-08
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/pwn/">#pwn</a>
+            
+              <a href="/tags/checksec/">#checksec</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2022/11/08/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-Mary_Morton/" target="_self">
           攻防世界-Mary_Morton
         </a>
@@ -462,166 +630,6 @@
             <i class="iconfont icon-date"></i>
             <time datetime="2022-09-25 11:21" pubdate>
               2022-09-25
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/python/">#python</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/09/23/python%E5%AD%A6%E4%B9%A09/" target="_self">
-          Python学习9
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/09/23/python%E5%AD%A6%E4%B9%A09/" target="_self">
-        <div>
-          模块 一个模块中可以包含N多个函数 在python中一个扩展名为.py的文件就是一个模块 好处： 方便其他程序和脚本的导入并使用 避免函数名和变量名冲突 提高代码的可维护性和可重用性    自定义模块 创建模块：新建一个.py文件，尽量不要与python自带的标准名呈相同 导入模块： 所有： import 模块名称 [as 别名] 指定： from 模块名称 import 函数&#x2F;变量&#x2F;类    1
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-09-23 12:08" pubdate>
-              2022-09-23
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/python/">#python</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/09/19/python%E5%AD%A6%E4%B9%A08/" target="_self">
-          Python学习8
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/09/19/python%E5%AD%A6%E4%B9%A08/" target="_self">
-        <div>
-          面向对象篇啦！！！！ 类与对象类：多个类似事物组成的群体；数据类型 对象：100，99是int类下包含的相似不相同个例，称为实例或对象（一切皆对象） 类的创建12class Student:    pass  类的组成：类属性、实例方法、静态方法、类方法 12345678910111213141516171819class Student:#Student为类名，由一个或多个单词组成，每个单词首字
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-09-19 19:54" pubdate>
-              2022-09-19
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/python/">#python</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/09/19/python%E5%AD%A6%E4%B9%A07/" target="_self">
-          Python学习7
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/09/19/python%E5%AD%A6%E4%B9%A07/" target="_self">
-        <div>
-          Bug1.常见类型 (1)语法错误：SyntaxError (2)索引越界问题：IndexError 123456lst&#x3D;[1,2,3,4]print(lst[4])l&#x3D;[]l&#x3D;append(&#39;a&#39;,&#39;b&#39;,&#39;c&#39;)print(l) #修改：l.append(&#39;a&#39;)  (3)思路不清导致的问题解决方案  使用print() 用 #暂时注释代码(4)被动：用户输入错误导致返回错误  Python异
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-09-19 19:28" pubdate>
-              2022-09-19
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/python/">#python</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/09/16/python%E5%AD%A6%E4%B9%A06/" target="_self">
-          Python学习6
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/09/16/python%E5%AD%A6%E4%B9%A06/" target="_self">
-        <div>
-          字符串python基本数据类型，不可变字符序列 驻留机制仅保存一份相同且不可变字符串的方法。 123456a&#x3D;&#39;python&#39;b&#x3D;&#39;python&#39;c&#x3D;&#39;python&#39;print(a,id(a))print(b,id(b))print(c,id(c))#python 2381469127728  驻留机制的几种情况（交互模式）  字符串的长度为0或1时 符合标识符的字符串 字符串只在编译时进行驻留，
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-09-16 20:35" pubdate>
-              2022-09-16
             </time>
           </div>
         

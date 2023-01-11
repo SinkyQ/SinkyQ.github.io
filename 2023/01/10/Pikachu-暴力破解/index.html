@@ -16,24 +16,36 @@
   <meta name="author" content="Sinky">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Misc1题目：d4e8e1f4a0f7e1f3a0e6e1f3f4a1a0d4e8e5a0e6ece1e7a0e9f3baa0c4c4c3d4c6fbb9e1e6b3e3b9e4b3b7b7e2b6b1e4b2b6b9e2b1b1b3b3b7e6b3b3b0e3b9b3b5e6fd 以为是十六进制转文本，失败 看一下组成：数字+字母a-f 转ascii乱码，应该偏移了，一般是偏移128 s &#x3D;">
+    <meta name="description" content="概述使用大量认证信息在认证接口进行尝试登录，直到得到正确结果，一般会使用带有字典的工具进行自动化操作。 认证安全策略：  是否要求用户设置复杂的密码 是否每次认证都使用安全的验证码或手机otp 是否对尝试登录的行为进行判断和限制 是否采用了双因素认证  等等。 基于表单的暴力破解无验证码干扰，可以直接使用常用名撞库用户和密码： 随意输入用户名密码，bp抓包，将数据包发送至Intruder(测试器)">
 <meta property="og:type" content="article">
-<meta property="og:title" content="攻防世界CTF-Misc2">
-<meta property="og:url" content="https://sinky.top/2023/01/04/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CCTF-Misc2/index.html">
+<meta property="og:title" content="Pikachu-暴力破解">
+<meta property="og:url" content="https://sinky.top/2023/01/10/Pikachu-%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3/index.html">
 <meta property="og:site_name" content="Sinky&#39;s Blog">
-<meta property="og:description" content="Misc1题目：d4e8e1f4a0f7e1f3a0e6e1f3f4a1a0d4e8e5a0e6ece1e7a0e9f3baa0c4c4c3d4c6fbb9e1e6b3e3b9e4b3b7b7e2b6b1e4b2b6b9e2b1b1b3b3b7e6b3b3b0e3b9b3b5e6fd 以为是十六进制转文本，失败 看一下组成：数字+字母a-f 转ascii乱码，应该偏移了，一般是偏移128 s &#x3D;">
+<meta property="og:description" content="概述使用大量认证信息在认证接口进行尝试登录，直到得到正确结果，一般会使用带有字典的工具进行自动化操作。 认证安全策略：  是否要求用户设置复杂的密码 是否每次认证都使用安全的验证码或手机otp 是否对尝试登录的行为进行判断和限制 是否采用了双因素认证  等等。 基于表单的暴力破解无验证码干扰，可以直接使用常用名撞库用户和密码： 随意输入用户名密码，bp抓包，将数据包发送至Intruder(测试器)">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-01-04T06:45:17.135Z">
-<meta property="article:modified_time" content="2023-01-09T01:21:23.192Z">
+<meta property="og:image" content="https://s2.loli.net/2023/01/10/pLkhFYa5gNzR9IV.png">
+<meta property="og:image" content="https://s2.loli.net/2023/01/10/yMEucQ2VdOx8HFG.png">
+<meta property="og:image" content="https://s2.loli.net/2023/01/10/F7UmLvdDWlIH8cq.png">
+<meta property="og:image" content="https://s2.loli.net/2023/01/10/741KfjTqZbowcAO.png">
+<meta property="og:image" content="https://s2.loli.net/2023/01/10/7DMVzitfUIGaypJ.png">
+<meta property="og:image" content="https://s2.loli.net/2023/01/10/cClQVaUKkA4xPn2.png">
+<meta property="og:image" content="https://s2.loli.net/2023/01/10/BqG5USE3rX1L9Hh.png">
+<meta property="og:image" content="https://s2.loli.net/2023/01/10/i2c6T5VJaYbCqGd.png">
+<meta property="og:image" content="https://s2.loli.net/2023/01/10/YyDKFziaLZs8eAG.png">
+<meta property="og:image" content="https://s2.loli.net/2023/01/10/P2f4DE7xLNalIcr.png">
+<meta property="og:image" content="https://s2.loli.net/2023/01/10/KzChpti9kj3AMm2.png">
+<meta property="article:published_time" content="2023-01-10T06:40:29.819Z">
+<meta property="article:modified_time" content="2023-01-11T05:32:15.142Z">
 <meta property="article:author" content="Sinky">
-<meta property="article:tag" content="CTF">
-<meta property="article:tag" content="攻防世界">
-<meta property="article:tag" content="Misc">
+<meta property="article:tag" content="Pikachu">
+<meta property="article:tag" content="靶场">
+<meta property="article:tag" content="暴力破解">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://s2.loli.net/2023/01/10/pLkhFYa5gNzR9IV.png">
   
   
   
-  <title>攻防世界CTF-Misc2 - Sinky&#39;s Blog</title>
+  <title>Pikachu-暴力破解 - Sinky&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -201,7 +213,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="攻防世界CTF-Misc2"></span>
+            <span id="subtitle" data-typed-text="Pikachu-暴力破解"></span>
           
         </div>
 
@@ -212,8 +224,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-01-04 14:45" pubdate>
-          January 4, 2023 pm
+        <time datetime="2023-01-10 14:40" pubdate>
+          January 10, 2023 pm
         </time>
       </span>
     
@@ -224,7 +236,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.4k words
+          1.5k words
         
       </span>
     
@@ -235,7 +247,7 @@
         
         
         
-          12 mins
+          13 mins
         
       </span>
     
@@ -273,53 +285,74 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">攻防世界CTF-Misc2</h1>
+            <h1 style="display: none">Pikachu-暴力破解</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="Misc1"><a href="#Misc1" class="headerlink" title="Misc1"></a>Misc1</h1><p>题目：<code>d4e8e1f4a0f7e1f3a0e6e1f3f4a1a0d4e8e5a0e6ece1e7a0e9f3baa0c4c4c3d4c6fbb9e1e6b3e3b9e4b3b7b7e2b6b1e4b2b6b9e2b1b1b3b3b7e6b3b3b0e3b9b3b5e6fd</code></p>
-<p>以为是十六进制转文本，失败</p>
-<p>看一下组成：数字+字母a-f</p>
-<p>转ascii乱码，应该偏移了，一般是偏移128</p>
-<pre><code class="hljs">s = 'd4e8e1f4a0f7e1f3a0e6e1f3f4a1a0d4e8e5a0e6ece1e7a0e9f3baa0c4c4c3d4c6fbb9e1e6b3e3b9e4b3b7b7e2b6b1e4b2b6b9e2b1b1b3b3b7e6b3b3b0e3b9b3b5e6fd'
-hex_new = ''
-for i in range(0,len(s),2):
-    hex_ = s[i:i+2]
-    d_ = int('0x'+ hex_, 16)
-    d_surplus = d_%128
-    temp = hex(d_surplus)[2:4]
-    hex_new+=temp
-print(str(hex_new))
-</code></pre>
-<p>结果转字符串得到flag:</p>
-<pre><code class="hljs"> DDCTF{9af3c9d377b61d269b11337f330c935f}
-</code></pre>
-<h1 id="Encode"><a href="#Encode" class="headerlink" title="Encode"></a>Encode</h1><p>密文：</p>
-<pre><code class="hljs">4O595954494Q32515046324757595N534R52415653334357474R4N575955544R4O5N4Q46434S4O59474253464Q5N444R4Q51334557524O5N4S424944473542554O595N44534O324R49565746515532464O49345649564O464R4R494543504N35
-</code></pre>
-<p>rot13解密：</p>
-<pre><code class="hljs">4B595954494D32515046324757595A534E52415653334357474E4A575955544E4B5A4D46434F4B59474253464D5A444E4D51334557524B5A4F424944473542554B595A44534B324E49565746515532464B49345649564B464E4E494543504A35
-</code></pre>
-<p>base16解密：</p>
-<pre><code class="hljs">KYYTIM2QPF2GWYZSNRAVS3CWGNJWYUTNKZMFCOKYGBSFMZDNMQ3EWRKZOBIDG5BUKYZDSK2NIVWFQU2FKI4VIVKFNNIECPJ5
-</code></pre>
-<p>base32解密：</p>
-<pre><code class="hljs">V143Pytkc2lAYlV3SlRmVXQ9X0dVdmd6KEYpP3t4V29+MElXSER9TUEkPA==
-</code></pre>
-<p>base64解密：</p>
-<pre><code class="hljs">W^7?+dsi@bUwJTfUt=_GUvgz(F)?{xWo~0IWHD}MA$&lt;
-</code></pre>
-<p>看起来乱七八糟的，看wp，得知是base85解密：</p>
-<p>没找到能解密的网站，找到了脚本解密一下：</p>
-<pre><code class="hljs">import base64
-a = "W^7?+dsi@bUwJTfUt=_GUvgz(F)?{xWo~0IWHD}MA$&lt;"
-b = base64.b85decode(a)
-print(b)
-</code></pre>
-<p>flag:</p>
-<pre><code class="hljs">flag{W0w_y0u_c4n_rea11y_enc0d1ng!}
-</code></pre>
+                <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>使用大量认证信息在认证接口进行尝试登录，直到得到正确结果，一般会使用带有字典的工具进行自动化操作。</p>
+<p>认证安全策略：</p>
+<ol>
+<li>是否要求用户设置复杂的密码</li>
+<li>是否每次认证都使用安全的验证码或手机otp</li>
+<li>是否对尝试登录的行为进行判断和限制</li>
+<li>是否采用了双因素认证</li>
+</ol>
+<p>等等。</p>
+<h1 id="基于表单的暴力破解"><a href="#基于表单的暴力破解" class="headerlink" title="基于表单的暴力破解"></a>基于表单的暴力破解</h1><p>无验证码干扰，可以直接使用常用名撞库用户和密码：</p>
+<p>随意输入用户名密码，bp抓包，将数据包发送至Intruder(测试器)</p>
+<p>打开位置，选择集束炸弹为攻击类型，将用户名和密码设置为撞库的变量</p>
+<p><img src="https://s2.loli.net/2023/01/10/pLkhFYa5gNzR9IV.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p>打开有效载荷，如图设置有效负载集1，添加用户名列表（随便输入常用用户名）：</p>
+<p><img src="https://s2.loli.net/2023/01/10/yMEucQ2VdOx8HFG.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p>切换有效负载集为2，如图添加常用密码列表：</p>
+<p><img src="https://s2.loli.net/2023/01/10/F7UmLvdDWlIH8cq.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p>开始攻击</p>
+<p><img src="https://s2.loli.net/2023/01/10/741KfjTqZbowcAO.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p>只有admin/123456组合的响应串长度不同，说明它是正确的。</p>
+<h2 id="拓展：攻击类型"><a href="#拓展：攻击类型" class="headerlink" title="拓展：攻击类型"></a>拓展：攻击类型</h2><ul>
+<li>狙击手(Sniper): 一次只使用一个payload位置</li>
+<li>攻城锤(Battering ram): 一个payload替换所有标记位置</li>
+<li>音叉(Pitchfork): 多组payload组合</li>
+<li>集束炸弹(Cluster bomb): 多组payload笛卡尔积组合</li>
+</ul>
+<h1 id="验证码绕过-on-server"><a href="#验证码绕过-on-server" class="headerlink" title="验证码绕过(on server)"></a>验证码绕过(on server)</h1><p>随意输入用户名和密码，输入正确验证码，bp抓包，发送到重发器分析。</p>
+<p>当修改用户名为其他字符时，回显依旧是<code>username or password is not exists～</code>，而不是验证码错误，说明验证码没有刷新，可以一直使用，</p>
+<p><img src="https://s2.loli.net/2023/01/10/7DMVzitfUIGaypJ.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p>按照上文，选择用户名和密码为变量，进行撞库攻击，获取正确的账户密码。</p>
+<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>提交的验证码会被与存储在服务器session中的验证码做验证，但由于在验证完成之后，没有及时销毁session，使用过的session值仍然可以重复使用。</p>
+<h1 id="验证码绕过-on-client"><a href="#验证码绕过-on-client" class="headerlink" title="验证码绕过(on client)"></a>验证码绕过(on client)</h1><p>验证码是js随机生成，只在前端处理，没有传值给后端。</p>
+<p><img src="https://s2.loli.net/2023/01/10/cClQVaUKkA4xPn2.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p>步骤如验证码绕过(on server)</p>
+<h1 id="token防爆破？"><a href="#token防爆破？" class="headerlink" title="token防爆破？"></a>token防爆破？</h1><p>客户端token跟随用户名和密码一起提交给服务器并且与服务器端token值进行对比，那么也就意味着每次客户端请求服务器都会进行token值校验是否正确。</p>
+<p>每次请求前需要把上一次请求的响应包获取，将token值截取，实现绕过。</p>
+<p>随意输入用户名密码，bp抓包，发送到测试器。</p>
+<p>选择音叉(Pitchfork)攻击。</p>
+<p>修改用户名为admin,选择passwd和token为变量。</p>
+<p><img src="https://s2.loli.net/2023/01/10/BqG5USE3rX1L9Hh.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p>打开选项，找到grep-extract功能，勾选“从响应中提取以下项目”，点击添加</p>
+<p><img src="https://s2.loli.net/2023/01/10/i2c6T5VJaYbCqGd.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p>如图填写，获得回复，复制token值。</p>
+<p>找到重定向，改为<code>总是</code></p>
+<p>找到请求引擎，改线程数为1</p>
+<p>回到有效载荷页面：</p>
+<p><img src="https://s2.loli.net/2023/01/10/YyDKFziaLZs8eAG.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p>在有效负载集2中，选择递归搜索，添加token值：</p>
+<p><img src="https://s2.loli.net/2023/01/10/P2f4DE7xLNalIcr.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p>开始攻击</p>
+<p><img src="https://s2.loli.net/2023/01/10/KzChpti9kj3AMm2.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p>得到用户名密码。</p>
+<h2 id="拓展：Token"><a href="#拓展：Token" class="headerlink" title="拓展：Token"></a>拓展：Token</h2><p>token在计算机身份认证中是令牌(临时)的意思，一般在网站上用于身份验证，流程如下：</p>
+<ol>
+<li>客户端使用用户名密码请求登录</li>
+<li>服务端收到请求，去验证用户名密码</li>
+<li>验证成功后，服务端签发一个token，并将其发送给客户端</li>
+<li>客户端收到后将token存储起来</li>
+<li>客户端每次向服务端请求资源的时候需要带着服务端签发的token</li>
+<li>服务端收到请求，去验证客户端请求里面带着的token，验证成功后向客户端返回请求的数据</li>
+<li>app登录时发送加密的用户名密码到服务器，服务器验证用户名密码，成功后以某种方式作为token存储到服务器中，并返回token到app，以后app请求时，凡需要验证的地方都要带上该token。后服务器端验证token，成功返回所需要的结果，失败返回错误信息，让他重新登录。其中服务器上token设置一个有效期，每次APP请求的时候都验证token和有效期。</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/WangwangDui652/p/16498186.html">https://www.cnblogs.com/WangwangDui652/p/16498186.html</a></p>
 
                 
               </div>
@@ -332,11 +365,11 @@ print(b)
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/CTF/">#CTF</a>
+        <a href="/tags/Pikachu/">#Pikachu</a>
       
-        <a href="/tags/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C/">#攻防世界</a>
+        <a href="/tags/%E9%9D%B6%E5%9C%BA/">#靶场</a>
       
-        <a href="/tags/Misc/">#Misc</a>
+        <a href="/tags/%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3/">#暴力破解</a>
       
     </div>
   
@@ -348,8 +381,8 @@ print(b)
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>攻防世界CTF-Misc2</div>
-      <div>https://sinky.top/2023/01/04/攻防世界CTF-Misc2/</div>
+      <div>Pikachu-暴力破解</div>
+      <div>https://sinky.top/2023/01/10/Pikachu-暴力破解/</div>
     </div>
     <div class="license-meta">
       
@@ -361,7 +394,7 @@ print(b)
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>January 4, 2023</div>
+          <div>January 10, 2023</div>
         </div>
       
       
@@ -391,9 +424,9 @@ print(b)
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/01/06/vulhub%EF%BC%9ACVE-2017-15715/" title="vulhub:CVE-2017-15715">
+                      <a href="/2023/01/11/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-pwnstack/" title="攻防世界-pwnstack">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">vulhub:CVE-2017-15715</span>
+                        <span class="hidden-mobile">攻防世界-pwnstack</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -401,8 +434,8 @@ print(b)
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/12/09/%E5%9F%BA%E6%9C%ACROP%E4%B9%8Bret2libc/" title="基本ROP之ret2libc">
-                        <span class="hidden-mobile">基本ROP之ret2libc</span>
+                      <a href="/2023/01/09/vulhub%E4%B9%8BCVE-2021-41773/" title="vulhub之CVE-2021-41773">
+                        <span class="hidden-mobile">vulhub之CVE-2021-41773</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

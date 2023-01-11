@@ -226,6 +226,180 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2023/01/11/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-repeater/" target="_self">
+          攻防世界-repeater
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/01/11/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-repeater/" target="_self">
+        <div>
+          checksec 64位文件；Full RELRO:got表不可写，无法被覆盖；没开栈保护；没开NX,可以执行内存；开了地址内存随机化；RWX:可读可写可执行 不知道，看一下ida IDA分析
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-01-11 10:36" pubdate>
+              2023-01-11
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/PWN/">#PWN</a>
+            
+              <a href="/tags/CTF/">#CTF</a>
+            
+              <a href="/tags/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C/">#攻防世界</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/01/11/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-pwnstack/" target="_self">
+          攻防世界-pwnstack
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/01/11/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-pwnstack/" target="_self">
+        <div>
+          check一下 64位文件；Partial RELRO:got表可写；没开栈保护；开了NX(堆栈不可执行)；没开地址随机化 可以考虑rop绕过 IDA分析__int64 vuln() { char buf[160]; &#x2F;&#x2F; [rsp+0h] [rbp-A0h] BYREF memset(buf, 0, sizeof(buf)); &#x2F;&#x2F; 初始化buf为0 read(0, buf, 0xB1uLL);
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-01-11 09:15" pubdate>
+              2023-01-11
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/PWN/">#PWN</a>
+            
+              <a href="/tags/CTF/">#CTF</a>
+            
+              <a href="/tags/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C/">#攻防世界</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/01/10/Pikachu-%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3/" target="_self">
+          Pikachu-暴力破解
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/01/10/Pikachu-%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3/" target="_self">
+        <div>
+          概述使用大量认证信息在认证接口进行尝试登录，直到得到正确结果，一般会使用带有字典的工具进行自动化操作。 认证安全策略：  是否要求用户设置复杂的密码 是否每次认证都使用安全的验证码或手机otp 是否对尝试登录的行为进行判断和限制 是否采用了双因素认证  等等。 基于表单的暴力破解无验证码干扰，可以直接使用常用名撞库用户和密码： 随意输入用户名密码，bp抓包，将数据包发送至Intruder(测试器)
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-01-10 14:40" pubdate>
+              2023-01-10
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Pikachu/">#Pikachu</a>
+            
+              <a href="/tags/%E9%9D%B6%E5%9C%BA/">#靶场</a>
+            
+              <a href="/tags/%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3/">#暴力破解</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/01/09/vulhub%E4%B9%8BCVE-2021-41773/" target="_self">
+          vulhub之CVE-2021-41773
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/01/09/vulhub%E4%B9%8BCVE-2021-41773/" target="_self">
+        <div>
+          漏洞详情Apache HTTP Server 2.4.49上引入的漏洞，该漏洞允许攻击者绕过路径遍历保护，使用编码并读取网络服务器文件系统上的任意文件。 apache-CVE-2021-41773漏洞利用的用户身份为httpd.conf中指定的用户，可以执行该用户对应身份权限的读写。 原理： 使用ap_normalize_path函数在对路径参数进行规范化时会先进行url解码，然后判断是否存在..
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-01-09 16:49" pubdate>
+              2023-01-09
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/vulhub/">#vulhub</a>
+            
+              <a href="/tags/%E9%9D%B6%E5%9C%BA/">#靶场</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2023/01/06/vulhub%EF%BC%9ACVE-2017-15715/" target="_self">
           vulhub:CVE-2017-15715
         </a>
@@ -473,180 +647,6 @@
             <i class="iconfont icon-tags"></i>
             
               <a href="/tags/GDB/">#GDB</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/12/07/%E5%9F%BA%E6%9C%ACROP%E4%B9%8Bret2text/" target="_self">
-          基本ROP之ret2text
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/12/07/%E5%9F%BA%E6%9C%ACROP%E4%B9%8Bret2text/" target="_self">
-        <div>
-          访问不了github，改了host,也试过改DNS都不行，抓狂浪费时间，最后果断选择翻一下下载了这个程序。 自行下载： https:&#x2F;&#x2F;pan.baidu.com&#x2F;s&#x2F;1Wq6z-hpkBkZESn14Q9jHtw 提取码：v4gi 跟着CTFWikiPWN一起做一遍： https:&#x2F;&#x2F;ctf-wiki.org&#x2F;pwn&#x2F;linux&#x2F;user-mode&#x2F;stackoverflow&#x2F;x86&#x2F;basic
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-12-07 13:39" pubdate>
-              2022-12-07
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/ROP/">#ROP</a>
-            
-              <a href="/tags/%E6%A0%88%E6%BA%A2%E5%87%BA/">#栈溢出</a>
-            
-              <a href="/tags/CTFWikiPWN/">#CTFWikiPWN</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/12/05/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-PWN-200(%E5%BE%85%E8%A1%A5%E5%85%85)/" target="_self">
-          攻防世界 PWN-200
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/12/05/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-PWN-200(%E5%BE%85%E8%A1%A5%E5%85%85)/" target="_self">
-        <div>
-          分析拿到题目先查一下保护：  32位，没开栈保护和PIE；开了NX,可不执行内存可以用rop； Partial RELRO - got表可写 扔进IDA看一下： 主函数： 12345678910int __cdecl main(){  char buf[108]; &#x2F;&#x2F; [esp+2Ch] [ebp-6Ch] BYREF  strcpy(buf, &quot;Welcome to XDCTF2015~!\n
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-12-05 13:35" pubdate>
-              2022-12-05
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/PWN/">#PWN</a>
-            
-              <a href="/tags/CTF/">#CTF</a>
-            
-              <a href="/tags/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C/">#攻防世界</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/12/05/Windows%E4%B8%8B%E6%90%AD%E5%BB%BA%E8%9A%82%E8%9A%81%E7%AC%94%E8%AE%B0/" target="_self">
-          Windows下搭建蚂蚁笔记(待补充)
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/12/05/Windows%E4%B8%8B%E6%90%AD%E5%BB%BA%E8%9A%82%E8%9A%81%E7%AC%94%E8%AE%B0/" target="_self">
-        <div>
-          环境：Windows 10 安装MongoDB及附带工具包
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-12-05 09:24" pubdate>
-              2022-12-05
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E6%90%AD%E5%BB%BA%E7%8E%AF%E5%A2%83/">#搭建环境</a>
-            
-              <a href="/tags/%E8%9A%82%E8%9A%81%E7%AC%94%E8%AE%B0/">#蚂蚁笔记</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/11/30/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CCTF-Misc/" target="_self">
-          攻防世界CTF-Misc
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/11/30/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CCTF-Misc/" target="_self">
-        <div>
-          不想学习……所以来做几个杂项 真是阳间题下载打开是一串数字，也不是十六进制，搜了一下不知道啥加密，看wp之后发现要十转十六再转文本，得到： &#x3D;&#x3D;&#x3D;&#x3D;Q6BGST3OHYFM7CZATPBODT4CH2MN7CN6VZAOZ3XGHY4K7K5ADGNPESUCUIZI  等号明显是Base，倒过来得到： IZIUCUSEPNGDA5K7K4YHGX3ZOAZV6NC7NM2HC4TDOBPTAZC
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-11-30 14:46" pubdate>
-              2022-11-30
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/CTF/">#CTF</a>
-            
-              <a href="/tags/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C/">#攻防世界</a>
-            
-              <a href="/tags/Misc/">#Misc</a>
             
           </div>
         
