@@ -23,13 +23,19 @@
 <meta property="og:site_name" content="Sinky&#39;s Blog">
 <meta property="og:description" content="Misc1题目：d4e8e1f4a0f7e1f3a0e6e1f3f4a1a0d4e8e5a0e6ece1e7a0e9f3baa0c4c4c3d4c6fbb9e1e6b3e3b9e4b3b7b7e2b6b1e4b2b6b9e2b1b1b3b3b7e6b3b3b0e3b9b3b5e6fd 以为是十六进制转文本，失败 看一下组成：数字+字母a-f 转ascii乱码，应该偏移了，一般是偏移128 s &#x3D;">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://s2.loli.net/2023/01/11/84aX3jb5AEzGYIr.png">
+<meta property="og:image" content="https://s2.loli.net/2023/01/11/IqeRWv8GMQE3tjV.png">
+<meta property="og:image" content="https://s2.loli.net/2023/01/11/scRdeHBQ951jLXw.png">
+<meta property="og:image" content="https://s2.loli.net/2023/01/11/dkFYDHEmlSLIvOU.png">
+<meta property="og:image" content="https://s2.loli.net/2023/01/11/unciTSlHqLvR7Fz.png">
 <meta property="article:published_time" content="2023-01-04T06:45:17.135Z">
-<meta property="article:modified_time" content="2023-01-09T01:21:23.192Z">
+<meta property="article:modified_time" content="2023-01-11T06:44:20.920Z">
 <meta property="article:author" content="Sinky">
 <meta property="article:tag" content="CTF">
 <meta property="article:tag" content="攻防世界">
 <meta property="article:tag" content="Misc">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://s2.loli.net/2023/01/11/84aX3jb5AEzGYIr.png">
   
   
   
@@ -224,7 +230,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.4k words
+          2k words
         
       </span>
     
@@ -235,7 +241,7 @@
         
         
         
-          12 mins
+          17 mins
         
       </span>
     
@@ -320,6 +326,37 @@ print(b)
 <p>flag:</p>
 <pre><code class="hljs">flag{W0w_y0u_c4n_rea11y_enc0d1ng!}
 </code></pre>
+<h1 id="Banmabanma"><a href="#Banmabanma" class="headerlink" title="Banmabanma"></a>Banmabanma</h1><p>图片题：</p>
+<p>给了一个看上去很像条形码的图片，扫码扫不出来</p>
+<p>用这个网站可以识别：</p>
+<p><a target="_blank" rel="noopener" href="https://online-barcode-reader.inliteresearch.com/">https://online-barcode-reader.inliteresearch.com/</a></p>
+<h1 id="适合作为桌面"><a href="#适合作为桌面" class="headerlink" title="适合作为桌面"></a>适合作为桌面</h1><p>（做完之后心里只有一个疑问，这难度竟然攻防世界只给了一级？菜鸟瑟瑟发抖）</p>
+<p>拿到手是一个图片</p>
+<p><img src="https://s2.loli.net/2023/01/11/84aX3jb5AEzGYIr.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p>图片隐写，先扔到binwalk看一下有无隐藏信息。</p>
+<p><img src="https://s2.loli.net/2023/01/11/IqeRWv8GMQE3tjV.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p>用StegSolve打开：切换一下通道，发现一个二维码：</p>
+<p><img src="https://s2.loli.net/2023/01/11/scRdeHBQ951jLXw.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p>扫了一下，出现一大堆数据，扔到图片解析网站，就是上文那个网站，得到一堆数据，选择<code>QR code</code>项。</p>
+<p><img src="https://s2.loli.net/2023/01/11/dkFYDHEmlSLIvOU.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p>复制成txt，扔到winhex中，<code>ctrl+R</code> 选择ASCII转二进制</p>
+<p><img src="https://s2.loli.net/2023/01/11/unciTSlHqLvR7Fz.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p>这一步我也不知道怎么观察到的，我看了大佬的wp</p>
+<p>保存为1.pyc文件，用uncompyle6反编译为1.py</p>
+<blockquote>
+<p>uncompyle6安装：<code>pip install uncompyle6</code></p>
+</blockquote>
+<p>打开命令行反编译：<code>uncompyle6 -o 路径\1.py 路径\1.pyc</code></p>
+<p>得到脚本，简单修改一下：</p>
+<pre><code class="hljs">def flag():
+    str = [102, 108, 97, 103, 123, 51, 56, 97, 53, 55, 48, 51, 50,48, 56, 53, 52, 52, 49, 101, 55, 125]
+    flag = ''
+    for i in str:
+        flag += chr(i)
+    print(flag)
+flag()
+</code></pre>
+<p>运行得到flag:<code>flag{38a57032085441e7}</code></p>
 
                 
               </div>

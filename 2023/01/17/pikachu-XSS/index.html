@@ -16,22 +16,30 @@
   <meta name="author" content="Sinky">
   <meta name="keywords" content="">
   
-    <meta name="description" content="背景(资料来自绿盟科技) 2020年2月24日，google针对桌面版chrome浏览器发布更新以解决多个漏洞，包括已被发现的在野利用的高危漏洞CVE-2020-6418. CVE-2020-6418存在于V8中的类型混淆漏洞，V8是chrome的开源JavaScript和WebAssembly引擎，该洞由Google威胁分析小组的Clement Lecigne发现并上报。 受影响产品版本： Go">
+    <meta name="description" content="XSS概述成因：没有对web前端的输入边界严格过滤，造成攻击者可以通过构造脚本语言使得输入的内容被当成正常的html来执行，从而产生危害，xss主要危害前端用户，并可以用于进行钓鱼，前端js挖矿，用户cookie获取、甚至可以结合浏览器自身的漏洞对主机进行远程控制。 xss窃取cookie攻击流程 攻击者发现存在xss漏洞的站点插入js脚本等待用户访问 用户访问xss页面，触发脚本，返回带有恶意j">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CVE-2020-6418">
-<meta property="og:url" content="https://sinky.top/2022/08/09/CVE-2020-6418/index.html">
+<meta property="og:title" content="pikachu-XSS">
+<meta property="og:url" content="https://sinky.top/2023/01/17/pikachu-XSS/index.html">
 <meta property="og:site_name" content="Sinky&#39;s Blog">
-<meta property="og:description" content="背景(资料来自绿盟科技) 2020年2月24日，google针对桌面版chrome浏览器发布更新以解决多个漏洞，包括已被发现的在野利用的高危漏洞CVE-2020-6418. CVE-2020-6418存在于V8中的类型混淆漏洞，V8是chrome的开源JavaScript和WebAssembly引擎，该洞由Google威胁分析小组的Clement Lecigne发现并上报。 受影响产品版本： Go">
+<meta property="og:description" content="XSS概述成因：没有对web前端的输入边界严格过滤，造成攻击者可以通过构造脚本语言使得输入的内容被当成正常的html来执行，从而产生危害，xss主要危害前端用户，并可以用于进行钓鱼，前端js挖矿，用户cookie获取、甚至可以结合浏览器自身的漏洞对主机进行远程控制。 xss窃取cookie攻击流程 攻击者发现存在xss漏洞的站点插入js脚本等待用户访问 用户访问xss页面，触发脚本，返回带有恶意j">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-08-09T03:33:40.197Z">
-<meta property="article:modified_time" content="2022-08-09T03:29:41.243Z">
+<meta property="og:image" content="https://s2.loli.net/2023/01/31/TKemsZJ8zu6XrqN.png">
+<meta property="og:image" content="https://s2.loli.net/2023/01/31/Y1Q9Nwx68KD3TSi.png">
+<meta property="og:image" content="https://s2.loli.net/2023/02/01/euRjUM8mKDFGahQ.png">
+<meta property="og:image" content="https://s2.loli.net/2023/02/01/iG1Tu7vQS5dZPNJ.png">
+<meta property="og:image" content="https://s2.loli.net/2023/02/01/kBafmhedXxFDRyz.png">
+<meta property="article:published_time" content="2023-01-17T01:57:25.232Z">
+<meta property="article:modified_time" content="2023-02-21T01:26:46.998Z">
 <meta property="article:author" content="Sinky">
-<meta property="article:tag" content="chrome调试">
+<meta property="article:tag" content="pikachu">
+<meta property="article:tag" content="XSS">
+<meta property="article:tag" content="靶场">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://s2.loli.net/2023/01/31/TKemsZJ8zu6XrqN.png">
   
   
   
-  <title>CVE-2020-6418 - Sinky&#39;s Blog</title>
+  <title>pikachu-XSS - Sinky&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,7 +207,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="CVE-2020-6418"></span>
+            <span id="subtitle" data-typed-text="pikachu-XSS"></span>
           
         </div>
 
@@ -210,8 +218,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-08-09 11:33" pubdate>
-          August 9, 2022 am
+        <time datetime="2023-01-17 09:57" pubdate>
+          January 17, 2023 am
         </time>
       </span>
     
@@ -222,7 +230,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          289 words
+          1.2k words
         
       </span>
     
@@ -233,7 +241,7 @@
         
         
         
-          3 mins
+          11 mins
         
       </span>
     
@@ -271,18 +279,48 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">CVE-2020-6418</h1>
+            <h1 style="display: none">pikachu-XSS</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>(资料来自绿盟科技)</p>
-<p>2020年2月24日，google针对桌面版chrome浏览器发布更新以解决多个漏洞，包括已被发现的在野利用的高危漏洞CVE-2020-6418.</p>
-<p>CVE-2020-6418存在于V8中的类型混淆漏洞，V8是chrome的开源JavaScript和WebAssembly引擎，该洞由Google威胁分析小组的Clement Lecigne发现并上报。</p>
-<p>受影响产品版本：</p>
-<p>Google Chrome Version&lt;80.0.3987.122</p>
-<p>适用于windows,Mac,Linux.</p>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a target="_blank" rel="noopener" href="http://blog.nsfocus.net/cve-2020-6418">http://blog.nsfocus.net/cve-2020-6418</a></p>
+                <h1 id="XSS概述"><a href="#XSS概述" class="headerlink" title="XSS概述"></a>XSS概述</h1><p>成因：没有对web前端的输入边界严格过滤，造成攻击者可以通过构造脚本语言使得输入的内容被当成正常的html来执行，从而产生危害，xss主要危害前端用户，并可以用于进行钓鱼，前端js挖矿，用户cookie获取、甚至可以结合浏览器自身的漏洞对主机进行远程控制。</p>
+<h2 id="xss窃取cookie攻击流程"><a href="#xss窃取cookie攻击流程" class="headerlink" title="xss窃取cookie攻击流程"></a>xss窃取cookie攻击流程</h2><ol>
+<li>攻击者发现存在xss漏洞的站点插入js脚本等待用户访问</li>
+<li>用户访问xss页面，触发脚本，返回带有恶意js的页面</li>
+<li>执行脚本，发送窃取数据（cookie）到攻击者</li>
+<li>伪造用户登录，造成破坏</li>
+</ol>
+<h2 id="常见类型"><a href="#常见类型" class="headerlink" title="常见类型"></a>常见类型</h2><ul>
+<li>反射型：交互数据一般不会被存在数据库里，一次性所见即所得，一般出现在查询类页面等</li>
+<li>存储型：交互的数据被存储在数据库里，永久性存储，一般出现在留言板、注册等页面</li>
+<li>DOM型：不与后台服务器产生数据交互，是一种通过DOM操作前端代码输出的时候产生的问题，一次性，也属于反射型一种。</li>
+</ul>
+<h2 id="xss漏洞测试流程"><a href="#xss漏洞测试流程" class="headerlink" title="xss漏洞测试流程"></a>xss漏洞测试流程</h2><ol>
+<li>在目标站点上找到输入点，如查询接口、留言板等</li>
+<li>输入一组“特殊字符+唯一识别字符”，点击提交后查看返回的源码，是都有对应的处理</li>
+<li>通过搜索定位到唯一字符，结合唯一字符前后</li>
+</ol>
+<h2 id="反射型xss-get"><a href="#反射型xss-get" class="headerlink" title="反射型xss(get)"></a>反射型xss(get)</h2><p>随便输入，返回<code>who is &gt;&gt;&gt;,i don't care!</code></p>
+<p>看一下源代码</p>
+<p><img src="https://s2.loli.net/2023/01/31/TKemsZJ8zu6XrqN.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
+<p>可以构造执行js（构造闭合）<br>限制输入字符长度为20，可以直接在网址框输入xss语句<code>&lt;script&gt;alert('XSS')&lt;/script&gt;</code></p>
+<p><img src="https://s2.loli.net/2023/01/31/Y1Q9Nwx68KD3TSi.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
+<p>发现可以解析，即存在xss漏洞，可以利用此漏洞获取用户cookie。</p>
+<p>漏洞利用我失败了，不知道什么原因，跟着教程做的也不对，先不弄了。</p>
+<p>XSS是利用网站的输入接口进行攻击，在前期通过各种特殊字符进行试探后，若是符合攻击的条件，就进行js恶意代码的编写，注入到输入接口之后，获取url将其发送给受害者，即可进行攻击</p>
+<h2 id="反射型xss-post"><a href="#反射型xss-post" class="headerlink" title="反射型xss(post)"></a>反射型xss(post)</h2><p>登录后直接在输入框输入构造的js代码会出现弹窗。</p>
+<p>看一下源代码，发现输入字符串直接嵌入p标签中，意味着我们可以尝试写入特制js代码</p>
+<p><img src="https://s2.loli.net/2023/02/01/euRjUM8mKDFGahQ.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p>因为网址输入口的url没有我们输入的内容，所以不能用get的方式去攻击</p>
+<p><img src="https://s2.loli.net/2023/02/01/iG1Tu7vQS5dZPNJ.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<h2 id="存储型xss"><a href="#存储型xss" class="headerlink" title="存储型xss"></a>存储型xss</h2><p>输入过的字符都会被存储写在p标签里，输入xss语句发现弹出窗口。</p>
+<p>存储型xss:交互的数据都会被存在数据库里，永久性存储，一般出现在留言板，注册等页面。</p>
+<p>自我们输入xss语句之后，每次刷新都会弹出xss弹窗，说明js代码被存储到数据库中，每次访问这个页面都会执行一遍。</p>
+<p>利用我是真不会。</p>
+<h2 id="DOM型xss"><a href="#DOM型xss" class="headerlink" title="DOM型xss"></a>DOM型xss</h2><p>DOM是一个与平台、编程语言无关的接口，它允许程序或脚本动态地访问和更新文档内容、结构和样式，处理后的结果能够成为显示页面的一部分，通过DOM可以让脚本动态的访问、控制网页，通过js去对网页进行修改，变化执行才产生的xss漏洞。</p>
+<p>Dom是将代码插入到本地浏览器的前端代码里面，而反射和存储是经过后端，并且反射后端遇到就会执行，存储型也经过，但是会把数据持久性的存储到服务器上。</p>
+<p><img src="https://s2.loli.net/2023/02/01/kBafmhedXxFDRyz.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
 
                 
               </div>
@@ -295,7 +333,11 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/chrome%E8%B0%83%E8%AF%95/">#chrome调试</a>
+        <a href="/tags/pikachu/">#pikachu</a>
+      
+        <a href="/tags/XSS/">#XSS</a>
+      
+        <a href="/tags/%E9%9D%B6%E5%9C%BA/">#靶场</a>
       
     </div>
   
@@ -307,8 +349,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>CVE-2020-6418</div>
-      <div>https://sinky.top/2022/08/09/CVE-2020-6418/</div>
+      <div>pikachu-XSS</div>
+      <div>https://sinky.top/2023/01/17/pikachu-XSS/</div>
     </div>
     <div class="license-meta">
       
@@ -320,7 +362,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>August 9, 2022</div>
+          <div>January 17, 2023</div>
         </div>
       
       
@@ -350,9 +392,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/08/09/DDCTF2019re/" title="DDCTF RE windows_re2">
+                      <a href="/2023/01/19/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CCTF-Misc3/" title="攻防世界CTF-Misc3">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">DDCTF RE windows_re2</span>
+                        <span class="hidden-mobile">攻防世界CTF-Misc3</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -360,8 +402,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/08/09/bp%E5%9B%9B%E7%A7%8D%E5%AF%86%E7%A0%81%E7%88%86%E7%A0%B4%E6%A8%A1%E5%BC%8F%E5%AD%A6%E4%B9%A0/" title="burp四种密码爆破模式学习">
-                        <span class="hidden-mobile">burp四种密码爆破模式学习</span>
+                      <a href="/2023/01/11/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-repeater/" title="攻防世界-repeater">
+                        <span class="hidden-mobile">攻防世界-repeater</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

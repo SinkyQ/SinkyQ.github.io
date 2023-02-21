@@ -26,7 +26,7 @@
 <meta property="og:image" content="https://s2.loli.net/2022/11/15/9Zne3TXqFwEQaxY.png">
 <meta property="og:image" content="https://s2.loli.net/2022/11/15/raP1p2C7BzXuUWI.png">
 <meta property="article:published_time" content="2022-11-23T01:56:57.868Z">
-<meta property="article:modified_time" content="2023-01-06T01:26:24.409Z">
+<meta property="article:modified_time" content="2023-02-20T08:15:12.399Z">
 <meta property="article:author" content="Sinky">
 <meta property="article:tag" content="php">
 <meta name="twitter:card" content="summary_large_image">
@@ -225,7 +225,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          11k words
+          16k words
         
       </span>
     
@@ -236,7 +236,7 @@
         
         
         
-          91 mins
+          135 mins
         
       </span>
     
@@ -890,11 +890,321 @@ require 'a.php';
 <li>相对路径相对效率高，但是容易出错（相对路径会发生改变）</li>
 </ol>
 <p>例：</p>
-<pre><code class="hljs">//相对路径加载
-include_once 'demo2.php';//默认当前文件本身
+<pre><code class="hljs">&lt;?php
+//php文件加载路径
+//相对路径加载
+include_once './demo2.php';//默认当前文件本身
+//include_once './demo2.php';
+//复杂相对路径
+//include_once '../htdocs/deom2.php';
+//绝对路径
+include_once 'E:/server/…/htdocs/demo2.pjp';
 echo $a;
-include_once './demo2.php';//当前目录文件夹
+?&gt;
 </code></pre>
+<h2 id="文件嵌套包含"><a href="#文件嵌套包含" class="headerlink" title="文件嵌套包含"></a>文件嵌套包含</h2><p>文件嵌套包含：一个文件包含另外一个文件，同时被包含的文件又包含了另外一个文件。</p>
+<p>例：</p>
+<pre><code class="hljs">//---demo1.php
+&lt;?php
+$a=10;
+include_once 'demo2.php';
+?&gt;
+//---demo2.php
+&lt;?php
+echo 'I am demo2.php';
+?&gt;
+//---demo3.php
+&lt;?php
+//文件嵌套包含，包含文件demo1.php,demo1本身包含了demo2
+include 'demo1.php';
+?&gt;
+</code></pre>
+<p>嵌套包含时候容易出现相对路径出错的问题，相对路径会因为文件的包含而改变（./和../）：windows下面每一个文件夹下都有<code>.</code>和<code>..</code>的文件夹。</p>
+<p>例子：</p>
+<p>创建文件夹father，在其下创建文件夹son，在目录son下创建son.php和include.php：</p>
+<pre><code class="hljs">//---son.php
+&lt;?php
+//包含include.php
+include_once 'include.php';
+?&gt;	
+//---include.php
+&lt;?php
+//定义数据
+$son = 'SON';
+echo $son,'&lt;br/&gt;';
+?&gt;9
+</code></pre>
+<p>在father文件下创建father.php</p>
+<pre><code class="hljs">&lt;?php
+//包含son目录下的son.php
+include 'son/son.php';
+?&gt;
+访问father/father.php
+</code></pre>
+<p>father目录外创建include.php包含father</p>
+<p>在<br>    <!--?php
+    //加载father下面的father.php
+    include 'father/father.php';
+    ?--><br>    访问 include.php</p>
+<h1 id="函数-1"><a href="#函数-1" class="headerlink" title="函数"></a>函数</h1><p>基本概念：function，一种语法结构，将实现某一个功能的代码块（多行代码）封装到一个结构中从而实现代码的重复利用（复用）</p>
+<p>定义语法：函数有几个对应的关键点：function 关键字、函数名、参数（形参、实参）、函数体和返回值。</p>
+<p>基本语法：</p>
+<pre><code class="hljs">function 函数名（参数）{
+    //函数体
+    //返回值 return 结果
+}
+</code></pre>
+<p>目的：为了实现代码的重复利用</p>
+<p>函数的使用：通过访问函数名字和参数，如果函数在定义过程中有参数，那么在调用的时候必须传入对应参数。</p>
+<pre><code class="hljs">&lt;?php
+//定义函数
+function display(){
+    echo 'hello world';
+}
+//调用函数
+display();
+?&gt;
+</code></pre>
+<p>函数在代码执行阶段中碰见函数名字时候调用，不是在编译阶段。</p>
+<p>特点：只要系统在内存中能够找到对应函数，就可以执行。</p>
+<p>函数执行的内存分析：</p>
+<ol>
+<li>读取代码进入代码段（编译：将代码变成字节码存储到内存）</li>
+<li>根据代码逐行执行。</li>
+<li>编译和执行是分开的（先编译后执行）</li>
+</ol>
+<p>函数命名规范：由字母、数字和下划线组成，但不能以数字开头。</p>
+<h2 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h2><ul>
+<li>形参：形式参数，不具实际意义，在函数定义时使用的参数</li>
+<li>实参：实际参数，具有实际数据意义，在函数调用时使用的参数</li>
+<li>形参是实参的载体：实参在调用时通常需要传入函数内部参与计算，需要在函数内部去找到实际数据所在位置从而找到数据本身；需要实际调用时，将数据以实参形式传递给形参，给形参赋值，从而使得函数内部可以用到外部数据。</li>
+</ul>
+<p>例子：</p>
+<pre><code class="hljs">&lt;?php
+function add($arg1,$arg2){ // 形参
+    echo $arg1+$arg2;
+}
+$num1=10;
+add($num1,20);//实参
+?&gt;
+</code></pre>
+<p>分析：</p>
+<ol>
+<li>系统调用add函数：去内存中寻找add函数</li>
+<li>系统在栈区开辟内存空间运行add</li>
+<li>系统查看函数本身是否具有形参</li>
+<li>系统判断调用的时候是否有实参</li>
+<li>系统默认将实参的值去除顺序赋值给形参</li>
+<li>执行函数体</li>
+<li>返回函数执行</li>
+</ol>
+<p>默认值：default value,指的是形参默认值，在函数定义的时候就给形参进行一个初始复制，如果实际调用出传入的参数(实参)没有提供，那么形参就会使用定义时的值来进入函数内部参与运算。</p>
+<h3 id="引用传递"><a href="#引用传递" class="headerlink" title="引用传递"></a>引用传递</h3><p>实参在调用时会将值赋值给形参，那么实际上使用的方式就是一种简单的值传递：将实参的结果取出来赋值给形参。</p>
+<p>弱希望在函数内部拿到的外部数据，能够在函数内部改变，那么就需要明确告知函数（定义时），函数才会在调用的时候去主动获取为外部数据的内存地址，以上这种定义形式参数的方式叫做引用传值。</p>
+<p>基本语法：</p>
+<pre><code class="hljs">function 函数名(形参1，形参2){
+    //函数体
+}
+</code></pre>
+<p>在调用时必须给引用传值的参数位置传入实际参数，而且参数本身必须是变量（变量才有指向的数据的内存地址）</p>
+<pre><code class="hljs">&lt;?php
+function display($a,&amp;$b){
+    $a=$a*$a;
+    $b=$b*$b;
+    echo $a,'&lt;br/&gt;',$b,'&lt;br/&gt;';
+}
+$a=10;
+$b=5;
+display($a,$b);//100 25
+echo '&lt;br/&gt;',$a,'&lt;br/&gt;',$b; //10 25
+?&gt;
+函数在定义的时候，对应的b形参采用取地址，所以在实参传入之后，系统b渠道了外部变量b的内存地址，而a取的是值，因此改变之后，a只是改变函数内部自己，b改变自己的同事也改变了外部.
+</code></pre>
+<h2 id="函数体"><a href="#函数体" class="headerlink" title="函数体"></a>函数体</h2><p>函数内部的所有代码称之为函数体</p>
+<ol>
+<li>定义变量</li>
+<li>定义常量</li>
+<li>使用流程控制（分支、循环）</li>
+<li>可以调用函数</li>
+</ol>
+<h2 id="函数返回值"><a href="#函数返回值" class="headerlink" title="函数返回值"></a>函数返回值</h2><p>return,将函实现的结果，通过return关键字，返回给函数外部（函数调用处）</p>
+<pre><code class="hljs">&lt;?php
+function display(){
+    echo __FUNCTION__;
+}
+var_dump(display());//displayNULL 
+?&gt;
+</code></pre>
+<p>加法：</p>
+<pre><code class="hljs">function add($num1,$num2){
+    return $num1+$num2;
+}
+$res=add(10,20);
+echo $res;
+</code></pre>
+<p>return关键字：</p>
+<ol>
+<li>return在函数内部存在的价值：返回当前函数的结果（当前函数运行结束）</li>
+<li>return可以在文件中直接使用（不在函数里），代表文件将结果return后面跟的内容，转交给包含当前文件的位置。</li>
+</ol>
+<h1 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h1><p>变量（常量）能够被访问的区域</p>
+<ol>
+<li>全局变量：函数外部定义的变量<ol>
+<li>所属全局空间：在php中只允许在全局空间使用</li>
+</ol>
+</li>
+<li>局部变量：函数内部定义的变量<ol>
+<li>所属当前函数空间：在php中只允许在当前函数自己内部使用</li>
+</ol>
+</li>
+<li>超全局变量：系统定义的变量（预定义变量：$_SERVER、$_POST等）<ol>
+<li>所属超全局空间：没有访问限制（函数内外都可以访问）</li>
+</ol>
+</li>
+</ol>
+<p>例子：全局变量不能在局部使用</p>
+<pre><code class="hljs">&lt;?php
+//全局
+$global='global area';
+//局部
+function display(){
+    $inner=__FUNCTION__;
+    echo $global;
+}
+display();
+?&gt;
+</code></pre>
+<p>例子：全局访问局部会失败</p>
+<pre><code class="hljs">&lt;?php
+//全局
+$global='global area';
+//局部
+function display(){
+    $inner=__FUNCTION__;
+}
+display();
+echo $inner;
+?&gt;
+</code></pre>
+<p>例子：超全局变量会将全局变量自动纳入到<code>$GLOBALS</code>里面，而<code>$GLOBALS</code>没有作用域限制，所以能够帮助局部去访问全局变量（必须使用数组方式）</p>
+<pre><code class="hljs">&lt;?php
+//全局
+$global='global area';//最终被系统纳入到超全局变量中：$GLOBALS['global']
+//局部
+function display(){
+    $inner=__FUNCTION__;
+    //echo $global;
+    //访问全局变量
+    //var_dump($GLOBALS);
+    echo $GLOBALS['global'];//global area
+}
+display();
+?&gt;
+</code></pre>
+<p>若想函数内部使用外部变量，除了<code>$GLOBALS</code>之外，通过参数传值（若统一战线还可以使用引用传值）</p>
+<p>在php种，能够实现全局访问局部，同时局部访问全局：<code>global</code>关键字。</p>
+<p><code>global</code>关键字：是一种在函数里面定义变量的一种方式</p>
+<ol>
+<li>如果使用global定义的变量名在外部存在（全局变量），那么系统在函数内部定义的变量直接指向外部全局变量所指向的内存空间（同一变量不同名字）</li>
+<li>如果使用<code>global</code>定义的变量名在外部不存在（全局变量），系统会自动在全局空间（外部）定义一个与局部变量同名的全局变量。</li>
+<li>本质的形式：在函数的内部和外部，对一个同名变量（全局和局部）使用同一块内存地址保存数据，从而实现共同拥有</li>
+</ol>
+<p>基本语法：</p>
+<pre><code class="hljs">global 变量名;//不能赋值
+变量名=值;//修改
+</code></pre>
+<p>例子：</p>
+<pre><code class="hljs">&lt;?php
+//全局
+$global='global area';
+//局部
+function display(){
+    $inner=__FUNCTION__;
+    //定义变量：使用全局变量
+    global $global;//全局空间存在
+    echo $global;//global area
+    //定义变量：全局不存在
+    global $local;
+    $local='inner';
+}
+display();
+//访问局部变量
+echo $local;//global areainner
+?&gt;
+</code></pre>
+<p>一般如果会存在特殊使用，也会使用参数的形式来访问（还可以使用常量：<code>define</code>定义的）</p>
+<h1 id="静态变量"><a href="#静态变量" class="headerlink" title="静态变量"></a>静态变量</h1><p>静态变量：static,是在函数内部定义的变量，使用static关键字修饰，用来实现跨函数共享数据的变量：函数运行结束所有局部变量都会清空，如果重新运行一下函数，所有的局部变量又会重新初始化。</p>
+<p>基本语法：</p>
+<pre><code class="hljs">function 函数名(){
+    statuc $变量名 = 值;//通常会在定义的时候就直接赋值
+}
+</code></pre>
+<p>例子：</p>
+<pre><code class="hljs">&lt;?php
+function display(){
+    $local = 'local';//局部变量
+    //定义静态变量
+    static $count=1;
+}
+display();
+?&gt;
+</code></pre>
+<p>静态变量的作用是为了跨函数共享数据（同一函数多次调用）</p>
+<p>例子：</p>
+<pre><code class="hljs">&lt;?php
+function display(){
+    $local = 'local';//局部变量
+    //定义静态变量
+    static $count=1;
+    echo $local++,$count++,'&lt;br/&gt;';
+}
+display();//local1
+display();//local2
+display();//local3
+?&gt;
+</code></pre>
+<p>分析：</p>
+<p>静态变量的原理：系统在进行编译的时候就会对static这一行进行初始化，为静态变量赋值</p>
+<p>函数在调用的时候会自动跳过static关键字这一行。</p>
+<h1 id="可变函数"><a href="#可变函数" class="headerlink" title="可变函数"></a>可变函数</h1><p>可变函数：变量所保存的值是函数名字，就可以使用变量+()来充当函数名使用</p>
+<p>例子：</p>
+<pre><code class="hljs">&lt;?php
+function display(){
+    echo __FUNCTION__;
+}
+$func='display';
+$func();//display
+?&gt;
+</code></pre>
+<p>在使用系统函数时，需要用户在外部定义一个自定义函数，但需要传入到系统函数内部使用：</p>
+<pre><code class="hljs">&lt;?php
+function sys_function($arg1,$arg2){
+    $arg2=$arg2+10;
+    return $arg1($arg2);
+}
+function user_function($num){
+    return $num * $num * $num * $num;
+}
+//求10的4次方
+echo sys_function('user_function',10);
+?&gt;
+</code></pre>
+<p>将一个用户定义的函数传入给另一个函数（函数名）去使用的过程，称之为回调过程，被传入的函数称之为回调函数。</p>
+<h1 id="匿名函数"><a href="#匿名函数" class="headerlink" title="匿名函数"></a>匿名函数</h1><p>匿名函数：没有名字的函数。</p>
+<p>基本语法：</p>
+<pre><code class="hljs">变量名=function(){
+    函数体};
+</code></pre>
+<p>例子：</p>
+<pre><code class="hljs">&lt;?php
+$func=function(){
+    echo 'helloworld';
+};
+$func();//helloworld
+?&gt;
+</code></pre>
+<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><p>闭包：要执行的代码块（由于自由变量被包含在代码块中，这些自由变量以及它们引用的对象没有被释放）和为自由变量提供绑定的计算环境（作用域）</p>
+<p>函数内部有一些局部变量（要执行的读代码块）在函数执行之后没有被释放，是因为在函数内部还有对应的函数在引用（函数的内部函数：匿名函数）</p>
 
                 
               </div>

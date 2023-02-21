@@ -226,6 +226,222 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2023/01/04/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CCTF-Misc2/" target="_self">
+          攻防世界CTF-Misc2
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/01/04/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CCTF-Misc2/" target="_self">
+        <div>
+          Misc1题目：d4e8e1f4a0f7e1f3a0e6e1f3f4a1a0d4e8e5a0e6ece1e7a0e9f3baa0c4c4c3d4c6fbb9e1e6b3e3b9e4b3b7b7e2b6b1e4b2b6b9e2b1b1b3b3b7e6b3b3b0e3b9b3b5e6fd 以为是十六进制转文本，失败 看一下组成：数字+字母a-f 转ascii乱码，应该偏移了，一般是偏移128 s &#x3D;
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-01-04 14:45" pubdate>
+              2023-01-04
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/CTF/">#CTF</a>
+            
+              <a href="/tags/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C/">#攻防世界</a>
+            
+              <a href="/tags/Misc/">#Misc</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/12/09/%E5%9F%BA%E6%9C%ACROP%E4%B9%8Bret2libc/" target="_self">
+          基本ROP之ret2libc
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/12/09/%E5%9F%BA%E6%9C%ACROP%E4%B9%8Bret2libc/" target="_self">
+        <div>
+          程序下载：https:&#x2F;&#x2F;pan.baidu.com&#x2F;s&#x2F;1rrz6u-w_TlmQcdQrU_rZlw 提取码：rc47 原理ret2libc 即控制函数执行libc中的函数，通常是返回至某个函数的plt处或者函数的具体位置(即函数对应的got表项的内容)。通常情况下，会选择执行system(&#39;&#x2F;bin&#x2F;sh&#39;)，所以需要先直到system函数的地址。 忘了plt啥是啥了，回忆一下： Got,P
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-12-09 13:23" pubdate>
+              2022-12-09
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/ROP/">#ROP</a>
+            
+              <a href="/tags/%E6%A0%88%E6%BA%A2%E5%87%BA/">#栈溢出</a>
+            
+              <a href="/tags/CTFWikiPWN/">#CTFWikiPWN</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/12/08/%E5%9F%BA%E6%9C%ACROP%E4%B9%8Bret2syscall/" target="_self">
+          基本ROP之ret2syscall
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/12/08/%E5%9F%BA%E6%9C%ACROP%E4%B9%8Bret2syscall/" target="_self">
+        <div>
+          程序下载：https:&#x2F;&#x2F;pan.baidu.com&#x2F;s&#x2F;1gXkrC0w56yH-FdTkUjFttw 提取码：ch1e 分析程序原理：控制程序执行系统调用，获取shell  checksec查看，32位，got表可写，没开栈保护和地址随机化，开了NX（不可执行） IDA查看： main函数： 12345678910int __cdecl main(int argc, const char **
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-12-08 16:41" pubdate>
+              2022-12-08
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/ROP/">#ROP</a>
+            
+              <a href="/tags/%E6%A0%88%E6%BA%A2%E5%87%BA/">#栈溢出</a>
+            
+              <a href="/tags/CTFWikiPWN/">#CTFWikiPWN</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/12/07/%E5%9F%BA%E6%9C%ACROP%E4%B9%8Bret2shellcode/" target="_self">
+          基本ROP之ret2shellcode
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/12/07/%E5%9F%BA%E6%9C%ACROP%E4%B9%8Bret2shellcode/" target="_self">
+        <div>
+          原理ret2shellcode,即控制程序执行shellcode代码，shellcode指用于完成某个功能的汇编代码，常见功能主要是获取目标系统的shell,一般来说shellcode需要自己填充。 控制程序执行shellcode。在栈溢出的基础上，若想在执行shellcode,需要对应的binary在运行时shellcode所在的区域具有可执行权限。 下载程序： https:&#x2F;&#x2F;pan.baid
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-12-07 16:44" pubdate>
+              2022-12-07
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/ROP/">#ROP</a>
+            
+              <a href="/tags/%E6%A0%88%E6%BA%A2%E5%87%BA/">#栈溢出</a>
+            
+              <a href="/tags/CTFWikiPWN/">#CTFWikiPWN</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/12/07/GDB%E5%88%A9%E7%94%A8%E6%8A%80%E5%B7%A7/" target="_self">
+          GDB利用技巧
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/12/07/GDB%E5%88%A9%E7%94%A8%E6%8A%80%E5%B7%A7/" target="_self">
+        <div>
+          下断点在源文件函数入口处断点： b 文件名:函数名 b text.c:func1  在源文件某一行断点： b 代码行号 例：b 7  在程序的某个地址断点： b *address 例：b 0x401000  条件断点： b num if cond 例：b 14 if c&#x3D;4  查看断点： info b  删除断点： del num[断点序号]  设置断点有效和无效： dis num # 将第num
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-12-07 15:33" pubdate>
+              2022-12-07
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/GDB/">#GDB</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2022/12/07/%E5%9F%BA%E6%9C%ACROP%E4%B9%8Bret2text/" target="_self">
           基本ROP之ret2text
         </a>
@@ -429,216 +645,6 @@
               <a href="/tags/vulhub/">#vulhub</a>
             
               <a href="/tags/%E9%9D%B6%E5%9C%BA/">#靶场</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/11/25/vulhub%EF%BC%9ACVE-2018-3760/" target="_self">
-          Vulhub之 CVE-2018-3760
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/11/25/vulhub%EF%BC%9ACVE-2018-3760/" target="_self">
-        <div>
-          先搜一下3760的形成原理： Ruby on Rails 路径穿越； 高危； 影响版本： 版本&lt;&#x3D;Sprockets 3.7.1 Ruby on rails在开发环境下使用Sprockets作为静态文件服务器，在Sprockets 3.7.1及之前版本中，存在一处因为二次解码导致的路径穿越漏洞，攻击者可以利用%25e%25e&#x2F;来跨越到就根目录，读取或执行目标服务器上任意文件。 Sprocke
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-11-25 09:49" pubdate>
-              2022-11-25
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/vulhub/">#vulhub</a>
-            
-              <a href="/tags/CVE/">#CVE</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/11/24/vulhub%EF%BC%9ACVE-2019-5418/" target="_self">
-          vulhub之CVE-2019-5418
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/11/24/vulhub%EF%BC%9ACVE-2019-5418/" target="_self">
-        <div>
-          漏洞介绍Ruby on Rails是一个Web应用程序框架，构建在Ruby语言上。 在控制器中通过render file形式来渲染应用之外的视图，且会根据用户传入的Accept头来确定文件具体位置。 通过传入Accept:..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;etc&#x2F;passwd\{\{ 头来构造路径穿越漏洞，读取任意文件。 漏洞利用方法一访问index.php（随便输入的）报错，报错页面有
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-11-24 10:56" pubdate>
-              2022-11-24
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/vulhub/">#vulhub</a>
-            
-              <a href="/tags/%E9%9D%B6%E5%9C%BA/">#靶场</a>
-            
-              <a href="/tags/CVE/">#CVE</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/11/23/php%E5%AD%A6%E4%B9%A0/" target="_self">
-          php学习
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/11/23/php%E5%AD%A6%E4%B9%A0/" target="_self">
-        <div>
-          网站基本概念 服务器：提供计算机服务的机器，取决于机器上所安装的软件（服务软件） web服务器：提供web服务（网站访问），需要安装web服务软件，Apache,tomcat,iis等   IP：网络互连协议，为计算机网络相互连接进行通信而设计的协议，IP地址具有唯一性（每台电脑都有一个唯一的IP地址） 域名：由遗传用点分割的名字组成（www.baidu.ccom）的Internet上某一台计算机
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-11-23 09:56" pubdate>
-              2022-11-23
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/php/">#php</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/11/21/Kali%E5%AE%89%E8%A3%85vulhub/" target="_self">
-          Kali安装vulhub
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/11/21/Kali%E5%AE%89%E8%A3%85vulhub/" target="_self">
-        <div>
-          再搭一个靶场，基于docker和docker-compose的漏洞环境集合。 安装docker切root用户： apt-get update #更新 apt-get install -y apt-transport-https ca-certificates #安装https协议、CA证书 apt install docker.io # 安装docker docker -v # 查看是否安装成功
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-11-21 09:23" pubdate>
-              2022-11-21
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/docker/">#docker</a>
-            
-              <a href="/tags/vulhub/">#vulhub</a>
-            
-              <a href="/tags/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">#环境搭建</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/11/15/%E9%9D%B6%E5%9C%BA%EF%BC%9A%E6%9F%90%E9%98%B2%E7%81%AB%E5%A2%99%E9%BB%98%E8%AE%A4%E5%8F%A3%E4%BB%A4/" target="_self">
-          靶场：某防火墙默认口令
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/11/15/%E9%9D%B6%E5%9C%BA%EF%BC%9A%E6%9F%90%E9%98%B2%E7%81%AB%E5%A2%99%E9%BB%98%E8%AE%A4%E5%8F%A3%E4%BB%A4/" target="_self">
-        <div>
-          背景介绍安全工程师”墨者”对某公司进行授权测试时，扫描公网IP时发现当前公司在网络边界部署了某型号防火墙，并且公网可以访问防火墙的WEB页面。 实训目标  掌握查看当前设备类型的方法； 了解网络（安全）设备的登录控制方式； 了解网络（安全）设备的默认口令获取方式； 了解当前型号防火墙的不同账户的区别； 了解在网络信息安全中的权限最小化、权限分离作用；  解题方向 找到防火墙的默认口令进行登录。 解
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-11-15 13:53" pubdate>
-              2022-11-15
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%A2%A8%E8%80%85%E5%AD%A6%E9%99%A2%EF%BC%8C%E9%9D%B6%E5%9C%BA%EF%BC%8C%E9%98%B2%E7%81%AB%E5%A2%99/">#墨者学院，靶场，防火墙</a>
             
           </div>
         

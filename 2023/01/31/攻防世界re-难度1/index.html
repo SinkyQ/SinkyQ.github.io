@@ -1,0 +1,720 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Sinky">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="easyRE1下载附件有俩文件，先看一下32位的。 直接给出了 flag:db2f62a36a018bce28e46d976e3f9864  lucknum64位ida打开……直接有flag reverse_re3题目描述:我从不走回头路，但你能找到我选择的路吗 看提示好像是个地图题，ida看一下  w a s d应该是方向上下左右 dword_202AB0&#x3D;2的时候停止  找一下地图 看一下方向">
+<meta property="og:type" content="article">
+<meta property="og:title" content="攻防世界re-难度1">
+<meta property="og:url" content="https://sinky.top/2023/01/31/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cre-%E9%9A%BE%E5%BA%A61/index.html">
+<meta property="og:site_name" content="Sinky&#39;s Blog">
+<meta property="og:description" content="easyRE1下载附件有俩文件，先看一下32位的。 直接给出了 flag:db2f62a36a018bce28e46d976e3f9864  lucknum64位ida打开……直接有flag reverse_re3题目描述:我从不走回头路，但你能找到我选择的路吗 看提示好像是个地图题，ida看一下  w a s d应该是方向上下左右 dword_202AB0&#x3D;2的时候停止  找一下地图 看一下方向">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://s2.loli.net/2023/01/31/iTC6GwAoPdIUVZQ.png">
+<meta property="og:image" content="https://s2.loli.net/2023/01/31/IFl5WXx48ya9P2K.png">
+<meta property="og:image" content="https://s2.loli.net/2023/01/31/ADs8iNxCKmgf4GS.png">
+<meta property="og:image" content="https://s2.loli.net/2023/01/31/qEisuB5TS3IvLxY.png">
+<meta property="og:image" content="https://s2.loli.net/2023/01/31/TPfSNznAuUsDmZy.png">
+<meta property="og:image" content="https://s2.loli.net/2023/01/31/aKOH6woyPJljxrt.png">
+<meta property="og:image" content="https://s2.loli.net/2023/01/31/y1VFoxqb7A3s2nj.png">
+<meta property="article:published_time" content="2023-01-31T01:15:14.390Z">
+<meta property="article:modified_time" content="2023-01-31T06:52:18.249Z">
+<meta property="article:author" content="Sinky">
+<meta property="article:tag" content="RE">
+<meta property="article:tag" content="CTF">
+<meta property="article:tag" content="攻防世界">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://s2.loli.net/2023/01/31/iTC6GwAoPdIUVZQ.png">
+  
+  
+  
+  <title>攻防世界re-难度1 - Sinky&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"sinky.top","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.2.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Sinky's Blog" type="application/atom+xml">
+</head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Sinky</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="攻防世界re-难度1"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-01-31 09:15" pubdate>
+          January 31, 2023 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.5k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          38 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">攻防世界re-难度1</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="easyRE1"><a href="#easyRE1" class="headerlink" title="easyRE1"></a>easyRE1</h1><p>下载附件有俩文件，先看一下32位的。</p>
+<p>直接给出了</p>
+<pre><code class="hljs">flag:db2f62a36a018bce28e46d976e3f9864
+</code></pre>
+<h1 id="lucknum"><a href="#lucknum" class="headerlink" title="lucknum"></a>lucknum</h1><p>64位ida打开……直接有flag</p>
+<h1 id="reverse-re3"><a href="#reverse-re3" class="headerlink" title="reverse_re3"></a>reverse_re3</h1><p>题目描述:我从不走回头路，但你能找到我选择的路吗</p>
+<p>看提示好像是个地图题，ida看一下</p>
+<p><img src="https://s2.loli.net/2023/01/31/iTC6GwAoPdIUVZQ.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
+<pre><code class="hljs">w a s d应该是方向上下左右
+dword_202AB0=2的时候停止
+</code></pre>
+<p>找一下地图</p>
+<p>看一下方向键里面的函数内容，打开sub_E23()</p>
+<p><img src="https://s2.loli.net/2023/01/31/IFl5WXx48ya9P2K.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
+<p>地图应该就是这个<code>dword_202020</code>,看一下</p>
+<p><img src="https://s2.loli.net/2023/01/31/ADs8iNxCKmgf4GS.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
+<p>选中dword_202020，shift+e提取数据：</p>
+<p><img src="https://s2.loli.net/2023/01/31/qEisuB5TS3IvLxY.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
+<p>得到的数据处理一下，去掉中间三个0得到：</p>
+<figure class="highlight accesslog"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><code class="hljs accesslog">第一个迷宫<br><span class="hljs-string">[1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]</span><br><span class="hljs-string">[1, 1, 1, 1, 1, 0, 3, 1, 1, 0, 0, 0, 0, 0, 0]</span><br><span class="hljs-string">[1, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0]</span><br><span class="hljs-string">[1, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0]</span><br><span class="hljs-string">[1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0]</span><br><span class="hljs-string">[1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0]</span><br><span class="hljs-string">[1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0]</span><br><span class="hljs-string">[1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0]</span><br><span class="hljs-string">[1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0]</span><br><span class="hljs-string">[1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0]</span><br><span class="hljs-string">[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]</span><br><span class="hljs-string">[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]</span><br><span class="hljs-string">[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]</span><br><span class="hljs-string">[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]</span><br><span class="hljs-string">[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]</span><br>第二个迷宫<br><span class="hljs-string">[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]</span><br><span class="hljs-string">[1, 1, 0, 3, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0]</span><br><span class="hljs-string">[1, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0]</span><br><span class="hljs-string">[1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0]</span><br><span class="hljs-string">[1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0]</span><br><span class="hljs-string">[1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0]</span><br><span class="hljs-string">[1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0]</span><br><span class="hljs-string">[1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0]</span><br><span class="hljs-string">[1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0]</span><br><span class="hljs-string">[1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0]</span><br><span class="hljs-string">[1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 0]</span><br><span class="hljs-string">[1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0]</span><br><span class="hljs-string">[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0]</span><br><span class="hljs-string">[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]</span><br><span class="hljs-string">[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]</span><br>第三个迷宫<br><span class="hljs-string">[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]</span><br><span class="hljs-string">[0, 3, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]</span><br><span class="hljs-string">[0, 0, 0, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0]</span><br><span class="hljs-string">[0, 0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0]</span><br><span class="hljs-string">[0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]</span><br><span class="hljs-string">[0, 1, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]</span><br><span class="hljs-string">[0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]</span><br><span class="hljs-string">[0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]</span><br><span class="hljs-string">[0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0]</span><br><span class="hljs-string">[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0]</span><br><span class="hljs-string">[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0]</span><br><span class="hljs-string">[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0]</span><br><span class="hljs-string">[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0]</span><br><span class="hljs-string">[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0]</span><br><span class="hljs-string">[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0]</span><br></code></pre></td></tr></tbody></table></figure>
+
+<p>懒得弄了直接找了网上处理好的地图。</p>
+<p>3是起点，4是终点，1可走，0不可走</p>
+<pre><code class="hljs">ddsssddddsssdssdddddsssddddsssaassssdddsddssddwddssssssdddssssdddss
+
+flag{aeea66fcac7fa80ed8f79f38ad5bb953}
+</code></pre>
+<h1 id="1000Click"><a href="#1000Click" class="headerlink" title="1000Click"></a>1000Click</h1><p>ida打开，好家伙一堆假flag，其中发现一个Text db:</p>
+<p><img src="https://s2.loli.net/2023/01/31/TPfSNznAuUsDmZy.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
+<p>填入，弹出Success!</p>
+<pre><code class="hljs">flag{TIBntXVbdZ4Z9VRtoOQ2wRlvDNIjQ8Ra}
+</code></pre>
+<p>简单分析一下函数：</p>
+<pre><code class="hljs">void __thiscall sub_402790(CWnd *this)
+{
+    ++*((_DWORD *)this + 53);
+CWnd::UpdateData(this, 0);
+if ( *((_DWORD *)this + 53) == 1000 )
+{CWnd::MessageBoxA(this, Text, "msg", 0);
+PostQuitMessage(0);}
+}
+</code></pre>
+<p>就是<code>this+53==1000</code>弹出Text……</p>
+<h1 id="crypt"><a href="#crypt" class="headerlink" title="crypt"></a>crypt</h1><p>不是PE文件，ida看一下</p>
+<p><img src="https://s2.loli.net/2023/01/31/aKOH6woyPJljxrt.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
+<p>分析不太明白，看了一下大佬的wp</p>
+<p>分析main函数：</p>
+<pre><code class="hljs">int __cdecl main(int argc, const char **argv, const char **envp)
+{
+int v3; // eax
+unsigned int v4; // eax
+void *v5; // rax
+void *v7; // rax
+int i; // [rsp+24h] [rbp-D4h]
+_DWORD *v9; // [rsp+28h] [rbp-D0h]
+char v10[32]; // [rsp+30h] [rbp-C8h] BYREF
+char Str[128]; // [rsp+50h] [rbp-A8h] BYREF
+strcpy(Str, "12345678abcdefghijklmnopqrspxyz");// Str赋值
+memset(&amp;Str[32], 0, 0x60ui64);
+memset(v10, 0, 0x17ui64);
+scanf("%s", v10);
+v9 = malloc(0x408ui64);                       // v9用于加密
+v3 = strlen(Str);
+sub_140001120(v9, (__int64)Str, v3);          // 加密
+v4 = strlen(v10);
+sub_140001240(v9, v10, v4);                   // 加密
+for ( i = 0; i &lt; 22; ++i )                    // 加密后的值依次比较
+{
+  if ( ((unsigned __int8)v10[i] ^ 0x22) != byte_14013B000[i] )// 不相等则error
+  {
+    v5 = (void *)sub_1400015A0((__int64)&amp;off_14013B020, (__int64)"error");
+    _CallMemberFunction0(v5, (void (__fastcall *)(void *))sub_140001F10);
+    return 0;
+  }
+}
+v7 = (void *)sub_1400015A0((__int64)&amp;off_14013B020, (__int64)"nice job");
+_CallMemberFunction0(v7, (void (__fastcall *)(void *))sub_140001F10);
+return 0;
+}
+</code></pre>
+<p>看一下加密函数sub_140001120</p>
+<p><img src="https://s2.loli.net/2023/01/31/y1VFoxqb7A3s2nj.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
+<p>观察到有256次循环，明显的RC4算法特征。</p>
+<blockquote>
+<p>RC4:密钥长度可变的流加密算法簇,用于无线通信网络,通过算法一次一个字节的加密消息,使用64位或128位密钥大小,是一种典型的对称加密算法;<br>密钥长度可变,一般用256个字节</p>
+</blockquote>
+<h2 id="逻辑梳理"><a href="#逻辑梳理" class="headerlink" title="逻辑梳理"></a>逻辑梳理</h2><ol>
+<li>输入一个值</li>
+<li>RC4加密(密钥为Str)</li>
+<li>异或0x22</li>
+<li>用密钥(Str)RC4解密</li>
+<li>得到明文即为flag</li>
+</ol>
+<p>可得逆向逻辑:</p>
+<ol>
+<li><p>获取bype_14013B000的值</p>
+</li>
+<li><p>异或0x22</p>
+</li>
+<li><p>用已知密钥RC4解密</p>
+</li>
+<li><p>得到flag</p>
+<p> byte_14013B000=0x9E, 0xE7, 0x30, 0x5F, 0xA7, 0x1, 0xA6, 0x53, 0x59, 0x1Bh, 0xA, 0x20, 0xF1, 0x73, 0xD1, 0xE, 0xAB, 0x9, 0x84, 0xE, 0x8D, 0x2B,0x00,0x00</p>
+</li>
+</ol>
+<p>大佬的exp:</p>
+<figure class="highlight smali"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs smali">r = <span class="hljs-string">"12345678abcdefghijklmnopqrspxyz"</span><br>v9 = []  <span class="hljs-comment"># 该数组为用于加密的数组               # sub_140001120函数</span><br>for i in range(256):<br>        v9.append(i)<br>a3 = len(str)<br>v6 = 0<br>v7 = 0<br>v8 = 0<br>for j in range(256):  <span class="hljs-comment"># 使用str生成v9数组</span><br>        v8 = v9[j]<br>        v7 = ((ord(str[v6]) &amp; 0xff) + v8 + v7) &amp; 0xff<br>        v9[j] = v9[v7]<br>        v9[v7] = v8<br>        v6 += 1<br>       <span class="hljs-built_in"> if </span>v6 &gt;= a3:<br>                v6 = 0<br>flag1 = []      <span class="hljs-comment"># 伪flag,字符串在sub_140001240函数中被做了加密</span><br>key1 = [0x9E, 0x0E7, 0x30, 0x5F, 0x0A7, 0x1, 0x0A6, 0x53, 0x59, 0x1B, 0x0A, 0x20, 0x0F1, 0x73, 0x0D1, 0x0E, 0x0AB, 0x9, 0x84, 0x0E, 0x8D, 0x2B, 0x00, 0x00]<br>for i in range(22):<br>        flag1.append(key1[i] ^ 0x22)    <span class="hljs-comment"># 得到伪flag</span><br>flag = []<br>v5 = 0<br>v6 = 0<br>for i in range(22):             <span class="hljs-comment"># sub_140001240逆向解密</span><br>        v5 = (v5 + 1) &amp; 0xff<br>        v7 = v9[v5]<br>        v6 = (v7 + v6) &amp; 0xff<br>        v8 = v9[v6]<br>        v9[v5] = v8<br>        v9[v6] = v7<br>        flag.append(flag1[i] ^ ((v9[(v8+v7)&amp;0xff]) &amp; 0xff))<br>for i in range(22):<br>        print(chr(flag[i]),end=<span class="hljs-string">""</span>)<br></code></pre></td></tr></tbody></table></figure>
+
+<pre><code class="hljs">flag{nice_to_meet_you}
+</code></pre>
+<p>或者ida远程动态调试,我发现我的ida没有linux远程调试功能,可能是版本问题,懒得弄了.</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/RE/">#RE</a>
+      
+        <a href="/tags/CTF/">#CTF</a>
+      
+        <a href="/tags/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C/">#攻防世界</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>攻防世界re-难度1</div>
+      <div>https://sinky.top/2023/01/31/攻防世界re-难度1/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Sinky</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>January 31, 2023</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>Licensed under</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/01/31/%E5%AE%89%E5%85%A8%E4%B9%8B%E8%B7%AF%EF%BC%9AWeb%E6%B8%97%E9%80%8F%E6%8A%80%E6%9C%AF%E5%8F%8A%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B%E8%A7%A3%E6%9E%90/" title="安全之路：Web渗透技术及实战案例解析">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">安全之路：Web渗透技术及实战案例解析</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/01/19/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CCTF-Misc3/" title="攻防世界CTF-Misc3">
+                        <span class="hidden-mobile">攻防世界CTF-Misc3</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

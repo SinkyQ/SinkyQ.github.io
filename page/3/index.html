@@ -226,6 +226,216 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2022/11/25/vulhub%EF%BC%9ACVE-2018-3760/" target="_self">
+          Vulhub之 CVE-2018-3760
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/11/25/vulhub%EF%BC%9ACVE-2018-3760/" target="_self">
+        <div>
+          先搜一下3760的形成原理： Ruby on Rails 路径穿越； 高危； 影响版本： 版本&lt;&#x3D;Sprockets 3.7.1 Ruby on rails在开发环境下使用Sprockets作为静态文件服务器，在Sprockets 3.7.1及之前版本中，存在一处因为二次解码导致的路径穿越漏洞，攻击者可以利用%25e%25e&#x2F;来跨越到就根目录，读取或执行目标服务器上任意文件。 Sprocke
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-11-25 09:49" pubdate>
+              2022-11-25
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/vulhub/">#vulhub</a>
+            
+              <a href="/tags/CVE/">#CVE</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/11/24/vulhub%EF%BC%9ACVE-2019-5418/" target="_self">
+          vulhub之CVE-2019-5418
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/11/24/vulhub%EF%BC%9ACVE-2019-5418/" target="_self">
+        <div>
+          漏洞介绍Ruby on Rails是一个Web应用程序框架，构建在Ruby语言上。 在控制器中通过render file形式来渲染应用之外的视图，且会根据用户传入的Accept头来确定文件具体位置。 通过传入Accept:..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;etc&#x2F;passwd\{\{ 头来构造路径穿越漏洞，读取任意文件。 漏洞利用方法一访问index.php（随便输入的）报错，报错页面有
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-11-24 10:56" pubdate>
+              2022-11-24
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/vulhub/">#vulhub</a>
+            
+              <a href="/tags/%E9%9D%B6%E5%9C%BA/">#靶场</a>
+            
+              <a href="/tags/CVE/">#CVE</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/11/23/php%E5%AD%A6%E4%B9%A0/" target="_self">
+          php学习
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/11/23/php%E5%AD%A6%E4%B9%A0/" target="_self">
+        <div>
+          网站基本概念 服务器：提供计算机服务的机器，取决于机器上所安装的软件（服务软件） web服务器：提供web服务（网站访问），需要安装web服务软件，Apache,tomcat,iis等   IP：网络互连协议，为计算机网络相互连接进行通信而设计的协议，IP地址具有唯一性（每台电脑都有一个唯一的IP地址） 域名：由遗传用点分割的名字组成（www.baidu.ccom）的Internet上某一台计算机
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-11-23 09:56" pubdate>
+              2022-11-23
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/php/">#php</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/11/21/Kali%E5%AE%89%E8%A3%85vulhub/" target="_self">
+          Kali安装vulhub
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/11/21/Kali%E5%AE%89%E8%A3%85vulhub/" target="_self">
+        <div>
+          再搭一个靶场，基于docker和docker-compose的漏洞环境集合。 安装docker切root用户： apt-get update #更新 apt-get install -y apt-transport-https ca-certificates #安装https协议、CA证书 apt install docker.io # 安装docker docker -v # 查看是否安装成功
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-11-21 09:23" pubdate>
+              2022-11-21
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/docker/">#docker</a>
+            
+              <a href="/tags/vulhub/">#vulhub</a>
+            
+              <a href="/tags/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">#环境搭建</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/11/15/%E9%9D%B6%E5%9C%BA%EF%BC%9A%E6%9F%90%E9%98%B2%E7%81%AB%E5%A2%99%E9%BB%98%E8%AE%A4%E5%8F%A3%E4%BB%A4/" target="_self">
+          靶场：某防火墙默认口令
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/11/15/%E9%9D%B6%E5%9C%BA%EF%BC%9A%E6%9F%90%E9%98%B2%E7%81%AB%E5%A2%99%E9%BB%98%E8%AE%A4%E5%8F%A3%E4%BB%A4/" target="_self">
+        <div>
+          背景介绍安全工程师”墨者”对某公司进行授权测试时，扫描公网IP时发现当前公司在网络边界部署了某型号防火墙，并且公网可以访问防火墙的WEB页面。 实训目标  掌握查看当前设备类型的方法； 了解网络（安全）设备的登录控制方式； 了解网络（安全）设备的默认口令获取方式； 了解当前型号防火墙的不同账户的区别； 了解在网络信息安全中的权限最小化、权限分离作用；  解题方向 找到防火墙的默认口令进行登录。 解
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-11-15 13:53" pubdate>
+              2022-11-15
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%A2%A8%E8%80%85%E5%AD%A6%E9%99%A2%EF%BC%8C%E9%9D%B6%E5%9C%BA%EF%BC%8C%E9%98%B2%E7%81%AB%E5%A2%99/">#墨者学院，靶场，防火墙</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2022/11/10/%E6%A0%88%E6%BA%A2%E5%87%BA%E5%8E%9F%E7%90%86%E5%8F%8A%E5%88%A9%E7%94%A8%E5%AD%A6%E4%B9%A0/" target="_self">
           栈溢出原理及利用学习
         </a>
@@ -394,13 +604,13 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2022/11/08/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-Mary_Morton/" target="_self">
+        <a href="/2022/11/08/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-Mary_Morton/" target="_self">
           攻防世界-Mary_Morton
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/11/08/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-Mary_Morton/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/11/08/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-Mary_Morton/" target="_self">
         <div>
           9命，太久没做pwn了，我连最基本的一些工具都忘记了，完全都不记得pwn怎么打了，我好菜，从头开始！ 查文件 file查看文件属性，elf64位文件 checksec查看保护机制   64位文件； 开启了Partial RELRO，表示got表可写； 开启了NX，栈不可执行； 无PIE； 开启了canary，不能直接栈溢出覆盖返回地址，因为在初始化一个栈帧时在栈底设置一个随机的canary值，函数
         </div>
@@ -425,220 +635,6 @@
               <a href="/tags/CTF/">#CTF</a>
             
               <a href="/tags/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C/">#攻防世界</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/11/08/Web%E6%94%BB%E9%98%B2%E4%B8%9A%E5%8A%A1%E5%AE%89%E5%85%A8%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97/" target="_self">
-          Web攻防业务安全实战指南笔记
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/11/08/Web%E6%94%BB%E9%98%B2%E4%B8%9A%E5%8A%A1%E5%AE%89%E5%85%A8%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97/" target="_self">
-        <div>
-          业务安全测试通常是指针对业务运行的软硬件平台，业务系统所提供的服务进行安全测试，保护业务系统免受安全威胁，以验证业务系统符合安全需求定义和安全标准的过程。 业务风险点识别应主要关注以下安全风险内容：  业务环节存在的安全风险：业务环节存在的安全风险指的是业务使用者课件的业务存在的安全风险，如注册、登录和密码找回等身份认真环节，是否存在完善的验证码机制、数据一致性校验机制、Session和Cooki
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-11-08 10:59" pubdate>
-              2022-11-08
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E4%B8%9A%E5%8A%A1%E6%B8%97%E9%80%8F/">#业务渗透</a>
-            
-              <a href="/tags/WEB-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">#WEB,学习笔记</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/11/02/%E9%9D%B6%E5%9C%BA%EF%BC%9AWebShell%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90%E6%BA%AF%E6%BA%90(%E7%AC%AC3%E9%A2%98)/" target="_self">
-          WebShell文件上传漏洞分析溯源(第3题)
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/11/02/%E9%9D%B6%E5%9C%BA%EF%BC%9AWebShell%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90%E6%BA%AF%E6%BA%90(%E7%AC%AC3%E9%A2%98)/" target="_self">
-        <div>
-          背景介绍某部门为了方便内部人员上传聚餐的活动图片，在某服务器上新增的图片上传功能在被安全工程师”墨者”检测发现漏洞后，程序员做了修复，【上一次漏洞地址】。”墨者”负责对修复后的系统做复测，然而发现还是存在高危漏洞。 实训目标  掌握常见图片类型的文件头内容； 掌握表单数据通过POST提交数据时，对数据的修改方法； 了解WebShell是什么及其作用； 了解PHP程序的WebShell脚本的执行原理
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-11-02 11:29" pubdate>
-              2022-11-02
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%A2%A8%E8%80%85%E5%AD%A6%E9%99%A2/">#墨者学院</a>
-            
-              <a href="/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/">#文件上传</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/11/02/Linux18%E4%B8%8B%E6%90%AD%E5%BB%BApwn%E7%8E%AF%E5%A2%83/" target="_self">
-          Linux18下搭建PWN环境
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/11/02/Linux18%E4%B8%8B%E6%90%AD%E5%BB%BApwn%E7%8E%AF%E5%A2%83/" target="_self">
-        <div>
-          安装Pwntoolssudo apt-get update #更新源 sudo apt-get install python-pip #安装pip   出现报错 :  12E: 无法获得锁 &#x2F;var&#x2F;lib&#x2F;dpkg&#x2F;lock-frontend - open (11: 资源暂时不可用)E: 无法获取 dpkg 前端锁 (&#x2F;var&#x2F;lib&#x2F;dpkg&#x2F;lock-frontend)，是否有其他进程正占用
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-11-02 09:07" pubdate>
-              2022-11-02
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E6%90%AD%E5%BB%BA%E7%8E%AF%E5%A2%83/">#搭建环境</a>
-            
-              <a href="/tags/PWN/">#PWN</a>
-            
-              <a href="/tags/ida%E8%BF%9C%E7%A8%8B/">#ida远程</a>
-            
-              <a href="/tags/linux/">#linux</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/10/10/%E9%9D%B6%E5%9C%BA%EF%BC%9AXLS%E6%96%87%E4%BB%B6%E5%88%86%E6%9E%90%E6%BA%AF%E6%BA%90/" target="_self">
-          靶场：Xls文件分析溯源
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/10/10/%E9%9D%B6%E5%9C%BA%EF%BC%9AXLS%E6%96%87%E4%BB%B6%E5%88%86%E6%9E%90%E6%BA%AF%E6%BA%90/" target="_self">
-        <div>
-          题目背景介绍 墨者机缘巧合下得到了一个Xls文件，打开却发现该文件带密码验证。 实训目标 了解Xls文件的密码猜解手段； 解题方向 对文件作密码猜解手段  解题搜到一个将xls文件后缀改成rar然后删除对应信息，然后解密的手段，试了一下，office2019没有这个bug，hhh. 不小心看到了评论区的解答，用了aopr直接把密码给爆破了……
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-10-10 20:50" pubdate>
-              2022-10-10
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/WEB/">#WEB</a>
-            
-              <a href="/tags/%E5%A2%A8%E8%80%85%E5%AD%A6%E9%99%A2/">#墨者学院</a>
-            
-              <a href="/tags/%E6%96%87%E4%BB%B6%E5%88%86%E6%9E%90/">#文件分析</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/09/25/python%E5%AD%A6%E4%B9%A010/" target="_self">
-          Python学习10-学生信息管理系统
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/09/25/python%E5%AD%A6%E4%B9%A010/" target="_self">
-        <div>
-          需求分析 添加学生及成绩信息 将学生信息保存到文件中 修改和删除学生信息 查询学生信息 根据学生成绩进行排序 统计学生的总分  系统开发环境 操作系统：win10 python解释器：3.9 开发工具：pycharm python内置模块：os,re  主函数功能 退出系统 录入学生信息，insert() 查找学生信息，search() 删除学生信息，delete() 修改学生信息，modify(
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-09-25 11:21" pubdate>
-              2022-09-25
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/python/">#python</a>
             
           </div>
         
