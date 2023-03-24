@@ -1,0 +1,670 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Sinky">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="re2-cpp-is-awesome题目来源: alexctf-2017">
+<meta property="og:type" content="article">
+<meta property="og:title" content="攻防世界高手营re-1">
+<meta property="og:url" content="https://sinky.top/2019/04/14/2019%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CRE%E9%AB%98%E6%89%8B%E8%90%A51/index.html">
+<meta property="og:site_name" content="Sinky&#39;s Blog">
+<meta property="og:description" content="re2-cpp-is-awesome题目来源: alexctf-2017">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.loli.net/2019/08/21/p9jTxIQPYOBUyLC.png">
+<meta property="og:image" content="https://i.loli.net/2019/08/21/cZey5d49UpLH7tC.png">
+<meta property="og:image" content="https://i.loli.net/2019/08/21/ukmypD7OfV3QWKw.png">
+<meta property="og:image" content="https://i.loli.net/2019/10/01/wOS6LvNcCR8Upmj.png">
+<meta property="og:image" content="https://i.loli.net/2019/10/01/BeFKtEUoC8qTDGY.png">
+<meta property="og:image" content="https://i.loli.net/2019/10/01/ABL7D4SlJV16cGn.png">
+<meta property="og:image" content="https://i.loli.net/2019/10/01/xvJSU8TcOtPoaAf.png">
+<meta property="og:image" content="https://i.loli.net/2019/10/01/D1ABIE5ms2feG79.png">
+<meta property="og:image" content="https://i.loli.net/2019/10/01/oRD72BJCS3nb8I4.png">
+<meta property="og:image" content="https://i.loli.net/2019/10/02/BrKijlzbZYGQXk6.jpg">
+<meta property="og:image" content="https://i.loli.net/2019/10/02/SWeoFT1UCpzkwul.png">
+<meta property="og:image" content="https://i.loli.net/2019/10/03/7Bv2Wg1YsrQ8R35.png">
+<meta property="og:image" content="https://i.loli.net/2019/10/03/onCAfilDXP6uGHB.png">
+<meta property="og:image" content="https://i.loli.net/2019/10/07/QDjACgpaEc3UqV5.png">
+<meta property="og:image" content="https://i.loli.net/2019/10/09/WBS5XpTYLOr7dwQ.png">
+<meta property="og:image" content="https://i.loli.net/2019/10/09/dvQ1UsakAHNxl3D.png">
+<meta property="og:image" content="https://i.loli.net/2019/10/09/MZptg3VoxLrEPnz.png">
+<meta property="og:image" content="https://i.loli.net/2019/10/09/2NrMVOGupQH9BqW.png">
+<meta property="og:image" content="https://i.loli.net/2019/10/09/uEbz1oSmnUVZHf6.png">
+<meta property="article:published_time" content="2019-04-14T11:09:01.000Z">
+<meta property="article:modified_time" content="2019-11-23T08:15:37.000Z">
+<meta property="article:author" content="Sinky">
+<meta property="article:tag" content="Visionary">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://i.loli.net/2019/08/21/p9jTxIQPYOBUyLC.png">
+  
+  
+  
+  <title>攻防世界高手营re-1 - Sinky&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"sinky.top","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.2.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Sinky's Blog" type="application/atom+xml">
+</head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Sinky</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="攻防世界高手营re-1"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2019-04-14 19:09" pubdate>
+          April 14, 2019 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.1k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          35 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">攻防世界高手营re-1</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="re2-cpp-is-awesome"><a href="#re2-cpp-is-awesome" class="headerlink" title="re2-cpp-is-awesome"></a>re2-cpp-is-awesome</h1><p>题目来源: alexctf-2017</p>
+<span id="more"></span>    
+
+
+
+<p>链接:<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1-GEeMeLDfzSNbcP9upK8Cw">https://pan.baidu.com/s/1-GEeMeLDfzSNbcP9upK8Cw</a><br>提取码:g35e  </p>
+<p>ELF文件，ubantu打开运行<br><img src="https://i.loli.net/2019/08/21/p9jTxIQPYOBUyLC.png" srcset="/img/loading.gif" lazyload alt="1.png"></p>
+<p>IDA打开，分析关键函数<br><img src="https://i.loli.net/2019/08/21/cZey5d49UpLH7tC.png" srcset="/img/loading.gif" lazyload alt="2.PNG"></p>
+<p>判断用户是否输入flag，for循环与off_6020A0逐一对比，判断正误。<br>脚本如下:<br><img src="https://i.loli.net/2019/08/21/ukmypD7OfV3QWKw.png" srcset="/img/loading.gif" lazyload alt="3.png"><br>flag:  ALEXCTF{W3_L0v3_C_W1th_CL45535}    </p>
+<h1 id="crackme"><a href="#crackme" class="headerlink" title="crackme"></a>crackme</h1><p>链接:<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1fIGQij6HQkoPLPcr5yalhg">https://pan.baidu.com/s/1fIGQij6HQkoPLPcr5yalhg</a><br>提取码:buc0     </p>
+<p>exe文件，查壳为nspack。<br>OD脱壳步骤：<br>载入程序，F8单步一次，ESP变<br>右键 HW break[ESP]硬件断点，F9运行到断点处，到达跳转搭配oep前一步，单步运行，右键分析点击在模块中删除分析，即得到oep.在oep处右键用dllydump脱壳当前进程，复制当前oep,脱壳成功。<br>IDA查看关键伪代码，如图:<br><img src="https://i.loli.net/2019/10/01/wOS6LvNcCR8Upmj.png" srcset="/img/loading.gif" lazyload alt="1.PNG"></p>
+<p>分析代码，两关键字符串异或得到flag.    </p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c">n=[<span class="hljs-number">0x12</span>, <span class="hljs-number">4</span>, <span class="hljs-number">8</span>, <span class="hljs-number">0x14</span>, <span class="hljs-number">0x24</span>, <span class="hljs-number">0x5c</span>, <span class="hljs-number">0x4a</span>, <span class="hljs-number">0x3d</span>, <span class="hljs-number">0x56</span>, <span class="hljs-number">0xa</span>, <span class="hljs-number">0x10</span>, <span class="hljs-number">0x67</span>, <span class="hljs-number">0</span>,<span class="hljs-number">0x41</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0x46</span>, <span class="hljs-number">0x5a</span>, <span class="hljs-number">0x44</span>, <span class="hljs-number">0x42</span>, <span class="hljs-number">0x6e</span>, <span class="hljs-number">0x0c</span>,<span class="hljs-number">0x44</span>, <span class="hljs-number">0x72</span>, <span class="hljs-number">0x0c</span>, <span class="hljs-number">0x0d</span>, <span class="hljs-number">0x40</span>, <span class="hljs-number">0x3e</span>, <span class="hljs-number">0x4b</span>, <span class="hljs-number">0x5f</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0x4c</span>, <span class="hljs-number">0x5e</span>,<span class="hljs-number">0x5b</span>, <span class="hljs-number">0x17</span>, <span class="hljs-number">0x6e</span>, <span class="hljs-number">0xc</span>, <span class="hljs-number">0x16</span>, <span class="hljs-number">0x68</span>, <span class="hljs-number">0x5b</span>, <span class="hljs-number">0x12</span>, <span class="hljs-number">0x48</span>, <span class="hljs-number">0x0e</span>]<br>flag=<span class="hljs-string">''</span><br><span class="hljs-string">for i in range(42):</span><br><span class="hljs-string">        flag+=chr(n[i]^ord(c[i%16]))</span><br><span class="hljs-string"></span><br><span class="hljs-string">print(flag)</span><br></code></pre></td></tr></tbody></table></figure>
+
+<p>载入IDA，提示MIPS    </p>
+<p>得flag: flag{59b8ed8f-af22-11e7-bb4a-3cf862d1ee75}</p>
+<h1 id="re-for-50-plz-50"><a href="#re-for-50-plz-50" class="headerlink" title="re-for-50-plz-50"></a>re-for-50-plz-50</h1><p><img src="https://i.loli.net/2019/10/01/BeFKtEUoC8qTDGY.png" srcset="/img/loading.gif" lazyload alt="1.PNG"></p>
+<p>形似汇编语言，简单分析，字符串与特定十六进制字符异或得出flag。<br><img src="https://i.loli.net/2019/10/01/ABL7D4SlJV16cGn.png" srcset="/img/loading.gif" lazyload alt="1.PNG"></p>
+<p>脚本:  </p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs s">n=0x37<br>flag=''<br>for i in s:<br>flag+=chr(n^ord(i))<br>print(flag)<br></code></pre></td></tr></tbody></table></figure>
+<p>flag:TUCTF{but_really_whoisjohngalt}  </p>
+<h1 id="key"><a href="#key" class="headerlink" title="key"></a>key</h1><p>链接:<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/10tr6avKWQiP9loWPOr1J9Q">https://pan.baidu.com/s/10tr6avKWQiP9loWPOr1J9Q</a><br>提取码:s7jr    </p>
+<p>运行exe程序<br><img src="https://i.loli.net/2019/10/01/xvJSU8TcOtPoaAf.png" srcset="/img/loading.gif" lazyload alt="12.PNG"></p>
+<p>载入IDA，发现奇怪文件夹<br><img src="https://i.loli.net/2019/10/01/D1ABIE5ms2feG79.png" srcset="/img/loading.gif" lazyload alt="13.PNG"></p>
+<p>尝试根据目录建立文件，运行exe文件<br><img src="https://i.loli.net/2019/10/01/oRD72BJCS3nb8I4.png" srcset="/img/loading.gif" lazyload alt="11.PNG"></p>
+<p>成功解决whathappen乱码。<br>exe文件载入OD<br>断点调试<br>发现奇怪字符串，经测试为flag。<br>flag:idg_cni~bjbfi|gsxb</p>
+<h1 id="simple-check-100"><a href="#simple-check-100" class="headerlink" title="simple-check-100"></a>simple-check-100</h1><p>链接:<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/12QntgGFftgc1uauYOfE8hg">https://pan.baidu.com/s/12QntgGFftgc1uauYOfE8hg</a><br>提取码:9xfs     </p>
+<p>解压发现三个文件，exe文件是坑，找了半天啥都没有，elf拖到ubantu进行gdb调试。        </p>
+<figure class="highlight plaintext"><figcaption><span>task9_x86_2fb0b7e96f097597851f24faaf664fdb20ad8b8a</span></figcaption><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs gdb">gdb-peda$ br main<br>gdb-peda$ r<br>gdb-peda$ next   //一直next，直到check处<br></code></pre></td></tr></tbody></table></figure>
+<p><img src="https://i.loli.net/2019/10/02/BrKijlzbZYGQXk6.jpg" srcset="/img/loading.gif" lazyload alt="1.jpg"></p>
+<p>发现红色反馈: text eax,eax<br>查看eax 内容,发现为1，修改为0绕过check_key,继续执行，得到flag.   </p>
+<figure class="highlight plaintext"><figcaption><span>i r eax</span></figcaption><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs gdb-peda$">gdb-peda$ set $eax=1 <br>gdb-peda$ c<br></code></pre></td></tr></tbody></table></figure>
+<p><img src="https://i.loli.net/2019/10/02/SWeoFT1UCpzkwul.png" srcset="/img/loading.gif" lazyload alt="2.png">    </p>
+<h1 id="re1-100"><a href="#re1-100" class="headerlink" title="re1-100"></a>re1-100</h1><p>链接:<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1MbX-H7Hk87ejIc-b2a-tUA">https://pan.baidu.com/s/1MbX-H7Hk87ejIc-b2a-tUA</a><br>提取码:x89h     </p>
+<p>载入IDA，查找关键字符串进行反汇编，分析代码发现关键函数，分析如图:<br><img src="https://i.loli.net/2019/10/03/7Bv2Wg1YsrQ8R35.png" srcset="/img/loading.gif" lazyload alt="2.PNG"></p>
+<p>查看关键函数confuseKey:<br><img src="https://i.loli.net/2019/10/03/onCAfilDXP6uGHB.png" srcset="/img/loading.gif" lazyload alt="1.PNG"></p>
+<p>将字符串进行分组变位，一组十位，按3412顺序排列。<br>即将{daf29f59034938ae4efd53fc275d81053ed5be8c}移位后得flag:    </p>
+<p>{53fc275d81053ed5be8cdaf29f59034938ae4efd}<br>感想:这么简单的题目我晃晃悠悠的不去分析代码不知道自己在干什么，果然是酸菜鱼了，又酸又菜有多余，不知道什么时候才能成为大名鼎鼎的黑客啊啊啊啊啊。    </p>
+<h1 id="The-Maya-Society"><a href="#The-Maya-Society" class="headerlink" title="The_Maya _Society"></a>The_Maya _Society</h1><p>链接:<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1aUmOg-Cb3kwZVfKRXR7CaQ">https://pan.baidu.com/s/1aUmOg-Cb3kwZVfKRXR7CaQ</a><br>提取码:l3uy    </p>
+<h3 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h3><p>1.snprintf()<br>函数原型 int snprintf(char *str,size_t size,const char *format,…)<br>功能:将可变参数… 按照format的格式格式化为字符串，然后将其拷贝至str中。<br>strcat:<br>char *strcat(char *dest, const char *src) 把 src 所指向的字符串追加到 dest 所指向的字符串的结尾<br>2.malloc<br>函数原型为void *malloc(unsigned int size)；其作用是在内存的动态存储区中分配一个长度为size的连续空间。此函数的返回值是分配区域的起始地址，或者说，此函数是一个指针型函数，返回的指针指向该分配域的开头位置。<br>一般它需和free函数配对使用。free函数能释放某个动态分配的地址，表明不再使用这块动态分配的内存了，实现把之前动态申请的内存返还给系统。<br>3.MD5算法函数<br>F(X,Y,Z)=(X &amp; Y) | ((<del>X) &amp; Z);<br>G(X,Y,Z)=(X &amp; Z) | (Y &amp; (</del>Z));<br>H(X,Y,Z)=X ^ Y ^ Z;<br>I(X,Y,Z)=Y ^ (X | (~Z));<br>4.相关函数<br>(1)int res_query(const char *dname, int class, int type,unsigned char *answer,int anslen)<br>查询名称服务器，以获得指定类型和类的完全限定域名。应答保留在调用方提供的anslen长度的缓冲区应答中<br>(2)int ns_initparse(const u_char *msg, int msglen, ns_msg *handle)<br>在使用其他名称服务器库例程之前必须调用的第一个例程。nitparse填充句柄指向的数据结构，该句柄是传递给其他例程的参数<br>(3)int ns_parserr(ns_msg *handle, ns_sect section, int rrnum, ns_rr *rr)<br>提取关于响应记录的信息并将其存储在rr中，rr是传递给其他名称服务器库例程的参数<br>(4)int ns_sprintrr(const ns_msg *handle, const ns_rr *rr, const char *name_ctx, const char *origin, char *buf, size_t buflen)<br>将rr转换为表示格式    </p>
+<p>launcher载入IDA，查看反汇编，分析代码:<br><img src="https://i.loli.net/2019/10/07/QDjACgpaEc3UqV5.png" srcset="/img/loading.gif" lazyload alt="1.PNG"></p>
+<p>调用time函数获取当时时间，并格式化使用 sub_B5A 函数对它进行md5加密，再把加密后结果格式化为32字节字符串。<br><img src="https://i.loli.net/2019/10/09/WBS5XpTYLOr7dwQ.png" srcset="/img/loading.gif" lazyload alt="2.PNG"></p>
+<p>关键函数处理如图:<br><img src="https://i.loli.net/2019/10/09/dvQ1UsakAHNxl3D.png" srcset="/img/loading.gif" lazyload alt="22.PNG"></p>
+<p>这里一开始我不知道到底是怎么得出这一串字符串，索性在学长帮助下弄懂了。<br>程序发送了一个dns请求，就是在程序中进行dns请求，它获取虚拟机本地时间，md5(local_time).fluxfingers.net就是要进行处理的字符串，时间正确返回dest,错误返回0。<br>IDA远程动态调试，wireshark抓包，找出关键字符串。<br><img src="https://i.loli.net/2019/10/09/MZptg3VoxLrEPnz.png" srcset="/img/loading.gif" lazyload alt="4444.PNG"></p>
+<p>后面算法简单，就是base64解码，然后与0x25异或。<br>脚本:    </p>
+<figure class="highlight plaintext"><figcaption><span>base64</span></figcaption><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs import">msg='zgJDSURCXkAWRBUWRhNDFkNAHBRHERVAREQdQBIURxEUQxVBRxQXWC+dJCUlJZokJSUlbagQ7dra2p8CJSUlKiCdGSUlJZolJSUlKiA='<br>b=base64.b64decode(msg)<br>s=''<br>for i in range(len(b)):<br>    t=b[i]^0x25<br>    print(t,end=' ')<br>    s+=chr(t)<br>print()<br>print(s)<br></code></pre></td></tr></tbody></table></figure>
+<p>flag:flag{e3a03c6f3fe91b40eaa8e71b41f0db12}</p>
+<h1 id="srm-50"><a href="#srm-50" class="headerlink" title="srm-50"></a>srm-50</h1><p>exe程序，分析代码转char，顺序排列即为flag.<br>flag:CZ9dmq4c8g9G7bAX    </p>
+<h1 id="ReverseMe-120"><a href="#ReverseMe-120" class="headerlink" title="ReverseMe-120"></a>ReverseMe-120</h1><p>链接:<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1tP6XtQcpi5-1RbbdDyZ8Sw">https://pan.baidu.com/s/1tP6XtQcpi5-1RbbdDyZ8Sw</a><br>提取码:ezkr     </p>
+<p>exe程序，分析代码，算法简单，输入字符串经过base64解码，后与0x25异或，最后与关键字符串比较。<br>脚本:    </p>
+<figure class="highlight plaintext"><figcaption><span>base64</span></figcaption><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs import">s = 'you_know_how_to_remove_junk_code'<br>tmp = ''<br>for i in range(len(s)): <br>    tmp += chr(ord(s[i]) ^ 0x25)<br>print(base64.b64encode(tmp.encode('utf-8')))<br></code></pre></td></tr></tbody></table></figure>
+<p>flag:XEpQek5LSlJ6TUpSelFKeldASEpTQHpPUEtOekZKQUA= </p>
+<h1 id="IgniteMe"><a href="#IgniteMe" class="headerlink" title="IgniteMe"></a>IgniteMe</h1><p>链接:<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1iTd0LCar2mjaiclsfEumnQ">https://pan.baidu.com/s/1iTd0LCar2mjaiclsfEumnQ</a><br>提取码:na2v<br>分析代码，前四位规定为”EIS{“，最后一位为”}”.<br><img src="https://i.loli.net/2019/10/09/2NrMVOGupQH9BqW.png" srcset="/img/loading.gif" lazyload alt="1.PNG"></p>
+<p>关键函数分析:<br><img src="https://i.loli.net/2019/10/09/uEbz1oSmnUVZHf6.png" srcset="/img/loading.gif" lazyload alt="2.PNG"><br>脚本:    </p>
+<p>```date=[ 0x0D, 0x13, 0x17, 0x11, 0x02, 0x01, 0x20, 0x1D, 0x0C, 0x02,0x19, 0x2F, 0x17, 0x2B, 0x24, 0x1F, 0x1E, 0x16, 0x09, 0x0F,0x15, 0x27, 0x13, 0x26, 0x0A, 0x2F, 0x1E, 0x1A, 0x2D, 0x0C,0x22, 0x04]<br>s=’GONDPHyGjPEKruv</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Visionary/">#Visionary</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>攻防世界高手营re-1</div>
+      <div>https://sinky.top/2019/04/14/2019攻防世界RE高手营1/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Sinky</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>April 14, 2019</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>Licensed under</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2019/07/11/2019%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CRE%E6%96%B0%E6%89%8B%E8%90%A5/" title="2019攻防世界RE新手营">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">2019攻防世界RE新手营</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2019/04/14/%E5%90%88%E5%A4%A9%E7%BD%91%E5%AE%89%E5%AE%9E%E9%AA%8C%E5%AE%A4re/" title="合天网安实验室逆向-re100">
+                        <span class="hidden-mobile">合天网安实验室逆向-re100</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

